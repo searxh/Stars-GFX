@@ -1,10 +1,12 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Contacts from "./pages/Contacts";
 
 function App() {
 	return (
-		<div>
-			<div className="text-red-200">Hello World</div>
-		</div>
+		<Routes>
+			<Route path="/" element={<Contacts />} />
+		</Routes>
 	);
 }
 
