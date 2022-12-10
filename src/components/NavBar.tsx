@@ -16,6 +16,9 @@ const NavBar = (props: any) => {
     const handleChangeRoute = (selectedRoute: string) => {
         navigate(selectedRoute);
     };
+    const handleOnClick = () => {
+        navigate("/");
+    };
     React.useEffect(() => {
         setLocationIndex(getLocationIndex());
         console.log(locationIndex);
@@ -25,12 +28,15 @@ const NavBar = (props: any) => {
             className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-50 bg-white
              font-quicksand justify-evenly shadow-md text-black z-10"
         >
-            <div className="basis-[20%] flex relative m-auto justify-center">
+            <button
+                onClick={handleOnClick}
+                className="basis-[20%] flex relative m-auto justify-center hover:scale-110 duration-500 transition"
+            >
                 <img className="w-16 h-12" src="images/logo.png" alt="" />
                 <div className="text-2xl my-auto font-righteous -ml-2 font-bold">
                     STAR
                 </div>
-            </div>
+            </button>
             {Object.keys(all_routes).map((route: string) => {
                 return (
                     <button
