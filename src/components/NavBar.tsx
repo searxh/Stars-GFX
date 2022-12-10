@@ -22,12 +22,14 @@ const NavBar = (props: any) => {
     }, [location.pathname]);
     return (
         <div
-            className="absolute top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-50 bg-white
-             font-quicksand justify-evenly shadow-md text-black"
+            className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-50 bg-white
+             font-quicksand justify-evenly shadow-md text-black z-10"
         >
             <div className="basis-[20%] flex relative m-auto justify-center">
                 <img className="w-16 h-12" src="images/logo.png" alt="" />
-                <div className="text-xl my-auto font-bold">STAR</div>
+                <div className="text-2xl my-auto font-righteous -ml-2 font-bold">
+                    STAR
+                </div>
             </div>
             {Object.keys(all_routes).map((route: string) => {
                 return (
