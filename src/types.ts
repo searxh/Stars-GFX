@@ -1,26 +1,27 @@
 import { Dispatch } from "react";
 
 export interface OrderType {
-	id: number;
-	created_at: string;
-	discord: string;
-	status: string;
-	title: string;
+    id?: number;
+    created_at?: string;
+    discord: string;
+    status: string;
+    title: string;
+    orderid: string;
 }
 interface GlobalStateKeys {
-	[key: string]: any;
+    [key: string]: any;
 }
 export interface GlobalStateType extends GlobalStateKeys {
-	name: string;
+    name: string;
 }
 
 export interface ActionType {
-	type: string;
-	field?: string | Array<string>;
-	payload: any;
+    type: string;
+    field?: string | Array<string>;
+    payload: any;
 }
 
 export interface GlobalContextType {
-	global_state: GlobalStateType;
-	dispatch: Dispatch<ActionType>;
+    global_state: GlobalStateType;
+    dispatch: Dispatch<ActionType>;
 }
