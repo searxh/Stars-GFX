@@ -22,7 +22,7 @@ const NavBar = (props: any) => {
     }, [location.pathname]);
     return (
         <div className="absolute top-0 flex w-full h-12 bg-black font-quicksand justify-evenly shadow-md">
-            <div className="flex relative m-auto text-white">
+            <div className="basis-[20%] flex relative m-auto text-white justify-center">
                 <img className="w-16 h-12 invert" src="logo.png" alt="" />
                 <div className="text-xl my-auto font-bold">STAR</div>
             </div>
@@ -30,7 +30,7 @@ const NavBar = (props: any) => {
                 return (
                     <button
                         onClick={() => handleChangeRoute(route)}
-                        className="m-auto text-white hover:scale-110 transition duration-500"
+                        className="m-auto basis-[20%] text-white hover:scale-110 transition duration-500"
                     >
                         {all_routes[route]}
                     </button>
