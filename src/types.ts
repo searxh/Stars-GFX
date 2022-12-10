@@ -8,6 +8,9 @@ export interface OrderType {
     title: string;
     orderid: string;
 }
+export interface RouteMapType {
+    [key: string]: string;
+}
 interface GlobalStateKeys {
     [key: string]: any;
 }

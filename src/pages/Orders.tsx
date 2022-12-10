@@ -36,7 +36,7 @@ const Orders = () => {
         });
     }, []);
     return (
-        <div className="">
+        <div className="w-full h-full bg-red-400">
             {orders.map((order: any) => (
                 <OrderItem orderInfo={order} />
             ))}
