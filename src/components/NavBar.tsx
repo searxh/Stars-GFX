@@ -25,7 +25,7 @@ const NavBar = (props: any) => {
     }, [location.pathname]);
     return (
         <div
-            className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-50 bg-white
+            className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-70 bg-white
              font-quicksand justify-evenly shadow-md text-black z-10"
         >
             <button

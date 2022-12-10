@@ -4,7 +4,7 @@ import ContactButton from "../components/ContactButton";
 const Contacts = () => {
     return (
         <div
-            className="flex flex-col pt-12 w-screen min-h-screen h-full text-white font-quicksand 
+            className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-quicksand 
 			bg-gradient-to-t from-orange-400 to-cyan-300"
         >
             <img
@@ -13,9 +13,9 @@ const Contacts = () => {
                 alt=""
             />
             <div className="text-white text-3xl font-righteous font-bold drop-shadow-md text-center my-2">
-                Contact me on:
+                Find me on:
             </div>
-            <div className="py-5 overflow-x-scroll whitespace-nowrap">
+            <div className="py-5 overflow-x-scroll whitespace-nowrap cursor-grab">
                 <ContactButton
                     text="Twitter"
                     imageUrl="/images/contacts_logo/twitter.png"
@@ -57,6 +57,11 @@ const Contacts = () => {
                     linkTo="https://twitter.com/ooStarwarsbccoo"
                 />
             </div>
+            <img
+                className="m-auto h-20 w-25 my-5 drop-shadow-md invert"
+                src="images/logo.png"
+                alt=""
+            />
         </div>
     );
 };

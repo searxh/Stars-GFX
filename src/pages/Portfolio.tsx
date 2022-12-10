@@ -1,7 +1,14 @@
 import React from "react";
 
 const Portfolio = () => {
-    return <div className="pt-12">Portfolio</div>;
+    return (
+        <div
+            className="flex flex-col pt-12 w-full min-h-screen h-full
+            font-quicksand bg-white text-center"
+        >
+            Portfolio
+        </div>
+    );
 };
 
 export default Portfolio;
