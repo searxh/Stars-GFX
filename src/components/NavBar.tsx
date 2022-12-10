@@ -21,23 +21,26 @@ const NavBar = (props: any) => {
         console.log(locationIndex);
     }, [location.pathname]);
     return (
-        <div className="absolute top-0 flex w-full h-12 bg-black font-quicksand justify-evenly shadow-md">
-            <div className="basis-[20%] flex relative m-auto text-white justify-center">
-                <img className="w-16 h-12 invert" src="logo.png" alt="" />
+        <div
+            className="absolute top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-50 bg-white
+             font-quicksand justify-evenly shadow-md text-black"
+        >
+            <div className="basis-[20%] flex relative m-auto justify-center">
+                <img className="w-16 h-12" src="images/logo.png" alt="" />
                 <div className="text-xl my-auto font-bold">STAR</div>
             </div>
             {Object.keys(all_routes).map((route: string) => {
                 return (
                     <button
                         onClick={() => handleChangeRoute(route)}
-                        className="m-auto basis-[20%] text-white hover:scale-110 transition duration-500"
+                        className="m-auto basis-[20%] hover:scale-110 transition duration-500 font-bold"
                     >
                         {all_routes[route]}
                     </button>
                 );
             })}
             <div
-                className={`absolute bg-slate-300 h-1 bottom-0 rounded-full transition duration-300
+                className={`absolute bg-black h-0.5 bottom-0 rounded-full transition duration-300
                 ${
                     locationIndex === 0
                         ? "translate-x-[-100%]"
