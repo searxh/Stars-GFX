@@ -8,14 +8,22 @@ export interface OrderType {
     title: string;
     orderid: string;
 }
-export interface RouteMapType {
-    [key: string]: string;
+export interface StringToAnyType {
+    [key: string]: any;
+}
+export interface ProductSelectType extends StringToAnyType {
+    resolution: string;
+    modelLimit: string;
+    number: string;
+}
+export interface FormInfoType {
+    [key: string]: ProductSelectType;
 }
 interface GlobalStateKeys {
     [key: string]: any;
 }
 export interface GlobalStateType extends GlobalStateKeys {
-    name: string;
+    formInfo: FormInfoType;
 }
 
 export interface ActionType {
