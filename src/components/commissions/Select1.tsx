@@ -21,7 +21,7 @@ const Select1 = ({
     const [option, setOption] = React.useState<number>(0);
     const handleOnClick = (index: number) => {
         setOption(index);
-        changeCallback(choices[option]);
+        changeCallback(choices[index].title);
     };
     return (
         <div className="">
