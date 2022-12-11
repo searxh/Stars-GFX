@@ -20,41 +20,49 @@ const Contacts = () => {
                     text="Twitter"
                     imageUrl="/images/contacts_logo/twitter.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="I post GFX here"
                 />
                 <ContactButton
                     text="YouTube"
                     imageUrl="/images/contacts_logo/youtube.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="I share my process and vlogs"
                 />
                 <ContactButton
                     text="DevForum"
                     imageUrl="/images/contacts_logo/devforum.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="Roblox Related Forum"
                 />
                 <ContactButton
                     text="Discord"
                     imageUrl="/images/contacts_logo/discord.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="Join The Star's Community"
                 />
                 <ContactButton
                     text="Blog"
                     imageUrl="/images/contacts_logo/blog.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="Weekly Blogs"
                 />
                 <ContactButton
                     text="Gumroad"
                     imageUrl="/images/contacts_logo/gumroad.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="My online store"
                 />
                 <ContactButton
                     text="Instagram"
                     imageUrl="/images/contacts_logo/instagram.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="General Art and Graphic Works"
                 />
                 <ContactButton
                     text="Unsplash"
                     imageUrl="/images/contacts_logo/unsplash.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
+                    desc="Photography Work"
                 />
             </div>
             <img

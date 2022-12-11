@@ -3,12 +3,14 @@ import React from "react";
 interface ContactButtonPropsInterface {
     text: string;
     imageUrl: string;
+    desc: string;
     linkTo: string;
 }
 
 const ContactButton = ({
     text,
     imageUrl,
+    desc,
     linkTo,
 }: ContactButtonPropsInterface) => {
     const handleOnClick = () => {
@@ -27,8 +29,8 @@ const ContactButton = ({
                     alt=""
                 />
                 <div className="font-nunito mt-2">{text}</div>
-                <div className="text-base whitespace-normal px-5">
-                    This is where I commonly post my GFX
+                <div className="text-base whitespace-normal px-5 font-normal">
+                    {desc}
                 </div>
             </div>
         </button>
