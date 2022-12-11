@@ -25,43 +25,43 @@ const Contacts = () => {
                 <ContactButton
                     text="YouTube"
                     imageUrl="/images/contacts_logo/youtube.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://youtube.com"
                     desc="I share my process and vlogs"
                 />
                 <ContactButton
                     text="DevForum"
                     imageUrl="/images/contacts_logo/devforum.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://devforum.roblox.com/t/close-stars-gfx-gfx-designer/1090212"
                     desc="Roblox Related Forum"
                 />
                 <ContactButton
                     text="Discord"
                     imageUrl="/images/contacts_logo/discord.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://discord.gg/WBFkGgf"
                     desc="Join The Star's Community"
                 />
                 <ContactButton
                     text="Blog"
                     imageUrl="/images/contacts_logo/blog.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://medium.com/@teerapat310"
                     desc="Weekly Blogs"
                 />
                 <ContactButton
                     text="Gumroad"
                     imageUrl="/images/contacts_logo/gumroad.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://stargfx.gumroad.com"
                     desc="My online store"
                 />
                 <ContactButton
                     text="Instagram"
                     imageUrl="/images/contacts_logo/instagram.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://www.instagram.com/potential__star/"
                     desc="General Art and Graphic Works"
                 />
                 <ContactButton
                     text="Unsplash"
                     imageUrl="/images/contacts_logo/unsplash.png"
-                    linkTo="https://twitter.com/ooStarwarsbccoo"
+                    linkTo="https://unsplash.com/@seenyboy"
                     desc="Photography Work"
                 />
             </div>
