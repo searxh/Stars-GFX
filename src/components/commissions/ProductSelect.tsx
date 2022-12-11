@@ -37,9 +37,9 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
         return res !== undefined ? res.textColor : "text-black";
     };
     return (
-        <div className="grid grid-flows-row gap-2">
-            <div className={`${getProductTextColor()} text-4xl`}>
-                {currentProduct}
+        <div className="grid grid-flows-row gap-3">
+            <div className={`${getProductTextColor()} text-4xl drop-shadow-md`}>
+                {currentProduct.toLocaleUpperCase()}
             </div>
             <Select1
                 choices={selectChoices.resolution}

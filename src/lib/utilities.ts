@@ -40,10 +40,11 @@ export const calculatePrice = (formInfo: FormInfoType) => {
             productCounter += num;
         }
     });
-    const percent =
+    let percent =
         productCounter >= priceInfo.discount.startAt
             ? Math.pow(priceInfo.discount.multiplyValue, productCounter)
             : 1;
+    if (percent < 0.7) percent = 0.7;
     const value = sum * percent;
     return { value: value, discountPercent: (1 - percent) * 100 };
 };

@@ -26,7 +26,7 @@ const Select1 = ({
     return (
         <div className="">
             <div className="text-2xl font-extrabold">{title}</div>
-            <div className="text-lg font-normal">{desc}</div>
+            <div className="text-lg font-normal mb-2">{desc}</div>
             <div className="flex justify-between">
                 {choices.map(
                     (

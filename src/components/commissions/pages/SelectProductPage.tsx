@@ -2,7 +2,6 @@ import React from "react";
 import { GlobalContext } from "../../../states";
 import { productChoices, initialProductInfo } from "../../../lib/default";
 import { pageChangeCheck } from "../../../lib/utilities";
-import { PagesDot } from "../../PagesDot";
 
 const SelectProductPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -59,8 +58,8 @@ const SelectProductPage = () => {
     return (
         <div className="relative text-black m-auto w-[60%]">
             <div className="relative">
-                <div className="text-5xl my-2 drop-shadow-sm font-bold">
-                    Select product(s)
+                <div className="text-5xl my-2 drop-shadow-sm font-bold px-10">
+                    Select product(s) for a project
                 </div>
                 <div
                     className={`absolute left-0 right-0 -bottom-6 text-2xl 
@@ -110,9 +109,6 @@ const SelectProductPage = () => {
                 >
                     Next
                 </button>
-            </div>
-            <div className="my-10">
-                <PagesDot currentPage={currentPage} totalPages={4} />
             </div>
         </div>
     );

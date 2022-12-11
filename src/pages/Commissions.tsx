@@ -38,9 +38,6 @@ const Commissions = () => {
                     >
                         Start
                     </button>
-                    <div className="my-10">
-                        <PagesDot currentPage={currentPage} totalPages={4} />
-                    </div>
                 </div>
             ) : currentPage === 1 ? (
                 <TermsPage />
@@ -49,6 +46,9 @@ const Commissions = () => {
             ) : currentPage === 3 ? (
                 <CustomizePage />
             ) : null}
+            <div className="my-10">
+                <PagesDot currentPage={currentPage} totalPages={4} />
+            </div>
         </div>
     );
 };
