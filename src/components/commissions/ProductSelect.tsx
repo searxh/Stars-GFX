@@ -1,11 +1,6 @@
 import React from "react";
 import Select from "./Select";
-import {
-    resolutionChoices,
-    modelLimitChoices,
-    numberChoices,
-    productChoices,
-} from "../../lib/default";
+import { productChoices, selectChoices } from "../../lib/default";
 import Select1 from "./Select1";
 import { GlobalContext } from "../../states";
 
@@ -20,7 +15,6 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
         if (formInfo[currentProduct] !== undefined) {
             formInfo[currentProduct][field] = option;
             const newFormInfo = { ...formInfo };
-            console.log(newFormInfo);
             dispatch({
                 type: "set",
                 field: "formInfo",
@@ -48,7 +42,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 {currentProduct}
             </div>
             <Select1
-                choices={resolutionChoices}
+                choices={selectChoices.resolution}
                 title="Pick resolution"
                 desc="Support up to 5k Resolution"
                 changeCallback={(option: string) =>
@@ -57,7 +51,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 color={getProductColor()}
             />
             <Select1
-                choices={modelLimitChoices}
+                choices={selectChoices.modelLimit}
                 title="Pick model limit"
                 desc="Expand the design possiblities with unlimited asset"
                 changeCallback={(option: string) =>
@@ -66,10 +60,10 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 color={getProductColor()}
             />
             <Select
-                choices={numberChoices}
+                choices={selectChoices.number}
                 title="How many?"
-                desc="Select the number of product that you want. 
-                The maximum that you can order at a time is 3."
+                desc="Select how many of this type of product that you want. 
+                The maximum order at a time is three."
                 changeCallback={(option: string) =>
                     setProductFormInfo("number", option)
                 }

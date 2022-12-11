@@ -19,6 +19,9 @@ export interface ProductSelectType extends StringToAnyType {
 export interface FormInfoType {
     [key: string]: ProductSelectType;
 }
+export interface PriceInfoType {
+    [key: string]: { [key: string]: any };
+}
 interface GlobalStateKeys {
     [key: string]: any;
 }

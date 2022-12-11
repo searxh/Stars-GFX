@@ -1,28 +1,33 @@
-export const resolutionChoices = [
-    {
-        title: "HD",
-        text: "Full HD Resolution",
-    },
-    {
-        title: "4k",
-        text: "Ultra HD Resolution",
-    },
-    {
-        title: "5k",
-        text: "Ultra HD Resolution",
-    },
-];
-export const modelLimitChoices = [
-    {
-        title: "Limited",
-        text: "3 Models Limit",
-    },
-    {
-        title: "Unlimited",
-        text: "No Model Limit",
-    },
-];
-export const numberChoices = ["1", "2", "3"];
+import { PriceInfoType } from "../types";
+
+export const selectChoices: any = {
+    resolution: [
+        {
+            title: "HD",
+            text: "Full HD Resolution",
+        },
+        {
+            title: "4k",
+            text: "Ultra HD Resolution",
+        },
+        {
+            title: "5k",
+            text: "Ultra HD Resolution",
+        },
+    ],
+    modelLimit: [
+        {
+            title: "Limited",
+            text: "3 Models Limit",
+        },
+        {
+            title: "Unlimited",
+            text: "No Model Limit",
+        },
+    ],
+    number: ["1", "2", "3"],
+};
+
 export const productChoices = [
     {
         title: "Thumbnail",
@@ -47,13 +52,36 @@ export const productChoices = [
 ];
 
 export const initialProductInfo = {
-    resolution: resolutionChoices[0].title,
-    modelLimit: modelLimitChoices[0].title,
-    number: numberChoices[0],
+    resolution: selectChoices.resolution[0].title,
+    modelLimit: selectChoices.modelLimit[0].title,
+    number: selectChoices.number[0],
 };
 
 export const initialFormInfo = {};
 export const initialState = {
     formInfo: initialFormInfo,
     currentPage: 0,
+};
+
+export const priceInfo: PriceInfoType = {
+    Thumbnail: {
+        resolution: [69, 75, 79],
+        modelLimit: [10, 15],
+    },
+    Icon: {
+        resolution: [49, 55, 59],
+        modelLimit: [10, 15],
+    },
+    "Ad Banner": {
+        resolution: [49, 55, 59],
+        modelLimit: [10, 15],
+    },
+    "Ad Skyscraper": {
+        resolution: [49, 55, 59],
+        modelLimit: [10, 15],
+    },
+    discount: {
+        startAt: 2,
+        multiplyValue: 0.955,
+    },
 };
