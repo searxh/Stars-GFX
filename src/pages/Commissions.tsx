@@ -11,11 +11,18 @@ const Commissions = () => {
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full
-            font-nunito bg-white text-center"
+            font-nunito bg-neutral-100 text-center"
         >
             {currentPage === 0 ? (
-                <div className="text-5xl text-black m-auto font-bold">
-                    <div>Passion led to you.</div>
+                <div className="relative text-5xl text-black m-auto font-bold">
+                    <div className="-mb-2 px-10 drop-shadow-sm">
+                        Passion led to you.
+                    </div>
+                    <img
+                        src="/images/pltu.webp"
+                        alt=""
+                        className="w-1/2 m-auto brightness-[101%]"
+                    />
                     <button
                         onClick={() => {
                             const check = pageChangeCheck(true, currentPage);
@@ -25,7 +32,7 @@ const Commissions = () => {
                                 payload: check ? check : currentPage,
                             });
                         }}
-                        className="text-red-300 hover:scale-105 duration-500 transition text-3xl mb-10"
+                        className="text-orange-500 hover:scale-110 hover:text-sky-500 duration-500 transition text-3xl drop-shadow-sm"
                     >
                         Start
                     </button>

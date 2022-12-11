@@ -28,7 +28,7 @@ const ContactButton = ({
                     src={imageUrl}
                     alt=""
                 />
-                <div className="font-nunito mt-2">{text}</div>
+                <div className="font-bold mt-2">{text}</div>
                 <div className="text-base whitespace-normal px-5 font-normal">
                     {desc}
                 </div>

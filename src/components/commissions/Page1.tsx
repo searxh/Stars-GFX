@@ -52,7 +52,7 @@ const Page1 = () => {
     }, [selected]);
     return (
         <div className="relative text-black m-auto font-bold">
-            <div className="text-4xl my-2">Select product(s)</div>
+            <div className="text-5xl my-2">Select product(s)</div>
             <div className="flex justify-between">
                 {productChoices.map(
                     (

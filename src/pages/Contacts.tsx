@@ -5,7 +5,7 @@ const Contacts = () => {
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
-			bg-gradient-to-t from-orange-500 to-sky-400"
+			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
                 className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md"
