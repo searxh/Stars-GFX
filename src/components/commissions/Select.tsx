@@ -4,6 +4,7 @@ interface SelectPropsInterface {
     choices: Array<string>;
     title: string;
     desc: string;
+    color: string;
     changeCallback: Function;
 }
 
@@ -11,6 +12,7 @@ const Select = ({
     choices,
     title,
     desc,
+    color,
     changeCallback,
 }: SelectPropsInterface) => {
     const [option, setOption] = React.useState<number>(0);
@@ -35,7 +37,7 @@ const Select = ({
                 >
                     {"<"}
                 </button>
-                <div className="text-purple-600 text-2xl font-nunito">
+                <div className={`${color} text-2xl font-nunito`}>
                     {choices[option]}
                 </div>
                 <button

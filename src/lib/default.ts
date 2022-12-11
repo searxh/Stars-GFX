@@ -26,15 +26,23 @@ export const numberChoices = ["1", "2", "3"];
 export const productChoices = [
     {
         title: "Thumbnail",
-        text: "",
+        color: "bg-purple-500",
+        textColor: "text-purple-500",
     },
     {
         title: "Icon",
-        text: "",
+        color: "bg-blue-500",
+        textColor: "text-blue-500",
     },
     {
         title: "Ad Banner",
-        text: "",
+        color: "bg-amber-500",
+        textColor: "text-amber-500",
+    },
+    {
+        title: "Ad Skyscraper",
+        color: "bg-red-500",
+        textColor: "text-red-500",
     },
 ];
 

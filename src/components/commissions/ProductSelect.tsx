@@ -4,6 +4,7 @@ import {
     resolutionChoices,
     modelLimitChoices,
     numberChoices,
+    productChoices,
 } from "../../lib/default";
 import Select1 from "./Select1";
 import { GlobalContext } from "../../states";
@@ -27,24 +28,42 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
             });
         }
     };
+    const getProductColor = () => {
+        const res = productChoices.find(
+            (productObj: { title: string; color: string }) =>
+                productObj.title === currentProduct
+        );
+        return res !== undefined ? res.color : "bg-slate-500";
+    };
+    const getProductTextColor = () => {
+        const res = productChoices.find(
+            (productObj: { title: string; color: string }) =>
+                productObj.title === currentProduct
+        );
+        return res !== undefined ? res.textColor : "text-black";
+    };
     return (
         <div className="grid grid-flows-row gap-2">
-            <div className="text-red-400">{currentProduct}</div>
+            <div className={`${getProductTextColor()} text-4xl`}>
+                {currentProduct}
+            </div>
             <Select1
                 choices={resolutionChoices}
                 title="Pick resolution"
-                desc=""
+                desc="Support up to 5k Resolution"
                 changeCallback={(option: string) =>
                     setProductFormInfo("resolution", option)
                 }
+                color={getProductColor()}
             />
             <Select1
                 choices={modelLimitChoices}
                 title="Pick model limit"
-                desc="Number of models that need"
+                desc="Expand the design possiblities with unlimited asset"
                 changeCallback={(option: string) =>
                     setProductFormInfo("modelLimit", option)
                 }
+                color={getProductColor()}
             />
             <Select
                 choices={numberChoices}
@@ -54,6 +73,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 changeCallback={(option: string) =>
                     setProductFormInfo("number", option)
                 }
+                color={getProductTextColor()}
             />
         </div>
     );

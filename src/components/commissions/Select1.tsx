@@ -7,6 +7,7 @@ interface SelectPropsInterface {
     }>;
     title: string;
     desc: string;
+    color: string;
     changeCallback: Function;
 }
 
@@ -14,6 +15,7 @@ const Select1 = ({
     choices,
     title,
     desc,
+    color,
     changeCallback,
 }: SelectPropsInterface) => {
     const [option, setOption] = React.useState<number>(0);
@@ -23,7 +25,7 @@ const Select1 = ({
     };
     return (
         <div className="">
-            <div className="text-2xl">{title}</div>
+            <div className="text-2xl font-extrabold">{title}</div>
             <div className="text-lg font-normal">{desc}</div>
             <div className="flex justify-between">
                 {choices.map(
@@ -37,14 +39,18 @@ const Select1 = ({
                         return (
                             <button
                                 onClick={() => handleOnClick(index)}
-                                className={`flex-1 rounded-lg bg-orange-600 text-white
+                                className={`flex-1 rounded-3xl text-white shadow-md
                             py-2 px-3 text-xl m-1 hover:scale-105 duration-500 transition
-                            ${option === index ? "opacity-100" : "opacity-50"}`}
+                            ${
+                                option === index ? "opacity-100" : "opacity-50"
+                            } ${color}`}
                             >
-                                <div className="text-3xl font-nunito">
+                                <div className="text-3xl font-normal">
                                     {choice.title.toLocaleUpperCase()}
                                 </div>
-                                <div className="text-base">{choice.text}</div>
+                                <div className="text-base font-normal">
+                                    {choice.text}
+                                </div>
                             </button>
                         );
                     }

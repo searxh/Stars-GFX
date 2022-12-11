@@ -52,24 +52,26 @@ const Page1 = () => {
     }, [selected]);
     return (
         <div className="relative text-black m-auto font-bold">
-            <div className="text-5xl my-2">Select product(s)</div>
-            <div className="flex justify-between">
+            <div className="text-5xl my-2 drop-shadow-sm">
+                Select product(s)
+            </div>
+            <div className="grid grid-cols-2 gap-2 justify-between">
                 {productChoices.map(
                     (
-                        productChoice: { title: string; text: string },
+                        productChoice: { title: string; color: string },
                         index: number
                     ) => {
                         return (
                             <button
                                 onClick={() => handleOnSelect(index)}
-                                className={`flex-1 mx-1 rounded-lg bg-orange-500 duration-500
-                                text-white p-5 text-2xl hover:scale-105 transition ${
+                                className={`flex-1 rounded-full duration-500 font-normal
+                                text-white p-5 text-2xl hover:scale-105 transition shadow-md ${
                                     selected[index]
                                         ? "opacity-100"
                                         : "opacity-50"
-                                }`}
+                                } ${productChoice.color}`}
                             >
-                                {productChoice.title}
+                                {productChoice.title.toLocaleUpperCase()}
                             </button>
                         );
                     }

@@ -17,10 +17,10 @@ const Page2 = () => {
     };
     return (
         <div className="text-5xl text-black m-auto font-bold w-[80%]">
-            <div className="py-2">Customize</div>
+            <div className="py-2 drop-shadow-sm">Customize</div>
             {Object.keys(formInfo).map((formInfoKey: string) => {
                 return (
-                    <div className="text-3xl p-5 w-[70%] mx-auto border-black border-2 rounded-xl my-5">
+                    <div className="text-3xl p-5 w-[70%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md">
                         <ProductSelect currentProduct={formInfoKey} />
                     </div>
                 );
