@@ -5,7 +5,7 @@ const Contacts = () => {
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
-			bg-gradient-to-t from-orange-400 to-cyan-300"
+			bg-gradient-to-t from-orange-500 to-sky-400"
         >
             <img
                 className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md"
@@ -28,7 +28,7 @@ const Contacts = () => {
                 />
                 <ContactButton
                     text="DevForum"
-                    imageUrl="/images/contacts_logo/blog.png"
+                    imageUrl="/images/contacts_logo/devforum.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
                 />
                 <ContactButton
@@ -43,7 +43,7 @@ const Contacts = () => {
                 />
                 <ContactButton
                     text="Gumroad"
-                    imageUrl="/images/contacts_logo/youtube.png"
+                    imageUrl="/images/contacts_logo/gumroad.png"
                     linkTo="https://twitter.com/ooStarwarsbccoo"
                 />
                 <ContactButton
