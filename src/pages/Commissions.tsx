@@ -14,8 +14,8 @@ const Commissions = () => {
             font-nunito bg-neutral-100 text-center"
         >
             {currentPage === 0 ? (
-                <div className="relative text-5xl text-black m-auto font-bold">
-                    <div className="-mb-2 px-10 drop-shadow-sm">
+                <div className="relative text-5xl text-black m-auto">
+                    <div className="-mb-2 px-10 drop-shadow-sm font-bold">
                         Passion led to you.
                     </div>
                     <img
@@ -32,7 +32,8 @@ const Commissions = () => {
                                 payload: check ? check : currentPage,
                             });
                         }}
-                        className="text-orange-500 hover:scale-110 hover:text-sky-500 duration-500 transition text-3xl drop-shadow-sm"
+                        className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
+                        duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                     >
                         Start
                     </button>

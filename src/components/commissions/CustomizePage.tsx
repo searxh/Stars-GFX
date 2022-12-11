@@ -23,11 +23,11 @@ const CustomizePage = () => {
         setPrice(calculatePrice(formInfo));
     }, [formInfo]);
     return (
-        <div className="text-5xl text-black m-auto font-bold w-[80%]">
+        <div className="text-5xl text-black m-auto font-bold w-full">
             <div className="py-2 drop-shadow-sm">Customize</div>
             {Object.keys(formInfo).map((formInfoKey: string) => {
                 return (
-                    <div className="text-3xl p-5 w-[70%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md">
+                    <div className="text-3xl p-5 w-[60%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md">
                         <ProductSelect currentProduct={formInfoKey} />
                     </div>
                 );
@@ -40,13 +40,21 @@ const CustomizePage = () => {
                 )}
                 <div className="">${Math.round(price.value)}</div>
             </div>
-            <button
-                onClick={() => handleOnNavigate(false)}
-                className="text-red-300 text-3xl mr-48"
-            >
-                Back
-            </button>
-            <button className="text-red-300 text-3xl">Submit</button>
+            <div className="flex justify-evenly">
+                <button
+                    onClick={() => handleOnNavigate(false)}
+                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
+                    duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                >
+                    Back
+                </button>
+                <button
+                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
+                    duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                >
+                    Submit
+                </button>
+            </div>
             <div className="my-10">
                 <PagesDot currentPage={currentPage} totalPages={3} />
             </div>
