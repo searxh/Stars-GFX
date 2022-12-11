@@ -62,7 +62,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
             <Select
                 choices={selectChoices.number}
                 title="How many?"
-                desc="Select how many of this type of product that you want. 
+                desc="Select the number of this type of product that you want. 
                 The maximum order at a time is three."
                 changeCallback={(option: string) =>
                     setProductFormInfo("number", option)

@@ -1,8 +1,8 @@
 import React from "react";
-import ProductSelect from "./ProductSelect";
-import { calculatePrice, pageChangeCheck } from "../../lib/utilities";
-import { GlobalContext } from "../../states";
-import { PagesDot } from "../PagesDot";
+import ProductSelect from "../ProductSelect";
+import { calculatePrice, pageChangeCheck } from "../../../lib/utilities";
+import { GlobalContext } from "../../../states";
+import { PagesDot } from "../../PagesDot";
 
 const CustomizePage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -16,7 +16,7 @@ const CustomizePage = () => {
         dispatch({
             type: "set",
             field: "currentPage",
-            payload: check ? check : currentPage,
+            payload: check !== undefined ? check : currentPage,
         });
     };
     React.useEffect(() => {
@@ -56,7 +56,7 @@ const CustomizePage = () => {
                 </button>
             </div>
             <div className="my-10">
-                <PagesDot currentPage={currentPage} totalPages={3} />
+                <PagesDot currentPage={currentPage} totalPages={4} />
             </div>
         </div>
     );

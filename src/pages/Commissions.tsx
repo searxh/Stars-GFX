@@ -1,9 +1,10 @@
 import React from "react";
 import { PagesDot } from "../components/PagesDot";
-import SelectProductPage from "../components/commissions/SelectProductPage";
-import CustomizePage from "../components/commissions/CustomizePage";
+import SelectProductPage from "../components/commissions/pages/SelectProductPage";
+import CustomizePage from "../components/commissions/pages/CustomizePage";
 import { GlobalContext } from "../states";
 import { pageChangeCheck } from "../lib/utilities";
+import TermsPage from "../components/commissions/pages/TermsPage";
 
 const Commissions = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -38,12 +39,14 @@ const Commissions = () => {
                         Start
                     </button>
                     <div className="my-10">
-                        <PagesDot currentPage={currentPage} totalPages={3} />
+                        <PagesDot currentPage={currentPage} totalPages={4} />
                     </div>
                 </div>
             ) : currentPage === 1 ? (
-                <SelectProductPage />
+                <TermsPage />
             ) : currentPage === 2 ? (
+                <SelectProductPage />
+            ) : currentPage === 3 ? (
                 <CustomizePage />
             ) : null}
         </div>

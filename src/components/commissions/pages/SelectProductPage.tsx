@@ -1,8 +1,8 @@
 import React from "react";
-import { GlobalContext } from "../../states";
-import { productChoices, initialProductInfo } from "../../lib/default";
-import { pageChangeCheck } from "../../lib/utilities";
-import { PagesDot } from "../PagesDot";
+import { GlobalContext } from "../../../states";
+import { productChoices, initialProductInfo } from "../../../lib/default";
+import { pageChangeCheck } from "../../../lib/utilities";
+import { PagesDot } from "../../PagesDot";
 
 const SelectProductPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -112,7 +112,7 @@ const SelectProductPage = () => {
                 </button>
             </div>
             <div className="my-10">
-                <PagesDot currentPage={currentPage} totalPages={3} />
+                <PagesDot currentPage={currentPage} totalPages={4} />
             </div>
         </div>
     );
