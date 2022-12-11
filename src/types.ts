@@ -27,6 +27,8 @@ interface GlobalStateKeys {
 }
 export interface GlobalStateType extends GlobalStateKeys {
     formInfo: FormInfoType;
+    projInfo: Array<string>;
+    currentPage: number;
 }
 
 export interface ActionType {

@@ -1,4 +1,4 @@
-import { PriceInfoType } from "../types";
+import { GlobalStateType, PriceInfoType } from "../types";
 
 export const selectChoices: any = {
     resolution: [
@@ -58,8 +58,9 @@ export const initialProductInfo = {
 };
 
 export const initialFormInfo = {};
-export const initialState = {
+export const initialState: GlobalStateType = {
     formInfo: initialFormInfo,
+    projInfo: [],
     currentPage: 0,
 };
 

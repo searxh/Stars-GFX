@@ -4,6 +4,7 @@ interface InputPropsInterface {
     title: string;
     required: boolean;
     type?: string;
+    value: string | undefined;
     changeCallback: Function;
 }
 
@@ -11,6 +12,7 @@ const Input = ({
     title,
     required,
     type,
+    value,
     changeCallback,
 }: InputPropsInterface) => {
     const inputRef = React.useRef<any>(null);
@@ -19,6 +21,9 @@ const Input = ({
             changeCallback(inputRef.current.value);
         }
     };
+    React.useEffect(() => {
+        inputRef.current.value = value ? value : "";
+    }, []);
     return (
         <div className="flex flex-col text-xl py-2">
             <div className="text-left py-1 px-2">
