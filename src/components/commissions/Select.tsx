@@ -35,7 +35,7 @@ const Select = ({
                 >
                     {"<"}
                 </button>
-                <div className="text-purple-600 text-2xl font-righteous">
+                <div className="text-purple-600 text-2xl font-nunito">
                     {choices[option]}
                 </div>
                 <button

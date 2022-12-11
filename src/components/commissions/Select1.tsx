@@ -41,7 +41,7 @@ const Select1 = ({
                             py-2 px-3 text-xl m-1 hover:scale-105 duration-500 transition
                             ${option === index ? "opacity-100" : "opacity-50"}`}
                             >
-                                <div className="text-3xl font-righteous">
+                                <div className="text-3xl font-nunito">
                                     {choice.title.toLocaleUpperCase()}
                                 </div>
                                 <div className="text-base">{choice.text}</div>

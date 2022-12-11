@@ -19,8 +19,7 @@ module.exports = {
     },
     extend: {
       fontFamily:{
-        'quicksand':'Quicksand',
-        'righteous':'Righteous'
+        'nunito':'Nunito Sans',
       },
       animation:{
         'pulse-slow': 'pulse 5s ease-in-out infinite',

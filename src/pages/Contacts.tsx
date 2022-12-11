@@ -4,7 +4,7 @@ import ContactButton from "../components/ContactButton";
 const Contacts = () => {
     return (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-quicksand 
+            className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
 			bg-gradient-to-t from-orange-400 to-cyan-300"
         >
             <img
@@ -12,7 +12,7 @@ const Contacts = () => {
                 src="images/star.png"
                 alt=""
             />
-            <div className="text-white text-3xl font-righteous font-bold drop-shadow-md text-center my-2">
+            <div className="text-white text-3xl font-nunito font-bold drop-shadow-md text-center my-2">
                 Find me on:
             </div>
             <div className="py-5 overflow-x-scroll whitespace-nowrap cursor-grab">

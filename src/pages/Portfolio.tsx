@@ -4,7 +4,7 @@ const Portfolio = () => {
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full
-            font-quicksand bg-white text-center"
+            font-nunito bg-white text-center"
         >
             Portfolio
         </div>

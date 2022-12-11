@@ -11,7 +11,7 @@ const Commissions = () => {
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full
-            font-quicksand bg-white text-center"
+            font-nunito bg-white text-center"
         >
             {currentPage === 0 ? (
                 <div className="text-5xl text-black m-auto font-bold">
