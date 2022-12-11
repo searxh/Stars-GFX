@@ -2,7 +2,7 @@ import { FormInfoType } from "../types";
 import { priceInfo, selectChoices } from "./default";
 
 export const pageChangeCheck = (isForward: boolean, page: number) => {
-    if (isForward && page + 1 < 4) {
+    if (isForward && page + 1 < 5) {
         return page + 1;
     } else if (!isForward && page - 1 >= 0) {
         return page - 1;

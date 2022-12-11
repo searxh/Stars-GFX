@@ -81,7 +81,7 @@ const SelectProductPage = () => {
                         return (
                             <button
                                 onClick={() => handleOnSelect(index)}
-                                className={`flex-1 rounded-full duration-500
+                                className={`flex-1 rounded-2xl duration-500
                                 text-white p-5 text-2xl hover:scale-[102%] transition shadow-md ${
                                     selected[index]
                                         ? "opacity-100"

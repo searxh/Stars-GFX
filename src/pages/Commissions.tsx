@@ -5,6 +5,7 @@ import CustomizePage from "../components/commissions/pages/CustomizePage";
 import { GlobalContext } from "../states";
 import { pageChangeCheck } from "../lib/utilities";
 import TermsPage from "../components/commissions/pages/TermsPage";
+import FormPage from "../components/commissions/pages/FormPage";
 
 const Commissions = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -45,9 +46,11 @@ const Commissions = () => {
                 <SelectProductPage />
             ) : currentPage === 3 ? (
                 <CustomizePage />
+            ) : currentPage === 4 ? (
+                <FormPage />
             ) : null}
             <div className="my-10">
-                <PagesDot currentPage={currentPage} totalPages={4} />
+                <PagesDot currentPage={currentPage} totalPages={5} />
             </div>
         </div>
     );
