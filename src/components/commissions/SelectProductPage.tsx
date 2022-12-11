@@ -4,7 +4,7 @@ import { productChoices, initialProductInfo } from "../../lib/default";
 import { pageChangeCheck } from "../../lib/utilities";
 import { PagesDot } from "../PagesDot";
 
-const Page1 = () => {
+const SelectProductPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { formInfo, currentPage } = global_state;
     const [selected, setSelected] = React.useState<Array<boolean>>([
@@ -96,4 +96,4 @@ const Page1 = () => {
     );
 };
 
-export default Page1;
+export default SelectProductPage;

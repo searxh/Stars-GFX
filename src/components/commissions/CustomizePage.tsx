@@ -4,7 +4,7 @@ import { pageChangeCheck } from "../../lib/utilities";
 import { GlobalContext } from "../../states";
 import { PagesDot } from "../PagesDot";
 
-const Page2 = () => {
+const CustomizePage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { formInfo, currentPage } = global_state;
     const handleOnNavigate = (isForward: boolean) => {
@@ -39,4 +39,4 @@ const Page2 = () => {
     );
 };
 
-export default Page2;
+export default CustomizePage;

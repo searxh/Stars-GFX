@@ -8,7 +8,7 @@ const Contacts = () => {
 			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
-                className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md"
+                className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md hover:scale-105 duration-500 transition"
                 src="images/star.png"
                 alt=""
             />

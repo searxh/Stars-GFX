@@ -1,7 +1,7 @@
 import React from "react";
 import { PagesDot } from "../components/PagesDot";
-import Page1 from "../components/commissions/Page1";
-import Page2 from "../components/commissions/Page2";
+import SelectProductPage from "../components/commissions/SelectProductPage";
+import CustomizePage from "../components/commissions/CustomizePage";
 import { GlobalContext } from "../states";
 import { pageChangeCheck } from "../lib/utilities";
 
@@ -41,9 +41,9 @@ const Commissions = () => {
                     </div>
                 </div>
             ) : currentPage === 1 ? (
-                <Page1 />
+                <SelectProductPage />
             ) : currentPage === 2 ? (
-                <Page2 />
+                <CustomizePage />
             ) : null}
         </div>
     );
