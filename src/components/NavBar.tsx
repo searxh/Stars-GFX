@@ -32,8 +32,8 @@ const NavBar = (props: any) => {
                 onClick={handleOnClick}
                 className="basis-[20%] flex relative m-auto justify-center hover:scale-110 duration-500 transition"
             >
-                <img className="w-18 h-12" src="images/logo.png" alt="" />
-                <div className="text-2xl my-auto font-nunito -ml-4 font-bold">
+                <img className="w-8 h-8 m-2" src="images/logo.png" alt="" />
+                <div className="text-2xl my-auto font-nunito font-bold">
                     STAR
                 </div>
             </button>

@@ -15,7 +15,7 @@ const Contacts = () => {
             <div className="text-white text-3xl font-nunito font-bold drop-shadow-md text-center my-2">
                 Find me on:
             </div>
-            <div className="py-5 overflow-x-scroll whitespace-nowrap cursor-grab">
+            <div className="grid grid-flow-col py-5 overflow-x-scroll whitespace-nowrap cursor-grab">
                 <ContactButton
                     text="Twitter"
                     imageUrl="/images/contacts_logo/twitter.png"
@@ -66,7 +66,7 @@ const Contacts = () => {
                 />
             </div>
             <img
-                className="m-auto h-20 w-25 my-5 drop-shadow-md invert"
+                className="m-auto h-20 w-20 my-5 drop-shadow-md invert"
                 src="images/logo.png"
                 alt=""
             />
