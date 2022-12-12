@@ -25,7 +25,7 @@ const Contacts = () => {
                 <ContactButton
                     text="YouTube"
                     imageUrl="/images/contacts_logo/youtube.png"
-                    linkTo="https://youtube.com"
+                    linkTo="https://www.youtube.com/channel/UC_KPXhWm0RyhlpM1E_SbTuA"
                     desc="I share my process and vlogs"
                 />
                 <ContactButton

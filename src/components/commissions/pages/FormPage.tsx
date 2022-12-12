@@ -3,6 +3,39 @@ import { GlobalContext } from "../../../states";
 import { pageChangeCheck } from "../../../lib/utilities";
 import Input from "../Input";
 
+const formData = [
+    {
+        title: "What is your discord? (Name and ID)",
+        required: true,
+    },
+    {
+        title: "When is the estimated deadline?",
+        required: true,
+    },
+    {
+        title: "Tell me a little bit about your game",
+        required: true,
+        type: "textArea",
+    },
+    {
+        title: "What's the title of your project?",
+        required: false,
+    },
+    {
+        title: "Any preferred theme colors?",
+        required: false,
+    },
+    {
+        title: "Any provided assets, model or logo?",
+        required: false,
+    },
+    {
+        title: "Any sketches or ideas for this project?",
+        required: false,
+        type: "textArea",
+    },
+];
+
 const FormPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { projInfo, currentPage } = global_state;
@@ -32,45 +65,19 @@ const FormPage = () => {
                 Project Background
             </div>
             <form className="pt-5 pb-10">
-                <Input
-                    title="When is the estimated deadline?"
-                    required={true}
-                    value={projInfo[0]}
-                    changeCallback={(value: string) => handleSetForm(0, value)}
-                />
-                <Input
-                    title="Tell me a little bit about your game"
-                    required={true}
-                    value={projInfo[1]}
-                    changeCallback={(value: string) => handleSetForm(1, value)}
-                    type="textArea"
-                />
-                <div className="pb-2 mt-6 border-t-2" />
-                <Input
-                    title="What's the title of your project?"
-                    required={false}
-                    value={projInfo[2]}
-                    changeCallback={(value: string) => handleSetForm(2, value)}
-                />
-                <Input
-                    title="Any preferred theme colors?"
-                    required={false}
-                    value={projInfo[3]}
-                    changeCallback={(value: string) => handleSetForm(3, value)}
-                />
-                <Input
-                    title="Any provided assets, model or logo?"
-                    required={false}
-                    value={projInfo[4]}
-                    changeCallback={(value: string) => handleSetForm(4, value)}
-                />
-                <Input
-                    title="Any sketches or ideas for this project?"
-                    required={false}
-                    value={projInfo[5]}
-                    changeCallback={(value: string) => handleSetForm(5, value)}
-                    type="textArea"
-                />
+                {formData.map((formDataObj, index: number) => {
+                    return (
+                        <Input
+                            title={formDataObj.title}
+                            required={formDataObj.required}
+                            value={projInfo[index]}
+                            changeCallback={(value: string) =>
+                                handleSetForm(index, value)
+                            }
+                            type={formDataObj.type}
+                        />
+                    );
+                })}
             </form>
             <div className="flex justify-evenly">
                 <button
