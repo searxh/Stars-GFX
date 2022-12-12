@@ -9,49 +9,56 @@ const Orders = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { formInfo, projInfo } = global_state;
     const handleOnClick = () => {
-        const orderid = UUID(0).uuid();
-        console.log(orderid);
-        axios.post(process.env.REACT_APP_API_URL + "/v1.1/orderlists/", {
-            id: orderid,
-            title: "Test",
-            status: "Waiting for review",
-            discord: "Nice#2344",
+        const orderid = UUID(Math.ceil(Math.random() * 511)).uuid();
+        const sendObj = Object.keys(formInfo).map((formInfoKey: string) => {
+            return {
+                ...formInfo[formInfoKey],
+                orderType: formInfoKey,
+            };
         });
-        axios.post(
-            process.env.REACT_APP_API_URL +
-                "/v1.1/orderlists/" +
-                orderid +
-                "/forminfos",
-            {
-                discord: projInfo[0],
-                deadline: projInfo[1],
-                game: projInfo[2],
-                title: projInfo[3],
-                color: projInfo[4],
-                assets: projInfo[5],
-                ideas: projInfo[6],
-            }
-        );
+        axios.post(process.env.REACT_APP_API_URL + "/v1.1/orders", {
+            id: orderid,
+            orderInfo: JSON.stringify(sendObj),
+        });
+        setTimeout(() => {
+            axios.post(
+                process.env.REACT_APP_API_URL +
+                    "/v1.1/orders/" +
+                    orderid +
+                    "/forminfos",
+                {
+                    discord: projInfo[0],
+                    deadline: projInfo[1],
+                    game: projInfo[2],
+                    title: projInfo[3],
+                    color: projInfo[4],
+                    assets: projInfo[5],
+                    ideas: projInfo[6],
+                }
+            );
+        }, 1000);
     };
     const handleOnClick1 = () => {
-        axios.put(process.env.REACT_APP_API_URL + "/v1.1/orderlists/" + 4, {
+        /*axios.put(process.env.REACT_APP_API_URL + "/v1.1/orders/" + 4, {
             title: "Beyond Set",
             status: "Waiting for review",
             discord: "Nice#2344",
             orderid: UUID(0).uuid(),
             comment: "hello",
-        });
+        });*/
     };
     const handleOnClick2 = () => {
-        axios.delete(process.env.REACT_APP_API_URL + "/v1.1/orderlists/" + 4);
+        axios.delete(process.env.REACT_APP_API_URL + "/v1.1/orders/" + 4);
     };
     React.useEffect(() => {
         axios({
             method: "get",
-            url: process.env.REACT_APP_API_URL + "/v1.1/orderlists/",
+            url: process.env.REACT_APP_API_URL + "/v1.1/orders/",
         }).then((res) => {
             console.log(res.data);
-            setOrders(res.data);
+            const obj = JSON.parse(res.data[0].orderInfo);
+            console.log(obj);
+            setOrders(obj);
         });
     }, []);
     return (

@@ -2,6 +2,9 @@ import React from "react";
 import { GlobalContext } from "../../../states";
 import { pageChangeCheck } from "../../../lib/utilities";
 import Input from "../Input";
+import { initialFormInfo } from "../../../lib/default";
+import { useNavigate } from "react-router-dom";
+import { createOrder } from "../../../lib/api";
 
 const formData = [
     {
@@ -38,8 +41,9 @@ const formData = [
 
 const FormPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { projInfo, currentPage } = global_state;
+    const { formInfo, projInfo, currentPage } = global_state;
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
+    const navigate = useNavigate();
     const handleSetForm = (index: number, value: string) => {
         const newProjInfo = [...projInfo];
         newProjInfo[index] = value;
@@ -61,6 +65,15 @@ const FormPage = () => {
             field: "currentPage",
             payload: check !== undefined ? check : currentPage,
         });
+    };
+    const handleOnSubmit = () => {
+        createOrder(formInfo, projInfo);
+        dispatch({
+            type: "multi-set",
+            field: ["formInfo", "projInfo"],
+            payload: [initialFormInfo, []],
+        });
+        navigate("/orders");
     };
     React.useEffect(() => {
         console.log(projInfo);
@@ -95,7 +108,7 @@ const FormPage = () => {
                 </button>
                 <button
                     disabled={!canSubmit}
-                    onClick={() => handleOnNavigate(true)}
+                    onClick={() => handleOnSubmit()}
                     className={`${
                         canSubmit
                             ? "opacity-100 hover:text-sky-500 hover:border-sky-500 hover:scale-110"
