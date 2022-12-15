@@ -48,3 +48,14 @@ export const calculatePrice = (formInfo: FormInfoType) => {
     const value = sum * percent;
     return { value: value, discountPercent: (1 - percent) * 100 };
 };
+
+/*export const hash = (input: string, digits: number) => {
+    digits = digits || 6;
+    const m = Math.pow(10, digits + 1) - 1;
+    const phi = Math.pow(10, digits) / 2 - 1;
+    let n = 0;
+    for (let i = 0; i < input.length; i++) {
+        n = (n + phi * input.charCodeAt(i)) % m;
+    }
+    return n;
+};*/

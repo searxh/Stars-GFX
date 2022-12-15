@@ -8,10 +8,6 @@ import { createOrder } from "../../../lib/api";
 
 const formData = [
     {
-        title: "What is your discord? (Name and ID)",
-        required: true,
-    },
-    {
         title: "When is the estimated deadline?",
         required: true,
     },
@@ -41,7 +37,7 @@ const formData = [
 
 const FormPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { formInfo, projInfo, currentPage } = global_state;
+    const { formInfo, projInfo, userInfo, currentPage } = global_state;
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
     const navigate = useNavigate();
     const handleSetForm = (index: number, value: string) => {
@@ -67,7 +63,7 @@ const FormPage = () => {
         });
     };
     const handleOnSubmit = () => {
-        createOrder(formInfo, projInfo);
+        createOrder(formInfo, projInfo, userInfo);
         dispatch({
             type: "multi-set",
             field: ["formInfo", "projInfo"],

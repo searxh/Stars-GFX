@@ -1,45 +1,18 @@
 import React from "react";
 import axios from "axios";
 import OrderItem from "../components/OrderItem";
-import UUID from "uuid-int";
 import { GlobalContext } from "../states";
+import { createOrder } from "../lib/api";
 
 const Orders = () => {
     const [orders, setOrders] = React.useState<any>([]);
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { formInfo, projInfo } = global_state;
+    const { formInfo, projInfo, userInfo } = global_state;
     const handleOnClick = () => {
-        const orderid = UUID(Math.ceil(Math.random() * 511)).uuid();
-        const sendObj = Object.keys(formInfo).map((formInfoKey: string) => {
-            return {
-                ...formInfo[formInfoKey],
-                orderType: formInfoKey,
-            };
-        });
-        axios.post(process.env.REACT_APP_API_URL + "/v1.1/orders", {
-            id: orderid,
-            orderInfo: JSON.stringify(sendObj),
-        });
-        setTimeout(() => {
-            axios.post(
-                process.env.REACT_APP_API_URL +
-                    "/v1.1/orders/" +
-                    orderid +
-                    "/forminfos",
-                {
-                    discord: projInfo[0],
-                    deadline: projInfo[1],
-                    game: projInfo[2],
-                    title: projInfo[3],
-                    color: projInfo[4],
-                    assets: projInfo[5],
-                    ideas: projInfo[6],
-                }
-            );
-        }, 1000);
+        createOrder(formInfo, projInfo, userInfo);
     };
     const handleOnClick1 = () => {
-        /*axios.put(process.env.REACT_APP_API_URL + "/v1.1/orders/" + 4, {
+        /*axios.put(process.env.REACT_APP_API_URL + "/v2/orders/" + 4, {
             title: "Beyond Set",
             status: "Waiting for review",
             discord: "Nice#2344",
@@ -48,12 +21,12 @@ const Orders = () => {
         });*/
     };
     const handleOnClick2 = () => {
-        axios.delete(process.env.REACT_APP_API_URL + "/v1.1/orders/" + 4);
+        axios.delete(process.env.REACT_APP_API_URL + "/v2/orders/" + 4);
     };
     React.useEffect(() => {
         axios({
             method: "get",
-            url: process.env.REACT_APP_API_URL + "/v1.1/orders/",
+            url: `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders`,
         }).then((res) => {
             console.log(res.data);
             const obj = JSON.parse(res.data[0].orderInfo);

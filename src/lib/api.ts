@@ -5,7 +5,8 @@ import { Dispatch } from "react";
 
 export const createOrder = (
     formInfo: FormInfoType,
-    projInfo: Array<string>
+    projInfo: Array<string>,
+    userInfo: any
 ) => {
     const orderid = UUID(Math.ceil(Math.random() * 511)).uuid();
     const sendObj = Object.keys(formInfo).map((formInfoKey: string) => {
@@ -14,34 +15,41 @@ export const createOrder = (
             orderType: formInfoKey,
         };
     });
-    axios.post(process.env.REACT_APP_API_URL + "/v1.1/orders", {
-        id: orderid,
-        orderInfo: JSON.stringify(sendObj),
-    });
+    axios.post(
+        `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/`,
+        {
+            id: orderid,
+            orderInfo: JSON.stringify(sendObj),
+        }
+    );
     setTimeout(() => {
         axios.post(
-            process.env.REACT_APP_API_URL +
-                "/v1.1/orders/" +
-                orderid +
-                "/forminfos",
+            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderid}/forminfos`,
             {
-                discord: projInfo[0],
-                deadline: projInfo[1],
-                game: projInfo[2],
-                title: projInfo[3],
-                color: projInfo[4],
-                assets: projInfo[5],
-                ideas: projInfo[6],
+                deadline: projInfo[0],
+                game: projInfo[1],
+                title: projInfo[2],
+                color: projInfo[3],
+                assets: projInfo[4],
+                ideas: projInfo[5],
             }
         );
     }, 1000);
+};
+
+export const createUser = (userData: any) => {
+    axios.post(process.env.REACT_APP_API_URL + "/v2/users/", {
+        id: userData.id,
+        name: userData.username,
+        discriminator: userData.discriminator,
+    });
 };
 
 export const updateUserInfoFromSession = (
     dispatch: Dispatch<ActionType>,
     navigate: Function
 ) => {
-    if (sessionStorage.getItem("a") || sessionStorage.getItem("b")) {
+    if (sessionStorage.getItem("a") && sessionStorage.getItem("b")) {
         axios
             .get("https://discord.com/api/users/@me", {
                 headers: {
@@ -51,6 +59,7 @@ export const updateUserInfoFromSession = (
                 },
             })
             .then((res) => {
+                createUser(res.data);
                 dispatch({
                     type: "set",
                     field: "userInfo",
