@@ -25,6 +25,16 @@ export const selectChoices: any = {
             text: "No Model Limit",
         },
     ],
+    additional: [
+        {
+            title: "None",
+            text: "No additional files",
+        },
+        {
+            title: "Extra files",
+            text: "Photoshop and Blender files",
+        },
+    ],
     number: ["1", "2", "3"],
 };
 
@@ -69,18 +79,22 @@ export const priceInfo: PriceInfoType = {
     Thumbnail: {
         resolution: [69, 75, 79],
         modelLimit: [10, 15],
+        additional: [0, 30],
     },
     Icon: {
         resolution: [49, 55, 59],
         modelLimit: [10, 15],
+        additional: [0, 30],
     },
     "Ad Banner": {
         resolution: [49, 55, 59],
         modelLimit: [10, 15],
+        additional: [0, 30],
     },
     "Ad Skyscraper": {
         resolution: [49, 55, 59],
         modelLimit: [10, 15],
+        additional: [0, 30],
     },
     discount: {
         startAt: 2,

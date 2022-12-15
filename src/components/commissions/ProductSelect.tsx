@@ -59,6 +59,15 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 }
                 color={getProductColor()}
             />
+            <Select1
+                choices={selectChoices.additional}
+                title="Include additional files?"
+                desc="Get a glimpse behind the scenes"
+                changeCallback={(option: string) =>
+                    setProductFormInfo("additional", option)
+                }
+                color={getProductColor()}
+            />
             <Select
                 choices={selectChoices.number}
                 title="How many?"
