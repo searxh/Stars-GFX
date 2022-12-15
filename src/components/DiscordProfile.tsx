@@ -46,8 +46,19 @@ const DiscordProfile = () => {
                     </div>
                 </button>
             ) : (
-                <button onClick={handleOnLogin} className="">
-                    Sign in with discord
+                <button
+                    onClick={handleOnLogin}
+                    className="group/discord flex p-0.5 my-1 rounded-full hover:scale-105
+                    bg-indigo-400 shadow-md w-fit duration-300 transition text-white"
+                >
+                    <img
+                        className="h-full rounded-full invert p-1"
+                        src="images/contacts_logo/discord.png"
+                        alt=""
+                    />
+                    <div className="m-auto mx-2 text-sm leading-4">
+                        Sign In With Discord
+                    </div>
                 </button>
             )}
         </>
