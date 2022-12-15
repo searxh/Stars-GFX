@@ -6,7 +6,7 @@ import { updateUserInfoFromSession } from "../lib/api";
 const LoginResult = () => {
     const { dispatch } = React.useContext(GlobalContext);
     const navigate = useNavigate();
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         const frag = new URLSearchParams(window.location.hash.slice(1));
         const a = frag.get(process.env.REACT_APP_A_TYPE as string);
         const b = frag.get(process.env.REACT_APP_B_TYPE as string);
@@ -26,11 +26,11 @@ const LoginResult = () => {
         bg-gradient-to-t bg-neutral-100 brightness-110"
         >
             {sessionStorage.getItem("a") && sessionStorage.getItem("b") ? (
-                <div className="text-green-500 m-auto text-3xl drop-shadow-sm">
+                <div className="text-green-400 m-auto text-3xl drop-shadow-sm">
                     Congrats, you have successfully signed in!
                 </div>
             ) : (
-                <div className="text-red-500 m-auto text-3xl drop-shadow-sm">
+                <div className="text-red-400 m-auto text-3xl drop-shadow-sm">
                     Failed to authorize
                 </div>
             )}

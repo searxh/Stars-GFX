@@ -8,6 +8,13 @@ const DiscordProfile = () => {
     const { userInfo } = global_state;
     const { username, discriminator, avatar, id } = userInfo;
     const navigate = useNavigate();
+    const nameDot = (user: string) => {
+        if (user.length > 8) {
+            return user.slice(0, 8) + "..";
+        } else {
+            return user;
+        }
+    };
     const handleOnLogin = () => {
         if (sessionStorage.getItem("a") || sessionStorage.getItem("b")) {
             updateUserInfoFromSession(dispatch, navigate);
@@ -26,7 +33,7 @@ const DiscordProfile = () => {
                 <button
                     onClick={handleOnLogout}
                     className="group/discord flex p-0.5 my-1 rounded-full hover:scale-105
-                bg-white pr-5 shadow-md w-fit duration-300 transition"
+                    bg-white pr-5 shadow-md w-fit max-w-[12rem] duration-300 transition"
                 >
                     <img
                         className="h-full rounded-full"
@@ -35,7 +42,7 @@ const DiscordProfile = () => {
                     />
                     <div className="relative m-auto mx-2">
                         <div className="">
-                            {username}#{discriminator}
+                            {nameDot(username)}#{discriminator}
                         </div>
                         <div
                             className="group-hover/discord:opacity-100 opacity-0 transition bg-white
