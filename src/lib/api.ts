@@ -1,6 +1,7 @@
 import UUID from "uuid-int";
-import { FormInfoType } from "../types";
+import { ActionType, FormInfoType } from "../types";
 import axios from "axios";
+import { Dispatch } from "react";
 
 export const createOrder = (
     formInfo: FormInfoType,
@@ -34,4 +35,34 @@ export const createOrder = (
             }
         );
     }, 1000);
+};
+
+export const updateUserInfoFromSession = (
+    dispatch: Dispatch<ActionType>,
+    navigate: Function
+) => {
+    if (sessionStorage.getItem("a") || sessionStorage.getItem("b")) {
+        axios
+            .get("https://discord.com/api/users/@me", {
+                headers: {
+                    authorization: `${JSON.parse(
+                        sessionStorage.getItem("b") as string
+                    )} ${JSON.parse(sessionStorage.getItem("a") as string)}`,
+                },
+            })
+            .then((res) => {
+                dispatch({
+                    type: "set",
+                    field: "userInfo",
+                    payload: res.data,
+                });
+                setTimeout(() => navigate("/"), 1000);
+            });
+    } else {
+        dispatch({
+            type: "set",
+            field: "userInfo",
+            payload: {},
+        });
+    }
 };

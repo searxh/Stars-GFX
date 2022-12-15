@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { all_routes } from "../App";
+import DiscordProfile from "./DiscordProfile";
 
 const NavBar = (props: any) => {
     const location = useLocation();
@@ -21,7 +22,6 @@ const NavBar = (props: any) => {
     };
     React.useEffect(() => {
         setLocationIndex(getLocationIndex());
-        console.log(locationIndex);
     }, [location.pathname]);
     return (
         <div
@@ -41,12 +41,13 @@ const NavBar = (props: any) => {
                 return (
                     <button
                         onClick={() => handleChangeRoute(route)}
-                        className="m-auto basis-[20%] hover:scale-110 transition duration-500 font-bold"
+                        className="m-auto basis-[20%] hover:scale-110 transition duration-500 font-normal"
                     >
                         {all_routes[route]}
                     </button>
                 );
             })}
+            <DiscordProfile />
             <div
                 className={`absolute bg-black h-0.5 bottom-0 rounded-full transition duration-300
                 ${

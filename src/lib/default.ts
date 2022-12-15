@@ -61,6 +61,7 @@ export const initialFormInfo = {};
 export const initialState: GlobalStateType = {
     formInfo: initialFormInfo,
     projInfo: [],
+    userInfo: {},
     currentPage: 0,
 };
 
