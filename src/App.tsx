@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Commissions from "./pages/Commissions";
 import Contacts from "./pages/Contacts";
-import LoginSuccess from "./pages/LoginSuccess";
+import LoginResult from "./pages/LoginResult";
 import Orders from "./pages/Orders";
 import Portfolio from "./pages/Portfolio";
 import { GlobalStateProvider } from "./states";
@@ -25,7 +25,7 @@ function App() {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/commissions" element={<Commissions />} />
-                <Route path="/authorized" element={<LoginSuccess />} />
+                <Route path="/authorized" element={<LoginResult />} />
             </Routes>
         </GlobalStateProvider>
     );

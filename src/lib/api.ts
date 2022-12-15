@@ -56,7 +56,7 @@ export const updateUserInfoFromSession = (
                     field: "userInfo",
                     payload: res.data,
                 });
-                setTimeout(() => navigate("/"), 1000);
+                setTimeout(() => navigate("/"), 2000);
             });
     } else {
         dispatch({
