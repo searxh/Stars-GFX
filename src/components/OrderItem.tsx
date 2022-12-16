@@ -5,7 +5,6 @@ import format from "date-fns/format";
 import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
 import { GlobalContext } from "../states";
-import { generateUUID } from "../lib/utilities";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -13,9 +12,8 @@ interface OrderItemPropsInterface {
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { userInfo, notifier } = global_state;
-    const { id, created_at, orderInfo } = orderObj;
+    const { id, created_at, orderInfo, comment } = orderObj;
     const handleCancelOrder = () => {
-        console.log(generateUUID());
         deleteOrder(id, userInfo);
         dispatch({
             type: "set",
@@ -40,7 +38,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 className="flex justify-evenly shadow-md bg-gradient-to-r
 			font-bold from-orange-400 to-blue-400 text-white rounded-md p-2"
             >
-                <div className="my-auto">ORDER: {id}</div>
+                <div className="my-auto">ORDER ID: {id}</div>
                 <div className="my-auto">
                     TIME: {format(new Date(created_at), "h:mm d/M/yyyy")}
                 </div>
@@ -72,6 +70,12 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                     );
                 })}
             </div>
+            {comment.length !== 0 ? (
+                <div className="text-neutral py-1">
+                    Star's comment:
+                    <span className="text-orange-600 mx-2">{comment}</span>
+                </div>
+            ) : null}
         </div>
     );
 };
