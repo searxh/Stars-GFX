@@ -12,8 +12,8 @@ import { StringToAnyType } from "./types";
 export const all_routes: StringToAnyType = {
     "": "Contacts",
     commissions: "Commissions",
-    orders: "Your orders",
-    portfolio: "My portfolio",
+    orders: "Your Orders",
+    portfolio: "Portfolio",
 };
 
 function App() {

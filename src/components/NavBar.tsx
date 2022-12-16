@@ -26,23 +26,25 @@ const NavBar = (props: any) => {
     return (
         <div
             className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-70 bg-white
-             font-nunito justify-evenly shadow-md text-black z-10"
+             font-nunito shadow-md text-black z-10 justify-evenly"
         >
             <button
                 onClick={handleOnClick}
-                className="w-[10%] flex m-auto justify-center hover:scale-110 duration-500 transition"
+                className="w-fit flex justify-center hover:scale-110 
+                duration-500 transition"
             >
                 <img className="w-8 h-8 m-2" src="images/logo.png" alt="" />
                 <div className="text-2xl my-auto font-nunito font-bold">
                     STAR
                 </div>
             </button>
-            <div className="relative flex w-[70%]">
+            <div className="relative flex min-w-[30rem]">
                 {Object.keys(all_routes).map((route: string) => {
                     return (
                         <button
                             onClick={() => handleChangeRoute(route)}
-                            className="m-auto basis-[20%] hover:scale-110 transition duration-500 font-normal"
+                            className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10 
+                            h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
                         >
                             {all_routes[route]}
                         </button>
