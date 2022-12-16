@@ -58,10 +58,19 @@ export const generateUUID = () => {
     });
     return hash(uuid);
 };
+
 const hash = (str: string) => {
     let hash = 31;
     for (let i = 0; i < str.length; i++) {
         hash = hash * str.charCodeAt(i);
     }
     return hash % 1000000007;
+};
+
+export const sha256 = async (str: string) => {
+    const buffer = new TextEncoder().encode(str);
+    const hash = await crypto.subtle.digest("SHA-256", buffer);
+    return Array.prototype.map
+        .call(new Uint8Array(hash), (x) => ("00" + x.toString(16)).slice(-2))
+        .join("");
 };
