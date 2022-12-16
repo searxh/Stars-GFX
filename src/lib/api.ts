@@ -1,41 +1,51 @@
-import UUID from "uuid-int";
 import { ActionType, FormInfoType } from "../types";
 import axios from "axios";
 import { Dispatch } from "react";
+import { generateUUID } from "./utilities";
 
 export const createOrder = (
     formInfo: FormInfoType,
     projInfo: Array<string>,
     userInfo: any
 ) => {
-    const orderid = UUID(Math.ceil(Math.random() * 511)).uuid();
-    const sendObj = Object.keys(formInfo).map((formInfoKey: string) => {
-        return {
-            ...formInfo[formInfoKey],
-            orderType: formInfoKey,
-        };
-    });
-    axios.post(
-        `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/`,
-        {
-            id: orderid,
-            orderInfo: JSON.stringify(sendObj),
-            status: "pending",
-        }
-    );
-    setTimeout(() => {
+    if (Object.keys(userInfo).length !== 0) {
+        const orderid = generateUUID();
+        const sendObj = Object.keys(formInfo).map((formInfoKey: string) => {
+            return {
+                ...formInfo[formInfoKey],
+                orderType: formInfoKey,
+            };
+        });
         axios.post(
-            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderid}/forminfos`,
+            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/`,
             {
-                deadline: projInfo[0],
-                game: projInfo[1],
-                title: projInfo[2],
-                color: projInfo[3],
-                assets: projInfo[4],
-                ideas: projInfo[5],
+                id: orderid,
+                orderInfo: JSON.stringify(sendObj),
+                status: "pending",
             }
         );
-    }, 1000);
+        setTimeout(() => {
+            axios.post(
+                `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderid}/forminfos`,
+                {
+                    deadline: projInfo[0],
+                    game: projInfo[1],
+                    title: projInfo[2],
+                    color: projInfo[3],
+                    assets: projInfo[4],
+                    ideas: projInfo[5],
+                }
+            );
+        }, 1000);
+    }
+};
+
+export const deleteOrder = (orderID: string, userInfo: any) => {
+    if (Object.keys(userInfo).length !== 0) {
+        axios.delete(
+            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderID}`
+        );
+    }
 };
 
 export const createUser = (userData: any) => {

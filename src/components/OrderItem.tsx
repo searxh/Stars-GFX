@@ -3,12 +3,21 @@ import { OrderObj, OrderType } from "../types";
 import { productChoices } from "../lib/default";
 import format from "date-fns/format";
 import XButton from "./XButton";
+import { deleteOrder } from "../lib/api";
+import { GlobalContext } from "../states";
+import { generateUUID } from "../lib/utilities";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
 
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
+    const { global_state } = React.useContext(GlobalContext);
+    const { userInfo } = global_state;
     const { id, created_at, orderInfo } = orderObj;
+    const handleCancelOrder = () => {
+        console.log(generateUUID());
+        deleteOrder(id, userInfo);
+    };
     const getProductColor = (currentProduct: string) => {
         const res = productChoices.find(
             (productObj: { title: string; color: string }) =>
@@ -19,7 +28,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     return (
         <div className="relative flex flex-col rounded-lg border-2 border-black shadow-md">
             <XButton
-                closeCallback={() => {}}
+                closeCallback={handleCancelOrder}
                 className="absolute -top-2 -right-2"
             />
             <div
@@ -28,7 +37,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
             >
                 <div className="my-auto">ORDER: {id}</div>
                 <div className="my-auto">
-                    TIME: {format(new Date(created_at), "h:mm - d/M/yyyy")}
+                    TIME: {format(new Date(created_at), "h:mm d/M/yyyy")}
                 </div>
                 <div className="my-auto">PRICE: $0</div>
             </div>

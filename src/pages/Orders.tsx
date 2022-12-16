@@ -21,18 +21,6 @@ const Orders = () => {
         });
         setOrders(newArray);
     };
-    const handleOnClick1 = () => {
-        /*axios.put(process.env.REACT_APP_API_URL + "/v2/orders/" + 4, {
-            title: "Beyond Set",
-            status: "Waiting for review",
-            discord: "Nice#2344",
-            orderid: UUID(0).uuid(),
-            comment: "hello",
-        });*/
-    };
-    const handleOnClick2 = () => {
-        axios.delete(process.env.REACT_APP_API_URL + "/v2/orders/" + 4);
-    };
     React.useEffect(() => {
         if (Object.keys(userInfo).length !== 0) {
             axios({
@@ -65,12 +53,6 @@ const Orders = () => {
                     <OrderItem orderObj={order} />
                 ))}
             </div>
-            <button className="" onClick={handleOnClick1}>
-                Update Order
-            </button>
-            <button className="" onClick={handleOnClick2}>
-                Delete Order
-            </button>
         </div>
     );
 };
