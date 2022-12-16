@@ -69,7 +69,7 @@ const SelectProductPage = () => {
                     Select product(s) for a project
                 </div>
                 <div
-                    className={`absolute left-0 right-0 -bottom-6 text-2xl 
+                    className={`absolute left-0 right-0 -bottom-6 text-xl 
                 drop-shadow-sm text-red-500 transition duration-500 whitespace-nowrap ${
                     errorMessageVisible ? "opacity-100" : "opacity-0"
                 }`}

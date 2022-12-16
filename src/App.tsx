@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Commissions from "./pages/Commissions";
 import Contacts from "./pages/Contacts";
+import Dashboard from "./pages/Dashboard";
 import LoginResult from "./pages/LoginResult";
 import Orders from "./pages/Orders";
 import Portfolio from "./pages/Portfolio";
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/commissions" element={<Commissions />} />
                 <Route path="/authorized" element={<LoginResult />} />
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </GlobalStateProvider>
     );

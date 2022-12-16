@@ -51,6 +51,7 @@ export const deleteOrder = (orderID: string, userInfo: any) => {
 
 export const getOrder = async (userInfo: any) => {
     const promise = new Promise((resolve) => {
+        console.log(userInfo.id);
         axios({
             method: "get",
             url: `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders`,
