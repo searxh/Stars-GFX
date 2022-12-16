@@ -1,12 +1,10 @@
 import { Dispatch } from "react";
 
 export interface OrderType {
-    id?: number;
-    created_at?: string;
-    discord: string;
-    status: string;
-    title: string;
-    orderid: string;
+    modelLimit: string;
+    number: string;
+    orderType: string;
+    resolution: string;
 }
 export interface StringToAnyType {
     [key: string]: any;

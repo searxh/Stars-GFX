@@ -30,14 +30,14 @@ const NavBar = (props: any) => {
         >
             <button
                 onClick={handleOnClick}
-                className="basis-[10%] flex m-auto justify-center hover:scale-110 duration-500 transition"
+                className="w-[10%] flex m-auto justify-center hover:scale-110 duration-500 transition"
             >
                 <img className="w-8 h-8 m-2" src="images/logo.png" alt="" />
                 <div className="text-2xl my-auto font-nunito font-bold">
                     STAR
                 </div>
             </button>
-            <div className="relative flex basis-[70%]">
+            <div className="relative flex w-[70%]">
                 {Object.keys(all_routes).map((route: string) => {
                     return (
                         <button

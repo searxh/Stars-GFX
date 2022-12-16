@@ -3,6 +3,13 @@ import { GlobalContext } from "../../../states";
 import { productChoices, initialProductInfo } from "../../../lib/default";
 import { pageChangeCheck } from "../../../lib/utilities";
 
+const gridConfig = [
+    { row: "row-span-2", col: "col-span-3" },
+    { row: "row-span-2", col: "col-span-2" },
+    { row: "row-span-1", col: "col-span-5" },
+    { row: "row-span-1", col: "col-span-5" },
+];
+
 const SelectProductPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { formInfo, currentPage } = global_state;
@@ -71,8 +78,7 @@ const SelectProductPage = () => {
                     continue
                 </div>
             </div>
-
-            <div className="grid grid-cols-2 gap-2 justify-between my-10">
+            <div className="grid grid-rows-4 grid-cols-5 gap-2 col-span-5 my-10">
                 {productChoices.map(
                     (
                         productChoice: { title: string; color: string },
@@ -81,8 +87,10 @@ const SelectProductPage = () => {
                         return (
                             <button
                                 onClick={() => handleOnSelect(index)}
-                                className={`flex-1 rounded-2xl duration-500
-                                text-white p-5 text-2xl hover:scale-[102%] transition shadow-md ${
+                                className={`flex-1 rounded-2xl duration-500 ${
+                                    gridConfig[index].row
+                                } ${gridConfig[index].col}
+                                text-white py-5 text-2xl hover:scale-[102%] transition shadow-md ${
                                     selected[index]
                                         ? "opacity-100"
                                         : "opacity-50"
