@@ -66,8 +66,8 @@ const FormPage = () => {
         createOrder(formInfo, projInfo, userInfo);
         dispatch({
             type: "multi-set",
-            field: ["formInfo", "projInfo"],
-            payload: [initialFormInfo, []],
+            field: ["formInfo", "projInfo", "currentPage"],
+            payload: [initialFormInfo, [], 0],
         });
         navigate("/orders");
     };
