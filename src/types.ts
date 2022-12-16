@@ -1,5 +1,12 @@
 import { Dispatch } from "react";
 
+export interface OrderObj {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    orderInfo: Array<OrderType>;
+}
+
 export interface OrderType {
     modelLimit: string;
     number: string;
