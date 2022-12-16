@@ -2,6 +2,7 @@ import React from "react";
 import { OrderObj, OrderType } from "../types";
 import { productChoices } from "../lib/default";
 import format from "date-fns/format";
+import XButton from "./XButton";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -17,8 +18,12 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     };
     return (
         <div className="relative flex flex-col rounded-lg border-2 border-black shadow-md">
+            <XButton
+                closeCallback={() => {}}
+                className="absolute -top-2 -right-2"
+            />
             <div
-                className="flex justify-between shadow-md bg-gradient-to-r
+                className="flex justify-evenly shadow-md bg-gradient-to-r
 			font-bold from-orange-400 to-blue-400 text-white rounded-md p-2"
             >
                 <div className="my-auto">ORDER: {id}</div>

@@ -20,6 +20,7 @@ export const createOrder = (
         {
             id: orderid,
             orderInfo: JSON.stringify(sendObj),
+            status: "pending",
         }
     );
     setTimeout(() => {
