@@ -11,6 +11,7 @@ export interface OrderType {
     modelLimit: string;
     number: string;
     orderType: string;
+    additional: string;
     resolution: string;
 }
 export interface StringToAnyType {

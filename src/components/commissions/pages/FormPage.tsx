@@ -48,7 +48,7 @@ const FormPage = () => {
             field: "projInfo",
             payload: newProjInfo,
         });
-        if (newProjInfo[0] && newProjInfo[1] && newProjInfo[2]) {
+        if (newProjInfo[0] && newProjInfo[1]) {
             setCanSubmit(true);
         } else {
             setCanSubmit(false);

@@ -21,9 +21,6 @@ const Orders = () => {
         });
         setOrders(newArray);
     };
-    const handleOnClick = () => {
-        createOrder(formInfo, projInfo, userInfo);
-    };
     const handleOnClick1 = () => {
         /*axios.put(process.env.REACT_APP_API_URL + "/v2/orders/" + 4, {
             title: "Beyond Set",
@@ -60,7 +57,7 @@ const Orders = () => {
             className="flex flex-col pt-12 w-full min-h-screen h-full
         font-nunito bg-neutral-100 text-center"
         >
-            <div className="text-2xl text-left font-bold px-5 pt-5">
+            <div className="text-2xl text-left font-bold px-5 pt-5 drop-shadow-sm">
                 {userInfo.username + "#" + userInfo.discriminator}'s Orders
             </div>
             <div className="grid grid-flow-row gap-2 p-5">
@@ -68,9 +65,6 @@ const Orders = () => {
                     <OrderItem orderObj={order} />
                 ))}
             </div>
-            <button className="" onClick={handleOnClick}>
-                Submit Order
-            </button>
             <button className="" onClick={handleOnClick1}>
                 Update Order
             </button>
