@@ -32,11 +32,11 @@ const DiscordProfile = () => {
             {Object.keys(userInfo).length !== 0 ? (
                 <button
                     onClick={handleOnLogout}
-                    className="group/discord flex p-0.5 my-1 rounded-full hover:scale-105
+                    className="group/discord flex p-0.5 m-1 mx-2 rounded-full hover:scale-105
                     bg-white pr-5 shadow-md w-fit max-w-[12rem] duration-300 transition"
                 >
                     <img
-                        className="h-full rounded-full"
+                        className="h-full rounded-full aspect-square"
                         src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`}
                         alt=""
                     />
@@ -55,8 +55,8 @@ const DiscordProfile = () => {
             ) : (
                 <button
                     onClick={handleOnLogin}
-                    className="group/discord flex p-0.5 my-1 rounded-full hover:scale-105
-                    bg-indigo-400 shadow-md w-fit duration-300 transition text-white"
+                    className="group/discord flex p-0.5 m-1 mx-2 rounded-full hover:scale-105
+                    bg-indigo-400 shadow-md w-fit max-w-[12rem] duration-300 transition text-white"
                 >
                     <img
                         className="h-full rounded-full invert p-1"
