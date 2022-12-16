@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../states";
 import { updateUserInfoFromSession } from "../lib/api";
+import Text from "../components/Text";
 
 const LoginResult = () => {
     const { dispatch } = React.useContext(GlobalContext);
@@ -17,22 +18,21 @@ const LoginResult = () => {
         } else {
             sessionStorage.removeItem("a");
             sessionStorage.removeItem("b");
-            setTimeout(() => navigate("/"), 2000);
+            setTimeout(() => navigate("/"), 1500);
         }
     }, []);
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
-        bg-gradient-to-t bg-neutral-100 brightness-110"
+         bg-neutral-100 brightness-110"
         >
             {sessionStorage.getItem("a") && sessionStorage.getItem("b") ? (
-                <div className="text-green-400 m-auto text-3xl drop-shadow-sm">
-                    Congrats, you have successfully signed in!
-                </div>
+                <Text
+                    text="Congrats! You are successfully signed in!"
+                    color="text-green-600"
+                />
             ) : (
-                <div className="text-red-400 m-auto text-3xl drop-shadow-sm">
-                    Failed to authorize
-                </div>
+                <Text text="Oops! Failed to authorize" color="text-red-600" />
             )}
         </div>
     );

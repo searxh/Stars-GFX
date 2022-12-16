@@ -5,8 +5,14 @@ export interface OrderObj {
     created_at: string;
     updated_at: string;
     orderInfo: Array<OrderType>;
+    status: string;
+    comment: string;
 }
-
+export interface StatusObjType extends StringToAnyType {
+    pending: Array<OrderObj>;
+    active: Array<OrderObj>;
+    declined: Array<OrderObj>;
+}
 export interface OrderType {
     modelLimit: string;
     number: string;
@@ -35,6 +41,7 @@ export interface GlobalStateType extends GlobalStateKeys {
     formInfo: FormInfoType;
     projInfo: Array<string>;
     currentPage: number;
+    notifier: boolean;
     userInfo: any;
 }
 

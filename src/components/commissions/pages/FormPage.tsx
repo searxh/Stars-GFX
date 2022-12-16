@@ -37,9 +37,9 @@ const formData = [
 
 const FormPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { formInfo, projInfo, userInfo, currentPage } = global_state;
+    const { formInfo, projInfo, userInfo, currentPage, notifier } =
+        global_state;
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
-    const navigate = useNavigate();
     const handleSetForm = (index: number, value: string) => {
         const newProjInfo = [...projInfo];
         newProjInfo[index] = value;
@@ -66,10 +66,9 @@ const FormPage = () => {
         createOrder(formInfo, projInfo, userInfo);
         dispatch({
             type: "multi-set",
-            field: ["formInfo", "projInfo", "currentPage"],
-            payload: [initialFormInfo, [], 0],
+            field: ["formInfo", "projInfo", "currentPage", "notifier"],
+            payload: [initialFormInfo, [], currentPage + 1, !notifier],
         });
-        navigate("/orders");
     };
     React.useEffect(() => {
         console.log(projInfo);

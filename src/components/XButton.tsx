@@ -12,8 +12,8 @@ const XButton = ({ closeCallback, className }: XButtonInterface) => {
     return (
         <button
             onClick={handleOnClick}
-            className={`w-8 h-8 ${className} bg-red-500 text-center shadow-md
-            rounded-full text-white hover:scale-105 hover:bg-red-600 duration-300 transition`}
+            className={`w-8 h-8 ${className} bg-red-400 text-center shadow-md
+            rounded-full text-white hover:scale-105 hover:bg-red-500 duration-300 transition`}
         >
             X
         </button>

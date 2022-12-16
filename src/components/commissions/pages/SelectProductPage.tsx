@@ -29,7 +29,7 @@ const SelectProductPage = () => {
     const handleOnNavigate = (isForward: boolean) => {
         if (selected.find((bool: boolean) => bool) === undefined && isForward) {
             setErrorMessageVisible(true);
-            setTimeout(() => setErrorMessageVisible(false), 2000);
+            setTimeout(() => setErrorMessageVisible(false), 1500);
         } else {
             const check = pageChangeCheck(isForward, currentPage);
             dispatch({

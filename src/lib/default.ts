@@ -61,6 +61,8 @@ export const productChoices = [
     },
 ];
 
+export const initialStatusObj = { pending: [], active: [], declined: [] };
+
 export const initialProductInfo = {
     resolution: selectChoices.resolution[0].title,
     modelLimit: selectChoices.modelLimit[0].title,
@@ -72,6 +74,7 @@ export const initialState: GlobalStateType = {
     formInfo: initialFormInfo,
     projInfo: [],
     userInfo: {},
+    notifier: false,
     currentPage: 0,
 };
 

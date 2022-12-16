@@ -22,6 +22,7 @@ export const createOrder = (
                 id: orderid,
                 orderInfo: JSON.stringify(sendObj),
                 status: "pending",
+                comment: "",
             }
         );
         setTimeout(() => {
@@ -46,6 +47,26 @@ export const deleteOrder = (orderID: string, userInfo: any) => {
             `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderID}`
         );
     }
+};
+
+export const getOrder = async (userInfo: any) => {
+    const promise = new Promise((resolve) => {
+        axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders`,
+        }).then((res) => {
+            console.log(res.data);
+            resolve(
+                res.data.map((orderItem: any) => {
+                    return {
+                        ...orderItem,
+                        orderInfo: JSON.parse(orderItem.orderInfo),
+                    };
+                })
+            );
+        });
+    });
+    return promise;
 };
 
 export const createUser = (userData: any) => {
@@ -76,7 +97,7 @@ export const updateUserInfoFromSession = (
                     field: "userInfo",
                     payload: res.data,
                 });
-                setTimeout(() => navigate("/"), 2000);
+                setTimeout(() => navigate("/"), 1500);
             });
     } else {
         dispatch({

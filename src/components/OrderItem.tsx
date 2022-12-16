@@ -11,12 +11,17 @@ interface OrderItemPropsInterface {
 }
 
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
-    const { global_state } = React.useContext(GlobalContext);
-    const { userInfo } = global_state;
+    const { global_state, dispatch } = React.useContext(GlobalContext);
+    const { userInfo, notifier } = global_state;
     const { id, created_at, orderInfo } = orderObj;
     const handleCancelOrder = () => {
         console.log(generateUUID());
         deleteOrder(id, userInfo);
+        dispatch({
+            type: "set",
+            field: "notifier",
+            payload: !notifier,
+        });
     };
     const getProductColor = (currentProduct: string) => {
         const res = productChoices.find(
