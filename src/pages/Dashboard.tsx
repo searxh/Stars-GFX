@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { checkAdmin } from "../lib/utilities";

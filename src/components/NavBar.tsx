@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { all_routes } from "../lib/default";
