@@ -70,6 +70,26 @@ export const getOrder = async (userInfo: any) => {
     return promise;
 };
 
+export const getOrderList = async () => {
+    const promise = new Promise((resolve) => {
+        axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}/v2/list`,
+        }).then((res) => {
+            console.log(res.data);
+            resolve(
+                res.data.map((orderItem: any) => {
+                    return {
+                        ...orderItem,
+                        orderInfo: JSON.parse(orderItem.orderInfo),
+                    };
+                })
+            );
+        });
+    });
+    return promise;
+};
+
 export const createUser = (userData: any) => {
     axios.post(process.env.REACT_APP_API_URL + "/v2/users/", {
         id: userData.id,

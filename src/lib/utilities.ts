@@ -59,6 +59,19 @@ export const generateUUID = () => {
     return hash(uuid);
 };
 
+export const checkAdmin = () => {
+    return new Promise((resolve) => {
+        const a = JSON.parse(sessionStorage.getItem("a") as string);
+        sha256(a).then((res) => {
+            if (res === process.env.REACT_APP_ADMIN_KEY) {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        });
+    });
+};
+
 const hash = (str: string) => {
     let hash = 31;
     for (let i = 0; i < str.length; i++) {
