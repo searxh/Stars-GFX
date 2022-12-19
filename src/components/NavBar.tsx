@@ -1,15 +1,22 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { all_routes } from "../App";
+import { all_routes } from "../lib/default";
+import { checkAdmin } from "../lib/utilities";
 import DiscordProfile from "./DiscordProfile";
 
 const NavBar = (props: any) => {
+    const [routes, setRoutes] = React.useState<{ [key: string]: string }>(
+        all_routes
+    );
     const location = useLocation();
     const navigate = useNavigate();
     const getLocationIndex = () => {
-        return Object.keys(all_routes).findIndex(
-            (route: string) => "/" + route === location.pathname
-        );
+        return Object.keys(routes).findIndex((route: string) => {
+            return (
+                "/" + route === location.pathname ||
+                (route.length !== 0 && location.pathname.includes(route))
+            );
+        });
     };
     const [locationIndex, setLocationIndex] = React.useState(
         getLocationIndex()
@@ -21,8 +28,18 @@ const NavBar = (props: any) => {
         navigate("/");
     };
     React.useEffect(() => {
+        checkAdmin().then((res) => {
+            if (res) {
+                const newRoutes: any = { ...routes, dashboard: "Dashboard" };
+                delete newRoutes.orders;
+                console.log("NEW ROUTES", newRoutes);
+                setRoutes(newRoutes);
+            }
+        });
+    }, []);
+    React.useEffect(() => {
         setLocationIndex(getLocationIndex());
-    }, [location.pathname]);
+    }, [location.pathname, routes]);
     return (
         <div
             className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-70 bg-white
@@ -39,14 +56,14 @@ const NavBar = (props: any) => {
                 </div>
             </button>
             <div className="relative flex min-w-[30rem]">
-                {Object.keys(all_routes).map((route: string) => {
+                {Object.keys(routes).map((route: string) => {
                     return (
                         <button
                             onClick={() => handleChangeRoute(route)}
                             className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10 
                             h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
                         >
-                            {all_routes[route]}
+                            {routes[route]}
                         </button>
                     );
                 })}
@@ -64,7 +81,7 @@ const NavBar = (props: any) => {
                         : null
                 }`}
                     style={{
-                        width: 100 / Object.keys(all_routes).length + "%",
+                        width: 100 / Object.keys(routes).length + "%",
                     }}
                 />
             </div>
