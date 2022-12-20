@@ -2,11 +2,32 @@ import { Dispatch } from "react";
 
 export interface OrderObj {
     id: string;
+    comment: string;
     created_at: string;
     updated_at: string;
+    formInfo: FormObj;
     orderInfo: Array<OrderType>;
+    userInfo: UserObj;
     status: string;
-    comment: string;
+}
+export interface UserObj {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    name: string;
+    discriminator: string;
+}
+export interface FormObj extends StringToAnyType {
+    id: string;
+    assets: string;
+    color: string;
+    created_at: string;
+    updated_at: string;
+    title: string;
+    order_id: string;
+    ideas: string;
+    game: string;
+    deadline: string;
 }
 export interface StatusObjType extends StringToAnyType {
     pending: Array<OrderObj>;

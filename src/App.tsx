@@ -23,7 +23,7 @@ function App() {
                 <Route path="/authorized" element={<LoginResult />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                     <Route path="list" element={<OrderPage />} />
-                    <Route path=":orderId" element={<InfoPage />} />
+                    <Route path=":orderObj" element={<InfoPage />} />
                 </Route>
             </Routes>
         </GlobalStateProvider>
