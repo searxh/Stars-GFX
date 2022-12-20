@@ -1,5 +1,5 @@
 import { FormInfoType } from "../types";
-import { priceInfo, selectChoices } from "./default";
+import { priceInfo, selectChoices, productChoices } from "./default";
 
 export const pageChangeCheck = (isForward: boolean, page: number) => {
     if (isForward && page + 1 < 5) {
@@ -9,6 +9,22 @@ export const pageChangeCheck = (isForward: boolean, page: number) => {
     } else {
         return undefined;
     }
+};
+
+export const getProductColor = (currentProduct: string) => {
+    const res = productChoices.find(
+        (productObj: { title: string; color: string }) =>
+            productObj.title === currentProduct
+    );
+    return res !== undefined ? res.color : "bg-slate-500";
+};
+
+export const getProductTextColor = (currentProduct: string) => {
+    const res = productChoices.find(
+        (productObj: { title: string; color: string }) =>
+            productObj.title === currentProduct
+    );
+    return res !== undefined ? res.textColor : "text-black";
 };
 
 export const calculatePrice = (formInfo: FormInfoType) => {

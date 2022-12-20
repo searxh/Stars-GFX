@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "./Select";
-import { productChoices, selectChoices } from "../../lib/default";
+import { getProductTextColor, getProductColor } from "../../lib/utilities";
+import { selectChoices } from "../../lib/default";
 import Select1 from "./Select1";
 import { GlobalContext } from "../../states";
 
@@ -22,23 +23,13 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
             });
         }
     };
-    const getProductColor = () => {
-        const res = productChoices.find(
-            (productObj: { title: string; color: string }) =>
-                productObj.title === currentProduct
-        );
-        return res !== undefined ? res.color : "bg-slate-500";
-    };
-    const getProductTextColor = () => {
-        const res = productChoices.find(
-            (productObj: { title: string; color: string }) =>
-                productObj.title === currentProduct
-        );
-        return res !== undefined ? res.textColor : "text-black";
-    };
     return (
         <div className="grid grid-flows-row gap-3">
-            <div className={`${getProductTextColor()} text-4xl drop-shadow-md`}>
+            <div
+                className={`${getProductTextColor(
+                    currentProduct
+                )} text-4xl drop-shadow-md`}
+            >
                 {currentProduct.toLocaleUpperCase()}
             </div>
             <Select1
@@ -48,7 +39,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 changeCallback={(option: string) =>
                     setProductFormInfo("resolution", option)
                 }
-                color={getProductColor()}
+                color={getProductColor(currentProduct)}
             />
             <Select1
                 choices={selectChoices.modelLimit}
@@ -57,7 +48,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 changeCallback={(option: string) =>
                     setProductFormInfo("modelLimit", option)
                 }
-                color={getProductColor()}
+                color={getProductColor(currentProduct)}
             />
             <Select1
                 choices={selectChoices.additional}
@@ -66,7 +57,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 changeCallback={(option: string) =>
                     setProductFormInfo("additional", option)
                 }
-                color={getProductColor()}
+                color={getProductColor(currentProduct)}
             />
             <Select
                 choices={selectChoices.number}
@@ -76,7 +67,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
                 changeCallback={(option: string) =>
                     setProductFormInfo("number", option)
                 }
-                color={getProductTextColor()}
+                color={getProductTextColor(currentProduct)}
             />
         </div>
     );

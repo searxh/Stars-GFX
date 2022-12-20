@@ -1,6 +1,6 @@
 import React from "react";
 import { OrderObj, OrderType } from "../types";
-import { productChoices } from "../lib/default";
+import { getProductColor } from "../lib/utilities";
 import format from "date-fns/format";
 import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
@@ -21,15 +21,8 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
             payload: !notifier,
         });
     };
-    const getProductColor = (currentProduct: string) => {
-        const res = productChoices.find(
-            (productObj: { title: string; color: string }) =>
-                productObj.title === currentProduct
-        );
-        return res !== undefined ? res.color : "bg-slate-500";
-    };
     return (
-        <div className="relative flex flex-col rounded-lg border-2 border-black shadow-md">
+        <div className="relative flex flex-col rounded-lg border-2 shadow-md">
             <XButton
                 closeCallback={handleCancelOrder}
                 className="absolute -top-2 -right-2"
