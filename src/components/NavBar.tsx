@@ -51,7 +51,11 @@ const NavBar = (props: any) => {
                 className="w-fit flex justify-center hover:scale-110 
                 duration-500 transition"
             >
-                <img className="w-8 h-8 m-2" src="images/logo.png" alt="" />
+                <img
+                    className="w-8 h-8 m-2"
+                    src={`http://localhost:3001/logo512.png`}
+                    alt=""
+                />
                 <div className="text-2xl my-auto font-nunito font-bold">
                     STAR
                 </div>
