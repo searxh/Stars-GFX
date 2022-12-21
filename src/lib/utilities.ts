@@ -1,5 +1,6 @@
 import { FormInfoType } from "../types";
 import { priceInfo, selectChoices, productChoices } from "./default";
+import CryptoJS from "crypto-js";
 
 export const pageChangeCheck = (isForward: boolean, page: number) => {
     if (isForward && page + 1 < 5) {
@@ -77,17 +78,27 @@ export const generateUUID = () => {
 
 export const checkAdmin = () => {
     return new Promise((resolve) => {
-        const a = JSON.parse(sessionStorage.getItem("a") as string);
-        sha256(a).then((res) => {
-            if (res === process.env.REACT_APP_ADMIN_KEY) {
-                resolve(true);
-            } else {
-                resolve(false);
-            }
-        });
+        const a = sessionStorage.getItem("a");
+        if (a !== null) {
+            const decrypted = decrypt(JSON.parse(a));
+            console.log(decrypted);
+            sha256(decrypted).then((res) => {
+                console.log(
+                    "CHECK ADMIN",
+                    res,
+                    process.env.REACT_APP_ADMIN_KEY
+                );
+                if (res === process.env.REACT_APP_ADMIN_KEY) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            });
+        } else {
+            resolve(false);
+        }
     });
 };
-
 const hash = (str: string) => {
     let hash = 31;
     for (let i = 0; i < str.length; i++) {
@@ -102,4 +113,22 @@ export const sha256 = async (str: string) => {
     return Array.prototype.map
         .call(new Uint8Array(hash), (x) => ("00" + x.toString(16)).slice(-2))
         .join("");
+};
+
+const iv = CryptoJS.lib.WordArray.random(16);
+
+export const encrypt = (str: string) => {
+    console.log("ENCRYPT IV", iv, process.env.REACT_APP_SECRET, str);
+    return CryptoJS.AES.encrypt(str, process.env.REACT_APP_SECRET as string, {
+        mode: CryptoJS.mode.ECB,
+        iv: iv,
+    }).toString();
+};
+
+export const decrypt = (str: string) => {
+    console.log("DECRYPT IV", iv, process.env.REACT_APP_SECRET, str);
+    return CryptoJS.AES.decrypt(str, process.env.REACT_APP_SECRET as string, {
+        mode: CryptoJS.mode.ECB,
+        iv: iv,
+    }).toString(CryptoJS.enc.Utf8);
 };

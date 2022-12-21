@@ -35,9 +35,11 @@ const NavBar = (props: any) => {
                 delete newRoutes.orders;
                 console.log("NEW ROUTES", newRoutes);
                 setRoutes(newRoutes);
+            } else {
+                setRoutes(all_routes);
             }
         });
-    }, []);
+    }, [location.pathname]);
     React.useEffect(() => {
         setLocationIndex(getLocationIndex());
     }, [location.pathname, routes]);

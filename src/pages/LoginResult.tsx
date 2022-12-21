@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../states";
 import { updateUserInfoFromSession } from "../lib/api";
 import Text from "../components/Text";
+import { encrypt } from "../lib/utilities";
 
 const LoginResult = () => {
     const { dispatch } = React.useContext(GlobalContext);
@@ -13,7 +14,7 @@ const LoginResult = () => {
         const a = frag.get(process.env.REACT_APP_A_TYPE as string);
         const b = frag.get(process.env.REACT_APP_B_TYPE as string);
         if (a && b) {
-            sessionStorage.setItem("a", JSON.stringify(a));
+            sessionStorage.setItem("a", JSON.stringify(encrypt(a)));
             sessionStorage.setItem("b", JSON.stringify(b));
             updateUserInfoFromSession(dispatch, navigate);
         } else {

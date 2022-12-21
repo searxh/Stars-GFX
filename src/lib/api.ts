@@ -1,7 +1,7 @@
-import { ActionType, FormInfoType } from "../types";
+import { ActionType, FormInfoType, UserObj } from "../types";
 import axios from "axios";
 import { Dispatch } from "react";
-import { generateUUID } from "./utilities";
+import { generateUUID, decrypt } from "./utilities";
 
 export const createOrder = (
     formInfo: FormInfoType,
@@ -76,15 +76,23 @@ export const getOrderList = async () => {
             method: "get",
             url: `${process.env.REACT_APP_API_URL}/v2/list`,
         }).then((res) => {
-            console.log(res.data);
-            resolve(
-                res.data.map((orderItem: any) => {
-                    return {
-                        ...orderItem,
-                        orderInfo: JSON.parse(orderItem.orderInfo),
-                    };
-                })
-            );
+            const ret = res.data.orders.map((orderItem: any) => {
+                const temp = {
+                    ...orderItem,
+                    orderInfo: JSON.parse(orderItem.orderInfo),
+                    formInfo: res.data.formInfos.find(
+                        (formInfoObj: any) =>
+                            formInfoObj.order_id === orderItem.id
+                    ),
+                    userInfo: res.data.users.find(
+                        (userObj: UserObj) => userObj.id === orderItem.user_id
+                    ),
+                };
+                delete temp.user_id;
+                return temp;
+            });
+            console.log(ret);
+            resolve(ret);
         });
     });
     return promise;
@@ -98,17 +106,47 @@ export const createUser = (userData: any) => {
     });
 };
 
+export const updateOrder = (orderData: any) => {
+    ///api/v2/users/:user_id/orders/:id(.:format)
+    axios.put(
+        `${process.env.REACT_APP_API_URL}/v2/users/${orderData.userInfo.id}/orders/${orderData.id}`,
+        {
+            id: orderData.id,
+            orderInfo: JSON.stringify(orderData.orderInfo),
+            status: orderData.status,
+            comment: orderData.comment,
+        }
+    );
+};
+
+export const authUser = (pw: string) => {
+    const promise = new Promise((resolve) => {
+        axios
+            .post(`${process.env.REACT_APP_API_URL}/v2/auth`, { pw: pw })
+            .then((res) => {
+                console.log(res);
+                resolve(true);
+            })
+            .catch((res) => {
+                console.log(res);
+                resolve(false);
+            });
+    });
+    return promise;
+};
+
 export const updateUserInfoFromSession = (
     dispatch: Dispatch<ActionType>,
     navigate: Function
 ) => {
-    if (sessionStorage.getItem("a") && sessionStorage.getItem("b")) {
+    const auth = JSON.parse(sessionStorage.getItem("a") as string);
+    if (auth && sessionStorage.getItem("b")) {
         axios
             .get("https://discord.com/api/users/@me", {
                 headers: {
                     authorization: `${JSON.parse(
                         sessionStorage.getItem("b") as string
-                    )} ${JSON.parse(sessionStorage.getItem("a") as string)}`,
+                    )} ${decrypt(auth)}`,
                 },
             })
             .then((res) => {
