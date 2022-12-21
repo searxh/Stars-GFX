@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface OrderObj {
     id: string;
@@ -75,4 +75,9 @@ export interface ActionType {
 export interface GlobalContextType {
     global_state: GlobalStateType;
     dispatch: Dispatch<ActionType>;
+}
+
+export interface ConfirmationContextType {
+    setTrigger: Dispatch<SetStateAction<boolean>>;
+    setAcceptCallback: Dispatch<SetStateAction<(decision: boolean) => void>>;
 }

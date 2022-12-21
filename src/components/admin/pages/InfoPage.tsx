@@ -7,8 +7,11 @@ import format from "date-fns/format";
 import FormInfoAdmin from "../FormInfoAdmin";
 import { deleteOrder, updateOrder } from "../../../lib/api";
 import { statusArr } from "../../../lib/default";
+import { ConfirmationContext } from "../../../confirmation";
 
 const InfoPage = () => {
+    const { setTrigger, setAcceptCallback } =
+        React.useContext(ConfirmationContext);
     const { orderObj } = useParams();
     const navigate = useNavigate();
     const [order] = React.useState<OrderObj>(() => {
@@ -39,8 +42,15 @@ const InfoPage = () => {
         setTimeout(() => navigate(-1), 1000);
     };
     const handleOnDeleteOrder = () => {
-        deleteOrder(order.id, order.userInfo);
-        setTimeout(() => navigate(-1), 1000);
+        setTrigger(true);
+        const callback = (decision: boolean) => {
+            if (decision) {
+                console.log("accept callback executed");
+                deleteOrder(order.id, order.userInfo);
+                setTimeout(() => navigate(-1), 1000);
+            }
+        };
+        setAcceptCallback(() => callback);
     };
     React.useEffect(() => {
         if (inputRef.current !== null) {

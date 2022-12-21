@@ -6,21 +6,30 @@ import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
 import { GlobalContext } from "../states";
 import { statusArr } from "../lib/default";
+import { ConfirmationContext } from "../confirmation";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
 
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
+    const { setTrigger, setAcceptCallback } =
+        React.useContext(ConfirmationContext);
     const { userInfo, notifier } = global_state;
     const { id, created_at, orderInfo, comment, status } = orderObj;
     const handleCancelOrder = () => {
-        deleteOrder(id, userInfo);
-        dispatch({
-            type: "set",
-            field: "notifier",
-            payload: !notifier,
-        });
+        setTrigger(true);
+        const callback = (decision: boolean) => {
+            if (decision) {
+                deleteOrder(id, userInfo);
+                dispatch({
+                    type: "set",
+                    field: "notifier",
+                    payload: !notifier,
+                });
+            }
+        };
+        setAcceptCallback(() => callback);
     };
     return (
         <div className="relative flex flex-col rounded-lg border-2 shadow-md bg-gray-100">
