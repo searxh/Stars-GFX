@@ -1,6 +1,6 @@
 import React from "react";
 import { GlobalContext } from "../../../states";
-import { pageChangeCheck } from "../../../lib/utilities";
+import { isSignedIn, pageChangeCheck } from "../../../lib/utilities";
 import Input from "../Input";
 import { initialFormInfo } from "../../../lib/default";
 import { useNavigate } from "react-router-dom";
@@ -63,12 +63,14 @@ const FormPage = () => {
         });
     };
     const handleOnSubmit = () => {
-        createOrder(formInfo, projInfo, userInfo);
-        dispatch({
-            type: "multi-set",
-            field: ["formInfo", "projInfo", "currentPage", "notifier"],
-            payload: [initialFormInfo, [], currentPage + 1, !notifier],
-        });
+        if (isSignedIn()) {
+            createOrder(formInfo, projInfo, userInfo);
+            dispatch({
+                type: "multi-set",
+                field: ["formInfo", "projInfo", "currentPage", "notifier"],
+                payload: [initialFormInfo, [], currentPage + 1, !notifier],
+            });
+        }
     };
     React.useEffect(() => {
         console.log(projInfo);

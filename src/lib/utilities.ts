@@ -77,7 +77,8 @@ export const generateUUID = () => {
 };
 
 export const isSignedIn = () => {
-    return sessionStorage.getItem("a") !== null;
+    const a = sessionStorage.getItem("a");
+    return a !== null && JSON.parse(a).length === 64;
 };
 
 export const checkAdmin = () => {
