@@ -76,6 +76,10 @@ export const generateUUID = () => {
     return hash(uuid);
 };
 
+export const isSignedIn = () => {
+    return sessionStorage.getItem("a") !== null;
+};
+
 export const checkAdmin = () => {
     return new Promise((resolve) => {
         const a = sessionStorage.getItem("a");

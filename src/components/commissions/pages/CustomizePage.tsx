@@ -1,6 +1,10 @@
 import React from "react";
 import ProductSelect from "../ProductSelect";
-import { calculatePrice, pageChangeCheck } from "../../../lib/utilities";
+import {
+    calculatePrice,
+    isSignedIn,
+    pageChangeCheck,
+} from "../../../lib/utilities";
 import { GlobalContext } from "../../../states";
 
 const CustomizePage = () => {
@@ -47,13 +51,19 @@ const CustomizePage = () => {
                 >
                     Back
                 </button>
-                <button
-                    onClick={() => handleOnNavigate(true)}
-                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
+                {isSignedIn() ? (
+                    <button
+                        onClick={() => handleOnNavigate(true)}
+                        className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
                     duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
-                >
-                    Next
-                </button>
+                    >
+                        Next
+                    </button>
+                ) : (
+                    <div className="text-red-600 drop-shadow-sm text-xl w-48 leading-6">
+                        You will need to sign in to continue
+                    </div>
+                )}
             </div>
         </div>
     );

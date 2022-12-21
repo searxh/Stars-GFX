@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../states";
 import { updateUserInfoFromSession } from "../lib/api";
 import Text from "../components/Text";
-import { encrypt } from "../lib/utilities";
+import { encrypt, isSignedIn } from "../lib/utilities";
 
 const LoginResult = () => {
     const { dispatch } = React.useContext(GlobalContext);
@@ -28,7 +28,7 @@ const LoginResult = () => {
             className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
          bg-neutral-100 brightness-110"
         >
-            {sessionStorage.getItem("a") && sessionStorage.getItem("b") ? (
+            {isSignedIn() ? (
                 <Text
                     text="Congrats! You are successfully signed in!"
                     color="text-green-600"

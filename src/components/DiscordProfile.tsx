@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUserInfoFromSession } from "../lib/api";
+import { isSignedIn } from "../lib/utilities";
 import { GlobalContext } from "../states";
 
 const DiscordProfile = () => {
@@ -16,7 +17,7 @@ const DiscordProfile = () => {
         }
     };
     const handleOnLogin = () => {
-        if (sessionStorage.getItem("a") || sessionStorage.getItem("b")) {
+        if (isSignedIn()) {
             updateUserInfoFromSession(dispatch, navigate);
         } else {
             window.location.href = process.env.REACT_APP_AUTH as string;
