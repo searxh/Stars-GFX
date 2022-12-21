@@ -33,7 +33,7 @@ const DiscordProfile = () => {
                 <button
                     onClick={handleOnLogout}
                     className="group/discord flex p-0.5 m-1 mx-2 rounded-full hover:scale-105
-                    bg-white pr-5 shadow-md w-fit max-w-[12rem] duration-300 transition"
+                    bg-white hover:bg-red-500 pr-5 shadow-md w-fit max-w-[12rem] duration-300 transition"
                 >
                     <img
                         className="h-full rounded-full aspect-square"
@@ -41,12 +41,12 @@ const DiscordProfile = () => {
                         alt=""
                     />
                     <div className="relative m-auto mx-2">
-                        <div className="">
+                        <div className="group-hover/discord:opacity-0 duration-300">
                             {nameDot(username)}#{discriminator}
                         </div>
                         <div
-                            className="group-hover/discord:opacity-100 opacity-0 transition bg-white
-                            duration-100 text-red-500 absolute top-0 bottom-0 left-0 right-0"
+                            className="group-hover/discord:opacity-100 opacity-0 transition
+                            duration-300 text-white absolute top-0 bottom-0 left-0 right-0"
                         >
                             Sign out
                         </div>
