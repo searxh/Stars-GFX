@@ -49,7 +49,7 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
                 </div>
                 <div className="my-auto">
                     <div className="font-bold">TIME:</div>{" "}
-                    {format(new Date(created_at), "h:mm d/M/yyyy")}
+                    {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
                 <div className="my-auto">
                     <div className="font-bold">PRICE:</div> $0

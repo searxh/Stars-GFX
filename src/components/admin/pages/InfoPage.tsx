@@ -81,7 +81,7 @@ const InfoPage = () => {
                 <div>
                     <div className="font-bold">CREATED AT:</div>
                     <div>
-                        {format(new Date(order.created_at), "h:mm d/M/yyyy")}
+                        {format(new Date(order.created_at), "H:mm d/M/yyyy")}
                     </div>
                 </div>
             </div>

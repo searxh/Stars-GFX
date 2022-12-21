@@ -13,7 +13,7 @@ interface OrderItemPropsInterface {
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { userInfo, notifier } = global_state;
-    const { id, created_at, orderInfo, comment } = orderObj;
+    const { id, created_at, orderInfo, comment, status } = orderObj;
     const handleCancelOrder = () => {
         deleteOrder(id, userInfo);
         dispatch({
@@ -24,10 +24,12 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     };
     return (
         <div className="relative flex flex-col rounded-lg border-2 shadow-md bg-gray-100">
-            <XButton
-                closeCallback={handleCancelOrder}
-                className="absolute -top-2 -right-2"
-            />
+            {status === statusArr[1] && (
+                <XButton
+                    closeCallback={handleCancelOrder}
+                    className="absolute -top-2 -right-2"
+                />
+            )}
             <div
                 className={`flex justify-evenly shadow-md bg-gradient-to-r
 			    font-bold ${
@@ -40,7 +42,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
             >
                 <div className="my-auto">ORDER ID: {id}</div>
                 <div className="my-auto">
-                    TIME: {format(new Date(created_at), "h:mm d/M/yyyy")}
+                    TIME: {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
                 <div className="my-auto">PRICE: $0</div>
             </div>
