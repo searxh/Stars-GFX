@@ -5,6 +5,7 @@ import format from "date-fns/format";
 import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
 import { GlobalContext } from "../states";
+import { statusArr } from "../lib/default";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -22,14 +23,20 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
         });
     };
     return (
-        <div className="relative flex flex-col rounded-lg border-2 shadow-md">
+        <div className="relative flex flex-col rounded-lg border-2 shadow-md bg-gray-100">
             <XButton
                 closeCallback={handleCancelOrder}
                 className="absolute -top-2 -right-2"
             />
             <div
-                className="flex justify-evenly shadow-md bg-gradient-to-r
-			font-bold from-orange-400 to-blue-400 text-white rounded-md p-2"
+                className={`flex justify-evenly shadow-md bg-gradient-to-r
+			    font-bold ${
+                    orderObj.status === statusArr[0]
+                        ? "from-green-400"
+                        : orderObj.status === statusArr[1]
+                        ? "from-yellow-400"
+                        : "from-red-400"
+                } to-blue-400 text-white rounded-md p-2`}
             >
                 <div className="my-auto">ORDER ID: {id}</div>
                 <div className="my-auto">

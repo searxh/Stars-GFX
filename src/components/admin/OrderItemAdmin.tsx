@@ -1,88 +1,61 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-useless-escape */
 import React from "react";
-import { OrderObj, OrderType } from "../../types";
-import { productChoices } from "../../lib/default";
+import { OrderObj } from "../../types";
 import format from "date-fns/format";
-import XButton from "../XButton";
-import { deleteOrder } from "../../lib/api";
-import { GlobalContext } from "../../states";
-
+import { useNavigate } from "react-router-dom";
+import { statusArr } from "../../lib/default";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
 
 const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
-    const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { userInfo, notifier } = global_state;
-    const { id, created_at, orderInfo, comment } = orderObj;
-    const inputRef = React.useRef<any>();
-    const handleCancelOrder = () => {
-        deleteOrder(id, userInfo);
-        dispatch({
-            type: "set",
-            field: "notifier",
-            payload: !notifier,
-        });
-    };
-    const handleOnChange = () => {};
-    const getProductColor = (currentProduct: string) => {
-        const res = productChoices.find(
-            (productObj: { title: string; color: string }) =>
-                productObj.title === currentProduct
+    const navigate = useNavigate();
+    const { id, created_at, userInfo } = orderObj;
+    const handleNavigate = () => {
+        console.log(orderObj);
+        const stringified = JSON.stringify(orderObj);
+        navigate(
+            "/dashboard/" +
+                stringified.replace(
+                    /\/+/g,
+                    process.env.REACT_APP_SECRET_CHAR as string
+                )
         );
-        return res !== undefined ? res.color : "bg-slate-500";
     };
     return (
-        <div className="relative flex flex-col rounded-lg border-2 border-black shadow-md">
-            <XButton
-                closeCallback={handleCancelOrder}
-                className="absolute -top-2 -right-2"
-            />
+        <button
+            onClick={handleNavigate}
+            className="relative flex flex-col rounded-lg border-2
+            shadow-md hover:scale-[102%] transition duration-300 w-full"
+        >
             <div
-                className="flex justify-evenly shadow-md bg-gradient-to-r
-			font-bold from-orange-400 to-blue-400 text-white rounded-md p-2"
+                className={`justify-evenly shadow-md bg-gradient-to-r w-full
+			    font-bold  ${
+                    orderObj.status === statusArr[0]
+                        ? "from-green-400"
+                        : orderObj.status === statusArr[1]
+                        ? "from-yellow-400"
+                        : "from-red-400"
+                } to-blue-400 text-white rounded-md p-2`}
             >
-                <div className="my-auto">ORDER ID: {id}</div>
+                <div className="my-auto text-xl">
+                    {userInfo.name}#{userInfo.discriminator}
+                </div>
+            </div>
+            <div className="grid grid-cols-3 text-center w-full p-1">
                 <div className="my-auto">
-                    TIME: {format(new Date(created_at), "h:mm d/M/yyyy")}
+                    <div className="font-bold">ORDER ID:</div> {id}
                 </div>
-                <div className="my-auto">PRICE: $0</div>
-            </div>
-            <div className="my-auto p-3 drop-shadow-sm">
-                <div className="grid grid-cols-5 font-bold border-b border-black py-1">
-                    <div>Product Type</div>
-                    <div>Resolution</div>
-                    <div>Model Limit</div>
-                    <div>Additional Files</div>
-                    <div>Amount</div>
+                <div className="my-auto">
+                    <div className="font-bold">TIME:</div>{" "}
+                    {format(new Date(created_at), "h:mm d/M/yyyy")}
                 </div>
-                {orderInfo.map((order: OrderType) => {
-                    return (
-                        <div className="grid grid-cols-5 border-b py-1">
-                            <div
-                                className={`${getProductColor(
-                                    order.orderType
-                                )} rounded-full text-white shadow-md`}
-                            >
-                                {order.orderType.toLocaleUpperCase()}
-                            </div>
-                            <div>{order.resolution}</div>
-                            <div>{order.modelLimit}</div>
-                            <div>{order.additional}</div>
-                            <div>{order.number}</div>
-                        </div>
-                    );
-                })}
+                <div className="my-auto">
+                    <div className="font-bold">PRICE:</div> $0
+                </div>
             </div>
-            <div className="flex text-left text-neutral p-2">
-                <div className="my-auto p-2">Comment:</div>
-                <textarea
-                    onChange={handleOnChange}
-                    rows={2}
-                    ref={inputRef}
-                    className="hide-scrollbar rounded-2xl py-2 px-5 text-lg shadow-md border-2 resize-none w-full"
-                />
-            </div>
-        </div>
+        </button>
     );
 };
 

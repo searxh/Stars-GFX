@@ -111,3 +111,5 @@ export const priceInfo: PriceInfoType = {
         multiplyValue: 0.955,
     },
 };
+
+export const statusArr = ["active", "pending", "declined"];

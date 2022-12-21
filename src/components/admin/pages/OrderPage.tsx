@@ -22,36 +22,53 @@ const OrderPage = () => {
         setOrders(statusObj);
     };
     React.useLayoutEffect(() => {
-        console.log("wtf");
-        getOrderList().then((orderObjArray: any) =>
-            processOrders(orderObjArray)
+        getOrderList().then((res: any) => processOrders(res));
+        const periodicFetch = setInterval(
+            () => getOrderList().then((res: any) => processOrders(res)),
+            10000000
         );
+        return () => clearInterval(periodicFetch);
     }, []);
     return (
-        <div>
-            <div className="text-xl text-green-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
-                Active Orders
+        <div className="flex justify-between p-5">
+            <div className="basis-1/3">
+                <div
+                    className="text-xl text-green-600 text-center font-bold 
+                px-5 pt-5 drop-shadow-sm border-b"
+                >
+                    Active Orders
+                </div>
+                <div className="grid grid-flow-row gap-2 p-5">
+                    {orders?.active.map((order: OrderObj) => (
+                        <OrderItemAdmin orderObj={order} />
+                    ))}
+                </div>
             </div>
-            <div className="grid grid-flow-row gap-2 p-5">
-                {orders?.active.map((order: OrderObj) => (
-                    <OrderItemAdmin orderObj={order} />
-                ))}
+            <div className="basis-1/3">
+                <div
+                    className="text-xl text-yellow-600 text-center font-bold 
+                px-5 pt-5 drop-shadow-sm border-b"
+                >
+                    Pending Orders
+                </div>
+                <div className="grid grid-flow-row gap-2 p-5">
+                    {orders?.pending.map((order: OrderObj) => (
+                        <OrderItemAdmin orderObj={order} />
+                    ))}
+                </div>
             </div>
-            <div className="text-xl text-yellow-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
-                Pending Orders
-            </div>
-            <div className="grid grid-flow-row gap-2 p-5">
-                {orders?.pending.map((order: OrderObj) => (
-                    <OrderItemAdmin orderObj={order} />
-                ))}
-            </div>
-            <div className="text-xl text-red-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
-                Declined Orders
-            </div>
-            <div className="grid grid-flow-row gap-2 p-5">
-                {orders?.declined.map((order: OrderObj) => (
-                    <OrderItemAdmin orderObj={order} />
-                ))}
+            <div className="basis-1/3">
+                <div
+                    className="text-xl text-red-600 text-center font-bold 
+                px-5 pt-5 drop-shadow-sm border-b"
+                >
+                    Declined Orders
+                </div>
+                <div className="grid grid-flow-row gap-2 p-5">
+                    {orders?.declined.map((order: OrderObj) => (
+                        <OrderItemAdmin orderObj={order} />
+                    ))}
+                </div>
             </div>
         </div>
     );
