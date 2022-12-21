@@ -86,7 +86,7 @@ const InfoPage = () => {
                 </div>
                 <div>
                     <div className="font-bold">PRICE:</div>
-                    <div>{"$0"}</div>
+                    <div>${order.price}</div>
                 </div>
                 <div>
                     <div className="font-bold">CREATED AT:</div>

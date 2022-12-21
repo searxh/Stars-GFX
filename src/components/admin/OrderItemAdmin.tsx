@@ -11,7 +11,7 @@ interface OrderItemPropsInterface {
 
 const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
     const navigate = useNavigate();
-    const { id, created_at, userInfo } = orderObj;
+    const { id, created_at, userInfo, price } = orderObj;
     const handleNavigate = () => {
         console.log(orderObj);
         const stringified = JSON.stringify(orderObj);
@@ -52,7 +52,7 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
                     {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
                 <div className="my-auto">
-                    <div className="font-bold">PRICE:</div> $0
+                    <div className="font-bold">PRICE:</div> ${price}
                 </div>
             </div>
         </button>

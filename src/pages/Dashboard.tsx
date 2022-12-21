@@ -11,7 +11,6 @@ const Dashboard = () => {
     const handleOnSubmit = (e: any) => {
         e.preventDefault();
         if (inputRef.current !== null) {
-            console.log(inputRef.current.value);
             authUser(inputRef.current.value).then((res) => {
                 if (res) setLock(false);
                 else setKick(true);
@@ -42,7 +41,7 @@ const Dashboard = () => {
                 </div>
                 <input
                     ref={inputRef}
-                    className="border-2 shadow-md px-5 py-2 rounded-full my-5"
+                    className="border-2 shadow-md px-5 py-2 rounded-full my-5 text-center"
                     placeholder="Enter admin key"
                 />
                 <button

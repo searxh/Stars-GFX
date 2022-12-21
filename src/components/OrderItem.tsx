@@ -16,7 +16,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     const { setTrigger, setAcceptCallback } =
         React.useContext(ConfirmationContext);
     const { userInfo, notifier } = global_state;
-    const { id, created_at, orderInfo, comment, status } = orderObj;
+    const { id, created_at, orderInfo, comment, status, price } = orderObj;
     const handleCancelOrder = () => {
         setTrigger(true);
         const callback = (decision: boolean) => {
@@ -53,7 +53,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 <div className="my-auto">
                     TIME: {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
-                <div className="my-auto">PRICE: $0</div>
+                <div className="my-auto">PRICE: ${price}</div>
             </div>
             <div className="my-auto p-3 drop-shadow-sm">
                 <div className="grid grid-cols-5 font-bold border-b border-black py-1">

@@ -9,6 +9,7 @@ export interface OrderObj {
     orderInfo: Array<OrderType>;
     userInfo: UserObj;
     status: string;
+    price: number;
 }
 export interface UserObj {
     id: string;
