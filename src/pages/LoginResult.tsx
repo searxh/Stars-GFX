@@ -7,7 +7,7 @@ import Text from "../components/Text";
 import { encrypt, isSignedIn } from "../lib/utilities";
 
 const LoginResult = () => {
-    const { dispatch } = React.useContext(GlobalContext);
+    const { global_state, dispatch } = React.useContext(GlobalContext);
     const navigate = useNavigate();
     React.useLayoutEffect(() => {
         const frag = new URLSearchParams(window.location.hash.slice(1));
@@ -16,7 +16,7 @@ const LoginResult = () => {
         if (a && b) {
             sessionStorage.setItem("a", JSON.stringify(encrypt(a)));
             sessionStorage.setItem("b", JSON.stringify(b));
-            updateUserInfoFromSession(dispatch, navigate);
+            updateUserInfoFromSession(global_state, dispatch, navigate);
         } else {
             sessionStorage.removeItem("a");
             sessionStorage.removeItem("b");

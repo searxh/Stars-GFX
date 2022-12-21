@@ -18,7 +18,7 @@ const DiscordProfile = () => {
     };
     const handleOnLogin = () => {
         if (isSignedIn()) {
-            updateUserInfoFromSession(dispatch, navigate);
+            updateUserInfoFromSession(global_state, dispatch, navigate);
         } else {
             window.location.href = process.env.REACT_APP_AUTH as string;
         }
@@ -26,7 +26,7 @@ const DiscordProfile = () => {
     const handleOnLogout = () => {
         sessionStorage.removeItem("a");
         sessionStorage.removeItem("b");
-        updateUserInfoFromSession(dispatch, navigate);
+        updateUserInfoFromSession(global_state, dispatch, navigate);
     };
     return (
         <>

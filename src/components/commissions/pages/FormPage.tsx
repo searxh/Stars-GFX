@@ -3,7 +3,6 @@ import { GlobalContext } from "../../../states";
 import { isSignedIn, pageChangeCheck } from "../../../lib/utilities";
 import Input from "../Input";
 import { initialFormInfo } from "../../../lib/default";
-import { useNavigate } from "react-router-dom";
 import { createOrder } from "../../../lib/api";
 
 const formData = [

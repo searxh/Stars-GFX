@@ -2,7 +2,7 @@ import React from "react";
 
 interface XButtonInterface {
     closeCallback: Function;
-    className: string;
+    className?: string;
 }
 
 const XButton = ({ closeCallback, className }: XButtonInterface) => {
@@ -12,7 +12,7 @@ const XButton = ({ closeCallback, className }: XButtonInterface) => {
     return (
         <button
             onClick={handleOnClick}
-            className={`w-8 h-8 ${className} bg-red-400 text-center shadow-md
+            className={`w-8 h-8 ${className} bg-red-400 text-center shadow-md text-lg
             rounded-full text-white hover:scale-105 hover:bg-red-500 duration-300 transition`}
         >
             X

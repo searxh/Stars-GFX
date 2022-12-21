@@ -1,4 +1,4 @@
-import { ActionType, FormInfoType, UserObj } from "../types";
+import { ActionType, FormInfoType, GlobalStateType, UserObj } from "../types";
 import axios from "axios";
 import { Dispatch } from "react";
 import { generateUUID, decrypt } from "./utilities";
@@ -99,11 +99,13 @@ export const getOrderList = async () => {
 };
 
 export const createUser = (userData: any) => {
-    axios.post(process.env.REACT_APP_API_URL + "/v2/users/", {
-        id: userData.id,
-        name: userData.username,
-        discriminator: userData.discriminator,
-    });
+    axios
+        .post(process.env.REACT_APP_API_URL + "/v2/users/", {
+            id: userData.id,
+            name: userData.username,
+            discriminator: userData.discriminator,
+        })
+        .catch((e) => console.log(e));
 };
 
 export const updateOrder = (orderData: any) => {
@@ -136,11 +138,17 @@ export const authUser = (pw: string) => {
 };
 
 export const updateUserInfoFromSession = (
+    global_state: GlobalStateType,
     dispatch: Dispatch<ActionType>,
-    navigate: Function
+    navigate: Function,
+    dontNavigate?: boolean
 ) => {
     const auth = JSON.parse(sessionStorage.getItem("a") as string);
-    if (auth && sessionStorage.getItem("b")) {
+    if (
+        auth &&
+        sessionStorage.getItem("b") &&
+        Object.keys(global_state.userInfo).length === 0
+    ) {
         axios
             .get("https://discord.com/api/users/@me", {
                 headers: {
@@ -156,9 +164,11 @@ export const updateUserInfoFromSession = (
                     field: "userInfo",
                     payload: res.data,
                 });
-                setTimeout(() => navigate("/"), 1500);
-            });
-    } else {
+                if (dontNavigate === undefined)
+                    setTimeout(() => navigate("/"), 1500);
+            })
+            .catch((e) => console.log(e));
+    } else if (!auth || !sessionStorage.getItem("b")) {
         dispatch({
             type: "set",
             field: "userInfo",

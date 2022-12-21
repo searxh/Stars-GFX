@@ -3,9 +3,12 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { all_routes } from "../lib/default";
 import { checkAdmin } from "../lib/utilities";
+import { GlobalContext } from "../states";
 import DiscordProfile from "./DiscordProfile";
+import { updateUserInfoFromSession } from "../lib/api";
 
 const NavBar = (props: any) => {
+    const { global_state, dispatch } = React.useContext(GlobalContext);
     const [routes, setRoutes] = React.useState<{ [key: string]: string }>(
         all_routes
     );
@@ -42,6 +45,7 @@ const NavBar = (props: any) => {
     }, [location.pathname]);
     React.useEffect(() => {
         setLocationIndex(getLocationIndex());
+        updateUserInfoFromSession(global_state, dispatch, navigate, true);
     }, [location.pathname, routes]);
     return (
         <div
