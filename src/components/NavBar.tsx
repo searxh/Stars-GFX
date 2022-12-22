@@ -6,6 +6,7 @@ import { checkAdmin } from "../lib/utilities";
 import { GlobalContext } from "../states";
 import DiscordProfile from "./DiscordProfile";
 import { updateUserInfoFromSession } from "../lib/api";
+import { clientLink } from "../lib/option";
 
 const NavBar = (props: any) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -58,7 +59,7 @@ const NavBar = (props: any) => {
             >
                 <img
                     className="w-8 h-8 m-2"
-                    src={`http://localhost:3001/logo512.png`}
+                    src={`${clientLink}/logo512.png`}
                     alt=""
                 />
                 <div className="text-2xl my-auto font-nunito font-bold">
