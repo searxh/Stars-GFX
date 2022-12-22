@@ -102,7 +102,7 @@ export const createUser = (userData: any) => {
             name: userData.username,
             discriminator: userData.discriminator,
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {});
 };
 
 export const updateOrder = (orderData: any) => {
@@ -125,7 +125,6 @@ export const authUser = (pw: string) => {
                 resolve(true);
             })
             .catch((res) => {
-                console.log(res);
                 resolve(false);
             });
     });
@@ -142,7 +141,6 @@ export const updateOwnerStatus = (status: boolean, num: number) => {
             return true;
         })
         .catch((res) => {
-            console.log(res);
             return false;
         });
 };
@@ -154,9 +152,7 @@ export const getOwnerStatus = () => {
             .then((res) => {
                 resolve(res.data);
             })
-            .catch((res) => {
-                console.log(res);
-            });
+            .catch((res) => {});
     });
     return promise;
 };
@@ -191,7 +187,7 @@ export const updateUserInfoFromSession = (
                 if (dontNavigate === undefined)
                     setTimeout(() => navigate("/"), 1500);
             })
-            .catch((e) => console.log(e));
+            .catch((e) => {});
     } else if (!auth || !sessionStorage.getItem("b")) {
         dispatch({
             type: "set",
