@@ -109,7 +109,6 @@ export const createUser = (userData: any) => {
 };
 
 export const updateOrder = (orderData: any) => {
-    ///api/v2/users/:user_id/orders/:id(.:format)
     axios.put(
         `${process.env.REACT_APP_API_URL}/v2/users/${orderData.userInfo.id}/orders/${orderData.id}`,
         {
@@ -132,6 +131,36 @@ export const authUser = (pw: string) => {
             .catch((res) => {
                 console.log(res);
                 resolve(false);
+            });
+    });
+    return promise;
+};
+
+export const updateOwnerStatus = (status: boolean, num: number) => {
+    axios
+        .post(`${process.env.REACT_APP_API_URL}/v2/auth/status`, {
+            status: status,
+            num: num,
+        })
+        .then((res) => {
+            console.log(res);
+            return true;
+        })
+        .catch((res) => {
+            console.log(res);
+            return false;
+        });
+};
+
+export const getOwnerStatus = () => {
+    const promise = new Promise((resolve) => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/v2/status`)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((res) => {
+                console.log(res);
             });
     });
     return promise;

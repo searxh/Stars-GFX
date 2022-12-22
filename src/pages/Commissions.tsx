@@ -7,10 +7,20 @@ import { pageChangeCheck } from "../lib/utilities";
 import TermsPage from "../components/commissions/pages/TermsPage";
 import FormPage from "../components/commissions/pages/FormPage";
 import CompletePage from "../components/commissions/pages/CompletePage";
+import { getOwnerStatus } from "../lib/api";
+import { OwnerStatusType } from "../types";
 
 const Commissions = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { currentPage } = global_state;
+    const [ownerStatus, setOwnerStatus] =
+        React.useState<OwnerStatusType | null>(null);
+    React.useEffect(() => {
+        getOwnerStatus().then((res) => {
+            console.log(res);
+            setOwnerStatus(res as OwnerStatusType);
+        });
+    }, []);
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full
@@ -21,6 +31,19 @@ const Commissions = () => {
                     <div className="-mb-2 px-10 drop-shadow-sm font-bold">
                         Passion led to you.
                     </div>
+                    {ownerStatus ? (
+                        <div
+                            className={`${
+                                ownerStatus.status
+                                    ? "text-green-500"
+                                    : "text-red-500"
+                            } text-lg font-bold`}
+                        >
+                            {ownerStatus.status
+                                ? `Star is currently open for commissions (${ownerStatus.num}/3)`
+                                : `Star is currently not accepting commissions (${ownerStatus.num}/3)`}
+                        </div>
+                    ) : null}
                     <img
                         src="/images/pltu.webp"
                         alt=""

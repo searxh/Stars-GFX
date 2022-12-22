@@ -50,6 +50,10 @@ export interface ProductSelectType extends StringToAnyType {
     modelLimit: string;
     number: string;
 }
+export interface OwnerStatusType {
+    status: boolean;
+    num: number;
+}
 export interface FormInfoType {
     [key: string]: ProductSelectType;
 }
