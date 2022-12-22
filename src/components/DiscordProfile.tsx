@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { updateUserInfoFromSession } from "../lib/api";
 import { calculateHash, isSignedIn } from "../lib/utilities";
 import { GlobalContext } from "../states";
+import Cookies from "js-cookie";
 
 const DiscordProfile = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -24,8 +25,10 @@ const DiscordProfile = () => {
         }
     };
     const handleOnLogout = () => {
-        sessionStorage.removeItem("a");
-        sessionStorage.removeItem("b");
+        Cookies.remove("a");
+        Cookies.remove("b");
+        //sessionStorage.removeItem("a");
+        //sessionStorage.removeItem("b");
         calculateHash(true);
         updateUserInfoFromSession(global_state, dispatch, navigate);
     };

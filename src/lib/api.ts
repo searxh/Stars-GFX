@@ -2,6 +2,7 @@ import { ActionType, FormInfoType, GlobalStateType, UserObj } from "../types";
 import axios from "axios";
 import { Dispatch } from "react";
 import { generateUUID, decrypt } from "./utilities";
+import Cookies from "js-cookie";
 
 export const createOrder = (
     formInfo: FormInfoType,
@@ -163,18 +164,18 @@ export const updateUserInfoFromSession = (
     navigate: Function,
     dontNavigate?: boolean
 ) => {
-    const auth = JSON.parse(sessionStorage.getItem("a") as string);
-    if (
-        auth &&
-        sessionStorage.getItem("b") &&
-        Object.keys(global_state.userInfo).length === 0
-    ) {
+    const auth = Cookies.get("a");
+    //const auth = JSON.parse(sessionStorage.getItem("a") as string);
+    const b = Cookies.get("b");
+    //const b = sessionStorage.getItem("b");
+    if (auth && b && Object.keys(global_state.userInfo).length === 0) {
         axios
             .get("https://discord.com/api/users/@me", {
                 headers: {
-                    authorization: `${JSON.parse(
-                        sessionStorage.getItem("b") as string
-                    )} ${decrypt(auth)}`,
+                    authorization: `${b} ${decrypt(
+                        //authorization: `${JSON.parse(b as string)} ${decrypt(
+                        auth
+                    )}`,
                 },
             })
             .then((res) => {
@@ -188,7 +189,7 @@ export const updateUserInfoFromSession = (
                     setTimeout(() => navigate("/"), 1500);
             })
             .catch((e) => {});
-    } else if (!auth || !sessionStorage.getItem("b")) {
+    } else if (!auth || !b) {
         dispatch({
             type: "set",
             field: "userInfo",

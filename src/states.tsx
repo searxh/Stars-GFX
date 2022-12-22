@@ -4,10 +4,13 @@ import { initialState } from "./lib/default";
 import { GlobalContextType, GlobalStateType, ActionType } from "./types";
 import { calculateHash, encrypt, decrypt } from "./lib/utilities";
 import { clientLink } from "./lib/option";
+import Cookies from "js-cookie";
 
 const getSessionData = () => {
-    const state = sessionStorage.getItem("st-com-state");
-    const storedHash = sessionStorage.getItem("check");
+    const state = Cookies.get("st-com-state");
+    const storedHash = Cookies.get("check");
+    //const state = sessionStorage.getItem("st-com-state");
+    //const storedHash = sessionStorage.getItem("check");
     if (!state && !storedHash) {
         save(initialState);
         return initialState;
@@ -18,21 +21,27 @@ const getSessionData = () => {
 
 const save = (state: GlobalStateType) => {
     const str = JSON.stringify(state);
-    sessionStorage.setItem("st-com-state", JSON.stringify(encrypt(str)));
+    Cookies.set("st-com-state", encrypt(str));
+    //sessionStorage.setItem("st-com-state", JSON.stringify(encrypt(str)));
     calculateHash(true);
 };
 
 const load = () => {
-    const res = JSON.parse(sessionStorage.getItem("st-com-state") as string);
-    const storedHash = JSON.parse(sessionStorage.getItem("check") as string);
-    if (storedHash === calculateHash()) {
+    const res = Cookies.get("st-com-state");
+    const storedHash = Cookies.get("check");
+    //const res = JSON.parse(sessionStorage.getItem("st-com-state") as string);
+    //const storedHash = JSON.parse(sessionStorage.getItem("check") as string);
+    if (storedHash === calculateHash() && res) {
         return JSON.parse(decrypt(res));
     } else {
-        if (sessionStorage.getItem("a")) sessionStorage.removeItem("a");
-        if (sessionStorage.getItem("b")) sessionStorage.removeItem("b");
+        if (Cookies.get("a")) Cookies.remove("a");
+        if (Cookies.get("b")) Cookies.remove("b");
+        //if (sessionStorage.getItem("a")) sessionStorage.removeItem("a");
+        //if (sessionStorage.getItem("b")) sessionStorage.removeItem("b");
         save(initialState);
         window.location.href = clientLink;
-        return JSON.parse(sessionStorage.getItem("st-com-state") as string);
+        return Cookies.get("st-com-state");
+        //return JSON.parse(sessionStorage.getItem("st-com-state") as string);
     }
 };
 

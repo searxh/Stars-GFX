@@ -6,6 +6,7 @@ import { updateUserInfoFromSession } from "../lib/api";
 import Text from "../components/Text";
 import { encrypt, isSignedIn } from "../lib/utilities";
 import { calculateHash } from "../lib/utilities";
+import Cookies from "js-cookie";
 
 const LoginResult = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -15,13 +16,18 @@ const LoginResult = () => {
         const a = frag.get(process.env.REACT_APP_A_TYPE as string);
         const b = frag.get(process.env.REACT_APP_B_TYPE as string);
         if (a && b) {
-            sessionStorage.setItem("a", JSON.stringify(encrypt(a)));
-            sessionStorage.setItem("b", JSON.stringify(b));
+            const encrypted = encrypt(a);
+            Cookies.set("a", encrypted);
+            Cookies.set("b", b);
+            //sessionStorage.setItem("a", JSON.stringify(encrypted));
+            //sessionStorage.setItem("b", JSON.stringify(b));
             calculateHash(true);
             updateUserInfoFromSession(global_state, dispatch, navigate);
         } else {
-            sessionStorage.removeItem("a");
-            sessionStorage.removeItem("b");
+            Cookies.remove("a");
+            Cookies.remove("b");
+            //sessionStorage.removeItem("a");
+            //sessionStorage.removeItem("b");
             calculateHash(true);
             setTimeout(() => navigate("/"), 1500);
         }

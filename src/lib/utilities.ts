@@ -1,6 +1,7 @@
 import { FormInfoType } from "../types";
 import { priceInfo, selectChoices, productChoices } from "./default";
 import CryptoJS from "crypto-js";
+import Cookies from "js-cookie";
 
 export const pageChangeCheck = (isForward: boolean, page: number) => {
     if (isForward && page + 1 < 5) {
@@ -77,15 +78,19 @@ export const generateUUID = () => {
 };
 
 export const isSignedIn = () => {
-    const a = sessionStorage.getItem("a");
-    return a !== null && JSON.parse(a).length === 64;
+    const a = Cookies.get("a");
+    //const a = sessionStorage.getItem("a");
+    return a && a.length === 64;
+    //return a && JSON.parse(a).length === 64;
 };
 
 export const checkAdmin = () => {
     return new Promise((resolve) => {
-        const a = sessionStorage.getItem("a");
-        if (a !== null) {
-            const decrypted = decrypt(JSON.parse(a));
+        const a = Cookies.get("a");
+        //const a = sessionStorage.getItem("a");
+        if (a) {
+            const decrypted = decrypt(a);
+            //const decrypted = decrypt(JSON.parse(a));
             sha256(decrypted).then((res) => {
                 if (res === process.env.REACT_APP_ADMIN_KEY) {
                     resolve(true);
@@ -132,16 +137,19 @@ export const decrypt = (str: string) => {
 
 export const calculateHash = (save?: boolean) => {
     let str = "";
-    Object.keys(sessionStorage).forEach((key: string) => {
+    Object.keys(Cookies.get()).forEach((key: string) => {
+        //Object.keys(sessionStorage).forEach((key: string) => {
         if (key !== "check") {
             str += JSON.stringify(
-                JSON.parse(sessionStorage.getItem(key) as string)
+                Cookies.get(key)
+                //JSON.parse(sessionStorage.getItem(key) as string)
             );
         }
     });
     const hashed = CryptoJS.SHA256(
         str + process.env.REACT_SECRET_ADMIN_KEY
     ).toString();
-    if (save) sessionStorage.setItem("check", JSON.stringify(hashed));
+    if (save) Cookies.set("check", hashed);
+    //if (save) sessionStorage.setItem("check", JSON.stringify(hashed));
     return hashed;
 };
