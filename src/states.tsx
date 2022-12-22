@@ -8,7 +8,7 @@ import { clientLink } from "./lib/option";
 const getSessionData = () => {
     const state = sessionStorage.getItem("st-com-state");
     const storedHash = sessionStorage.getItem("check");
-    if (state === null && storedHash === null) {
+    if (!state && !storedHash) {
         save(initialState);
         return initialState;
     } else {
@@ -17,10 +17,8 @@ const getSessionData = () => {
 };
 
 const save = (state: GlobalStateType) => {
-    sessionStorage.setItem(
-        "st-com-state",
-        JSON.stringify(encrypt(JSON.stringify(state)))
-    );
+    const str = JSON.stringify(state);
+    sessionStorage.setItem("st-com-state", JSON.stringify(encrypt(str)));
     calculateHash(true);
 };
 
