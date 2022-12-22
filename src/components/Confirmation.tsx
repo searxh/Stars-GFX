@@ -26,7 +26,6 @@ export const Confirmation = ({
         }
     };
     React.useEffect(() => {
-        console.log(trigger);
         if (trigger) {
             setTimeout(() => setTransition(true), 10);
         } else {

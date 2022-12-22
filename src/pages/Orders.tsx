@@ -4,7 +4,7 @@ import OrderItem from "../components/OrderItem";
 import { GlobalContext } from "../states";
 import { OrderObj, StatusObjType } from "../types";
 import { getOrder } from "../lib/api";
-import { initialStatusObj } from "../lib/default";
+import { initialStatusObj, userRate } from "../lib/default";
 import { cloneDeep } from "lodash";
 import Text from "../components/Text";
 
@@ -18,13 +18,15 @@ const Orders = () => {
         const filtered = orderObjArray.filter((orderObj) => {
             return checkSet.has(orderObj.id);
         });
-        console.log(filtered, checkSet);
         filtered.forEach((orderObj) => {
-            console.log(orderObj);
             statusObj[orderObj.status].push(orderObj);
         });
-        console.log(statusObj);
         setOrdersInfo(statusObj);
+    };
+    const getObjects = () => {
+        getOrder(userInfo).then((orderObjArray: any) => {
+            processOrders(orderObjArray);
+        });
     };
     React.useEffect(() => {
         if (ordersInfo) {
@@ -37,9 +39,11 @@ const Orders = () => {
     }, [ordersInfo]);
     React.useLayoutEffect(() => {
         if (Object.keys(userInfo).length !== 0) {
-            getOrder(userInfo).then((orderObjArray: any) => {
-                processOrders(orderObjArray);
-            });
+            getObjects();
+            const periodicFetch = setInterval(() => {
+                getObjects();
+            }, userRate);
+            return () => clearInterval(periodicFetch);
         } else {
             setOrdersInfo(cloneDeep(initialStatusObj));
         }
@@ -66,7 +70,7 @@ const Orders = () => {
                     </div>
                     {ordersInfo?.active.length !== 0 && (
                         <>
-                            <div className="text-xl text-green-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-green-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Active Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
@@ -78,7 +82,7 @@ const Orders = () => {
                     )}
                     {ordersInfo?.pending.length !== 0 && (
                         <>
-                            <div className="text-xl text-yellow-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-yellow-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Pending Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
@@ -91,7 +95,7 @@ const Orders = () => {
 
                     {ordersInfo?.declined.length !== 0 && (
                         <>
-                            <div className="text-xl text-red-600 text-left font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-red-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Declined Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">

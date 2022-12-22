@@ -28,7 +28,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                         field: "notifier",
                         payload: !notifier,
                     });
-                }, 1000);
+                }, 500);
             }
         };
         setAcceptCallback(() => callback);

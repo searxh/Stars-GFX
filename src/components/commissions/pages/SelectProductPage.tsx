@@ -24,7 +24,6 @@ const SelectProductPage = () => {
             newSelected[index] = !newSelected[index];
             return newSelected;
         });
-        console.log(selected);
     };
     const handleOnNavigate = (isForward: boolean) => {
         if (selected.find((bool: boolean) => bool) === undefined && isForward) {

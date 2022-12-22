@@ -36,7 +36,6 @@ const NavBar = (props: any) => {
             if (res) {
                 const newRoutes: any = { ...routes, dashboard: "Dashboard" };
                 delete newRoutes.orders;
-                console.log("NEW ROUTES", newRoutes);
                 setRoutes(newRoutes);
             } else {
                 setRoutes(all_routes);

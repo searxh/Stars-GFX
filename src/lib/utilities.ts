@@ -86,13 +86,7 @@ export const checkAdmin = () => {
         const a = sessionStorage.getItem("a");
         if (a !== null) {
             const decrypted = decrypt(JSON.parse(a));
-            console.log(decrypted);
             sha256(decrypted).then((res) => {
-                console.log(
-                    "CHECK ADMIN",
-                    res,
-                    process.env.REACT_APP_ADMIN_KEY
-                );
                 if (res === process.env.REACT_APP_ADMIN_KEY) {
                     resolve(true);
                 } else {
@@ -123,7 +117,6 @@ export const sha256 = async (str: string) => {
 const iv = CryptoJS.lib.WordArray.random(16);
 
 export const encrypt = (str: string) => {
-    console.log("ENCRYPT IV", iv, process.env.REACT_APP_SECRET, str);
     return CryptoJS.AES.encrypt(str, process.env.REACT_APP_SECRET as string, {
         mode: CryptoJS.mode.ECB,
         iv: iv,
@@ -131,7 +124,6 @@ export const encrypt = (str: string) => {
 };
 
 export const decrypt = (str: string) => {
-    console.log("DECRYPT IV", iv, process.env.REACT_APP_SECRET, str);
     return CryptoJS.AES.decrypt(str, process.env.REACT_APP_SECRET as string, {
         mode: CryptoJS.mode.ECB,
         iv: iv,

@@ -51,12 +51,10 @@ export const deleteOrder = (orderID: string, userInfo: any) => {
 
 export const getOrder = async (userInfo: any) => {
     const promise = new Promise((resolve) => {
-        console.log(userInfo.id);
         axios({
             method: "get",
             url: `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders`,
         }).then((res) => {
-            console.log(res.data);
             resolve(
                 res.data.map((orderItem: any) => {
                     return {
@@ -91,7 +89,6 @@ export const getOrderList = async () => {
                 delete temp.user_id;
                 return temp;
             });
-            console.log(ret);
             resolve(ret);
         });
     });
@@ -125,7 +122,6 @@ export const authUser = (pw: string) => {
         axios
             .post(`${process.env.REACT_APP_API_URL}/v2/auth`, { pw: pw })
             .then((res) => {
-                console.log(res);
                 resolve(true);
             })
             .catch((res) => {
@@ -143,7 +139,6 @@ export const updateOwnerStatus = (status: boolean, num: number) => {
             num: num,
         })
         .then((res) => {
-            console.log(res);
             return true;
         })
         .catch((res) => {
@@ -154,14 +149,9 @@ export const updateOwnerStatus = (status: boolean, num: number) => {
 
 export const getOwnerStatus = () => {
     const promise = new Promise((resolve) => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/v2/status`)
-            .then((res) => {
-                resolve(res.data);
-            })
-            .catch((res) => {
-                console.log(res);
-            });
+        axios.get(`${process.env.REACT_APP_API_URL}/v2/status`).catch((res) => {
+            console.log(res);
+        });
     });
     return promise;
 };

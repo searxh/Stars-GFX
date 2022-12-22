@@ -9,18 +9,27 @@ import FormPage from "../components/commissions/pages/FormPage";
 import CompletePage from "../components/commissions/pages/CompletePage";
 import { getOwnerStatus } from "../lib/api";
 import { OwnerStatusType } from "../types";
+import { userRate } from "../lib/default";
 
 const Commissions = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { currentPage } = global_state;
     const [ownerStatus, setOwnerStatus] =
         React.useState<OwnerStatusType | null>(null);
-    React.useEffect(() => {
+    const getObjects = () => {
         getOwnerStatus().then((res) => {
-            console.log(res);
             setOwnerStatus(res as OwnerStatusType);
         });
-    }, []);
+    };
+    React.useEffect(() => {
+        if (currentPage === 0) {
+            getObjects();
+            const periodicFetch = setInterval(() => {
+                getObjects();
+            }, userRate);
+            return () => clearInterval(periodicFetch);
+        }
+    }, [currentPage]);
     return (
         <div
             className="flex flex-col pt-12 w-full min-h-screen h-full

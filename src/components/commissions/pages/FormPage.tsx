@@ -71,9 +71,6 @@ const FormPage = () => {
             });
         }
     };
-    React.useEffect(() => {
-        console.log(projInfo);
-    }, [projInfo]);
     return (
         <div className="text-5xl text-black m-auto w-[60%]">
             <div className="text-5xl my-1 mt-10 drop-shadow-sm font-bold">

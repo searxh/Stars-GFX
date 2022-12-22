@@ -13,7 +13,6 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
     const navigate = useNavigate();
     const { id, created_at, userInfo, price } = orderObj;
     const handleNavigate = () => {
-        console.log(orderObj);
         const stringified = JSON.stringify(orderObj);
         navigate(
             "/dashboard/" +

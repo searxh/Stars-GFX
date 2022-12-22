@@ -1,6 +1,6 @@
 import React from "react";
 import { OrderObj, StatusObjType, OwnerStatusType } from "../../../types";
-import { initialStatusObj } from "../../../lib/default";
+import { adminRate, initialStatusObj } from "../../../lib/default";
 import { cloneDeep } from "lodash";
 import OrderItemAdmin from "../OrderItemAdmin";
 import {
@@ -24,12 +24,9 @@ const OrderPage = () => {
         const filtered = orderObjArray.filter((orderObj) => {
             return checkSet.has(orderObj.id);
         });
-        console.log(filtered, checkSet);
         filtered.forEach((orderObj) => {
-            console.log(orderObj);
             statusObj[orderObj.status].push(orderObj);
         });
-        console.log(statusObj);
         setOrders(statusObj);
     };
     const handleOnSelect = () => {
@@ -54,7 +51,6 @@ const OrderPage = () => {
     const getObjects = () => {
         getOrderList().then((res: any) => processOrders(res));
         getOwnerStatus().then((res) => {
-            console.log(res);
             setOwnerStatus(res as OwnerStatusType);
         });
     };
@@ -67,7 +63,7 @@ const OrderPage = () => {
         getObjects();
         const periodicFetch = setInterval(() => {
             getObjects();
-        }, 10000000);
+        }, adminRate);
         return () => clearInterval(periodicFetch);
     }, [notifier]);
     return (
