@@ -22,11 +22,13 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
         const callback = (decision: boolean) => {
             if (decision) {
                 deleteOrder(id, userInfo);
-                dispatch({
-                    type: "set",
-                    field: "notifier",
-                    payload: !notifier,
-                });
+                setTimeout(() => {
+                    dispatch({
+                        type: "set",
+                        field: "notifier",
+                        payload: !notifier,
+                    });
+                }, 1000);
             }
         };
         setAcceptCallback(() => callback);

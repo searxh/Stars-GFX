@@ -83,6 +83,7 @@ export const initialState: GlobalStateType = {
     userInfo: {},
     notifier: false,
     currentPage: 0,
+    orders: 0,
 };
 
 export const priceInfo: PriceInfoType = {

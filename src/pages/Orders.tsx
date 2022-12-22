@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import OrderItem from "../components/OrderItem";
 import { GlobalContext } from "../states";
@@ -8,9 +9,9 @@ import { cloneDeep } from "lodash";
 import Text from "../components/Text";
 
 const Orders = () => {
-    const [orders, setOrders] = React.useState<StatusObjType>();
-    const { global_state } = React.useContext(GlobalContext);
-    const { userInfo, notifier } = global_state;
+    const [ordersInfo, setOrdersInfo] = React.useState<StatusObjType>();
+    const { global_state, dispatch } = React.useContext(GlobalContext);
+    const { userInfo, notifier, orders } = global_state;
     const processOrders = (orderObjArray: Array<OrderObj>) => {
         const statusObj: StatusObjType = cloneDeep(initialStatusObj);
         const checkSet = new Set(orderObjArray.map((orderObj) => orderObj.id));
@@ -23,15 +24,24 @@ const Orders = () => {
             statusObj[orderObj.status].push(orderObj);
         });
         console.log(statusObj);
-        setOrders(statusObj);
+        setOrdersInfo(statusObj);
     };
+    React.useEffect(() => {
+        if (ordersInfo) {
+            dispatch({
+                type: "set",
+                field: "orders",
+                payload: ordersInfo.pending.length,
+            });
+        }
+    }, [ordersInfo]);
     React.useLayoutEffect(() => {
         if (Object.keys(userInfo).length !== 0) {
-            getOrder(userInfo).then((orderObjArray: any) =>
-                processOrders(orderObjArray)
-            );
+            getOrder(userInfo).then((orderObjArray: any) => {
+                processOrders(orderObjArray);
+            });
         } else {
-            setOrders(cloneDeep(initialStatusObj));
+            setOrdersInfo(cloneDeep(initialStatusObj));
         }
     }, [userInfo, notifier]);
     return (
@@ -39,46 +49,53 @@ const Orders = () => {
             className="flex flex-col pt-12 w-full min-h-screen h-full
         font-nunito bg-neutral-100 text-center"
         >
-            {orders?.active.length !== 0 ||
-            orders?.pending.length !== 0 ||
-            orders?.declined.length !== 0 ? (
+            {ordersInfo?.active.length !== 0 ||
+            ordersInfo?.pending.length !== 0 ||
+            ordersInfo?.declined.length !== 0 ? (
                 <>
-                    <div className="text-3xl text-left font-bold px-5 pt-5 drop-shadow-sm">
+                    <div className="text-3xl text-center font-bold px-5 pt-5 drop-shadow-sm">
                         {userInfo.username + "#" + userInfo.discriminator}'s
                         Orders
                     </div>
-                    {orders?.active.length !== 0 && (
+                    <div
+                        className={`text-xl ${
+                            orders === 3 ? "text-red-500" : "text-green-500"
+                        } font-bold`}
+                    >
+                        ({orders}/3 Pending Orders)
+                    </div>
+                    {ordersInfo?.active.length !== 0 && (
                         <>
-                            <div className="text-xl text-green-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
+                            <div className="text-xl text-green-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Active Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {orders?.active.map((order: OrderObj) => (
+                                {ordersInfo?.active.map((order: OrderObj) => (
                                     <OrderItem orderObj={order} />
                                 ))}
                             </div>
                         </>
                     )}
-                    {orders?.pending.length !== 0 && (
+                    {ordersInfo?.pending.length !== 0 && (
                         <>
-                            <div className="text-xl text-yellow-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
+                            <div className="text-xl text-yellow-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Pending Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {orders?.pending.map((order: OrderObj) => (
+                                {ordersInfo?.pending.map((order: OrderObj) => (
                                     <OrderItem orderObj={order} />
                                 ))}
                             </div>
                         </>
                     )}
 
-                    {orders?.declined.length !== 0 && (
+                    {ordersInfo?.declined.length !== 0 && (
                         <>
-                            <div className="text-xl text-red-600 text-left font-bold px-5 pt-5 drop-shadow-sm border-b">
+                            <div className="text-xl text-red-600 text-left font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Declined Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {orders?.declined.map((order: OrderObj) => (
+                                {ordersInfo?.declined.map((order: OrderObj) => (
                                     <OrderItem orderObj={order} />
                                 ))}
                             </div>

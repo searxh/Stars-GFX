@@ -65,6 +65,7 @@ export interface GlobalStateType extends GlobalStateKeys {
     currentPage: number;
     notifier: boolean;
     userInfo: any;
+    orders: number;
 }
 
 export interface ActionType {

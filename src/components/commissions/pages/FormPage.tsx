@@ -36,7 +36,7 @@ const formData = [
 
 const FormPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { formInfo, projInfo, userInfo, currentPage, notifier } =
+    const { formInfo, projInfo, userInfo, currentPage, notifier, orders } =
         global_state;
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
     const handleSetForm = (index: number, value: string) => {
@@ -47,7 +47,7 @@ const FormPage = () => {
             field: "projInfo",
             payload: newProjInfo,
         });
-        if (newProjInfo[0] && newProjInfo[1]) {
+        if (newProjInfo[0] && newProjInfo[1] && orders < 3) {
             setCanSubmit(true);
         } else {
             setCanSubmit(false);
