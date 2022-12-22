@@ -5,6 +5,7 @@ import { GlobalContext } from "../states";
 import { updateUserInfoFromSession } from "../lib/api";
 import Text from "../components/Text";
 import { encrypt, isSignedIn } from "../lib/utilities";
+import { calculateHash } from "../lib/utilities";
 
 const LoginResult = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -16,10 +17,12 @@ const LoginResult = () => {
         if (a && b) {
             sessionStorage.setItem("a", JSON.stringify(encrypt(a)));
             sessionStorage.setItem("b", JSON.stringify(b));
+            calculateHash(true);
             updateUserInfoFromSession(global_state, dispatch, navigate);
         } else {
             sessionStorage.removeItem("a");
             sessionStorage.removeItem("b");
+            calculateHash(true);
             setTimeout(() => navigate("/"), 1500);
         }
     }, []);

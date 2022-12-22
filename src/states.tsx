@@ -2,10 +2,13 @@ import React from "react";
 import { createContext } from "react";
 import { initialState } from "./lib/default";
 import { GlobalContextType, GlobalStateType, ActionType } from "./types";
+import { calculateHash } from "./lib/utilities";
+import { clientLink } from "./lib/option";
 
 const getSessionData = () => {
     const state = sessionStorage.getItem("st-com-state");
-    if (state === null) {
+    const storedHash = sessionStorage.getItem("check");
+    if (state === null && storedHash === null) {
         save(initialState);
         return initialState;
     } else {
@@ -15,11 +18,21 @@ const getSessionData = () => {
 
 const save = (state: GlobalStateType) => {
     sessionStorage.setItem("st-com-state", JSON.stringify(state));
+    calculateHash(true);
 };
 
 const load = () => {
     const res = JSON.parse(sessionStorage.getItem("st-com-state") as string);
-    return res;
+    const storedHash = JSON.parse(sessionStorage.getItem("check") as string);
+    if (storedHash === calculateHash()) {
+        return res;
+    } else {
+        if (sessionStorage.getItem("a")) sessionStorage.removeItem("a");
+        if (sessionStorage.getItem("b")) sessionStorage.removeItem("b");
+        save(initialState);
+        window.location.href = clientLink;
+        return JSON.parse(sessionStorage.getItem("st-com-state") as string);
+    }
 };
 
 export const GlobalContext = createContext<GlobalContextType>(

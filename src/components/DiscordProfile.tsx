@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUserInfoFromSession } from "../lib/api";
-import { isSignedIn } from "../lib/utilities";
+import { calculateHash, isSignedIn } from "../lib/utilities";
 import { GlobalContext } from "../states";
 
 const DiscordProfile = () => {
@@ -26,6 +26,7 @@ const DiscordProfile = () => {
     const handleOnLogout = () => {
         sessionStorage.removeItem("a");
         sessionStorage.removeItem("b");
+        calculateHash(true);
         updateUserInfoFromSession(global_state, dispatch, navigate);
     };
     return (

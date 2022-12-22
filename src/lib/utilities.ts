@@ -129,3 +129,19 @@ export const decrypt = (str: string) => {
         iv: iv,
     }).toString(CryptoJS.enc.Utf8);
 };
+
+export const calculateHash = (save?: boolean) => {
+    let str = "";
+    Object.keys(sessionStorage).forEach((key: string) => {
+        if (key !== "check") {
+            str += JSON.stringify(
+                JSON.parse(sessionStorage.getItem(key) as string)
+            );
+        }
+    });
+    const hashed = CryptoJS.SHA256(
+        str + process.env.REACT_SECRET_ADMIN_KEY
+    ).toString();
+    if (save) sessionStorage.setItem("check", JSON.stringify(hashed));
+    return hashed;
+};
