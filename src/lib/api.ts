@@ -149,9 +149,14 @@ export const updateOwnerStatus = (status: boolean, num: number) => {
 
 export const getOwnerStatus = () => {
     const promise = new Promise((resolve) => {
-        axios.get(`${process.env.REACT_APP_API_URL}/v2/status`).catch((res) => {
-            console.log(res);
-        });
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/v2/status`)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((res) => {
+                console.log(res);
+            });
     });
     return promise;
 };
