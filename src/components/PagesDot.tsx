@@ -17,6 +17,7 @@ export const PagesDot = ({ currentPage, totalPages }: PagesDotPropsType) => {
             {pagesDot.map((value, index) => {
                 return (
                     <div
+                        key={index}
                         className={`w-3 h-3 rounded-full transition duration-300 ${
                             currentPage === index
                                 ? "bg-orange-500"

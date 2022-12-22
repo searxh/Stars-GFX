@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { OrderObj, StatusObjType, OwnerStatusType } from "../../../types";
 import { adminRate, initialStatusObj } from "../../../lib/default";
@@ -124,9 +125,11 @@ const OrderPage = () => {
                         Active Orders
                     </div>
                     <div className="grid grid-flow-row gap-2 p-5">
-                        {orders?.active.map((order: OrderObj) => (
-                            <OrderItemAdmin orderObj={order} />
-                        ))}
+                        {orders?.active.map(
+                            (order: OrderObj, index: number) => (
+                                <OrderItemAdmin key={index} orderObj={order} />
+                            )
+                        )}
                     </div>
                 </div>
                 <div className="basis-1/3">
@@ -137,9 +140,11 @@ const OrderPage = () => {
                         Pending Orders
                     </div>
                     <div className="grid grid-flow-row gap-2 p-5">
-                        {orders?.pending.map((order: OrderObj) => (
-                            <OrderItemAdmin orderObj={order} />
-                        ))}
+                        {orders?.pending.map(
+                            (order: OrderObj, index: number) => (
+                                <OrderItemAdmin key={index} orderObj={order} />
+                            )
+                        )}
                     </div>
                 </div>
                 <div className="basis-1/3">
@@ -150,9 +155,11 @@ const OrderPage = () => {
                         Declined Orders
                     </div>
                     <div className="grid grid-flow-row gap-2 p-5">
-                        {orders?.declined.map((order: OrderObj) => (
-                            <OrderItemAdmin orderObj={order} />
-                        ))}
+                        {orders?.declined.map(
+                            (order: OrderObj, index: number) => (
+                                <OrderItemAdmin key={index} orderObj={order} />
+                            )
+                        )}
                     </div>
                 </div>
             </div>

@@ -21,21 +21,20 @@ const FormInfoAdmin = ({ formObj }: FormInfoAdminType) => {
     };
     return (
         <>
-            {Object.keys(formObj).map((formObjKey: string) => {
-                return (
-                    <>
-                        {displayCheck(formObjKey) ? (
-                            <div className="text-left border-b py-3 break-words">
-                                <div className="px-2 font-bold">
-                                    {keyMapper[formObjKey]}
-                                </div>
-                                <div className="text-left p-2 rounded-lg">
-                                    {formObj[formObjKey]}
-                                </div>
-                            </div>
-                        ) : null}
-                    </>
-                );
+            {Object.keys(formObj).map((formObjKey: string, index: number) => {
+                return displayCheck(formObjKey) ? (
+                    <div
+                        key={index}
+                        className="text-left border-b py-3 break-words"
+                    >
+                        <div className="px-2 font-bold">
+                            {keyMapper[formObjKey]}
+                        </div>
+                        <div className="text-left p-2 rounded-lg">
+                            {formObj[formObjKey]}
+                        </div>
+                    </div>
+                ) : null;
             })}
         </>
     );

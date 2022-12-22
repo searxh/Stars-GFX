@@ -80,6 +80,7 @@ const FormPage = () => {
                 {formData.map((formDataObj, index: number) => {
                     return (
                         <Input
+                            key={index}
                             title={formDataObj.title}
                             required={formDataObj.required}
                             value={projInfo[index]}

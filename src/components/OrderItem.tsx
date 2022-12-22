@@ -65,9 +65,12 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                     <div>Additional Files</div>
                     <div>Amount</div>
                 </div>
-                {orderInfo.map((order: OrderType) => {
+                {orderInfo.map((order: OrderType, index: number) => {
                     return (
-                        <div className="grid grid-cols-5 border-b py-1">
+                        <div
+                            key={index}
+                            className="grid grid-cols-5 border-b py-1"
+                        >
                             <div
                                 className={`${getProductColor(
                                     order.orderType

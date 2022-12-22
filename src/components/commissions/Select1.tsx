@@ -38,6 +38,7 @@ const Select1 = ({
                     ) => {
                         return (
                             <button
+                                key={index}
                                 onClick={() => handleOnClick(index)}
                                 className={`flex-1 rounded-3xl text-white shadow-md
                             py-2 px-3 text-xl m-1 hover:scale-105 duration-500 transition

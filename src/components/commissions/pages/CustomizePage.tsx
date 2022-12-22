@@ -28,9 +28,12 @@ const CustomizePage = () => {
     return (
         <div className="text-5xl text-black m-auto font-bold w-full">
             <div className="py-2 drop-shadow-sm">Customize</div>
-            {Object.keys(formInfo).map((formInfoKey: string) => {
+            {Object.keys(formInfo).map((formInfoKey: string, index: number) => {
                 return (
-                    <div className="text-3xl p-5 w-[60%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md">
+                    <div
+                        key={index}
+                        className="text-3xl p-5 w-[60%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md"
+                    >
                         <ProductSelect currentProduct={formInfoKey} />
                     </div>
                 );

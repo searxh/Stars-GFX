@@ -66,9 +66,10 @@ const NavBar = (props: any) => {
                 </div>
             </button>
             <div className="relative flex min-w-[30rem]">
-                {Object.keys(routes).map((route: string) => {
+                {Object.keys(routes).map((route: string, index: number) => {
                     return (
                         <button
+                            key={index}
                             onClick={() => handleChangeRoute(route)}
                             className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10 
                             h-full transition duration-500 font-normal hover:shadow-md rounded-sm"

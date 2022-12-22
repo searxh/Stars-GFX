@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { GlobalContext } from "../../../states";
 import { productChoices, initialProductInfo } from "../../../lib/default";
@@ -85,6 +86,7 @@ const SelectProductPage = () => {
                     ) => {
                         return (
                             <button
+                                key={index}
                                 onClick={() => handleOnSelect(index)}
                                 className={`flex-1 rounded-2xl duration-500 ${
                                     gridConfig[index].row

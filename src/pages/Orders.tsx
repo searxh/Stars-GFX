@@ -74,9 +74,14 @@ const Orders = () => {
                                 Active Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {ordersInfo?.active.map((order: OrderObj) => (
-                                    <OrderItem orderObj={order} />
-                                ))}
+                                {ordersInfo?.active.map(
+                                    (order: OrderObj, index: number) => (
+                                        <OrderItem
+                                            key={index}
+                                            orderObj={order}
+                                        />
+                                    )
+                                )}
                             </div>
                         </>
                     )}
@@ -86,9 +91,14 @@ const Orders = () => {
                                 Pending Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {ordersInfo?.pending.map((order: OrderObj) => (
-                                    <OrderItem orderObj={order} />
-                                ))}
+                                {ordersInfo?.pending.map(
+                                    (order: OrderObj, index: number) => (
+                                        <OrderItem
+                                            key={index}
+                                            orderObj={order}
+                                        />
+                                    )
+                                )}
                             </div>
                         </>
                     )}
@@ -99,9 +109,14 @@ const Orders = () => {
                                 Declined Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
-                                {ordersInfo?.declined.map((order: OrderObj) => (
-                                    <OrderItem orderObj={order} />
-                                ))}
+                                {ordersInfo?.declined.map(
+                                    (order: OrderObj, index: number) => (
+                                        <OrderItem
+                                            key={index}
+                                            orderObj={order}
+                                        />
+                                    )
+                                )}
                             </div>
                         </>
                     )}

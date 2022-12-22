@@ -110,23 +110,28 @@ const InfoPage = () => {
                             <div>Additional Files</div>
                             <div>Amount</div>
                         </div>
-                        {order.orderInfo.map((order: OrderType) => {
-                            return (
-                                <div className="grid grid-cols-5 border-b py-1">
+                        {order.orderInfo.map(
+                            (order: OrderType, index: number) => {
+                                return (
                                     <div
-                                        className={`${getProductColor(
-                                            order.orderType
-                                        )} rounded-full text-white shadow-md`}
+                                        key={index}
+                                        className="grid grid-cols-5 border-b py-1"
                                     >
-                                        {order.orderType.toLocaleUpperCase()}
+                                        <div
+                                            className={`${getProductColor(
+                                                order.orderType
+                                            )} rounded-full text-white shadow-md`}
+                                        >
+                                            {order.orderType.toLocaleUpperCase()}
+                                        </div>
+                                        <div>{order.resolution}</div>
+                                        <div>{order.modelLimit}</div>
+                                        <div>{order.additional}</div>
+                                        <div>{order.number}</div>
                                     </div>
-                                    <div>{order.resolution}</div>
-                                    <div>{order.modelLimit}</div>
-                                    <div>{order.additional}</div>
-                                    <div>{order.number}</div>
-                                </div>
-                            );
-                        })}
+                                );
+                            }
+                        )}
                     </div>
                 </div>
                 <div className="flex flex-col basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
