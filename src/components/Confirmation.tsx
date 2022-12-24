@@ -37,7 +37,7 @@ export const Confirmation = ({
     return trigger || transition ? (
         <div
             className={`${
-                transitionLogic() ? "opacity-100 backdrop-blur-sm" : "opacity-0"
+                transitionLogic() ? "opacity-100 backdrop-blur-lg" : "opacity-0"
             } fixed w-screen h-screen bg-black z-50
             bg-opacity-50 transition duration-300`}
         >

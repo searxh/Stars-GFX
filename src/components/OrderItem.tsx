@@ -58,7 +58,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 <div className="my-auto">PRICE: ${price}</div>
             </div>
             <div className="my-auto p-3 drop-shadow-sm">
-                <div className="grid grid-cols-5 font-bold border-b border-black py-1">
+                <div className="grid grid-cols-5 font-semibold border-b border-black py-1">
                     <div>Product Type</div>
                     <div>Resolution</div>
                     <div>Model Limit</div>

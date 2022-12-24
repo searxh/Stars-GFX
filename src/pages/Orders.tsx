@@ -57,20 +57,19 @@ const Orders = () => {
             ordersInfo?.pending.length !== 0 ||
             ordersInfo?.declined.length !== 0 ? (
                 <>
-                    <div className="text-3xl text-center font-bold px-5 pt-5 drop-shadow-sm">
-                        {userInfo.username + "#" + userInfo.discriminator}'s
-                        Orders
+                    <div className="text-4xl text-center font-bold px-5 pt-5 drop-shadow-sm">
+                        {userInfo.username + "#" + userInfo.discriminator}
                     </div>
                     <div
                         className={`text-xl ${
-                            orders === 3 ? "text-red-500" : "text-green-500"
-                        } font-bold`}
+                            orders === 3 ? "text-red-600" : "text-green-600"
+                        } font-semibold`}
                     >
                         ({orders}/3 Pending Orders)
                     </div>
                     {ordersInfo?.active.length !== 0 && (
                         <>
-                            <div className="text-2xl text-green-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-green-600 text-center font-semibold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Active Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
@@ -87,7 +86,7 @@ const Orders = () => {
                     )}
                     {ordersInfo?.pending.length !== 0 && (
                         <>
-                            <div className="text-2xl text-yellow-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-yellow-600 text-center font-semibold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Pending Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">
@@ -105,7 +104,7 @@ const Orders = () => {
 
                     {ordersInfo?.declined.length !== 0 && (
                         <>
-                            <div className="text-2xl text-red-600 text-center font-bold px-5 pt-5 mt-5 drop-shadow-sm border-t">
+                            <div className="text-2xl text-red-600 text-center font-semibold px-5 pt-5 mt-5 drop-shadow-sm border-t">
                                 Declined Orders
                             </div>
                             <div className="grid grid-flow-row gap-2 p-5">

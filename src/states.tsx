@@ -85,7 +85,7 @@ export function GlobalStateProvider({
                 dispatch: dispatch,
             }}
         >
-            {children}
+            <div className="select-none">{children}</div>
         </GlobalContext.Provider>
     );
 }
