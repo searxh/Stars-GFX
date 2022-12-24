@@ -21,7 +21,14 @@ module.exports = {
       fontFamily:{
         'nunito':'Nunito Sans',
       },
+      keyframes:{
+        doubletap:{
+          '0%, 30%, 40%, 50%, 100%': { transform: 'scale(1)', opacity: 0 },
+          '35%, 45%': { transform: 'scale(2)', opacity: 1 },
+        }
+      },
       animation:{
+        'double-tap': 'doubletap 4s ease-in-out infinite',
         'pulse-slow': 'pulse 5s ease-in-out infinite',
         'spin-slow': 'spin 50s infinite',
         'pulse-ultra-slow': 'pulse 20s ease-in-out infinite'
