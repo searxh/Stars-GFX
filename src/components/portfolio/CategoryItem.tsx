@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Dispatch, SetStateAction } from "react";
+import { projects } from "../../lib/portfolio";
 
 interface CategoryItemPropsType {
     src: string;
     size: string;
     name?: string;
     desc?: string;
+    arr?: Array<string>;
     maxNameLength?: number;
     setItemWidth: Dispatch<SetStateAction<number>>;
     setInfo: Dispatch<SetStateAction<any>>;
@@ -18,6 +21,7 @@ const CategoryItem = ({
     maxNameLength,
     setItemWidth,
     setInfo,
+    arr,
 }: CategoryItemPropsType) => {
     const getName = (name: string | undefined) => {
         if (name && maxNameLength && name.length > maxNameLength) {
@@ -35,17 +39,21 @@ const CategoryItem = ({
             src: src,
             name: name,
             desc: desc,
+            isProject: projects.map((proj: any) => proj.name).includes(name)
+                ? true
+                : undefined,
+            arr: arr,
         });
     };
     React.useEffect(() => {
-        if (ref.current) {
+        if (ref.current && ref.current.offsetWidth) {
             setItemWidth(ref.current.offsetWidth);
         }
     }, [ref.current]);
     return (
         <button
             onDoubleClick={handleOnClick}
-            className="relative shrink-0 mx-[12px] my-auto transition duration-300 hover:scale-105"
+            className="relative shrink-0 mx-[12px] my-auto transform-gpu duration-300 hover:scale-105"
         >
             <div
                 className="flex absolute top-8 bottom-0 right-0 left-0 w-full h-full z-20 opacity-0 

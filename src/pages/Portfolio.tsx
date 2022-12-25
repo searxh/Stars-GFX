@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Category from "../components/portfolio/Category";
-import StandardCard from "../components/portfolio/StandardCard";
+import ItemWindow from "../components/portfolio/ItemWindow";
 import { portfolio } from "../lib/portfolio";
 
 const Portfolio = () => {
@@ -17,7 +17,7 @@ const Portfolio = () => {
             className="relative flex flex-col py-12 w-full min-h-screen h-full
             font-nunito bg-neutral-100 text-center"
         >
-            <StandardCard
+            <ItemWindow
                 src={info.src}
                 name={info.name}
                 desc={info.desc}
