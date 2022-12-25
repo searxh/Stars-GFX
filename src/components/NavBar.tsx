@@ -13,6 +13,7 @@ const NavBar = (props: any) => {
     const [routes, setRoutes] = React.useState<{ [key: string]: string }>(
         all_routes
     );
+    const [isTop, setIsTop] = React.useState<boolean>(false);
     const location = useLocation();
     const navigate = useNavigate();
     const getLocationIndex = () => {
@@ -47,10 +48,29 @@ const NavBar = (props: any) => {
         setLocationIndex(getLocationIndex());
         updateUserInfoFromSession(global_state, dispatch, navigate, true);
     }, [location.pathname, routes]);
+    React.useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY === 0) {
+                setIsTop(true);
+            } else {
+                setIsTop(false);
+            }
+        });
+        return () =>
+            window.removeEventListener("scroll", () => {
+                if (window.scrollY === 0) {
+                    setIsTop(true);
+                } else {
+                    setIsTop(false);
+                }
+            });
+    }, []);
     return (
         <div
-            className="fixed top-0 flex w-full h-12 backdrop-blur-sm bg-opacity-70 bg-white
-             font-nunito shadow-md text-black z-10 justify-evenly"
+            className={`fixed top-0 flex w-full h-12 backdrop-blur-lg bg-opacity-70
+             font-nunito ${
+                 isTop ? "bg-transparent" : "bg-white shadow-md"
+             } text-black z-10 justify-evenly transition duration-300`}
         >
             <button
                 onClick={handleOnClick}
@@ -72,7 +92,7 @@ const NavBar = (props: any) => {
                         <button
                             key={index}
                             onClick={() => handleChangeRoute(route)}
-                            className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10 
+                            className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10
                             h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
                         >
                             {routes[route]}
@@ -80,7 +100,7 @@ const NavBar = (props: any) => {
                     );
                 })}
                 <div
-                    className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300
+                    className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out
                 ${
                     locationIndex === 0
                         ? "translate-x-[0%]"
