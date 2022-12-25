@@ -33,7 +33,7 @@ const Commissions = () => {
     }, [currentPage]);
     return (
         <div
-            className="flex flex-col py-12 w-full min-h-screen h-full
+            className="relative flex flex-col py-12 w-full min-h-screen h-full
             font-nunito bg-neutral-100 text-center"
         >
             {currentPage === 0 ? (
@@ -47,7 +47,7 @@ const Commissions = () => {
                                 ownerStatus.status
                                     ? "text-green-500"
                                     : "text-red-500"
-                            } text-lg font-bold`}
+                            } text-lg font-semibold`}
                         >
                             {ownerStatus.status
                                 ? `Star is currently open for commissions (${ownerStatus.num}/3)`

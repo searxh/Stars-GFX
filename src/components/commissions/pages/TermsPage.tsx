@@ -22,7 +22,7 @@ const TermsPage = () => {
                 They are there to help prevent conflicts between both the client
                 and the designer
             </div>
-            <div className="text-xl my-8 drop-shadow-sm w-[70%] m-auto text-left">
+            <div className="text-lg my-8 drop-shadow-sm w-[80%] m-auto text-left">
                 1. Upfront payment must be included for queueing.
                 <br />
                 2. Refunding cannot be done once purchased.
@@ -33,6 +33,8 @@ const TermsPage = () => {
                 4. There can be no further edits on the final works when given,
                 i.e, removing watermarks, editing the contrast, saturation of
                 the image and etc.
+                <br />
+                5. Ordering during closed commission will result in a waitlist
             </div>
             <div className="flex justify-evenly">
                 <button
