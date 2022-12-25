@@ -55,7 +55,7 @@ const NavBar = (props: any) => {
             <button
                 onClick={handleOnClick}
                 className="w-fit flex justify-center hover:scale-110 
-                duration-500 transition"
+                duration-500 transform-gpu"
             >
                 <img
                     className="w-8 h-8 m-2"
@@ -80,7 +80,7 @@ const NavBar = (props: any) => {
                     );
                 })}
                 <div
-                    className={`absolute bg-black h-0.5 bottom-0 rounded-full transition duration-300
+                    className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300
                 ${
                     locationIndex === 0
                         ? "translate-x-[0%]"

@@ -61,7 +61,7 @@ const DiscordProfile = () => {
                 <button
                     onClick={handleOnLogin}
                     className="group/discord flex p-0.5 m-1 mx-2 rounded-full hover:scale-105
-                    bg-indigo-400 shadow-md w-fit max-w-[12rem] duration-300 transition text-white"
+                    bg-indigo-400 shadow-md w-fit max-w-[12rem] duration-300 transform-gpu text-white"
                 >
                     <img
                         className="h-full rounded-full invert p-1"

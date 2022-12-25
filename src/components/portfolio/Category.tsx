@@ -30,7 +30,7 @@ const Category = ({
                 const cb = (timestamp: number) => {
                     const elapsedTime = timestamp - startTime;
                     setLockPos(x);
-                    if (elapsedTime < 100) {
+                    if (elapsedTime < 300) {
                         requestAnimationFrame(cb);
                     }
                 };
@@ -76,7 +76,7 @@ const Category = ({
                             ? `translateX(${calculatedOffset}px)`
                             : "",
                     }}
-                    className="absolute w-full p-5 flex transition-transform ease-linear"
+                    className="absolute w-full p-5 flex transform-gpu ease-linear"
                 >
                     {list.map((listItem: any) => {
                         return (
@@ -85,6 +85,7 @@ const Category = ({
                                 size={size}
                                 name={listItem.name}
                                 desc={listItem.desc}
+                                arr={listItem.arr}
                                 maxNameLength={maxNameLength}
                                 setItemWidth={setItemWidth}
                                 setInfo={setInfo}

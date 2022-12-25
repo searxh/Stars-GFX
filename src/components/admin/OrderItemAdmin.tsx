@@ -26,7 +26,7 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
         <button
             onClick={handleNavigate}
             className="relative flex flex-col rounded-lg border-2
-            shadow-md hover:scale-[102%] transition duration-300 w-full"
+            shadow-md hover:scale-[102%] transform-gpu duration-300 w-full"
         >
             <div
                 className={`justify-evenly shadow-md bg-gradient-to-r w-full

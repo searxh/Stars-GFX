@@ -35,7 +35,7 @@ const Select = ({
                     className="text-2xl"
                 >
                     <svg
-                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transition fill-neutral-500"
+                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
                     >
@@ -50,7 +50,7 @@ const Select = ({
                     className="text-2xl"
                 >
                     <svg
-                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transition fill-neutral-500"
+                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
                     >

@@ -91,7 +91,7 @@ const SelectProductPage = () => {
                                 className={`flex-1 rounded-2xl duration-500 ${
                                     gridConfig[index].row
                                 } ${gridConfig[index].col}
-                                text-white py-5 text-2xl hover:scale-[102%] transition shadow-md ${
+                                text-white py-5 text-2xl hover:scale-[102%] transform-gpu shadow-md ${
                                     selected[index]
                                         ? "opacity-100"
                                         : "opacity-50"
@@ -107,14 +107,14 @@ const SelectProductPage = () => {
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Back
                 </button>
                 <button
                     onClick={() => handleOnNavigate(true)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Next
                 </button>
