@@ -20,7 +20,7 @@ const ItemWindow = ({
     return (
         <div
             className={`fixed flex flex-col w-screen h-screen top-0 bottom-0 left-0 right-0 
-            bg-opacity-60 bg-white select-none backdrop-blur-lg ${
+            bg-opacity-60 bg-neutral-100 select-none backdrop-blur-xl ${
                 src.length !== 0
                     ? "scale-100 opacity-100 z-50"
                     : "scale-0 -z-10 opacity-0"
@@ -56,35 +56,36 @@ const ItemWindow = ({
                     />
                 ) : null}
                 {desc ? (
-                    <div className="w-full text-base p-5 pt-0 font-semibold m-auto">
-                        {desc}
-                    </div>
+                    <div className="w-full text-lg p-6 m-auto">{desc}</div>
                 ) : (
                     <div className="m-auto" />
                 )}
-                {arr?.map((arrItem: string) => {
-                    if (arrItem.includes("//media"))
+                {arr?.map((arrItem: any) => {
+                    const { content, className } = arrItem;
+                    if (content.includes("//media")) {
                         return (
                             <img
-                                className="max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5"
-                                src={arrItem}
+                                className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5`}
+                                src={content}
                                 draggable={false}
                                 alt=""
                             />
                         );
-                    else if (arrItem.includes("https://")) {
+                    } else if (content.includes("https://")) {
                         return (
                             <a
-                                href={arrItem}
-                                className="text-blue-500 text-base px-12 py-3"
+                                href={content}
+                                className={`${className} text-blue-500 text-lg px-12 py-3`}
                             >
-                                {arrItem}
+                                {content}
                             </a>
                         );
                     } else {
                         return (
-                            <div className=" text-left text-base px-12 py-3">
-                                {arrItem}
+                            <div
+                                className={`${className} text-left text-lg px-12 py-3`}
+                            >
+                                {content}
                             </div>
                         );
                     }

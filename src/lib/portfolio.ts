@@ -243,17 +243,47 @@ export const projects = [
         name: "Inner Soul",
         src: "https://media.discordapp.net/attachments/274862970587316224/1055839290447368223/Thumbnail5.png?width=1830&height=1029",
         arr: [
-            "https://www.roblox.com/games/9034033218/Inner-Soul-Showcase",
-            "Description",
-            "The thing about the beach is that it has 2 sides:  The Ocean and the Land. You’re standing at the shore making the decision. With that said, if you walk towards the ocean, you might be drowned, if you walk towards to forest, you might get lost. Therefore, Shore is the safest place to be at.",
-            "With that applied, it eventually became my Inner soul of how I overthinking things, Worrying too much, and not letting go. It illustrates through a form of experience where you can walk around in the Metaverse and explore my “Inner soul.” The project is hosted on the Roblox platform.",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839288375377930/icon.png?width=1030&height=1030",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839288740286475/Thumbnail-1.png?width=1830&height=1029",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839289147146260/Thumbnail2.png?width=1830&height=1029",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839289545592892/Thumbnail3.png?width=1830&height=1029",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839289981796362/Thumbnail4.png?width=1830&height=1029",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839290447368223/Thumbnail5.png?width=1830&height=1029",
-            "https://media.discordapp.net/attachments/274862970587316224/1055839290829045770/Thumbnail6.png?width=1830&height=1029",
+            {
+                content:
+                    "https://www.roblox.com/games/9034033218/Inner-Soul-Showcase",
+            },
+            { content: "Description", className: "font-bold" },
+            {
+                content:
+                    "The thing about the beach is that it has 2 sides:  The Ocean and the Land. You’re standing at the shore making the decision. With that said, if you walk towards the ocean, you might be drowned, if you walk towards to forest, you might get lost. Therefore, Shore is the safest place to be at.",
+            },
+            {
+                content:
+                    "With that applied, it eventually became my Inner soul of how I overthinking things, Worrying too much, and not letting go. It illustrates through a form of experience where you can walk around in the Metaverse and explore my “Inner soul.” The project is hosted on the Roblox platform.",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839288375377930/icon.png?width=1030&height=1030",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839288740286475/Thumbnail-1.png?width=1830&height=1029",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839289147146260/Thumbnail2.png?width=1830&height=1029",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839289545592892/Thumbnail3.png?width=1830&height=1029",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839289981796362/Thumbnail4.png?width=1830&height=1029",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839290447368223/Thumbnail5.png?width=1830&height=1029",
+            },
+            {
+                content:
+                    "https://media.discordapp.net/attachments/274862970587316224/1055839290829045770/Thumbnail6.png?width=1830&height=1029",
+            },
         ],
     },
     {

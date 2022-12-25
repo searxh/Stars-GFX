@@ -29,7 +29,7 @@ const Orders = () => {
             processOrders(orderObjArray);
         });
     };
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         if (ordersInfo) {
             dispatch({
                 type: "set",
