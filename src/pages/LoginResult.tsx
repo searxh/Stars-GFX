@@ -7,6 +7,7 @@ import Text from "../components/Text";
 import { encrypt, isSignedIn } from "../lib/utilities";
 import { calculateHash } from "../lib/utilities";
 import Cookies from "js-cookie";
+import Footer from "../components/Footer";
 
 const LoginResult = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -34,7 +35,7 @@ const LoginResult = () => {
     }, []);
     return (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
+            className="flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
          bg-neutral-100 brightness-110"
         >
             {isSignedIn() ? (
@@ -45,6 +46,7 @@ const LoginResult = () => {
             ) : (
                 <Text text="Oops! Failed to authorize" color="text-red-600" />
             )}
+            <Footer />
         </div>
     );
 };

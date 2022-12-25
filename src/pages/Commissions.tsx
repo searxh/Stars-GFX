@@ -10,6 +10,7 @@ import CompletePage from "../components/commissions/pages/CompletePage";
 import { getOwnerStatus } from "../lib/api";
 import { OwnerStatusType } from "../types";
 import { userRate } from "../lib/default";
+import Footer from "../components/Footer";
 
 const Commissions = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -32,7 +33,7 @@ const Commissions = () => {
     }, [currentPage]);
     return (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full
+            className="flex flex-col py-12 w-full min-h-screen h-full
             font-nunito bg-neutral-100 text-center"
         >
             {currentPage === 0 ? (
@@ -89,6 +90,7 @@ const Commissions = () => {
                     <PagesDot currentPage={currentPage} totalPages={5} />
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

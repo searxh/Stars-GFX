@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import { authUser } from "../lib/api";
 
 const Dashboard = () => {
@@ -25,7 +26,7 @@ const Dashboard = () => {
     }, [kick]);
     return !lock ? (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full
+            className="flex flex-col py-12 w-full min-h-screen h-full
             font-nunito bg-neutral-100 text-center"
         >
             <Outlet />
@@ -52,6 +53,7 @@ const Dashboard = () => {
                     Submit
                 </button>
             </form>
+            <Footer />
         </div>
     );
 };

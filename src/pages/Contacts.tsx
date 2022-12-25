@@ -1,21 +1,22 @@
 import React from "react";
 import ContactButton from "../components/ContactButton";
+import Footer from "../components/Footer";
 
 const Contacts = () => {
     return (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full text-white font-nunito 
+            className="flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
 			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
-                className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md hover:scale-105 duration-500 transition"
+                className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
                 src="images/star.png"
                 alt=""
             />
             <div className="text-white text-3xl font-nunito font-bold drop-shadow-md text-center my-2">
                 Find me on:
             </div>
-            <div className="grid grid-flow-col py-5 overflow-x-scroll whitespace-nowrap cursor-grab">
+            <div className="grid grid-flow-col py-5 overflow-x-scroll whitespace-nowrap">
                 <ContactButton
                     text="Twitter"
                     imageUrl="/images/contacts_logo/twitter.png"
@@ -70,6 +71,7 @@ const Contacts = () => {
                 src="images/logo.png"
                 alt=""
             />
+            <Footer />
         </div>
     );
 };

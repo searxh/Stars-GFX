@@ -7,6 +7,7 @@ import { getOrder } from "../lib/api";
 import { initialStatusObj, userRate } from "../lib/default";
 import { cloneDeep } from "lodash";
 import Text from "../components/Text";
+import Footer from "../components/Footer";
 
 const Orders = () => {
     const [ordersInfo, setOrdersInfo] = React.useState<StatusObjType>();
@@ -50,7 +51,7 @@ const Orders = () => {
     }, [userInfo, notifier]);
     return (
         <div
-            className="flex flex-col pt-12 w-full min-h-screen h-full
+            className="flex flex-col py-12 w-full min-h-screen h-full
         font-nunito bg-neutral-100 text-center"
         >
             {ordersInfo?.active.length !== 0 ||
@@ -126,6 +127,7 @@ const Orders = () => {
                     color="text-black"
                 />
             )}
+            <Footer />
         </div>
     );
 };
