@@ -1,5 +1,16 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface ProjectArrItemTypes {
+    content: string | number;
+    className?: string;
+}
+export interface ListItemTypes {
+    name?: string;
+    desc?: string;
+    src?: string;
+    arr?: Array<ProjectArrItemTypes>;
+    isProject?: boolean;
+}
 export interface OrderObj {
     id: string;
     comment: string;
