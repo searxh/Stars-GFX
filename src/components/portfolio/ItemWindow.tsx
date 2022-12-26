@@ -1,27 +1,27 @@
 import React from "react";
+import { portfolio } from "../../lib/portfolio";
+import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 
 interface StandardCardPropsType {
-    src: string;
-    name?: string;
-    desc?: string;
-    isProject?: boolean;
-    arr?: Array<string>;
+    listItem: ListItemTypes;
     callback: Function;
 }
 
-const ItemWindow = ({
-    src,
-    callback,
-    name,
-    desc,
-    isProject,
-    arr,
-}: StandardCardPropsType) => {
+const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
+    const { arr, desc, name, src, isProject } = listItem;
+    const getSrc = (content: number) => {
+        const dir = "/images/portfolio/";
+        const type = ".webp";
+        const id =
+            portfolio[2].length -
+            portfolio[2].findIndex((projItem: any) => projItem.name === name);
+        return dir + "c" + id + "_" + content + type;
+    };
     return (
         <div
             className={`fixed flex flex-col w-screen h-screen top-0 bottom-0 left-0 right-0 
             bg-opacity-60 bg-neutral-100 select-none backdrop-blur-xl ${
-                src.length !== 0
+                src?.length !== 0
                     ? "scale-100 opacity-100 z-50"
                     : "scale-0 -z-10 opacity-0"
             } transform-gpu duration-300 rounded-xl`}
@@ -60,13 +60,14 @@ const ItemWindow = ({
                 ) : (
                     <div className="m-auto" />
                 )}
-                {arr?.map((arrItem: any) => {
+                {arr?.map((arrItem: ProjectArrItemTypes, index: number) => {
                     const { content, className } = arrItem;
-                    if (content.includes("//media")) {
+                    if (typeof content === "number") {
                         return (
                             <img
+                                key={index}
                                 className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5`}
-                                src={content}
+                                src={getSrc(content)}
                                 draggable={false}
                                 alt=""
                             />
@@ -74,6 +75,7 @@ const ItemWindow = ({
                     } else if (content.includes("https://")) {
                         return (
                             <a
+                                key={index}
                                 href={content}
                                 className={`${className} text-blue-500 text-lg px-12 py-3`}
                             >
@@ -83,6 +85,7 @@ const ItemWindow = ({
                     } else {
                         return (
                             <div
+                                key={index}
                                 className={`${className} text-left text-lg px-12 py-3`}
                             >
                                 {content}

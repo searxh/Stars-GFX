@@ -78,14 +78,14 @@ const Category = ({
                     }}
                     className="absolute w-full p-5 flex transform-gpu ease-linear"
                 >
-                    {list.map((listItem: any) => {
+                    {list.map((listItem: any, index: number) => {
                         return (
                             <CategoryItem
-                                src={listItem.src}
+                                key={index}
+                                listItem={listItem}
+                                index={index}
+                                category={title}
                                 size={size}
-                                name={listItem.name}
-                                desc={listItem.desc}
-                                arr={listItem.arr}
                                 maxNameLength={maxNameLength}
                                 setItemWidth={setItemWidth}
                                 setInfo={setInfo}

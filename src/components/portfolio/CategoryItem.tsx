@@ -1,28 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Dispatch, SetStateAction } from "react";
-import { projects } from "../../lib/portfolio";
+import { projects, portfolio } from "../../lib/portfolio";
+import { ListItemTypes } from "../../types";
 
 interface CategoryItemPropsType {
-    src: string;
+    listItem: any;
+    category: string;
     size: string;
-    name?: string;
-    desc?: string;
-    arr?: Array<string>;
+    index: number;
     maxNameLength?: number;
     setItemWidth: Dispatch<SetStateAction<number>>;
     setInfo: Dispatch<SetStateAction<any>>;
 }
 
+const keyMapper: { [key: string]: number } = {
+    "Roblox GFX": 0,
+    "Graphics & Art": 1,
+    Projects: 2,
+    Photography: 3,
+};
+
 const CategoryItem = ({
-    src,
+    listItem,
+    category,
     size,
-    name,
-    desc,
+    index,
     maxNameLength,
     setItemWidth,
     setInfo,
-    arr,
 }: CategoryItemPropsType) => {
+    const { name, desc, arr } = listItem;
     const getName = (name: string | undefined) => {
         if (name && maxNameLength && name.length > maxNameLength) {
             return name.slice(0, maxNameLength - 1) + "..";
@@ -34,12 +41,24 @@ const CategoryItem = ({
     };
     const [displayName] = React.useState<string>(getName(name));
     const ref = React.useRef<any>(null);
+    const getSrc = () => {
+        const dir = "/images/portfolio/";
+        const type = ".webp";
+        return (
+            dir +
+            String.fromCharCode(97 + keyMapper[category]) +
+            (portfolio[keyMapper[category]].length - index) +
+            type
+        );
+    };
     const handleOnClick = () => {
         setInfo({
-            src: src,
+            src: getSrc(),
             name: name,
             desc: desc,
-            isProject: projects.map((proj: any) => proj.name).includes(name)
+            isProject: projects
+                .map((proj: ListItemTypes) => proj.name)
+                .includes(name)
                 ? true
                 : undefined,
             arr: arr,
@@ -69,7 +88,7 @@ const CategoryItem = ({
             <img
                 ref={ref}
                 className={`${size} object-cover object-center rounded-xl drop-shadow-md`}
-                src={src}
+                src={getSrc()}
                 draggable={false}
                 alt=""
             />

@@ -18,11 +18,7 @@ const Portfolio = () => {
             font-nunito bg-neutral-100 text-center"
         >
             <ItemWindow
-                src={info.src}
-                name={info.name}
-                desc={info.desc}
-                arr={info.arr}
-                isProject={info.isProject}
+                listItem={info}
                 callback={() => {
                     setInfo({
                         src: "",
@@ -35,26 +31,26 @@ const Portfolio = () => {
             />
             <Category
                 title="Roblox GFX"
-                list={portfolio.gfx}
+                list={portfolio[0]}
                 size="h-[224px]"
                 setInfo={setInfo}
             />
             <Category
                 title="Graphics & Art"
-                list={portfolio.art}
+                list={portfolio[1]}
                 size="w-[192px] h-[192px]"
                 maxNameLength={21}
                 setInfo={setInfo}
             />
             <Category
                 title="Projects"
-                list={portfolio.projects}
+                list={portfolio[2]}
                 size="h-[224px]"
                 setInfo={setInfo}
             />
             <Category
                 title="Photography"
-                list={portfolio.photos}
+                list={portfolio[3]}
                 size="w-[192px] h-[192px]"
                 setInfo={setInfo}
             />
