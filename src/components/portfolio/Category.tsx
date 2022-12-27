@@ -55,20 +55,19 @@ const Category = ({
     const handleDrag = (isDrag: boolean, e: any) => {
         if (isDrag && !disable) {
             setLockPos(e.clientX);
-            setIsMobile(false);
         }
         setDrag(isDrag);
     };
     return (
-        <div className="h-[350px] w-full p-5 text-black my-1 drop-shadow-sm overflow-hidden">
+        <div className="h-fit w-full p-5 text-black my-1 drop-shadow-sm">
             <div className="font-semibold text-2xl text-left">{title}</div>
             <div
-                className="relative w-full h-full overflow-hidden"
+                className="relative w-full overflow-hidden "
                 onMouseMove={(e) => handleMove(e)}
                 onMouseDown={(e) => handleDrag(true, e)}
                 onMouseUp={(e) => handleDrag(false, e)}
                 onMouseLeave={() => setDrag(false)}
-                onTouchStart={() => setIsMobile(true)}
+                onTouchStart={() => (!isMobile ? setIsMobile(true) : null)}
             >
                 <div
                     style={{
@@ -76,11 +75,10 @@ const Category = ({
                             !disable && !isMobile
                                 ? `translateX(${calculatedOffset}px)`
                                 : "",
-                        overflowX: isMobile ? "scroll" : undefined,
                     }}
                     className={`${
-                        isMobile ? "hide-scrollbar" : null
-                    } absolute w-full p-5 flex transform-gpu ease-linear`}
+                        isMobile ? "overflow-x-scroll hide-scrollbar" : null
+                    } w-full p-5 flex transform-gpu ease-linear`}
                 >
                     {list.map((listItem: ListItemTypes, index: number) => {
                         return (
