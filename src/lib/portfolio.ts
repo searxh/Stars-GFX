@@ -190,7 +190,6 @@ export const art: Array<ListItemTypes> = [
 export const projects: Array<ListItemTypes> = [
     {
         name: "Inner Soul",
-        src: "https://media.discordapp.net/attachments/274862970587316224/1055839290447368223/Thumbnail5.png?width=1830&height=1029",
         arr: [
             {
                 content: 1,
@@ -229,7 +228,6 @@ export const projects: Array<ListItemTypes> = [
     },
     {
         name: "Internet Scary World",
-        src: "https://media.discordapp.net/attachments/274862970587316224/1055839621713514566/INTERNET-SCARY-WORLD-V4.png?width=1830&height=1029",
     },
 ];
 
