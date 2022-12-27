@@ -40,7 +40,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                 } flex flex-col relative m-auto h-full w-full `}
             >
                 {name ? (
-                    <div className="w-full text-3xl p-2 font-bold m-auto drop-shadow-sm">
+                    <div className="w-full text-2xl lg:text-3xl p-2 px-12 font-bold m-auto drop-shadow-sm">
                         {name}
                     </div>
                 ) : (
@@ -56,7 +56,9 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                     />
                 ) : null}
                 {desc ? (
-                    <div className="w-full text-lg p-6 m-auto">{desc}</div>
+                    <div className="w-full text-sm lg:text-lg p-6 m-auto">
+                        {desc}
+                    </div>
                 ) : (
                     <div className="m-auto" />
                 )}
@@ -77,7 +79,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                             <a
                                 key={index}
                                 href={content}
-                                className={`${className} text-blue-500 text-lg px-12 py-3`}
+                                className={`${className} text-blue-500 text-lg px-12 py-3 break-words`}
                             >
                                 {content}
                             </a>

@@ -7,11 +7,11 @@ const Contacts = () => {
     const isLargerThanMedium = useMediaQuery("(min-width: 786px)");
     return (
         <div
-            className="relative flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
+            className="relative flex flex-col justify-evenly py-12 w-full min-h-screen h-full text-white font-nunito 
 			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
-                className="m-auto h-80 my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
+                className="m-auto h-72 lg:h-80 my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
                 src="images/star.png"
                 draggable={false}
                 alt=""
@@ -75,7 +75,7 @@ const Contacts = () => {
                 />
             </div>
             <img
-                className="m-auto h-20 w-20 my-5 drop-shadow-md invert"
+                className="m-auto h-20 w-20 my-10 drop-shadow-md invert"
                 src="images/logo.png"
                 draggable={false}
                 alt=""
