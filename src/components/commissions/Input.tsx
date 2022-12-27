@@ -37,14 +37,14 @@ const Input = ({
                 <input
                     onChange={handleOnChange}
                     ref={inputRef}
-                    className="rounded-full py-2 px-5 text-lg shadow-md border-2"
+                    className="rounded-full py-2 px-5 text-base lg:text-lg shadow-md border-2"
                 />
             ) : type === "textArea" ? (
                 <textarea
                     onChange={handleOnChange}
                     rows={5}
                     ref={inputRef}
-                    className="hide-scrollbar rounded-3xl py-2 px-5 text-lg shadow-md border-2 resize-none"
+                    className="hide-scrollbar rounded-3xl py-2 px-5 text-base lg:text-lg shadow-md border-2 resize-none"
                 />
             ) : null}
         </div>
