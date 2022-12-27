@@ -13,7 +13,7 @@ const NavBar = (props: any) => {
     const [routes, setRoutes] = React.useState<{ [key: string]: string }>(
         all_routes
     );
-    const [isTop, setIsTop] = React.useState<boolean>(false);
+    const [isTop, setIsTop] = React.useState<boolean>(true);
     const location = useLocation();
     const navigate = useNavigate();
     const getLocationIndex = () => {
