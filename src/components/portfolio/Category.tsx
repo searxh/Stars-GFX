@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
+import { ListItemTypes } from "../../types";
 import CategoryItem from "./CategoryItem";
-
 interface CategoryPropsType {
     title: string;
     list: Array<any>;
@@ -17,15 +17,16 @@ const Category = ({
     setInfo,
 }: CategoryPropsType) => {
     const [lockPos, setLockPos] = React.useState<number>(0);
+    const [isMobile, setIsMobile] = React.useState<boolean>(false);
     const [calculatedOffset, setCalculatedOffset] = React.useState<number>(0);
     const [itemWidth, setItemWidth] = React.useState<number>(10000);
     const [drag, setDrag] = React.useState<boolean>(false);
     const [disable, setDisable] = React.useState<boolean>(false);
     const handleMove = (e: any) => {
         if (!disable) {
-            const x = e.clientX ? e.clientX : e.touches[0].clientX;
+            const x = e.clientX;
             if (drag) {
-                const offset = (x - lockPos) * 3;
+                const offset = (x - lockPos) * 2;
                 let startTime = performance.now();
                 const cb = (timestamp: number) => {
                     const elapsedTime = timestamp - startTime;
@@ -53,7 +54,8 @@ const Category = ({
     };
     const handleDrag = (isDrag: boolean, e: any) => {
         if (isDrag && !disable) {
-            setLockPos(e.clientX ? e.clientX : e.touches[0].clientX);
+            setLockPos(e.clientX);
+            setIsMobile(false);
         }
         setDrag(isDrag);
     };
@@ -61,24 +63,26 @@ const Category = ({
         <div className="h-[350px] w-full p-5 text-black my-1 drop-shadow-sm overflow-hidden">
             <div className="font-semibold text-2xl text-left">{title}</div>
             <div
-                className="relative w-full h-full"
+                className="relative w-full h-full overflow-hidden"
                 onMouseMove={(e) => handleMove(e)}
                 onMouseDown={(e) => handleDrag(true, e)}
                 onMouseUp={(e) => handleDrag(false, e)}
                 onMouseLeave={() => setDrag(false)}
-                onTouchMove={(e) => handleMove(e)}
-                onTouchStart={(e) => handleDrag(true, e)}
-                onTouchEnd={(e) => handleDrag(false, e)}
+                onTouchStart={() => setIsMobile(true)}
             >
                 <div
                     style={{
-                        transform: !disable
-                            ? `translateX(${calculatedOffset}px)`
-                            : "",
+                        transform:
+                            !disable && !isMobile
+                                ? `translateX(${calculatedOffset}px)`
+                                : "",
+                        overflowX: isMobile ? "scroll" : undefined,
                     }}
-                    className="absolute w-full p-5 flex transform-gpu ease-linear"
+                    className={`${
+                        isMobile ? "hide-scrollbar" : null
+                    } absolute w-full p-5 flex transform-gpu ease-linear`}
                 >
-                    {list.map((listItem: any, index: number) => {
+                    {list.map((listItem: ListItemTypes, index: number) => {
                         return (
                             <CategoryItem
                                 key={index}
