@@ -111,6 +111,9 @@ const NavBar = (props: any) => {
             ) : null}
             {transition || mobileMenuActive ? (
                 <div
+                    onClick={() => {
+                        setMobileMenuActive((prev) => !prev);
+                    }}
                     className={`absolute ${
                         transitionLogic() ? "opacity-100" : "opacity-0"
                     } left-0 w-screen h-screen bg-black bg-opacity-50 transition duration-200`}

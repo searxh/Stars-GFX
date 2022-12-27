@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 
 interface InputPropsInterface {
@@ -25,7 +26,7 @@ const Input = ({
         inputRef.current.value = value ? value : "";
     }, []);
     return (
-        <div className="flex flex-col text-xl py-2">
+        <div className="flex flex-col text-lg lg:text-xl py-2">
             <div className="text-left py-1 px-2">
                 {title}
                 {required ? (
