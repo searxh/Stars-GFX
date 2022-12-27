@@ -14,8 +14,8 @@ const TermsPage = () => {
         });
     };
     return (
-        <div className="text-5xl text-black m-auto w-[60%]">
-            <div className="text-5xl my-1 drop-shadow-sm font-bold">
+        <div className="text-4xl lg:text-5xl text-black m-auto min-w-[21rem] w-[60%]">
+            <div className="text-5xl my-1 drop-shadow-sm font-bold leading-tight">
                 Terms and Conditions
             </div>
             <div className="text-lg mb-2 border-b-[2px] pb-5">
@@ -40,14 +40,14 @@ const TermsPage = () => {
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Decline
                 </button>
                 <button
                     onClick={() => handleOnNavigate(true)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Accept
                 </button>

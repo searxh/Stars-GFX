@@ -40,6 +40,7 @@ const CategoryItem = ({
         }
     };
     const [displayName] = React.useState<string>(getName(name));
+    const [tapTime, setTapTime] = React.useState<number>(Date.now());
     const ref = React.useRef<any>(null);
     const getSrc = () => {
         const dir = "/images/portfolio/";
@@ -64,6 +65,13 @@ const CategoryItem = ({
             arr: arr,
         });
     };
+    const handleOnTap = () => {
+        const timesince = Date.now() - tapTime;
+        if (timesince < 500 && timesince > 0) {
+            handleOnClick();
+        }
+        setTapTime(Date.now());
+    };
     React.useEffect(() => {
         if (ref.current && ref.current.offsetWidth) {
             setItemWidth(ref.current.offsetWidth);
@@ -72,6 +80,7 @@ const CategoryItem = ({
     return (
         <button
             onDoubleClick={handleOnClick}
+            onTouchStart={handleOnTap}
             className="relative shrink-0 mx-[12px] my-auto transform-gpu duration-300 hover:scale-105"
         >
             <div
@@ -81,7 +90,7 @@ const CategoryItem = ({
                 <div className="w-8 h-8 bg-white rounded-full m-auto text-2xl opacity-50" />
             </div>
             <div
-                className={`font-semibold pb-2 text-neutral-700 text-lg text-left`}
+                className={`font-semibold pb-2 text-neutral-700 text-sm lg:text-lg text-left`}
             >
                 {displayName}
             </div>

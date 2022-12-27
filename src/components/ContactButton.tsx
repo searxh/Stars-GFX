@@ -1,4 +1,5 @@
 import React from "react";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 interface ContactButtonPropsInterface {
     text: string;
@@ -16,16 +17,23 @@ const ContactButton = ({
     const handleOnClick = () => {
         window.location.href = linkTo;
     };
+    const isLargerThanMedium = useMediaQuery("(min-width: 640px)");
     return (
         <button
+            style={{
+                borderBottom: isLargerThanMedium
+                    ? undefined
+                    : "1px solid white",
+            }}
             onClick={handleOnClick}
             className="text-xl font-bold text-white text-center
-            border-x-[0.5px] border-white w-60 py-5 drop-shadow-md"
+            md:border-x-[0.5px] border-white w-60 py-5 drop-shadow-md"
         >
             <div className="hover:scale-110 transform-gpu duration-500">
                 <img
                     className="w-16 h-16 m-auto invert"
                     src={imageUrl}
+                    draggable={false}
                     alt=""
                 />
                 <div className="font-bold mt-2">{text}</div>

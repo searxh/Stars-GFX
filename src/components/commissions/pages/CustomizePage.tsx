@@ -26,31 +26,31 @@ const CustomizePage = () => {
         setPrice(calculatePrice(formInfo));
     }, [formInfo]);
     return (
-        <div className="text-5xl text-black m-auto font-bold w-full">
+        <div className="text-4xl lg:text-5xl text-black m-auto font-bold w-full">
             <div className="py-2 drop-shadow-sm">Customize</div>
             {Object.keys(formInfo).map((formInfoKey: string, index: number) => {
                 return (
                     <div
                         key={index}
-                        className="text-3xl p-5 w-[60%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md"
+                        className="p-5 min-w-[21rem] w-[60%] mx-auto border-black border-2 rounded-3xl my-5 shadow-md"
                     >
                         <ProductSelect currentProduct={formInfoKey} />
                     </div>
                 );
             })}
-            <div className="relative drop-shadow-sm">
+            <div className="drop-shadow-sm">
+                <div className="">${Math.round(price.value)}</div>
                 {price.discountPercent !== 0 && (
-                    <div className="absolute -bottom-8 left-0 right-0 text-2xl px-5 py-1 rounded-full w-fit m-auto text-green-600">
+                    <div className="text-xl lg:text-2xl px-5 pb-3 -mt-2 rounded-full w-fit m-auto text-green-600">
                         Save {Math.round(price.discountPercent)}%!
                     </div>
                 )}
-                <div className="">${Math.round(price.value)}</div>
             </div>
             <div className="flex justify-evenly">
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Back
                 </button>
@@ -58,12 +58,12 @@ const CustomizePage = () => {
                     <button
                         onClick={() => handleOnNavigate(true)}
                         className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                        duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                     >
                         Next
                     </button>
                 ) : (
-                    <div className="text-red-600 drop-shadow-sm text-xl w-48 leading-6">
+                    <div className="text-red-600 drop-shadow-sm text-base lg:text-xl w-48 px-5 leading-6">
                         You will need to sign in to continue
                     </div>
                 )}

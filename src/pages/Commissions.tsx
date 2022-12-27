@@ -34,11 +34,11 @@ const Commissions = () => {
     return (
         <div
             className="relative flex flex-col py-12 w-full min-h-screen h-full
-            font-nunito bg-neutral-100 text-center"
+            font-nunito bg-neutral-100 text-center overflow-hidden"
         >
             {currentPage === 0 ? (
-                <div className="relative text-5xl text-black m-auto">
-                    <div className="-mb-2 px-10 drop-shadow-sm font-bold">
+                <div className="relative text-4xl lg:text-5xl text-black m-auto">
+                    <div className="px-3 my-2 drop-shadow-sm font-bold leading-8">
                         Passion led to you.
                     </div>
                     {ownerStatus ? (
@@ -47,7 +47,7 @@ const Commissions = () => {
                                 ownerStatus.status
                                     ? "text-green-500"
                                     : "text-red-500"
-                            } text-lg font-semibold`}
+                            } text-base lg:text-lg font-semibold px-5`}
                         >
                             {ownerStatus.status
                                 ? `Star is currently open for commissions (${ownerStatus.num}/3)`
@@ -57,7 +57,8 @@ const Commissions = () => {
                     <img
                         src="/images/pltu.webp"
                         alt=""
-                        className="w-1/2 m-auto brightness-[101%]"
+                        draggable={false}
+                        className="max-w-[25rem] w-screen m-auto brightness-[101%]"
                     />
                     <button
                         onClick={() => {
@@ -86,7 +87,7 @@ const Commissions = () => {
                 <CompletePage />
             ) : null}
             {currentPage !== 5 && (
-                <div className="my-10">
+                <div className="my-5">
                     <PagesDot currentPage={currentPage} totalPages={5} />
                 </div>
             )}

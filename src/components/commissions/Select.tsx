@@ -26,14 +26,11 @@ const Select = ({
         }
     };
     return (
-        <div className="w-[80%] m-auto">
-            <div className="text-2xl">{title}</div>
-            <div className="text-lg font-normal">{desc}</div>
+        <div className="w-[80%] m-auto text-xl lg:text-2xl">
+            <div>{title}</div>
+            <div className="text-base lg:text-lg font-normal">{desc}</div>
             <div className="flex justify-evenly">
-                <button
-                    onClick={() => handlePageChange(false)}
-                    className="text-2xl"
-                >
+                <button onClick={() => handlePageChange(false)}>
                     <svg
                         className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"
@@ -42,13 +39,8 @@ const Select = ({
                         <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                     </svg>
                 </button>
-                <div className={`${color} text-2xl font-nunito`}>
-                    {choices[option]}
-                </div>
-                <button
-                    onClick={() => handlePageChange(true)}
-                    className="text-2xl"
-                >
+                <div className={`${color} font-nunito`}>{choices[option]}</div>
+                <button onClick={() => handlePageChange(true)}>
                     <svg
                         className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"

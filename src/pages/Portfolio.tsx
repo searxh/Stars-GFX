@@ -32,26 +32,26 @@ const Portfolio = () => {
             <Category
                 title="Roblox GFX"
                 list={portfolio[0]}
-                size="h-[224px]"
+                size="h-[160px] lg:h-[224px]"
                 setInfo={setInfo}
             />
             <Category
                 title="Graphics & Art"
                 list={portfolio[1]}
-                size="w-[192px] h-[192px]"
+                size="w-[140px] h-[140px] lg:w-[192px] lg:h-[192px]"
                 maxNameLength={21}
                 setInfo={setInfo}
             />
             <Category
                 title="Projects"
                 list={portfolio[2]}
-                size="h-[224px]"
+                size="h-[160px] lg:h-[224px]"
                 setInfo={setInfo}
             />
             <Category
                 title="Photography"
                 list={portfolio[3]}
-                size="w-[192px] h-[192px]"
+                size="h-[140px] w-[140px] lg:w-[192px] lg:h-[192px]"
                 setInfo={setInfo}
             />
             <Footer />

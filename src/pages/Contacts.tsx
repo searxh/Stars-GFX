@@ -1,22 +1,30 @@
 import React from "react";
 import ContactButton from "../components/ContactButton";
 import Footer from "../components/Footer";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const Contacts = () => {
+    const isLargerThanMedium = useMediaQuery("(min-width: 786px)");
     return (
         <div
-            className="relative flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
+            className="relative flex flex-col justify-evenly py-12 w-full min-h-screen h-full text-white font-nunito 
 			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
-                className="m-auto h-[25%] w-[25%] my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
+                className="m-auto h-72 lg:h-80 my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
                 src="images/star.png"
+                draggable={false}
                 alt=""
             />
             <div className="text-white text-3xl font-nunito font-bold drop-shadow-md text-center my-2">
                 Find me on:
             </div>
-            <div className="grid grid-flow-col py-5 overflow-x-scroll whitespace-nowrap">
+            <div
+                style={{
+                    overflowX: isLargerThanMedium ? "scroll" : undefined,
+                }}
+                className="mx-auto md:mx-0 grid grid-flow-row md:grid-flow-col py-5 whitespace-nowrap"
+            >
                 <ContactButton
                     text="Twitter"
                     imageUrl="/images/contacts_logo/twitter.png"
@@ -67,8 +75,9 @@ const Contacts = () => {
                 />
             </div>
             <img
-                className="m-auto h-20 w-20 my-5 drop-shadow-md invert"
+                className="m-auto h-20 w-20 my-10 drop-shadow-md invert"
                 src="images/logo.png"
+                draggable={false}
                 alt=""
             />
             <Footer />
