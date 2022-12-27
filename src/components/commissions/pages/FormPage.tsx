@@ -72,8 +72,8 @@ const FormPage = () => {
         }
     };
     return (
-        <div className="text-5xl text-black m-auto w-[60%]">
-            <div className="text-5xl my-1 mt-10 drop-shadow-sm font-bold">
+        <div className="text-4xl lg:text-5xl text-black m-auto min-w-[21rem] w-[60%]">
+            <div className="my-1 mt-10 drop-shadow-sm font-bold leading-tight">
                 Project Background
             </div>
             <form className="pt-5 pb-10">
@@ -96,7 +96,7 @@ const FormPage = () => {
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Back
                 </button>
@@ -107,7 +107,7 @@ const FormPage = () => {
                         canSubmit
                             ? "opacity-100 hover:text-sky-500 hover:border-sky-500 hover:scale-110"
                             : "opacity-50"
-                    } text-orange-500 border-orange-500 w-40 duration-500 transform-gpu text-3xl 
+                    } text-orange-500 border-orange-500 w-40 duration-500 transform-gpu text-2xl lg:text-3xl 
                     drop-shadow-sm border-2 rounded-full`}
                 >
                     Submit

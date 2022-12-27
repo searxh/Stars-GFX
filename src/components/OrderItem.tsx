@@ -43,7 +43,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
             )}
             <div
                 className={`flex justify-evenly shadow-md bg-gradient-to-r
-			    font-bold ${
+			    font-bold lg:text-base text-sm ${
                     orderObj.status === statusArr[0]
                         ? "from-green-400"
                         : orderObj.status === statusArr[1]
@@ -58,7 +58,10 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 <div className="my-auto">PRICE: ${price}</div>
             </div>
             <div className="my-auto p-3 drop-shadow-sm">
-                <div className="grid grid-cols-5 font-semibold border-b border-black py-1">
+                <div
+                    className="grid grid-cols-5 gap-2 text-sm lg:text-base font-semibold border-b
+                 border-black py-1 break-words"
+                >
                     <div>Product Type</div>
                     <div>Resolution</div>
                     <div>Model Limit</div>
@@ -69,14 +72,18 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                     return (
                         <div
                             key={index}
-                            className="grid grid-cols-5 border-b py-1"
+                            className="grid grid-cols-5 border-b py-1 text-sm lg:text-base"
                         >
                             <div
                                 className={`${getProductColor(
                                     order.orderType
-                                )} rounded-full text-white shadow-md`}
+                                )} flex rounded-full text-white shadow-md break-words text-2xs md:text-xs lg:text-sm h-fit w-[120%] lg:w-full`}
                             >
-                                {order.orderType.toLocaleUpperCase()}
+                                <div className="m-auto p-1">
+                                    {order.orderType
+                                        .toLocaleUpperCase()
+                                        .replace("AD", "")}
+                                </div>
                             </div>
                             <div>{order.resolution}</div>
                             <div>{order.modelLimit}</div>
@@ -87,7 +94,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 })}
             </div>
             {comment.length !== 0 ? (
-                <div className="text-neutral py-1">
+                <div className="lg:text-base text-sm py-1">
                     Star's comment:
                     <span className="text-orange-600 mx-2">{comment}</span>
                 </div>

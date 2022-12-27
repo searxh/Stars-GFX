@@ -64,7 +64,7 @@ const InfoPage = () => {
                 shadow-md hover:scale-105 transition hover:bg-neutral-600"
             >
                 <svg
-                    className="w-8 h-8 fill-white"
+                    className="w-5 h-5 lg:w-8 lg:h-8 fill-white"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
                 >
@@ -72,13 +72,13 @@ const InfoPage = () => {
                     <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                 </svg>
             </button>
-            <div className="text-3xl text-center font-bold">
+            <div className="text-2xl lg:text-3xl text-center font-bold">
                 ORDER {order.id}
             </div>
-            <div className="text-xl text-center">
+            <div className="text-lg lg:text-xl text-center">
                 By {order.userInfo.name}#{order.userInfo.discriminator}
             </div>
-            <div className="grid grid-cols-3 p-3 my-3 rounded-xl bg-neutral-200 shadow-md">
+            <div className="text-sm lg:text-base grid grid-cols-3 p-3 my-3 rounded-xl bg-neutral-200 shadow-md">
                 <div>
                     <div className="font-bold">CURRENT STATUS:</div>
                     <div>{order.status}</div>
@@ -94,16 +94,19 @@ const InfoPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between h-80">
-                <div className="flex flex-col basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
+            <div className="flex-col lg:flex-row flex justify-between lg:h-80">
+                <div className="basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
                     <div
-                        className="text-lg font-bold text-center py-1 w-full bg-neutral-200 
+                        className="text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
                         rounded-xl shadow-md"
                     >
                         Order Information
                     </div>
                     <div className="flex-1 my-auto p-3 drop-shadow-sm overflow-y-scroll">
-                        <div className="grid grid-cols-5 font-bold border-b border-black py-2">
+                        <div
+                            className="text-sm lg:text-base grid grid-cols-5 gap-2 font-bold border-b 
+                        border-black py-2 break-words"
+                        >
                             <div>Product Type</div>
                             <div>Resolution</div>
                             <div>Model Limit</div>
@@ -115,14 +118,18 @@ const InfoPage = () => {
                                 return (
                                     <div
                                         key={index}
-                                        className="grid grid-cols-5 border-b py-1"
+                                        className="text-sm lg:text-base grid grid-cols-5 border-b py-1"
                                     >
                                         <div
                                             className={`${getProductColor(
                                                 order.orderType
-                                            )} rounded-full text-white shadow-md`}
+                                            )} flex rounded-full text-white shadow-md break-words text-2xs md:text-xs lg:text-sm h-fit w-[120%] lg:w-full`}
                                         >
-                                            {order.orderType.toLocaleUpperCase()}
+                                            <div className="m-auto p-1">
+                                                {order.orderType
+                                                    .toLocaleUpperCase()
+                                                    .replace("AD", "")}
+                                            </div>
                                         </div>
                                         <div>{order.resolution}</div>
                                         <div>{order.modelLimit}</div>
@@ -134,14 +141,14 @@ const InfoPage = () => {
                         )}
                     </div>
                 </div>
-                <div className="flex flex-col basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
+                <div className="basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
                     <div
-                        className="text-lg font-bold text-center py-1 w-full bg-neutral-200 
+                        className="text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
                         rounded-xl shadow-md"
                     >
                         Form Information
                     </div>
-                    <div className="flex-1 p-3 overflow-y-scroll drop-shadow-sm">
+                    <div className="text-sm lg:text-base flex-1 p-3 overflow-y-scroll drop-shadow-sm">
                         <FormInfoAdmin formObj={order.formInfo} />
                     </div>
                 </div>
@@ -207,13 +214,13 @@ const InfoPage = () => {
                 <textarea
                     rows={2}
                     ref={inputRef}
-                    className="hide-scrollbar rounded-2xl py-2 px-5 text-lg shadow-md border-2 resize-none w-full"
+                    className="hide-scrollbar rounded-2xl py-2 px-5 text-base lg:text-lg shadow-md border-2 resize-none w-full"
                 />
             </div>
             <div className="flex w-full justify-evenly mx-auto py-5 font-bold">
                 <button
                     onClick={handleOnSaveChanges}
-                    className="w-56 mx-1 bg-pink-500 rounded-full text-white
+                    className="text-sm lg:text-base w-56 mx-1 bg-pink-500 rounded-full text-white
                     shadow-md p-3 px-5 hover:scale-105 transition duration-300 
                     hover:shadow-pink-500 hover:brightness-150"
                 >
@@ -221,7 +228,7 @@ const InfoPage = () => {
                 </button>
                 <button
                     onClick={handleOnDeleteOrder}
-                    className="w-56 mx-1 bg-red-500 rounded-full text-white
+                    className="text-sm lg:text-base w-56 mx-1 bg-red-500 rounded-full text-white
                     shadow-md p-3 px-5 hover:scale-105 transition duration-300
                     hover:shadow-red-500 hover:brightness-150"
                 >

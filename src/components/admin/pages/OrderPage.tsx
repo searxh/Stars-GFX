@@ -68,8 +68,8 @@ const OrderPage = () => {
         return () => clearInterval(periodicFetch);
     }, [notifier]);
     return (
-        <div className="flex flex-col drop-shadow-sm">
-            <div className="flex m-auto mt-5 px-5 py-2 bg-neutral-100 shadow-md border-2 rounded-full">
+        <div className="flex flex-col drop-shadow-sm text-sm lg:text-base">
+            <div className="flex m-auto mt-5 px-5 py-2 bg-neutral-100 shadow-md border-2 rounded-full w-fit">
                 <div className="flex flex-col px-2">
                     Commission Status:
                     <div
@@ -116,7 +116,7 @@ const OrderPage = () => {
                     Save changes
                 </button>
             </div>
-            <div className="flex justify-between p-5 pt-0">
+            <div className="flex-col lg:flex-row flex justify-between p-5 pt-0">
                 <div className="basis-1/3">
                     <div
                         className="text-xl text-green-600 text-center font-bold 

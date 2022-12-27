@@ -63,16 +63,16 @@ const SelectProductPage = () => {
         });
     }, [selected]);
     return (
-        <div className="relative text-black m-auto w-[60%]">
-            <div className="relative">
-                <div className="text-5xl my-2 drop-shadow-sm font-bold px-10">
+        <div className="relative text-black m-auto min-w-[21rem] w-[60%]">
+            <div className="relative w-full">
+                <div className="text-4xl lg:text-5xl my-3 drop-shadow-sm font-bold leading-tight">
                     Select product(s) for a project
                 </div>
                 <div
-                    className={`absolute left-0 right-0 -bottom-6 text-xl 
-                drop-shadow-sm text-red-500 transition duration-500 whitespace-nowrap ${
-                    errorMessageVisible ? "opacity-100" : "opacity-0"
-                }`}
+                    className={`absolute left-0 right-0 -bottom-8 text-sm lg:text-xl
+                    drop-shadow-sm text-red-500 transition duration-500 leading-4 ${
+                        errorMessageVisible ? "opacity-100" : "opacity-0"
+                    }`}
                 >
                     At least one product needs to be selected in order to
                     continue
@@ -91,7 +91,7 @@ const SelectProductPage = () => {
                                 className={`flex-1 rounded-2xl duration-500 ${
                                     gridConfig[index].row
                                 } ${gridConfig[index].col}
-                                text-white py-5 text-2xl hover:scale-[102%] transform-gpu shadow-md ${
+                                text-white py-5 text-xl lg:text-2xl hover:scale-[102%] transform-gpu shadow-md ${
                                     selected[index]
                                         ? "opacity-100"
                                         : "opacity-50"
@@ -107,14 +107,14 @@ const SelectProductPage = () => {
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Back
                 </button>
                 <button
                     onClick={() => handleOnNavigate(true)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
                 >
                     Next
                 </button>

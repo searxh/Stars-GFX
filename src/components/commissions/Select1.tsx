@@ -25,8 +25,8 @@ const Select1 = ({
     };
     return (
         <div className="">
-            <div className="text-2xl font-extrabold">{title}</div>
-            <div className="text-lg font-normal mb-2">{desc}</div>
+            <div className="text-xl lg:text-2xl font-extrabold">{title}</div>
+            <div className="text-base lg:text-lg font-normal mb-2">{desc}</div>
             <div className="flex justify-between">
                 {choices.map(
                     (
@@ -46,10 +46,10 @@ const Select1 = ({
                                 option === index ? "opacity-100" : "opacity-50"
                             } ${color}`}
                             >
-                                <div className="text-3xl font-normal">
+                                <div className="text-2xl lg:text-3xl font-normal">
                                     {choice.title.toLocaleUpperCase()}
                                 </div>
-                                <div className="text-base font-normal">
+                                <div className="text-sm lg:text-base font-normal">
                                     {choice.text}
                                 </div>
                             </button>

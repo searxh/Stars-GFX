@@ -201,17 +201,17 @@ export const projects: Array<ListItemTypes> = [
             },
             {
                 content: "Description",
-                className: "min-w-[22rem] w-[80%] mx-auto font-bold",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
             },
             {
                 content:
                     "The thing about the beach is that it has 2 sides:  The Ocean and the Land. You’re standing at the shore making the decision. With that said, if you walk towards the ocean, you might be drowned, if you walk towards to forest, you might get lost. Therefore, Shore is the safest place to be at.",
-                className: "min-w-[22rem] w-[80%] mx-auto",
+                className: "min-w-[21rem] w-[80%] mx-auto",
             },
             {
                 content:
                     "With that applied, it eventually became my Inner soul of how I overthinking things, Worrying too much, and not letting go. It illustrates through a form of experience where you can walk around in the Metaverse and explore my “Inner soul.” The project is hosted on the Roblox platform.",
-                className: "min-w-[22rem] w-[80%] mx-auto",
+                className: "min-w-[21rem] w-[80%] mx-auto",
             },
             {
                 content: 2,

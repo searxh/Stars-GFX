@@ -28,7 +28,7 @@ const ProductSelect = ({ currentProduct }: ProductSelectPropsInterface) => {
             <div
                 className={`${getProductTextColor(
                     currentProduct
-                )} text-4xl drop-shadow-md`}
+                )} text-3xl lg:text-4xl drop-shadow-md`}
             >
                 {currentProduct.toLocaleUpperCase()}
             </div>
