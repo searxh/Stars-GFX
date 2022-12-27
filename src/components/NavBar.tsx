@@ -6,7 +6,8 @@ import { checkAdmin } from "../lib/utilities";
 import { GlobalContext } from "../states";
 import DiscordProfile from "./DiscordProfile";
 import { updateUserInfoFromSession } from "../lib/api";
-import { clientLink } from "../lib/option";
+import StarLogo from "./StarLogo";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const NavBar = (props: any) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -14,6 +15,9 @@ const NavBar = (props: any) => {
         all_routes
     );
     const [isTop, setIsTop] = React.useState<boolean>(true);
+    const [mobileMenuActive, setMobileMenuActive] =
+        React.useState<boolean>(false);
+    const [transition, setTransition] = React.useState<boolean>(false);
     const location = useLocation();
     const navigate = useNavigate();
     const getLocationIndex = () => {
@@ -33,6 +37,15 @@ const NavBar = (props: any) => {
     const handleOnClick = () => {
         navigate("/");
     };
+    const transitionLogic = () => {
+        if (!transition) {
+            return transition;
+        } else {
+            return mobileMenuActive;
+        }
+    };
+    const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
+    const isSmallerThanLarge = useMediaQuery("(max-width: 1024px)");
     React.useEffect(() => {
         checkAdmin().then((res) => {
             if (res) {
@@ -47,8 +60,9 @@ const NavBar = (props: any) => {
     React.useEffect(() => {
         setLocationIndex(getLocationIndex());
         updateUserInfoFromSession(global_state, dispatch, navigate, true);
+        if (mobileMenuActive) setMobileMenuActive(false);
     }, [location.pathname, routes]);
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY === 0) {
                 setIsTop(true);
@@ -65,42 +79,110 @@ const NavBar = (props: any) => {
                 }
             });
     }, []);
+    React.useLayoutEffect(() => {
+        if (!isSmallerThanMedium) setMobileMenuActive(false);
+    }, [isSmallerThanMedium]);
+    React.useEffect(() => {
+        if (mobileMenuActive) setTimeout(() => setTransition(true), 10);
+        else if (!mobileMenuActive) setTimeout(() => setTransition(false), 200);
+    }, [mobileMenuActive]);
     return (
         <div
-            className={`fixed top-0 flex w-full h-12 backdrop-blur-lg bg-opacity-70
-             font-nunito ${
+            className={`fixed top-0 flex w-full h-12 bg-opacity-70
+             font-nunito backdrop-blur-lg ${
                  isTop ? "bg-transparent" : "bg-white shadow-md"
-             } text-black z-10 justify-evenly transition duration-300`}
+             } text-black z-10 justify-evenly transition duration-200`}
         >
-            <button
-                onClick={handleOnClick}
-                className="w-fit flex justify-center hover:scale-110 
-                duration-500 transform-gpu"
-            >
-                <img
-                    className="w-8 h-8 m-2"
-                    src={`${clientLink}/logo512.png`}
-                    alt=""
-                />
-                <div className="text-2xl my-auto font-nunito font-bold">
-                    STAR
-                </div>
-            </button>
-            <div className="relative flex min-w-[30rem]">
-                {Object.keys(routes).map((route: string, index: number) => {
-                    return (
-                        <button
-                            key={index}
-                            onClick={() => handleChangeRoute(route)}
-                            className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10
-                            h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
-                        >
-                            {routes[route]}
-                        </button>
-                    );
-                })}
+            {isSmallerThanMedium ? (
+                <button
+                    onClick={() => setMobileMenuActive((prev) => !prev)}
+                    className="absolute top-0.5 left-2 w-6 h-6 m-2 fill-black z-20"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                    >
+                        {
+                            "<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->"
+                        }
+                        <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                    </svg>
+                </button>
+            ) : null}
+            {transition || mobileMenuActive ? (
                 <div
-                    className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out
+                    className={`absolute ${
+                        transitionLogic() ? "opacity-100" : "opacity-0"
+                    } left-0 w-screen h-screen bg-black bg-opacity-50 transition duration-200`}
+                >
+                    <div
+                        className={`absolute ${
+                            transitionLogic()
+                                ? "translate-x-0"
+                                : "-translate-x-[100px]"
+                        } -left-2 w-64 h-screen bg-white shadow-md rounded-xl transform-gpu duration-200`}
+                    >
+                        <div className="relative text-xl flex flex-col justify-evenly w-full h-full">
+                            <StarLogo />
+                            <div>
+                                {Object.keys(routes).map(
+                                    (route: string, index: number) => {
+                                        return (
+                                            <button
+                                                key={index}
+                                                onClick={() =>
+                                                    handleChangeRoute(route)
+                                                }
+                                                className={`m-auto w-full
+                                                py-2 px-5 h-fit font-normal rounded-sm
+                                        ${
+                                            locationIndex === index
+                                                ? "bg-gradient-to-r bg-gray-200"
+                                                : ""
+                                        }`}
+                                            >
+                                                {routes[route]}
+                                            </button>
+                                        );
+                                    }
+                                )}
+                            </div>
+                            <div className="mx-auto">
+                                <DiscordProfile />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ) : null}
+            {!isSmallerThanMedium ? (
+                <>
+                    {!isSmallerThanLarge ? (
+                        <button
+                            onClick={handleOnClick}
+                            className="w-fit flex justify-center hover:scale-110 
+                            duration-500 transform-gpu"
+                        >
+                            <StarLogo />
+                        </button>
+                    ) : null}
+
+                    <div className="relative flex min-w-[30rem]">
+                        {Object.keys(routes).map(
+                            (route: string, index: number) => {
+                                return (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleChangeRoute(route)}
+                                        className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10
+                                        h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
+                                    >
+                                        {routes[route]}
+                                    </button>
+                                );
+                            }
+                        )}
+                        <div
+                            className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out
                 ${
                     locationIndex === 0
                         ? "translate-x-[0%]"
@@ -112,12 +194,16 @@ const NavBar = (props: any) => {
                         ? "translate-x-[300%]"
                         : null
                 }`}
-                    style={{
-                        width: 100 / Object.keys(routes).length + "%",
-                    }}
-                />
-            </div>
-            <DiscordProfile />
+                            style={{
+                                width: 100 / Object.keys(routes).length + "%",
+                            }}
+                        />
+                    </div>
+                    <div className="my-auto">
+                        <DiscordProfile />
+                    </div>
+                </>
+            ) : null}
             {props.children}
         </div>
     );
