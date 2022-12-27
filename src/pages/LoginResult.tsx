@@ -35,7 +35,7 @@ const LoginResult = () => {
     }, []);
     return (
         <div
-            className="flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
+            className="relative flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
          bg-neutral-100 brightness-110"
         >
             {isSignedIn() ? (

@@ -26,7 +26,7 @@ const Dashboard = () => {
     }, [kick]);
     return !lock ? (
         <div
-            className="flex flex-col py-12 w-full min-h-screen h-full
+            className="relative flex flex-col py-12 w-full min-h-screen h-full
             font-nunito bg-neutral-100 text-center"
         >
             <Outlet />

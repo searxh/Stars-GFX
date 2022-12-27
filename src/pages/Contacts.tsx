@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const Contacts = () => {
     return (
         <div
-            className="flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
+            className="relative flex flex-col py-12 w-full min-h-screen h-full text-white font-nunito 
 			bg-gradient-to-t from-orange-500 to-sky-400 brightness-110"
         >
             <img
