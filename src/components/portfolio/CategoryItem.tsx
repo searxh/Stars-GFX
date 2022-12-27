@@ -67,7 +67,7 @@ const CategoryItem = ({
     };
     const handleOnTap = () => {
         const timesince = Date.now() - tapTime;
-        if (timesince < 500 && timesince > 0) {
+        if (timesince < 400 && timesince > 0) {
             handleOnClick();
         }
         setTapTime(Date.now());
