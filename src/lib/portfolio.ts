@@ -2,6 +2,9 @@ import { ListItemTypes } from "../types";
 
 export const gfx: Array<ListItemTypes> = [
     {
+        name: "Giveaway",
+    },
+    {
         name: "Unromantic Love-A Cool Season.",
     },
     {
@@ -116,6 +119,18 @@ export const gfx: Array<ListItemTypes> = [
 ];
 
 export const art: Array<ListItemTypes> = [
+    {
+        name: "Run Baby Run",
+        desc: "",
+    },
+    {
+        name: "Baby Girl",
+        desc: "",
+    },
+    {
+        name: "A Place of You And Me",
+        desc: "",
+    },
     {
         name: "Listen to MAMA",
         desc: "On a Sunny day on my way back home. I found myself listening to an old r&b soul song, and ran into the song titled mama said by the shirelles. Right away I saw a bicycle, it reminds me of my young day when me and my bro were chasing each other on a bicycle haha.\nWASSUP, Listen to MAMA, 2022\nLearning how to steal and hide",
