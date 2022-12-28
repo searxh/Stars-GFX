@@ -95,14 +95,14 @@ const InfoPage = () => {
                 </div>
             </div>
             <div className="flex-col lg:flex-row flex justify-between lg:h-80">
-                <div className="basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
+                <div className="relative basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1 overflow-hidden">
                     <div
-                        className="text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
+                        className="absolute top-0 z-10 text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
                         rounded-xl shadow-md"
                     >
                         Order Information
                     </div>
-                    <div className="flex-1 my-auto p-3 drop-shadow-sm overflow-y-scroll">
+                    <div className="h-full pt-10 flex-1 my-auto p-3 drop-shadow-sm overflow-y-scroll">
                         <div
                             className="text-sm lg:text-base grid grid-cols-5 gap-2 font-bold border-b 
                         border-black py-2 break-words"
@@ -141,14 +141,14 @@ const InfoPage = () => {
                         )}
                     </div>
                 </div>
-                <div className="basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
+                <div className="relative basis-1/2 bg-neutral-100 rounded-xl shadow-md mx-1">
                     <div
-                        className="text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
+                        className="absolute top-0 z-10 text-base lg:text-lg font-bold text-center py-1 w-full bg-neutral-200 
                         rounded-xl shadow-md"
                     >
                         Form Information
                     </div>
-                    <div className="text-sm lg:text-base flex-1 p-3 overflow-y-scroll drop-shadow-sm">
+                    <div className="h-full pt-10 text-sm lg:text-base flex-1 p-3 overflow-y-scroll drop-shadow-sm">
                         <FormInfoAdmin formObj={order.formInfo} />
                     </div>
                 </div>
