@@ -1,6 +1,7 @@
 import React from "react";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 import compareAsc from "date-fns/compareAsc";
+import { portfolio } from "../../lib/portfolio";
 
 interface StandardCardPropsType {
     listItem: ListItemTypes;
@@ -9,6 +10,14 @@ interface StandardCardPropsType {
 
 const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
     const { arr, desc, name, src, isProject, timestamp } = listItem;
+    const getSrc = (content: number) => {
+        const dir = "/images/portfolio/";
+        const type = ".webp";
+        const id =
+            portfolio[2].length -
+            portfolio[2].findIndex((projItem: any) => projItem.name === name);
+        return dir + "c" + id + "_" + content + type;
+    };
     const IsInCooldown = () => {
         if (timestamp) {
             const res = compareAsc(Date.now(), timestamp + 500);
@@ -71,7 +80,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                             <img
                                 key={index}
                                 className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5`}
-                                src={src}
+                                src={getSrc(content)}
                                 draggable={false}
                                 alt=""
                             />
