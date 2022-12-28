@@ -8,7 +8,6 @@ interface CategoryItemPropsType {
     category: string;
     size: string;
     index: number;
-    maxNameLength?: number;
     setItemWidth: Dispatch<SetStateAction<number>>;
     setInfo: Dispatch<SetStateAction<any>>;
 }
@@ -25,23 +24,14 @@ const CategoryItem = ({
     category,
     size,
     index,
-    maxNameLength,
     setItemWidth,
     setInfo,
 }: CategoryItemPropsType) => {
     const { name, desc, arr } = listItem;
-    const getName = (name: string | undefined) => {
-        if (name && maxNameLength && name.length > maxNameLength) {
-            return name.slice(0, maxNameLength - 1) + "..";
-        } else if (name) {
-            return name;
-        } else {
-            return "";
-        }
-    };
-    const [displayName] = React.useState<string>(getName(name));
+    const [displayName] = React.useState<string>(name);
     const [tapTime, setTapTime] = React.useState<number>(Date.now());
-    const ref = React.useRef<any>(null);
+    const imageRef = React.useRef<HTMLImageElement>(null);
+    const nameRef = React.useRef<HTMLDivElement>(null);
     const getSrc = () => {
         const dir = "/images/portfolio/";
         const type = ".webp";
@@ -63,6 +53,7 @@ const CategoryItem = ({
                 ? true
                 : undefined,
             arr: arr,
+            timestamp: Date.now(),
         });
     };
     const handleOnTap = () => {
@@ -73,10 +64,21 @@ const CategoryItem = ({
         setTapTime(Date.now());
     };
     React.useEffect(() => {
-        if (ref.current && ref.current.offsetWidth) {
-            setItemWidth(ref.current.offsetWidth);
+        if (imageRef.current && imageRef.current.offsetWidth) {
+            setItemWidth(imageRef.current.offsetWidth);
         }
-    }, [ref.current]);
+        window.addEventListener("resize", () => {
+            if (imageRef.current && imageRef.current.offsetWidth) {
+                setItemWidth(imageRef.current.offsetWidth);
+            }
+        });
+        return () =>
+            window.removeEventListener("reisze", () => {
+                if (imageRef.current && imageRef.current.offsetWidth) {
+                    setItemWidth(imageRef.current.offsetWidth);
+                }
+            });
+    }, []);
     return (
         <button
             onDoubleClick={handleOnClick}
@@ -89,13 +91,16 @@ const CategoryItem = ({
             >
                 <div className="w-8 h-8 bg-white rounded-full m-auto text-2xl opacity-50" />
             </div>
-            <div
-                className={`font-semibold pb-2 text-neutral-700 text-sm lg:text-lg text-left`}
-            >
-                {displayName}
-            </div>
+            {name ? (
+                <div
+                    ref={nameRef}
+                    className={`${size} max-h-8 font-semibold pb-2 text-neutral-700 text-sm lg:text-lg text-left w-full overflow-hidden`}
+                >
+                    {displayName}
+                </div>
+            ) : null}
             <img
-                ref={ref}
+                ref={imageRef}
                 className={`${size} object-cover object-center rounded-xl drop-shadow-md`}
                 src={getSrc()}
                 draggable={false}

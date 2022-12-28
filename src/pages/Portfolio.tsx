@@ -5,13 +5,7 @@ import ItemWindow from "../components/portfolio/ItemWindow";
 import { portfolio } from "../lib/portfolio";
 
 const Portfolio = () => {
-    const [info, setInfo] = React.useState<any>({
-        src: "",
-        name: "",
-        desc: "",
-        isProject: false,
-        arr: undefined,
-    });
+    const [info, setInfo] = React.useState<any>({});
     return (
         <div
             className="relative flex flex-col py-12 w-full min-h-screen h-full
@@ -20,32 +14,25 @@ const Portfolio = () => {
             <ItemWindow
                 listItem={info}
                 callback={() => {
-                    setInfo({
-                        src: "",
-                        name: "",
-                        desc: "",
-                        isProject: false,
-                        arr: undefined,
-                    });
+                    setInfo({});
                 }}
             />
             <Category
                 title="Roblox GFX"
                 list={portfolio[0]}
-                size="h-[160px] lg:h-[224px]"
+                size="h-[160px] w-[284px] lg:w-[398px] lg:h-[224px]"
                 setInfo={setInfo}
             />
             <Category
                 title="Graphics & Art"
                 list={portfolio[1]}
                 size="w-[140px] h-[140px] lg:w-[192px] lg:h-[192px]"
-                maxNameLength={21}
                 setInfo={setInfo}
             />
             <Category
                 title="Projects"
                 list={portfolio[2]}
-                size="h-[160px] lg:h-[224px]"
+                size="h-[160px] w-[284px] lg:w-[398px] lg:h-[224px]"
                 setInfo={setInfo}
             />
             <Category

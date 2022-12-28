@@ -10,6 +10,7 @@ export interface ListItemTypes {
     src?: string;
     arr?: Array<ProjectArrItemTypes>;
     isProject?: boolean;
+    timestamp?: number;
 }
 export interface OrderObj {
     id: string;
