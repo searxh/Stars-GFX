@@ -26,7 +26,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                 src !== undefined
                     ? "scale-100 opacity-100 z-50"
                     : "scale-0 -z-10 opacity-0"
-            } transform-gpu duration-300 rounded-xl`}
+            } transform-gpu duration-[400ms] rounded-xl`}
         >
             <button
                 onClick={() => {
