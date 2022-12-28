@@ -94,7 +94,8 @@ const CategoryItem = ({
             {name ? (
                 <div
                     ref={nameRef}
-                    className={`${size} max-h-8 font-semibold pb-2 text-neutral-700 text-sm lg:text-lg text-left w-full overflow-hidden`}
+                    className={`${size} max-h-9 font-semibold pb-2 text-neutral-700 text-sm lg:text-lg text-left 
+                    w-full overflow-hidden leading-10 break-words`}
                 >
                     {displayName}
                 </div>
