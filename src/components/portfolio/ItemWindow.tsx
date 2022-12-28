@@ -1,6 +1,6 @@
 import React from "react";
-import { portfolio } from "../../lib/portfolio";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
+import compareAsc from "date-fns/compareAsc";
 
 interface StandardCardPropsType {
     listItem: ListItemTypes;
@@ -8,21 +8,22 @@ interface StandardCardPropsType {
 }
 
 const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
-    const { arr, desc, name, src, isProject } = listItem;
-    const getSrc = (content: number) => {
-        const dir = "/images/portfolio/";
-        const type = ".webp";
-        const id =
-            portfolio[2].length -
-            portfolio[2].findIndex((projItem: any) => projItem.name === name);
-        return dir + "c" + id + "_" + content + type;
+    const { arr, desc, name, src, isProject, timestamp } = listItem;
+    const IsInCooldown = () => {
+        if (timestamp) {
+            const res = compareAsc(Date.now(), timestamp + 500);
+            return res === 1 ? false : true;
+        }
+    };
+    const handleOnQuickExit = () => {
+        if (!IsInCooldown()) callback();
     };
     return (
         <div
-            onClick={() => (!arr ? callback() : null)}
+            onClick={handleOnQuickExit}
             className={`fixed flex flex-col w-screen h-screen top-0 bottom-0 left-0 right-0 
             bg-opacity-60 bg-neutral-100 select-none backdrop-blur-xl ${
-                src?.length !== 0
+                src !== undefined
                     ? "scale-100 opacity-100 z-50"
                     : "scale-0 -z-10 opacity-0"
             } transform-gpu duration-300 rounded-xl`}
@@ -70,7 +71,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                             <img
                                 key={index}
                                 className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5`}
-                                src={getSrc(content)}
+                                src={src}
                                 draggable={false}
                                 alt=""
                             />

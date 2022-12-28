@@ -5,13 +5,7 @@ import ItemWindow from "../components/portfolio/ItemWindow";
 import { portfolio } from "../lib/portfolio";
 
 const Portfolio = () => {
-    const [info, setInfo] = React.useState<any>({
-        src: "",
-        name: "",
-        desc: "",
-        isProject: false,
-        arr: undefined,
-    });
+    const [info, setInfo] = React.useState<any>({});
     return (
         <div
             className="relative flex flex-col py-12 w-full min-h-screen h-full
@@ -20,13 +14,7 @@ const Portfolio = () => {
             <ItemWindow
                 listItem={info}
                 callback={() => {
-                    setInfo({
-                        src: "",
-                        name: "",
-                        desc: "",
-                        isProject: false,
-                        arr: undefined,
-                    });
+                    setInfo({});
                 }}
             />
             <Category

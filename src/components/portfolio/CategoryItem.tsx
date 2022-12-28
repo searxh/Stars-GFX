@@ -63,6 +63,7 @@ const CategoryItem = ({
                 ? true
                 : undefined,
             arr: arr,
+            timestamp: Date.now(),
         });
     };
     const handleOnTap = () => {
