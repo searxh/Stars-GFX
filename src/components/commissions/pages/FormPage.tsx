@@ -4,6 +4,7 @@ import { isSignedIn, pageChangeCheck } from "../../../lib/utilities";
 import Input from "../Input";
 import { initialFormInfo } from "../../../lib/default";
 import { createOrder } from "../../../lib/api";
+import dompurify from "dompurify";
 
 const formData = [
     {
@@ -41,7 +42,7 @@ const FormPage = () => {
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
     const handleSetForm = (index: number, value: string) => {
         const newProjInfo = [...projInfo];
-        newProjInfo[index] = value;
+        newProjInfo[index] = dompurify.sanitize(value);
         dispatch({
             type: "set",
             field: "projInfo",

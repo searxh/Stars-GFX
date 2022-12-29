@@ -13,6 +13,7 @@
     "axios": "^1.2.1",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
+    "dompurify": "^2.4.1",
     "dotenv": "^16.0.3",
     "js-cookie": "^3.0.1",
     "lodash": "^4.17.21",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
+    "@types/dompurify": "^2.4.0",
     "@types/js-cookie": "^3.0.2",
     "@types/lodash": "^4.14.191",
     "@types/uuid": "^9.0.0",
