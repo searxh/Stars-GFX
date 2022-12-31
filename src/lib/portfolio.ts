@@ -203,6 +203,28 @@ export const art: Array<ListItemTypes> = [
 ];
 
 export const projects: Array<ListItemTypes> = [
+
+    {
+        name: "Roblox GFX Starter Pack",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content:
+                    "https://stargfx.gumroad.com/l/llnina?layout=profile",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "This book is for aspiring passionate people who want to improve or wants to get started in Roblox GFX. Roblox GFX Starter Pack. 9 Secrets from Star 🤫🌟",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
     {
         name: "Inner Soul",
         arr: [
@@ -243,6 +265,15 @@ export const projects: Array<ListItemTypes> = [
     },
     {
         name: "Internet Scary World",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content:
+                    "https://devforum.roblox.com/t/internet-scary-world/1559678",
+            },
+        ],
     },
 ];
 
