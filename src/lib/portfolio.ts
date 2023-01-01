@@ -273,7 +273,15 @@ export const projects: Array<ListItemTypes> = [
                 content:
                     "https://devforum.roblox.com/t/internet-scary-world/1559678",
             },
-            
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+               "Internet Scary World is my personal project that I’ve been working on for the past month. The scary truth is that everyday kids playing on the platform are getting scammed, not even just kids we as a teenager also can get scams as well.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
         ],
     },
 ];
