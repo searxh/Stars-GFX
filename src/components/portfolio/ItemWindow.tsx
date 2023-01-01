@@ -48,15 +48,13 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
             <div
                 className={`${
                     isProject ? "overflow-y-scroll" : "overflow-hidden"
-                } flex flex-col relative m-auto h-full w-full `}
+                } flex flex-col relative m-auto h-full w-full`}
             >
                 {name ? (
-                    <div className="w-full text-2xl lg:text-3xl p-2 px-12 font-bold m-auto drop-shadow-sm">
+                    <div className="w-full text-2xl lg:text-3xl p-2 px-12 font-bold mx-auto mt-10 drop-shadow-sm">
                         {name}
                     </div>
-                ) : (
-                    <div className="m-auto" />
-                )}
+                ) : null}
                 {!arr ? (
                     <img
                         className="m-auto object-contain rounded-xl
@@ -67,45 +65,48 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                     />
                 ) : null}
                 {desc ? (
-                    <div className="w-full text-sm lg:text-lg p-6 m-auto">
+                    <div className="w-full text-left text-sm lg:text-lg p-6 m-auto">
                         {desc}
                     </div>
-                ) : (
-                    <div className="m-auto" />
-                )}
-                {arr?.map((arrItem: ProjectArrItemTypes, index: number) => {
-                    const { content, className } = arrItem;
-                    if (typeof content === "number") {
-                        return (
-                            <img
-                                key={index}
-                                className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg m-auto my-5`}
-                                src={getSrc(content)}
-                                draggable={false}
-                                alt=""
-                            />
-                        );
-                    } else if (content.includes("https://")) {
-                        return (
-                            <a
-                                key={index}
-                                href={content}
-                                className={`${className} text-blue-500 text-lg px-12 py-3 break-words`}
-                            >
-                                {content}
-                            </a>
-                        );
-                    } else {
-                        return (
-                            <div
-                                key={index}
-                                className={`${className} text-left text-lg px-12 py-3`}
-                            >
-                                {content}
-                            </div>
-                        );
-                    }
-                })}
+                ) : null}
+                {arr ? <div className="m-auto w-full">
+                    {arr?.map((arrItem: ProjectArrItemTypes, index: number) => {
+                        const { content, className } = arrItem;
+                        if (typeof content === "number") {
+                            return (
+                                <img
+                                    key={index}
+                                    className={`${className} max-w-[90%] max-h-[75%] object-contain rounded-xl drop-shadow-lg 
+                                    m-auto my-5`}
+                                    src={getSrc(content)}
+                                    draggable={false}
+                                    alt=""
+                                />
+                            );
+                        } else if (content.includes("https://")) {
+                            return (
+                                <div className="min-w-[22rem] w-[80%] mx-auto">
+                                    <a
+                                        key={index}
+                                        href={content}
+                                        className={`${className} text-blue-500 text-lg py-3 break-words`}
+                                    >
+                                        {content}
+                                    </a>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div
+                                    key={index}
+                                    className={`${className} text-left text-lg px-12 py-3`}
+                                >
+                                    {content}
+                                </div>
+                            );
+                        }
+                    })}
+                </div>:null}
             </div>
         </div>
     );
