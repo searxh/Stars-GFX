@@ -58,7 +58,7 @@ const Commissions = () => {
                         src="/images/pltu.gif"
                         alt=""
                         draggable={false}
-                        className="max-w-[20rem] aspect-square mt-5 w-screen m-auto brightness-[101%] rounded-full drop-shadow-md"
+                        className="max-w-[15rem] aspect-square my-6 w-screen m-auto brightness-[101%] rounded-full drop-shadow-md"
                     />
                     <button
                         onClick={() => {
