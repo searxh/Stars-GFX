@@ -55,10 +55,10 @@ const Commissions = () => {
                         </div>
                     ) : null}
                     <img
-                        src="/images/pltu.webp"
+                        src="/images/pltu.gif"
                         alt=""
                         draggable={false}
-                        className="max-w-[25rem] w-screen m-auto brightness-[101%]"
+                        className="max-w-[20rem] aspect-square mt-5 w-screen m-auto brightness-[101%] rounded-full drop-shadow-md"
                     />
                     <button
                         onClick={() => {
