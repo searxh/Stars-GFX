@@ -1,5 +1,5 @@
 import Confirmation from "./components/Confirmation";
-import { ConfirmationContextType } from "./types";
+import { ConfirmationContextType, ConfirmationMessageType } from "./types";
 import React, { createContext } from "react";
 
 export const ConfirmationContext = createContext<ConfirmationContextType>(
@@ -11,6 +11,10 @@ export function ConfirmationProvider({
 }: {
     children: React.ReactNode;
 }) {
+    const [message, setMessage] = React.useState<ConfirmationMessageType>({
+        title: "",
+        content: "",
+    });
     const [trigger, setTrigger] = React.useState<boolean>(false);
     const [acceptCallback, setAcceptCallback] = React.useState<
         (decision: boolean) => void
@@ -20,11 +24,12 @@ export function ConfirmationProvider({
             value={{
                 setTrigger: setTrigger,
                 setAcceptCallback: setAcceptCallback,
+                setMessage: setMessage,
             }}
         >
             <Confirmation
-                title="Confirmation"
-                content="Are you sure you wish to cancel the order? It will be lost forever."
+                title={message.title}
+                content={message.content}
                 trigger={trigger}
                 decisionCallback={(decision: boolean) => {
                     if (decision) {

@@ -6,11 +6,11 @@ import { getProductColor } from "../../../lib/utilities";
 import format from "date-fns/format";
 import FormInfoAdmin from "../FormInfoAdmin";
 import { deleteOrder, updateOrder } from "../../../lib/api";
-import { statusArr } from "../../../lib/default";
+import { cancelOrderMessage, statusArr } from "../../../lib/default";
 import { ConfirmationContext } from "../../../confirmation";
 
 const InfoPage = () => {
-    const { setTrigger, setAcceptCallback } =
+    const { setTrigger, setAcceptCallback, setMessage } =
         React.useContext(ConfirmationContext);
     const { orderObj } = useParams();
     const navigate = useNavigate();
@@ -49,6 +49,7 @@ const InfoPage = () => {
                 setTimeout(() => navigate(-1), 1000);
             }
         };
+        setMessage(cancelOrderMessage);
         setAcceptCallback(() => callback);
     };
     React.useEffect(() => {

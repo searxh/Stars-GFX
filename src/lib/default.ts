@@ -114,6 +114,18 @@ export const priceInfo: PriceInfoType = {
     },
 };
 
+export const cancelOrderMessage = {
+    title: "Confirmation",
+    content:
+        "Are you sure you wish to cancel the order? It will be lost forever.",
+};
+
+export const signUpMessage = {
+    title: "You will need to sign up to continue",
+    content:
+        "Are you sure you wish to cancel the order? It will be lost forever.",
+};
+
 export const statusArr = ["active", "pending", "declined"];
 
 export const adminRate = 10000;

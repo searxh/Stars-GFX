@@ -5,7 +5,7 @@ import format from "date-fns/format";
 import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
 import { GlobalContext } from "../states";
-import { statusArr } from "../lib/default";
+import { cancelOrderMessage, statusArr } from "../lib/default";
 import { ConfirmationContext } from "../confirmation";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
@@ -13,7 +13,7 @@ interface OrderItemPropsInterface {
 
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { setTrigger, setAcceptCallback } =
+    const { setTrigger, setAcceptCallback, setMessage } =
         React.useContext(ConfirmationContext);
     const { userInfo, notifier } = global_state;
     const { id, created_at, orderInfo, comment, status, price } = orderObj;
@@ -31,6 +31,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 }, 500);
             }
         };
+        setMessage(cancelOrderMessage);
         setAcceptCallback(() => callback);
     };
     return (

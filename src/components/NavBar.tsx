@@ -58,7 +58,8 @@ const NavBar = (props: any) => {
         });
     }, [location.pathname]);
     React.useEffect(() => {
-        setLocationIndex(getLocationIndex());
+        const newLocationIndex = getLocationIndex();
+        setLocationIndex(newLocationIndex);
         updateUserInfoFromSession(global_state, dispatch, navigate, true);
         if (mobileMenuActive) setMobileMenuActive(false);
     }, [location.pathname, routes]);

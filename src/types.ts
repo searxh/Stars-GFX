@@ -76,6 +76,11 @@ export interface FormInfoType {
 export interface PriceInfoType {
     [key: string]: { [key: string]: any };
 }
+
+export interface ConfirmationMessageType {
+    title: string;
+    content: string;
+}
 interface GlobalStateKeys {
     [key: string]: any;
 }
@@ -102,4 +107,5 @@ export interface GlobalContextType {
 export interface ConfirmationContextType {
     setTrigger: Dispatch<SetStateAction<boolean>>;
     setAcceptCallback: Dispatch<SetStateAction<(decision: boolean) => void>>;
+    setMessage: Dispatch<SetStateAction<ConfirmationMessageType>>;
 }
