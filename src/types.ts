@@ -54,6 +54,10 @@ export interface OrderType {
     additional: string;
     resolution: string;
 }
+export interface ReviewItemType {
+    content: string;
+    date: string;
+}
 export interface StringToAnyType {
     [key: string]: any;
 }
