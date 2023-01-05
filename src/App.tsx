@@ -11,6 +11,7 @@ import { GlobalStateProvider } from "./states";
 import OrderPage from "./components/admin/pages/OrderPage";
 import InfoPage from "./components/admin/pages/InfoPage";
 import { ConfirmationProvider } from "./confirmation";
+import About from "./pages/About";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/portfolio" element={<Portfolio />} />
                     <Route path="/commissions" element={<Commissions />} />
                     <Route path="/authorized" element={<LoginResult />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/dashboard" element={<Dashboard />}>
                         <Route path="list" element={<OrderPage />} />
                         <Route path=":orderObj" element={<InfoPage />} />

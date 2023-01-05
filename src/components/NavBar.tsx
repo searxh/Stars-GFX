@@ -177,7 +177,7 @@ const NavBar = (props: any) => {
                                         key={index}
                                         onClick={() => handleChangeRoute(route)}
                                         className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10
-                                        h-full transition duration-500 font-normal hover:shadow-md rounded-sm"
+                                        h-full text-sm transition duration-500 font-normal hover:shadow-md rounded-sm"
                                     >
                                         {routes[route]}
                                     </button>
@@ -195,6 +195,8 @@ const NavBar = (props: any) => {
                         ? "translate-x-[200%]"
                         : locationIndex === 3
                         ? "translate-x-[300%]"
+                        : locationIndex === 4
+                        ? "translate-x-[400%]"
                         : null
                 }`}
                             style={{
