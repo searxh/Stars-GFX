@@ -38,7 +38,7 @@ const About = () => {
                 </p>
             </div>
             <div
-                className="w-screen md:h-[35rem] p-5 text-white bg-gradient-to-t from-orange-500 to-sky-400 
+                className="w-screen md:h-[35rem] p-5 px-0 md:px-5 text-white bg-gradient-to-t from-orange-500 to-sky-400 
                 brightness-110 shadow-md md:overflow-hidden"
             >
                 <div className="w-full h-fit mx-auto drop-shadow-sm">
@@ -53,11 +53,8 @@ const About = () => {
                         alt=""
                     />
                     <div
-                        style={{
-                            overflowY: "hidden",
-                        }}
-                        className="md:grid grid-flow-col py-3 w-full h-full 
-                        md:overflow-x-scroll gap-2 mb-12"
+                        className="md:grid grid-flow-col py-3 w-full h-full
+                        md:overflow-y-hidden md:overflow-x-scroll gap-2 mb-12"
                     >
                         {reviews.map(
                             (reviewItem: ReviewItemType, index: number) => {

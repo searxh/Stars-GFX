@@ -85,7 +85,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                                     );
                                 } else if (content.includes("https://")) {
                                     return (
-                                        <div className="min-w-[22rem] w-[80%] mx-auto">
+                                        <div className="min-w-[21rem] w-[80%] mx-auto">
                                             <a
                                                 key={index}
                                                 href={content}
