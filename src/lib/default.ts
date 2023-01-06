@@ -121,10 +121,12 @@ export const cancelOrderMessage = {
 };
 
 export const signUpMessage = {
-    title: "You will need to sign up to continue",
+    title: "Sign in with Discord",
     content:
-        "Are you sure you wish to cancel the order? It will be lost forever.",
+        "Signing in through Discord is required to help prevent impersonation. Your Discord token can only be used to confirm your identity – I can only see your username, your 4 digits, and profile picture.",
 };
+
+export const authLink = process.env.REACT_APP_AUTH as string;
 
 export const statusArr = ["active", "pending", "declined"];
 

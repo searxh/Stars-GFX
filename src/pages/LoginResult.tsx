@@ -11,12 +11,17 @@ import Footer from "../components/Footer";
 
 const LoginResult = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
+    const { stateId } = global_state;
     const navigate = useNavigate();
+    const checkState = (state: string | null) => {
+        return stateId ? stateId === state : false;
+    };
     React.useLayoutEffect(() => {
         const frag = new URLSearchParams(window.location.hash.slice(1));
         const a = frag.get(process.env.REACT_APP_A_TYPE as string);
         const b = frag.get(process.env.REACT_APP_B_TYPE as string);
-        if (a && b) {
+        const c = frag.get("state");
+        if (a && b && checkState(c)) {
             const encrypted = encrypt(a);
             Cookies.set("a", encrypted);
             Cookies.set("b", b);
@@ -31,6 +36,13 @@ const LoginResult = () => {
             //sessionStorage.removeItem("b");
             calculateHash(true);
             setTimeout(() => navigate("/"), 1500);
+        }
+        if (stateId) {
+            dispatch({
+                type: "set",
+                field: "stateId",
+                payload: undefined,
+            });
         }
     }, []);
     return (

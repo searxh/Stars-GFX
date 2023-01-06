@@ -4,6 +4,7 @@ import { updateUserInfoFromSession } from "../lib/api";
 import { calculateHash, isSignedIn } from "../lib/utilities";
 import { GlobalContext } from "../states";
 import Cookies from "js-cookie";
+import { authLink } from "../lib/default";
 
 const DiscordProfile = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -21,7 +22,13 @@ const DiscordProfile = () => {
         if (isSignedIn()) {
             updateUserInfoFromSession(global_state, dispatch, navigate);
         } else {
-            window.location.href = process.env.REACT_APP_AUTH as string;
+            const randomString = crypto.randomUUID();
+            dispatch({
+                type: "set",
+                field: "stateId",
+                payload: randomString,
+            });
+            window.location.href = authLink + "&state=" + randomString;
         }
     };
     const handleOnLogout = () => {

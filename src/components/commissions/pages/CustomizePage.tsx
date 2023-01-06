@@ -5,15 +5,37 @@ import {
     isSignedIn,
     pageChangeCheck,
 } from "../../../lib/utilities";
+import { ConfirmationContext } from "../../../confirmation";
 import { GlobalContext } from "../../../states";
+import { authLink, signUpMessage } from "../../../lib/default";
 
 const CustomizePage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
+    const { setTrigger, setAcceptCallback, setMessage } =
+        React.useContext(ConfirmationContext);
     const { formInfo, currentPage } = global_state;
     const [price, setPrice] = React.useState<{
         value: number;
         discountPercent: number;
     }>({ value: 0, discountPercent: 0 });
+    const handleNext = () => {
+        if (isSignedIn()) {
+            handleOnNavigate(true);
+        } else {
+            setTrigger(true);
+            setMessage(signUpMessage);
+            const callback = () => {
+                const randomString = crypto.randomUUID();
+                dispatch({
+                    type: "set",
+                    field: "stateId",
+                    payload: randomString,
+                });
+                window.location.href = authLink + "&state=" + randomString;
+            };
+            setAcceptCallback(() => callback);
+        }
+    };
     const handleOnNavigate = (isForward: boolean) => {
         const check = pageChangeCheck(isForward, currentPage);
         dispatch({
@@ -54,19 +76,13 @@ const CustomizePage = () => {
                 >
                     Back
                 </button>
-                {isSignedIn() ? (
-                    <button
-                        onClick={() => handleOnNavigate(true)}
-                        className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
+                <button
+                    onClick={handleNext}
+                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40 font-normal
                         duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
-                    >
-                        Next
-                    </button>
-                ) : (
-                    <div className="text-red-600 drop-shadow-sm text-base lg:text-xl w-48 px-5 leading-6">
-                        You will need to sign in to continue
-                    </div>
-                )}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

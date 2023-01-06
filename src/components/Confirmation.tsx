@@ -51,7 +51,7 @@ export const Confirmation = ({
                 />
                 <div className="m-auto text-center">
                     <div className="text-3xl px-10">{title}</div>
-                    <div className="text-lg py-8 px-12">{content}</div>
+                    <div className="text-base py-8 px-12">{content}</div>
                     <div className="flex w-full justify-evenly">
                         <button
                             className="bg-green-600 px-8 py-2 text-white 

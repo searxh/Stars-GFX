@@ -91,6 +91,7 @@ export interface GlobalStateType extends GlobalStateKeys {
     notifier: boolean;
     userInfo: any;
     orders: number;
+    stateId?: string;
 }
 
 export interface ActionType {
