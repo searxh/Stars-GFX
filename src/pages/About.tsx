@@ -23,18 +23,18 @@ const About = () => {
                 <p className="text-left indent-5 py-5 text-base drop-shadow-sm">
                     Star is a seasoned graphic designer with over six years of
                     experience in the field of game development on the Roblox
-                    platform. Star's artistic practice merges the playful
-                    aesthetic of Lego with the dreamlike qualities of
-                    surrealism, resulting in imaginative and evocative designs
-                    that tell engaging stories.
+                    platform. His artistic practice merges the playful aesthetic
+                    of Lego with the dreamlike qualities of surrealism,
+                    resulting in imaginative and evocative designs that tell
+                    engaging stories.
                 </p>
                 <p className="text-left indent-5 pb-5 text-base drop-shadow-sm">
-                    In addition to Star's professional endeavors, Star also
+                    In addition to Star's professional endeavors, he also
                     engages with the creative community through blogging and
                     vlogging. With a proficient understanding of both
-                    traditional and digital media, Star is a talented and
+                    traditional and digital media, he is a talented and
                     dedicated artist committed to delivering high-quality
-                    designs to their clients
+                    designs to his clients
                 </p>
             </div>
             <div
@@ -53,6 +53,9 @@ const About = () => {
                         alt=""
                     />
                     <div
+                        style={{
+                            overflowY: "hidden",
+                        }}
                         className="md:grid grid-flow-col py-3 w-full h-full 
                         md:overflow-x-scroll gap-2 mb-12"
                     >
