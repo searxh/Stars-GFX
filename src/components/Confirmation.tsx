@@ -42,7 +42,7 @@ export const Confirmation = ({
             bg-opacity-50 transition duration-300`}
         >
             <div
-                className="fixed top-0 bottom-0 left-0 right-0 w-[25rem] h-1/2 text-black font-nunito
+                className="fixed top-0 bottom-0 left-0 right-0 max-w-[25rem] w-[90%] h-fit py-5 text-black font-nunito
                 text-2xl bg-white opacity-80 rounded-3xl flex m-auto shadow-md flex-col"
             >
                 <XButton
