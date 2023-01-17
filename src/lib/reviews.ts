@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "extremely talented!! i experienced great communication while commissioning from Star, and i received a well made gfx in less than 2 days! it was lovely commissioning from him",
+        date: "17/1/2023",
+    },
+    {
+        content:
             "Amazing as always, loved working w him and can't wait until the next time!",
         date: "21/11/2022",
     },
