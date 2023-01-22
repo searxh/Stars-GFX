@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Commissions from "./pages/Commissions";
 import Contacts from "./pages/Contacts";
@@ -17,6 +17,10 @@ import ReactGA from "react-ga4";
 ReactGA.initialize("G-71992L5E5Q");
 
 function App() {
+    const location = useLocation();
+    React.useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname });
+    }, [location]);
     return (
         <GlobalStateProvider>
             <ConfirmationProvider>

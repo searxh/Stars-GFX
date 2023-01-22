@@ -139,7 +139,7 @@ export const calculateHash = (save?: boolean) => {
     let str = "";
     Object.keys(Cookies.get()).forEach((key: string) => {
         //Object.keys(sessionStorage).forEach((key: string) => {
-        if (key !== "check") {
+        if (key !== "check" && !key.includes("_ga")) {
             str += JSON.stringify(
                 Cookies.get(key)
                 //JSON.parse(sessionStorage.getItem(key) as string)
