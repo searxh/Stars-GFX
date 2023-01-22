@@ -12,6 +12,9 @@ import OrderPage from "./components/admin/pages/OrderPage";
 import InfoPage from "./components/admin/pages/InfoPage";
 import { ConfirmationProvider } from "./confirmation";
 import About from "./pages/About";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-71992L5E5Q");
 
 function App() {
     return (
