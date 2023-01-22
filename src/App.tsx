@@ -14,13 +14,13 @@ import { ConfirmationProvider } from "./confirmation";
 import About from "./pages/About";
 import ReactGA from "react-ga4";
 
-ReactGA.initialize("G-71992L5E5Q");
+//ReactGA.initialize("G-71992L5E5Q");
 
 function App() {
-    const location = useLocation();
+    /*const location = useLocation();
     React.useEffect(() => {
         ReactGA.send({ hitType: "pageview", page: location.pathname });
-    }, [location]);
+    }, [location]);*/
     return (
         <GlobalStateProvider>
             <ConfirmationProvider>
