@@ -212,7 +212,6 @@ export const art: Array<ListItemTypes> = [
 ];
 
 export const projects: Array<ListItemTypes> = [
-
     {
         name: "Roblox GFX Starter Pack",
         arr: [
@@ -231,6 +230,62 @@ export const projects: Array<ListItemTypes> = [
                 content:
                     "This book is for aspiring passionate people who want to improve or wants to get started in Roblox GFX. Roblox GFX Starter Pack. 9 Secrets from Star 🤫🌟",
                 className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
+        name: "Study The Lighting",
+        arr: [
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "I decided to take on the challenge of recreating these photographs in Roblox using user-generated content from VirtualVert. This presented an opportunity to study re-lighting techniques and attempt to replicate the original images.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: 3,
+            },
+            {
+                content: 4,
+            },
+        ],
+    },
+    {
+        name: "Wallpaper Packs",
+        arr: [
+            {
+                content:
+                    "https://stargfx.gumroad.com/l/efboy",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "A Sets of 3 Christmas Theme Wallpaper Packs, Including resolution for PC, Tablet and Phone",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: 3,
+            },
+            {
+                content: 4,
             },
         ],
     },
