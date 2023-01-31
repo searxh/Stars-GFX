@@ -23,18 +23,19 @@ const TermsPage = () => {
                 and the designer
             </div>
             <div className="text-lg my-8 drop-shadow-sm w-[80%] m-auto text-left">
-                1. Upfront payment must be included for queueing.
+                1. Payment via Paypal only
                 <br />
-                2. Refunding cannot be done once purchased.
+                2. Upfront payment must be included for queueing
                 <br />
-                3. When the final works are finished only a maximum of 3 fixes
-                are allowed.
+                3. Refunding cannot be done once purchased
                 <br />
-                4. There can be no further edits on the final works when given,
+                4. First Revision will be free, if more will cost extra
+                <br />
+                5. There can be no further edits on the final works when given,
                 i.e, removing watermarks, editing the contrast, saturation of
-                the image and etc.
+                the image and etc
                 <br />
-                5. Ordering during closed commission will result in a waitlist
+                6. Ordering during closed commission will result in a waitlist
             </div>
             <div className="flex justify-evenly">
                 <button
