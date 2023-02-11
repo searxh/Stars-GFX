@@ -129,6 +129,14 @@ export const gfx: Array<ListItemTypes> = [
 
 export const art: Array<ListItemTypes> = [
     {
+        name: "Khao Chon Kai",
+        desc: "",
+    },
+    {
+        name: "Sandee",
+        desc: "",
+    },
+    {
         name: "Run Baby Run",
         desc: "",
     },
