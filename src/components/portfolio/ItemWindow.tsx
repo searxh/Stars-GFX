@@ -9,7 +9,7 @@ interface StandardCardPropsType {
 }
 
 const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
-    const { arr, desc, name, src, isProject, timestamp } = listItem;
+    const { arr, desc, name, src, timestamp } = listItem;
     const getSrc = (content: number) => {
         const dir = "/images/portfolio/";
         const type = ".webp";
