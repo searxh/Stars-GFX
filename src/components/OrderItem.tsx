@@ -12,12 +12,11 @@ interface OrderItemPropsInterface {
 }
 
 const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
-    const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { setTrigger, setAcceptCallback, setMessage } =
-        React.useContext(ConfirmationContext);
-    const { userInfo, notifier } = global_state;
+    //const { global_state, dispatch } = React.useContext(GlobalContext);
+    //const { setTrigger, setAcceptCallback, setMessage } = React.useContext(ConfirmationContext);
+    //const { userInfo, notifier } = global_state;
     const { id, created_at, orderInfo, comment, status, price } = orderObj;
-    const handleCancelOrder = () => {
+    /*const handleCancelOrder = () => {
         setTrigger(true);
         const callback = (decision: boolean) => {
             if (decision) {
@@ -33,15 +32,15 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
         };
         setMessage(cancelOrderMessage);
         setAcceptCallback(() => callback);
-    };
+    };*/
     return (
         <div className="relative flex flex-col rounded-lg border-2 shadow-md bg-gray-100">
-            {status === statusArr[1] && (
+            {/*status === statusArr[1] && (
                 <XButton
                     closeCallback={handleCancelOrder}
                     className="absolute -top-2 -right-2"
                 />
-            )}
+            )*/}
             <div
                 className={`flex justify-evenly shadow-md bg-gradient-to-r
 			    font-bold lg:text-base text-sm ${
