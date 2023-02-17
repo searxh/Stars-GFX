@@ -2,6 +2,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { projects, portfolio } from "../../lib/portfolio";
 import { ListItemTypes } from "../../types";
+import { ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase";
 
 interface CategoryItemPropsType {
     listItem: any;
@@ -28,23 +30,26 @@ const CategoryItem = ({
     setInfo,
 }: CategoryItemPropsType) => {
     const { name, desc, arr } = listItem;
+    const [src, setSrc] = React.useState<string>();
     const [displayName] = React.useState<string>(name);
     const [tapTime, setTapTime] = React.useState<number>(Date.now());
     const imageRef = React.useRef<HTMLImageElement>(null);
     const nameRef = React.useRef<HTMLDivElement>(null);
     const getSrc = () => {
-        const dir = "/images/portfolio/";
         const type = ".webp";
-        return (
-            dir +
+        const imageName =
             String.fromCharCode(97 + keyMapper[category]) +
             (portfolio[keyMapper[category]].length - index) +
-            type
-        );
+            type;
+        /*const imageRef = ref(storage, "Portfolio/" + imageName);
+        getDownloadURL(imageRef).then((url: string) => {
+            setSrc(url);
+        });*/
+        setSrc("/images/portfolio/" + imageName);
     };
     const handleOnClick = () => {
         setInfo({
-            src: getSrc(),
+            src: src,
             name: name,
             desc: desc,
             isProject: projects
@@ -64,6 +69,7 @@ const CategoryItem = ({
         setTapTime(Date.now());
     };
     React.useEffect(() => {
+        getSrc();
         if (imageRef.current && imageRef.current.offsetWidth) {
             setItemWidth(imageRef.current.offsetWidth);
         }
@@ -103,7 +109,7 @@ const CategoryItem = ({
             <img
                 ref={imageRef}
                 className={`${size} object-cover object-center rounded-xl drop-shadow-md`}
-                src={getSrc()}
+                src={src}
                 draggable={false}
                 alt=""
             />
