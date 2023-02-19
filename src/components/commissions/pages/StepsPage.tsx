@@ -22,13 +22,13 @@ const stepsInfo = [
     },
     {
         stepTitle: "Submit Order",
-        details: "Submit your order request through the Commission Website.",
+        details: "Submit your order request through this Commission Website.",
         icon: faRightToBracket,
     },
     {
         stepTitle: "Wait For Response",
         details:
-            "I'll contact you back through your discord, please note that my response time may be delayed due to time zone differences. Rest assured, I'll get back to you as soon as possible.",
+            "I'll contact you back through your Discord, please note that my response time may be delayed due to time zone differences. Rest assured, I'll get back to you as soon as possible.",
         icon: faClock,
     },
     {
@@ -46,7 +46,7 @@ const stepsInfo = [
     {
         stepTitle: "Receive Your Product",
         details:
-            "Your product is complete! Everything will be sent through discord, get ready to receive it!",
+            "Your product is complete! Everything will be sent through Discord, get ready to receive it!",
         icon: faImages,
     },
 ];
@@ -102,6 +102,12 @@ const StepsPage = () => {
                         }}
                         className="absolute left-[22px] w-[4px] mt-[64px] bg-sky-400"
                     ></div>
+                </div>
+                <div className="pt-10 font-semibold text-orange-400 text-lg">
+                    If you have any questions or concerns, please do not
+                    hesitate to contact me.
+                    <br />
+                    You can reach me via Discord at STAR#5732.
                 </div>
                 <div className="flex justify-evenly font-normal max-w-[50rem] min-w-[21rem] w-1/2 mx-auto py-10">
                     <button

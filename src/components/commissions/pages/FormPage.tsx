@@ -93,7 +93,7 @@ const FormPage = () => {
                     );
                 })}
             </form>
-            <div className="flex justify-evenly">
+            <div className="flex justify-evenly pb-5">
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
