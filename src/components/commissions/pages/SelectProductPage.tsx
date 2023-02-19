@@ -79,29 +79,29 @@ const SelectProductPage = () => {
                 </div>
             </div>
             <div className="grid grid-rows-4 grid-cols-5 gap-2 col-span-5 my-10">
-                {productChoices.map(
-                    (
-                        productChoice: { title: string; color: string },
-                        index: number
-                    ) => {
-                        return (
-                            <button
-                                key={index}
-                                onClick={() => handleOnSelect(index)}
-                                className={`flex-1 rounded-2xl duration-500 ${
-                                    gridConfig[index].row
-                                } ${gridConfig[index].col}
+                {productChoices.map((productChoice, index) => {
+                    return (
+                        <button
+                            key={index}
+                            onClick={() => handleOnSelect(index)}
+                            className={`flex-1 rounded-2xl duration-500 ${
+                                gridConfig[index].row
+                            } ${gridConfig[index].col}
                                 text-white py-5 text-xl lg:text-2xl hover:scale-[102%] transform-gpu shadow-md ${
                                     selected[index]
                                         ? "opacity-100"
                                         : "opacity-50"
                                 } ${productChoice.color}`}
-                            >
+                        >
+                            <div className="font-bold">
                                 {productChoice.title.toLocaleUpperCase()}
-                            </button>
-                        );
-                    }
-                )}
+                            </div>
+                            <div className="text-lg">
+                                {productChoice.priceRange}
+                            </div>
+                        </button>
+                    );
+                })}
             </div>
             <div className="flex justify-evenly">
                 <button

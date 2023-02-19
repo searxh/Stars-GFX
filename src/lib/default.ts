@@ -51,21 +51,25 @@ export const productChoices = [
         title: "Thumbnail",
         color: "bg-purple-500",
         textColor: "text-purple-500",
+        priceRange: "$79 - $124",
     },
     {
         title: "Icon",
         color: "bg-blue-500",
         textColor: "text-blue-500",
+        priceRange: "$59 - $104",
     },
     {
         title: "Ad Banner",
         color: "bg-amber-500",
         textColor: "text-amber-500",
+        priceRange: "$59 - $104",
     },
     {
         title: "Ad Skyscraper",
         color: "bg-red-500",
         textColor: "text-red-500",
+        priceRange: "$59 - $104",
     },
 ];
 
