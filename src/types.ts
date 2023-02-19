@@ -88,6 +88,7 @@ export interface GlobalStateType extends GlobalStateKeys {
     formInfo: FormInfoType;
     projInfo: Array<string>;
     currentPage: number;
+    commsFlow: number;
     notifier: boolean;
     userInfo: any;
     orders: number;

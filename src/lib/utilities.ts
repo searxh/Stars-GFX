@@ -4,7 +4,7 @@ import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 
 export const pageChangeCheck = (isForward: boolean, page: number) => {
-    if (isForward && page + 1 < 5) {
+    if (isForward && page + 1 < 7) {
         return page + 1;
     } else if (!isForward && page - 1 >= 0) {
         return page - 1;

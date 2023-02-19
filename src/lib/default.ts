@@ -86,6 +86,7 @@ export const initialState: GlobalStateType = {
     formInfo: initialFormInfo,
     projInfo: [],
     userInfo: {},
+    commsFlow: 0,
     notifier: false,
     currentPage: 0,
     orders: 0,
