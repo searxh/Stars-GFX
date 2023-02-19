@@ -18,7 +18,10 @@ const CompletePage = () => {
     }, []);
     return (
         <>
-            <Text text="Submission Complete!" color="text-green-500" />
+            <Text
+                text="Submission Complete! I'll get back to you soon"
+                color="text-green-500"
+            />
         </>
     );
 };
