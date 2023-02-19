@@ -58,8 +58,10 @@ const Orders = () => {
             ordersInfo?.pending.length !== 0 ||
             ordersInfo?.declined.length !== 0 ? (
                 <>
-                    <div className="text-3xl lg:text-4xl text-center font-bold px-5 pt-5 drop-shadow-sm">
-                        {userInfo.username + "#" + userInfo.discriminator}
+                    <div className="text-3xl lg:text-4xl text-center font-bold px-5 pt-5 drop-shadow-sm break-words leading-10">
+                        {userInfo.username}
+                        <br />
+                        {"#" + userInfo.discriminator}
                     </div>
                     <div
                         className={`text-lg lg:text-xl ${
