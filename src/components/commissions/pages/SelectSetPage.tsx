@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { GlobalContext } from "../../../states";
 import { pageChangeCheck } from "../../../lib/utilities";
@@ -115,7 +116,7 @@ const SelectSetPage = () => {
                 </div>
             </div>
 
-            <div className="grid grid-flow-col gap-5 w-fit mx-auto text-3xl py-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 w-fit mx-auto text-3xl py-5">
                 {setInfo.map((setItem) => (
                     <SetCard
                         name={setItem.name}
