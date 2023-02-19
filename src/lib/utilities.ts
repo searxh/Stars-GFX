@@ -1,5 +1,10 @@
 import { FormInfoType } from "../types";
-import { priceInfo, selectChoices, productChoices } from "./default";
+import {
+    priceInfo,
+    selectChoices,
+    productChoices,
+    setChoices,
+} from "./default";
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 
@@ -14,17 +19,15 @@ export const pageChangeCheck = (isForward: boolean, page: number) => {
 };
 
 export const getProductColor = (currentProduct: string) => {
-    const res = productChoices.find(
-        (productObj: { title: string; color: string }) =>
-            productObj.title === currentProduct
-    );
+    const res = productChoices
+        .concat(setChoices)
+        .find((productObj) => productObj.title === currentProduct);
     return res !== undefined ? res.color : "bg-slate-500";
 };
 
 export const getProductTextColor = (currentProduct: string) => {
     const res = productChoices.find(
-        (productObj: { title: string; color: string }) =>
-            productObj.title === currentProduct
+        (productObj) => productObj.title === currentProduct
     );
     return res !== undefined ? res.textColor : "text-black";
 };

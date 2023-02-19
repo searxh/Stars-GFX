@@ -73,6 +73,33 @@ export const productChoices = [
     },
 ];
 
+export const setChoices = [
+    {
+        title: "Entry",
+        color: "bg-orange-400",
+        textColor: "",
+        priceRange: "",
+    },
+    {
+        title: "Plus",
+        color: "bg-red-500",
+        textColor: "",
+        priceRange: "",
+    },
+    {
+        title: "Pro",
+        color: "bg-sky-400",
+        textColor: "",
+        priceRange: "",
+    },
+    {
+        title: "Beyond",
+        color: "bg-purple-400",
+        textColor: "",
+        priceRange: "",
+    },
+];
+
 export const initialStatusObj = { pending: [], active: [], declined: [] };
 
 export const initialProductInfo = {
