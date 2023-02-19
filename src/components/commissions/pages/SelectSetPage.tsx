@@ -2,6 +2,7 @@ import React from "react";
 import { GlobalContext } from "../../../states";
 import { pageChangeCheck } from "../../../lib/utilities";
 import SetCard from "../../SetCard";
+import { FormInfoType } from "../../../types";
 
 const setInfo = [
     {
@@ -53,7 +54,7 @@ const setInfo = [
 ];
 const SelectSetPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const { currentPage } = global_state;
+    const { currentPage, formInfo } = global_state;
     const [selected, setSelected] = React.useState<string>("");
     const [errorMessageVisible, setErrorMessageVisible] =
         React.useState<boolean>(false);
@@ -78,6 +79,28 @@ const SelectSetPage = () => {
         });
         setSelected(name !== selected ? name : "");
     };
+    React.useEffect(() => {
+        const setInfoItem = setInfo.find((item) => item.name === selected);
+        let newFormInfo: FormInfoType = {};
+        if (formInfo[selected] === undefined && setInfoItem) {
+            newFormInfo[selected] = {
+                modelLimit:
+                    typeof setInfoItem.details.models === "string"
+                        ? "Unlimited"
+                        : "Limited",
+                number: "1",
+                resolution: setInfoItem.details.resolution,
+                additional: setInfoItem.details.extras
+                    ? setInfoItem.details.extras
+                    : "None",
+            };
+        }
+        dispatch({
+            type: "set",
+            field: "formInfo",
+            payload: newFormInfo,
+        });
+    }, [selected]);
     return (
         <div className="text-4xl lg:text-5xl text-black m-auto font-bold w-full">
             <div className="relative w-full">
@@ -110,7 +133,7 @@ const SelectSetPage = () => {
                     selected === "Customize"
                         ? "bg-orange-400 text-white"
                         : "border-2 border-black"
-                } mx-auto text-xl px-5 py-1 rounded-full transform-gpu duration-300 hover:scale-105`}
+                } mx-auto text-xl px-5 py-1 my-5 rounded-full transform-gpu duration-300 hover:scale-105`}
             >
                 Customize your order
             </button>

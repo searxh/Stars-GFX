@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import SelectProductPage from "../components/commissions/pages/SelectProductPage";
 import CustomizePage from "../components/commissions/pages/CustomizePage";
 import { GlobalContext } from "../states";
