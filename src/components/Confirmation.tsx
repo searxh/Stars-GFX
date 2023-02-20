@@ -1,3 +1,4 @@
+import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import React from "react";
 import XButton from "./XButton";
 
@@ -27,8 +28,10 @@ export const Confirmation = ({
     };
     React.useEffect(() => {
         if (trigger) {
+            disableBodyScroll(document.body);
             setTimeout(() => setTransition(true), 10);
         } else {
+            clearAllBodyScrollLocks();
             setTimeout(() => {
                 setTransition(false);
             }, 300);

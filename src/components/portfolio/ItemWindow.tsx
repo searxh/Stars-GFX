@@ -2,6 +2,7 @@ import React from "react";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 import compareAsc from "date-fns/compareAsc";
 import { portfolio } from "../../lib/portfolio";
+import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 
 interface StandardCardPropsType {
     listItem: ListItemTypes;
@@ -27,6 +28,13 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
     const handleOnQuickExit = () => {
         if (!IsInCooldown()) callback();
     };
+    React.useEffect(() => {
+        if (src !== undefined) {
+            disableBodyScroll(document.body);
+        } else {
+            clearAllBodyScrollLocks();
+        }
+    }, [src]);
     return (
         <div
             onClick={handleOnQuickExit}

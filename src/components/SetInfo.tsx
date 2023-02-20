@@ -1,3 +1,4 @@
+import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import React from "react";
 
 interface IProps {
@@ -21,10 +22,12 @@ const SetInfo = ({
 }: IProps) => {
     const [z, setZ] = React.useState<number>(0);
     React.useEffect(() => {
-        if (!showInfo) {
-            setTimeout(() => setZ(-10), 450);
-        } else {
+        if (showInfo) {
+            disableBodyScroll(document.body);
             setZ(10);
+        } else {
+            clearAllBodyScrollLocks();
+            setTimeout(() => setZ(-10), 450);
         }
     }, [showInfo]);
     return (
