@@ -60,7 +60,7 @@ const SelectSetPage = () => {
     const [errorMessageVisible, setErrorMessageVisible] =
         React.useState<boolean>(false);
     const handleOnNavigate = (isForward: boolean) => {
-        if (selected.length === 0) {
+        if (isForward && selected.length === 0) {
             setErrorMessageVisible(true);
             setTimeout(() => setErrorMessageVisible(false), 1500);
         } else {
