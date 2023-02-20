@@ -87,6 +87,23 @@ export const isSignedIn = () => {
     //return a && JSON.parse(a).length === 64;
 };
 
+export const convertUSDtoRobux = (dollar: number | string) => {
+    if (typeof dollar === "number") {
+        const value = Math.round(dollar * 286);
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+        const regex = /\$(\d+(?:\.\d+)?)/g;
+        let newRobux = dollar;
+        let match;
+        while ((match = regex.exec(dollar)) !== null) {
+            newRobux = newRobux
+                .replace("$" + match[1], "⏣" + Number(match[1]) * 286)
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        return newRobux;
+    }
+};
+
 export const checkAdmin = () => {
     return new Promise((resolve) => {
         const a = Cookies.get("a");
