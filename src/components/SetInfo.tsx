@@ -56,6 +56,9 @@ const SetInfo = ({
                 <div className="pt-5">
                     <div>Resolution: {details.resolution} </div>
                     <div>Models Limit: {details.models}</div>
+                    {details.extras ? (
+                        <div>Extras: {details.extras}</div>
+                    ) : null}
                 </div>
                 <div className="font-bold p-5">
                     {details.price ? (
