@@ -1,5 +1,6 @@
 import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import React from "react";
+import { convertUSDtoRobux } from "../lib/utilities";
 
 interface IProps {
     name: string;
@@ -65,11 +66,24 @@ const SetInfo = ({
                 </div>
                 <div className="font-bold p-5">
                     {details.price ? (
-                        <div>Price: ${details.price}</div>
+                        <>
+                            <div>Price: ${details.price}</div>
+                            <div className="text-lg font-normal">
+                                Robux Price: ⏣{" "}
+                                {convertUSDtoRobux(details.price)}
+                            </div>
+                        </>
                     ) : (
                         <>
                             <div>Icon Price: ${details.icon}</div>
+                            <div className="text-base font-normal">
+                                Robux Price: ⏣ {convertUSDtoRobux(details.icon)}
+                            </div>
                             <div>Thumbnail Price: ${details.thumbnail}</div>
+                            <div className="text-base font-normal">
+                                Robux Price: ⏣{" "}
+                                {convertUSDtoRobux(details.thumbnail)}
+                            </div>
                         </>
                     )}
                 </div>

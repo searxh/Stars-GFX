@@ -23,7 +23,7 @@ const TermsPage = () => {
                 and the designer
             </div>
             <div className="text-lg my-8 drop-shadow-sm w-[80%] m-auto text-left">
-                1. Payment via Paypal only
+                1. Payment via Paypal or Group funds
                 <br />
                 2. Upfront payment must be included for queueing
                 <br />

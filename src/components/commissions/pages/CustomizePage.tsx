@@ -2,6 +2,7 @@ import React from "react";
 import ProductSelect from "../ProductSelect";
 import {
     calculatePrice,
+    convertUSDtoRobux,
     isSignedIn,
     pageChangeCheck,
 } from "../../../lib/utilities";
@@ -62,6 +63,9 @@ const CustomizePage = () => {
             })}
             <div className="drop-shadow-sm">
                 <div className="">${Math.round(price.value)}</div>
+                <div className="text-base -mt-2 mb-2">
+                    ⏣{convertUSDtoRobux(price.value)}
+                </div>
                 {price.discountPercent !== 0 && (
                     <div className="text-xl lg:text-2xl px-5 pb-3 -mt-2 rounded-full w-fit m-auto text-green-600">
                         Save {Math.round(price.discountPercent)}%!

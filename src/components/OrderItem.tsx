@@ -1,6 +1,6 @@
 import React from "react";
 import { OrderObj, OrderType } from "../types";
-import { getProductColor } from "../lib/utilities";
+import { convertUSDtoRobux, getProductColor } from "../lib/utilities";
 import format from "date-fns/format";
 import XButton from "./XButton";
 import { deleteOrder } from "../lib/api";
@@ -55,7 +55,9 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 <div className="my-auto">
                     TIME: {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
-                <div className="my-auto">PRICE: ${price}</div>
+                <div className="my-auto">
+                    PRICE: ${price}/⏣{convertUSDtoRobux(price)}
+                </div>
             </div>
             <div className="my-auto p-3 drop-shadow-sm">
                 <div

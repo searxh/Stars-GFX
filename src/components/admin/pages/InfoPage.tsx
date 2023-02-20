@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { OrderObj, OrderType } from "../../../types";
-import { getProductColor } from "../../../lib/utilities";
+import { convertUSDtoRobux, getProductColor } from "../../../lib/utilities";
 import format from "date-fns/format";
 import FormInfoAdmin from "../FormInfoAdmin";
 import { deleteOrder, updateOrder } from "../../../lib/api";
@@ -86,7 +86,9 @@ const InfoPage = () => {
                 </div>
                 <div>
                     <div className="font-bold">PRICE:</div>
-                    <div>${order.price}</div>
+                    <div>
+                        ${order.price}/⏣{convertUSDtoRobux(order.price)}
+                    </div>
                 </div>
                 <div>
                     <div className="font-bold">CREATED AT:</div>

@@ -5,6 +5,7 @@ import { OrderObj } from "../../types";
 import format from "date-fns/format";
 import { useNavigate } from "react-router-dom";
 import { statusArr } from "../../lib/default";
+import { convertUSDtoRobux } from "../../lib/utilities";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -51,7 +52,8 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
                     {format(new Date(created_at), "H:mm d/M/yyyy")}
                 </div>
                 <div className="my-auto">
-                    <div className="font-bold">PRICE:</div> ${price}
+                    <div className="font-bold">PRICE:</div> ${price}/⏣
+                    {convertUSDtoRobux(price)}
                 </div>
             </div>
         </button>

@@ -2,7 +2,7 @@
 import React from "react";
 import { GlobalContext } from "../../../states";
 import { productChoices, initialProductInfo } from "../../../lib/default";
-import { pageChangeCheck } from "../../../lib/utilities";
+import { convertUSDtoRobux, pageChangeCheck } from "../../../lib/utilities";
 
 const gridConfig = [
     { row: "row-span-2", col: "col-span-3" },
@@ -96,8 +96,11 @@ const SelectProductPage = () => {
                             <div className="font-bold">
                                 {productChoice.title.toLocaleUpperCase()}
                             </div>
-                            <div className="text-lg">
+                            <div className="text-lg font-semibold">
                                 {productChoice.priceRange}
+                            </div>
+                            <div className="text-sm">
+                                {convertUSDtoRobux(productChoice.priceRange)}
                             </div>
                         </button>
                     );
