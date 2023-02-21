@@ -12,7 +12,7 @@ const Contacts = () => {
         >
             <img
                 className="m-auto h-72 lg:h-80 my-10 drop-shadow-md hover:scale-105 duration-500 transform-gpu"
-                src="images/star.png"
+                src="images/star.webp"
                 draggable={false}
                 alt=""
             />
