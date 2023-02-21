@@ -4,6 +4,8 @@ import { getOwnerStatus } from "../../../lib/api";
 import { OwnerStatusType } from "../../../types";
 import { userRate } from "../../../lib/default";
 import { pageChangeCheck } from "../../../lib/utilities";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const CoverPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
@@ -39,7 +41,17 @@ const CoverPage = () => {
                         ? `Star is currently open for commissions (${ownerStatus.num}/3)`
                         : `Star is currently not accepting commissions (${ownerStatus.num}/3)`}
                 </div>
-            ) : null}
+            ) : (
+                <div
+                    className={`text-sky-500 text-base lg:text-lg font-semibold px-5`}
+                >
+                    Fetching Star's commission status
+                    <FontAwesomeIcon
+                        className="ml-2 animate-spin"
+                        icon={faSpinner}
+                    />
+                </div>
+            )}
             <img
                 src="/images/pltu.gif"
                 alt=""
