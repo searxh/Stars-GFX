@@ -4,6 +4,9 @@ import { GlobalContext } from "../../../states";
 import { pageChangeCheck } from "../../../lib/utilities";
 import SetCard from "../../SetCard";
 import { FormInfoType } from "../../../types";
+import { isSignedIn } from "../../../lib/utilities";
+import { ConfirmationContext } from "../../../confirmation";
+import { signUpMessage, authLink } from "../../../lib/default";
 
 const setInfo = [
     {
@@ -56,13 +59,40 @@ const setInfo = [
 const SelectSetPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { currentPage, formInfo } = global_state;
+    const { setTrigger, setMessage, setAcceptCallback } =
+        React.useContext(ConfirmationContext);
     const [selected, setSelected] = React.useState<string>("");
     const [errorMessageVisible, setErrorMessageVisible] =
         React.useState<boolean>(false);
+    const handleNext = () => {
+        if (isSignedIn()) {
+            const check = pageChangeCheck(true, currentPage);
+            dispatch({
+                type: "set",
+                field: "currentPage",
+                payload: check !== undefined ? check : currentPage,
+            });
+        } else {
+            setTrigger(true);
+            setMessage(signUpMessage);
+            const callback = () => {
+                const randomString = crypto.randomUUID();
+                dispatch({
+                    type: "set",
+                    field: "stateId",
+                    payload: randomString,
+                });
+                window.location.href = authLink + "&state=" + randomString;
+            };
+            setAcceptCallback(() => callback);
+        }
+    };
     const handleOnNavigate = (isForward: boolean) => {
         if (isForward && selected.length === 0) {
             setErrorMessageVisible(true);
             setTimeout(() => setErrorMessageVisible(false), 1500);
+        } else if (isForward && selected !== "Customize") {
+            handleNext();
         } else {
             const check = pageChangeCheck(isForward, currentPage);
             dispatch({
