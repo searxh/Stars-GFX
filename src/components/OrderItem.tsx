@@ -7,6 +7,7 @@ import { deleteOrder } from "../lib/api";
 import { GlobalContext } from "../states";
 import { cancelOrderMessage, statusArr } from "../lib/default";
 import { ConfirmationContext } from "../confirmation";
+import useElementSize from "../hooks/useElementSize";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -16,6 +17,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
     //const { setTrigger, setAcceptCallback, setMessage } = React.useContext(ConfirmationContext);
     //const { userInfo, notifier } = global_state;
     const { id, created_at, orderInfo, comment, status, price } = orderObj;
+    const orderItemSize = useElementSize("order-item");
     /*const handleCancelOrder = () => {
         setTrigger(true);
         const callback = (decision: boolean) => {
@@ -42,6 +44,7 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                 />
             )*/}
             <div
+                id="order-item"
                 className={`flex justify-evenly shadow-md bg-gradient-to-r
 			    font-bold lg:text-base text-sm ${
                     orderObj.status === statusArr[0]
@@ -95,10 +98,18 @@ const OrderItem = ({ orderObj }: OrderItemPropsInterface) => {
                     );
                 })}
             </div>
+
             {comment.length !== 0 ? (
-                <div className="lg:text-base text-sm py-1">
-                    Star's comment:
-                    <span className="text-orange-600 mx-2">{comment}</span>
+                <div className="bg-orange-100 rounded-md">
+                    <div className="font-semibold">Star's comment:</div>
+                    <div
+                        style={{ width: orderItemSize.width }}
+                        className="lg:text-base text-sm py-1"
+                    >
+                        <span className="text-orange-600 mx-2 break-words select-text">
+                            {comment}
+                        </span>
+                    </div>
                 </div>
             ) : null}
         </div>
