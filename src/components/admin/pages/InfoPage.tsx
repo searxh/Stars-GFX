@@ -19,7 +19,13 @@ const InfoPage = () => {
             process.env.REACT_APP_SECRET_CHAR as string,
             "g"
         );
-        const str = orderObj?.replace(regex, "/") as string;
+        const regex1 = new RegExp(
+            process.env.REACT_APP_SECRET_CHAR1 as string,
+            "g"
+        );
+        const str = orderObj
+            ?.replace(regex, "/")
+            .replace(regex1, "?") as string;
         return JSON.parse(str);
     });
     const [selectedStatus, setSelectedStatus] = React.useState<number>(-1);
@@ -217,7 +223,8 @@ const InfoPage = () => {
                 <textarea
                     rows={2}
                     ref={inputRef}
-                    className="hide-scrollbar rounded-2xl py-2 px-5 text-base lg:text-lg shadow-md border-2 resize-none w-full"
+                    className="hide-scrollbar rounded-2xl py-2 px-5 text-base lg:text-lg shadow-md 
+                    border-2 resize-none w-full"
                 />
             </div>
             <div className="flex w-full justify-evenly mx-auto py-5 font-bold">

@@ -15,13 +15,11 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
     const { id, created_at, userInfo, price } = orderObj;
     const handleNavigate = () => {
         const stringified = JSON.stringify(orderObj);
-        navigate(
-            "/dashboard/" +
-                stringified.replace(
-                    /\/+/g,
-                    process.env.REACT_APP_SECRET_CHAR as string
-                )
-        );
+        const postRegex = stringified
+            .replace(/\/+/g, process.env.REACT_APP_SECRET_CHAR as string)
+            .replace(/\?+/g, process.env.REACT_APP_SECRET_CHAR1 as string);
+        console.log(postRegex);
+        navigate("/dashboard/" + postRegex);
     };
     return (
         <button
