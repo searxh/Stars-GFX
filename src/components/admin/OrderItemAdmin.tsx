@@ -17,7 +17,8 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
         const stringified = JSON.stringify(orderObj);
         const postRegex = stringified
             .replace(/\/+/g, process.env.REACT_APP_SECRET_CHAR as string)
-            .replace(/\?+/g, process.env.REACT_APP_SECRET_CHAR1 as string);
+            .replace(/\?+/g, process.env.REACT_APP_SECRET_CHAR1 as string)
+            .replace(/\\+/g, process.env.REACT_APP_SECRET_CHAR2 as string);
         console.log(postRegex);
         navigate("/dashboard/" + postRegex);
     };

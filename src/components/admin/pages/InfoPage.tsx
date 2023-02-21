@@ -23,9 +23,14 @@ const InfoPage = () => {
             process.env.REACT_APP_SECRET_CHAR1 as string,
             "g"
         );
+        const regex2 = new RegExp(
+            process.env.REACT_APP_SECRET_CHAR2 as string,
+            "g"
+        );
         const str = orderObj
             ?.replace(regex, "/")
-            .replace(regex1, "?") as string;
+            .replace(regex1, "?")
+            .replace(regex2, "\\") as string;
         return JSON.parse(str);
     });
     const [selectedStatus, setSelectedStatus] = React.useState<number>(-1);
