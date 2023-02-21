@@ -147,8 +147,9 @@ const SelectSetPage = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 w-fit mx-auto text-3xl py-5">
-                {setInfo.map((setItem) => (
+                {setInfo.map((setItem, index) => (
                     <SetCard
+                        index={index}
                         name={setItem.name}
                         isSelected={selected === setItem.name}
                         selectCallback={onSelectCallback}

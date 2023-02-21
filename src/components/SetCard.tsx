@@ -1,7 +1,9 @@
 import React from "react";
+import useObserver from "../hooks/useObserver";
 import SetInfo from "./SetInfo";
 
 interface IProps {
+    index: number;
     name: string;
     isSelected: boolean;
     selectCallback: Function;
@@ -10,6 +12,7 @@ interface IProps {
 }
 
 const SetCard = ({
+    index,
     name,
     color,
     isSelected,
@@ -17,8 +20,17 @@ const SetCard = ({
     details,
 }: IProps) => {
     const [showInfo, setShowInfo] = React.useState<boolean>(false);
+    const isVisible = useObserver({
+        elementId: `set-card-${index}`,
+        delay: index * 200,
+    });
     return (
-        <div className="relative">
+        <div
+            id={`set-card-${index}`}
+            className={`${
+                isVisible ? "" : `opacity-0 -translate-y-12`
+            } transition duration-500 relative`}
+        >
             <button
                 onClick={() => setShowInfo(true)}
                 className={`${

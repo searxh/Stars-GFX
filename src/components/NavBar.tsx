@@ -177,8 +177,8 @@ const NavBar = (props: any) => {
                                     <button
                                         key={index}
                                         onClick={() => handleChangeRoute(route)}
-                                        className="m-auto w-[25%] hover:bg-black hover:bg-opacity-10
-                                        h-full text-sm transition duration-500 font-normal hover:shadow-md rounded-sm"
+                                        className="m-auto w-[25%] hover:bg-black hover:bg-opacity-5
+                                        h-full text-sm transition duration-500 font-normal rounded-md"
                                     >
                                         {routes[route]}
                                     </button>

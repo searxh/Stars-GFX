@@ -6,17 +6,22 @@ import { userRate } from "../../../lib/default";
 import { pageChangeCheck } from "../../../lib/utilities";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import useObserver from "../../../hooks/useObserver";
 
 const CoverPage = () => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
     const { currentPage } = global_state;
     const [ownerStatus, setOwnerStatus] =
         React.useState<OwnerStatusType | null>(null);
+    const [transition, setTransition] = React.useState<boolean>(false);
     const getObjects = () => {
         getOwnerStatus().then((res) => {
             setOwnerStatus(res as OwnerStatusType);
         });
     };
+    const isVisible = useObserver({
+        elementId: "pltu-image",
+    });
     React.useEffect(() => {
         if (currentPage === 0) {
             getObjects();
@@ -26,8 +31,16 @@ const CoverPage = () => {
             return () => clearInterval(periodicFetch);
         }
     }, [currentPage]);
+    React.useEffect(() => {
+        if (isVisible && !transition) {
+            setTimeout(() => setTransition(true), 500);
+        }
+    }, [isVisible]);
     return (
-        <div className="relative text-4xl lg:text-5xl text-black m-auto">
+        <div
+            id="cover-page"
+            className={`relative text-4xl lg:text-5xl text-black m-auto transition duration-500`}
+        >
             <div className="px-3 my-2 drop-shadow-sm font-bold leading-8">
                 Passion led to you.
             </div>
@@ -53,10 +66,18 @@ const CoverPage = () => {
                 </div>
             )}
             <img
+                id="pltu-image"
                 src="/images/pltu.gif"
                 alt=""
                 draggable={false}
-                className="max-w-[18rem] aspect-square my-6 w-screen m-auto brightness-[101%] rounded-full drop-shadow-md"
+                className={`${
+                    transition
+                        ? "duration-1000"
+                        : isVisible
+                        ? "translate-x-20"
+                        : "opacity-0 -translate-x-32"
+                } max-w-[18rem] aspect-square my-6 w-screen m-auto brightness-[101%] 
+                rounded-full drop-shadow-md transition duration-500`}
             />
             <button
                 onClick={() => {
