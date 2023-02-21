@@ -31,7 +31,7 @@ const SetCard = ({
                     <div>Set</div>
                 </div>
                 <div
-                    className={`absolute top-0 bottom-0 left-0 right-0 w-[90%] h-[90%] m-auto rounded-xl -z-10 bg-center
+                    className={`absolute top-0 bottom-0 left-0 right-0 m-auto rounded-xl -z-10 bg-center
                     bg-[url('../public/images/about.webp')] bg-cover bg-no-repeat opacity-40 blur-sm`}
                 ></div>
             </button>

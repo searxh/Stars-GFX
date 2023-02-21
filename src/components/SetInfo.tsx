@@ -68,7 +68,7 @@ const SetInfo = ({
                     {details.price ? (
                         <>
                             <div>Price: ${details.price}</div>
-                            <div className="text-lg font-normal">
+                            <div className="text-base font-normal">
                                 Robux Price: ⏣{" "}
                                 {convertUSDtoRobux(details.price)}
                             </div>
