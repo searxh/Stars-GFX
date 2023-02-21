@@ -17,19 +17,13 @@ const ContactButton = ({
     const handleOnClick = () => {
         window.location.href = linkTo;
     };
-    const isLargerThanMedium = useMediaQuery("(min-width: 640px)");
     return (
         <button
-            style={{
-                borderBottom: isLargerThanMedium
-                    ? undefined
-                    : "1px solid white",
-            }}
             onClick={handleOnClick}
-            className="text-xl font-bold text-white text-center
-            md:border-x-[0.5px] border-white w-60 py-5 drop-shadow-md"
+            className="text-xl font-bold text-white text-center bg-white bg-opacity-10
+            w-60 py-5 drop-shadow-md rounded-xl mx-auto shadow-md"
         >
-            <div className="hover:scale-110 transform-gpu duration-500">
+            <div className="hover:scale-105 transform-gpu duration-500">
                 <img
                     className="w-16 h-16 m-auto invert"
                     src={imageUrl}
