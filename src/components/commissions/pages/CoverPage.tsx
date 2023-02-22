@@ -89,8 +89,8 @@ const CoverPage = () => {
                         payload: check ? check : currentPage,
                     });
                 }}
-                className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-        duration-500 transition text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
+        duration-500 transition text-3xl drop-shadow-sm border-2 md:hover:border-sky-500 rounded-full"
             >
                 Start
             </button>

@@ -25,7 +25,7 @@ const Contacts = () => {
                         ? "translate-y-0 opacity-100"
                         : "translate-y-12 opacity-0"
                 } m-auto h-72 lg:h-80 my-10 drop-shadow-md 
-                hover:scale-105 duration-1000 transition object-contain`}
+                md:hover:scale-105 duration-1000 transition object-contain`}
                 src="images/star.webp"
                 draggable={false}
                 alt=""

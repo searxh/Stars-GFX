@@ -110,8 +110,8 @@ const OrderPage = () => {
                 </button>
                 <button
                     onClick={handleOnSaveChange}
-                    className="hover:scale-105 hover:brightness-150 transition duration-300 rounded-xl 
-                    m-auto text-white mx-2 bg-pink-500 px-3 py-2 hover:shadow-pink-500 shadow-md"
+                    className="md:hover:scale-105 md:hover:brightness-150 transition duration-300 rounded-xl 
+                    m-auto text-white mx-2 bg-pink-500 px-3 py-2 md:hover:shadow-pink-500 shadow-md"
                 >
                     Save changes
                 </button>

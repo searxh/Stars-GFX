@@ -21,7 +21,7 @@ const ContactButton = ({
             className="text-xl font-bold text-white text-center bg-white bg-opacity-10
             w-60 py-5 drop-shadow-md rounded-xl mx-auto shadow-md"
         >
-            <div className="hover:scale-105 transform-gpu duration-500">
+            <div className="md:hover:scale-105 transform-gpu duration-500">
                 <img
                     className="w-16 h-16 m-auto invert"
                     src={imageUrl}

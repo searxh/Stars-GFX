@@ -91,7 +91,7 @@ const SetInfo = ({
                     onClick={() => {
                         selectCallback(name);
                     }}
-                    className="bg-green-500 hover:bg-green-600 text-white rounded-full w-[15rem] 
+                    className="bg-green-500 md:hover:bg-green-600 text-white rounded-full w-[15rem] 
                     px-5 text-2xl mx-auto font-normal p-1 shadow-md transform-gpu"
                 >
                     {isSelected ? "Unselect" : "Select"}

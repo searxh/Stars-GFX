@@ -32,7 +32,7 @@ const Select = ({
             <div className="flex justify-evenly">
                 <button onClick={() => handlePageChange(false)}>
                     <svg
-                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
+                        className="w-7 h-7 md:hover:fill-orange-500 md:hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
                     >
@@ -42,7 +42,7 @@ const Select = ({
                 <div className={`${color} font-nunito`}>{choices[option]}</div>
                 <button onClick={() => handlePageChange(true)}>
                     <svg
-                        className="w-7 h-7 hover:fill-orange-500 hover:scale-110 duration-500 transform-gpu fill-neutral-500"
+                        className="w-7 h-7 md:hover:fill-orange-500 md:hover:scale-110 duration-500 transform-gpu fill-neutral-500"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
                     >

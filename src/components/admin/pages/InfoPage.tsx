@@ -73,7 +73,7 @@ const InfoPage = () => {
             <button
                 onClick={() => navigate(-1)}
                 className="absolute flex top-5 left-5 p-2 px-5 rounded-full bg-neutral-400
-                shadow-md hover:scale-105 transition hover:bg-neutral-600"
+                shadow-md md:hover:scale-105 transition md:hover:bg-neutral-600"
             >
                 <svg
                     className="w-5 h-5 lg:w-8 lg:h-8 fill-white"
@@ -180,7 +180,7 @@ const InfoPage = () => {
                         } ${
                             order.status === statusArr[0]
                                 ? "opacity-30"
-                                : "hover:scale-[102%]"
+                                : "md:hover:scale-[102%]"
                         } 
                         basis-1/3 mx-1  p-2 rounded-xl duration-300
                         text-white shadow-md transition`}
@@ -197,7 +197,7 @@ const InfoPage = () => {
                         } ${
                             order.status === statusArr[1]
                                 ? "opacity-30"
-                                : "hover:scale-[102%]"
+                                : "md:hover:scale-[102%]"
                         } 
                         basis-1/3 mx-1 p-2 rounded-xl duration-300
                         text-white shadow-md transition`}
@@ -214,7 +214,7 @@ const InfoPage = () => {
                         } ${
                             order.status === statusArr[2]
                                 ? "opacity-30"
-                                : "hover:scale-[102%]"
+                                : "md:hover:scale-[102%]"
                         } 
                         basis-1/3 mx-1 p-2 rounded-xl duration-300
                         text-white shadow-md transition`}
@@ -236,16 +236,16 @@ const InfoPage = () => {
                 <button
                     onClick={handleOnSaveChanges}
                     className="text-sm lg:text-base w-56 mx-1 bg-pink-500 rounded-full text-white
-                    shadow-md p-3 px-5 hover:scale-105 transition duration-300 
-                    hover:shadow-pink-500 hover:brightness-150"
+                    shadow-md p-3 px-5 md:hover:scale-105 transition duration-300 
+                    md:hover:shadow-pink-500 md:hover:brightness-150"
                 >
                     SAVE CHANGES
                 </button>
                 <button
                     onClick={handleOnDeleteOrder}
                     className="text-sm lg:text-base w-56 mx-1 bg-red-500 rounded-full text-white
-                    shadow-md p-3 px-5 hover:scale-105 transition duration-300
-                    hover:shadow-red-500 hover:brightness-150"
+                    shadow-md p-3 px-5 md:hover:scale-105 transition duration-300
+                    md:hover:shadow-red-500 md:hover:brightness-150"
                 >
                     DELETE ORDER
                 </button>

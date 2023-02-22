@@ -49,7 +49,7 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
                 onClick={() => {
                     callback();
                 }}
-                className="absolute text-xl m-2 top-0 right-0 w-12 h-12 z-50 hover:scale-110 transform-gpu duration-500"
+                className="absolute text-xl m-2 top-0 right-0 w-12 h-12 z-50 md:hover:scale-110 transform-gpu duration-500"
             >
                 X
             </button>

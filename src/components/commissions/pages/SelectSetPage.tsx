@@ -165,22 +165,22 @@ const SelectSetPage = () => {
                     selected === "Customize"
                         ? "bg-orange-400 text-white"
                         : "border-2 border-black"
-                } mx-auto text-xl px-5 py-1 my-5 rounded-full transform-gpu duration-300 hover:scale-105`}
+                } mx-auto text-xl px-5 py-1 my-5 rounded-full transform-gpu duration-300 md:hover:scale-105`}
             >
                 Customize your order
             </button>
             <div className="flex justify-evenly font-normal">
                 <button
                     onClick={() => handleOnNavigate(false)}
-                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 md:hover:border-sky-500 rounded-full"
                 >
                     Back
                 </button>
                 <button
                     onClick={() => handleOnNavigate(true)}
-                    className="text-orange-500 border-orange-500 hover:scale-110 hover:text-sky-500 w-40
-                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 hover:border-sky-500 rounded-full"
+                    className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
+                    duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 md:hover:border-sky-500 rounded-full"
                 >
                     Next
                 </button>

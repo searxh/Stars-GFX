@@ -163,7 +163,7 @@ const NavBar = (props: any) => {
                     {!isSmallerThanLarge ? (
                         <button
                             onClick={handleOnClick}
-                            className="w-fit flex justify-center hover:scale-110 
+                            className="w-fit flex justify-center md:hover:scale-110 
                             duration-500 transform-gpu"
                         >
                             <StarLogo />
@@ -177,7 +177,7 @@ const NavBar = (props: any) => {
                                     <button
                                         key={index}
                                         onClick={() => handleChangeRoute(route)}
-                                        className="m-auto w-[25%] hover:bg-black hover:bg-opacity-5
+                                        className="m-auto w-[25%] md:hover:bg-black md:hover:bg-opacity-5
                                         h-full text-sm transition duration-500 font-normal rounded-md"
                                     >
                                         {routes[route]}

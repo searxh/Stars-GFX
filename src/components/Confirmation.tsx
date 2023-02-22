@@ -57,14 +57,14 @@ export const Confirmation = ({
                     <div className="flex w-full justify-evenly">
                         <button
                             className="bg-green-600 px-8 py-2 text-white 
-                            rounded-full hover:scale-105 transition shadow-md"
+                            rounded-full md:hover:scale-105 transition shadow-md"
                             onClick={() => handleOnClickDecision(true)}
                         >
                             Confirm
                         </button>
                         <button
                             className="bg-red-600 px-8 py-2 text-white 
-                            rounded-full hover:scale-105 transition shadow-md"
+                            rounded-full md:hover:scale-105 transition shadow-md"
                             onClick={() => handleOnClickDecision(false)}
                         >
                             Cancel

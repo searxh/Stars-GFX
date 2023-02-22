@@ -37,7 +37,7 @@ const SetCard = ({
                     isSelected
                         ? "brightness-125 scale-105 border-4"
                         : "bg-opacity-70"
-                } relative flex w-52 h-52 ${color} text-white rounded-xl hover:scale-95 
+                } relative flex w-52 h-52 ${color} text-white rounded-xl md:hover:scale-95 
                 transform-gpu duration-500 shadow-md`}
             >
                 <div className="text-5xl m-auto leading-10">

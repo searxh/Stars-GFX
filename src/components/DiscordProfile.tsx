@@ -44,8 +44,8 @@ const DiscordProfile = () => {
             {Object.keys(userInfo).length !== 0 ? (
                 <button
                     onClick={handleOnLogout}
-                    className="group/discord flex p-0.5 mx-2 rounded-full hover:scale-105
-                    bg-white hover:bg-red-500 pr-5 shadow-md w-fit max-w-[12rem] duration-300 transform-gpu"
+                    className="group/discord flex p-0.5 mx-2 rounded-full md:hover:scale-105
+                    bg-white md:hover:bg-red-500 pr-5 shadow-md w-fit max-w-[12rem] duration-300 transform-gpu"
                 >
                     <img
                         className="w-8 h-8 rounded-full aspect-square"
@@ -68,7 +68,7 @@ const DiscordProfile = () => {
             ) : (
                 <button
                     onClick={handleOnLogin}
-                    className="group/discord flex p-0.5 m-1 mx-2 rounded-full hover:scale-105
+                    className="group/discord flex p-0.5 m-1 mx-2 rounded-full md:hover:scale-105
                     bg-indigo-400 shadow-md w-fit max-w-[12rem] duration-300 transform-gpu text-white"
                 >
                     <img

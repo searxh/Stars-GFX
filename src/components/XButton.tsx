@@ -13,7 +13,7 @@ const XButton = ({ closeCallback, className }: XButtonInterface) => {
         <button
             onClick={handleOnClick}
             className={`w-8 h-8 ${className} bg-red-400 text-center shadow-md text-lg
-            rounded-full text-white hover:scale-105 hover:bg-red-500 duration-300 transition`}
+            rounded-full text-white md:hover:scale-105 md:hover:bg-red-500 duration-300 transition`}
         >
             X
         </button>

@@ -89,11 +89,11 @@ const CategoryItem = ({
         <button
             onDoubleClick={handleOnClick}
             onTouchStart={handleOnTap}
-            className="relative shrink-0 mx-[12px] my-auto transform-gpu duration-300 hover:scale-105"
+            className="relative shrink-0 mx-[12px] my-auto transform-gpu duration-300 md:hover:scale-105"
         >
             <div
                 className="flex absolute top-8 bottom-0 right-0 left-0 w-full h-full z-20 opacity-0 
-                hover:opacity-100 hover:animate-double-tap m-auto"
+                md:hover:opacity-100 md:hover:animate-double-tap m-auto"
             >
                 <div className="w-8 h-8 bg-white rounded-full m-auto text-2xl opacity-50" />
             </div>

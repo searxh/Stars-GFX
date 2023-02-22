@@ -48,7 +48,7 @@ const Dashboard = () => {
                 <button
                     onClick={(e) => handleOnSubmit(e)}
                     className="rounded-full px-5 py-2 bg-green-500 text-white
-                     hover:scale-105 transition shadow-md"
+                     md:hover:scale-105 transition shadow-md"
                 >
                     Submit
                 </button>
