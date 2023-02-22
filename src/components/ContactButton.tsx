@@ -1,6 +1,4 @@
 import React from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
-
 interface ContactButtonPropsInterface {
     text: string;
     imageUrl: string;

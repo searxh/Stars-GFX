@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { GlobalContext } from "../../../states";
 import { getOwnerStatus } from "../../../lib/api";
