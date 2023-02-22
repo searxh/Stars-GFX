@@ -30,9 +30,9 @@ const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
     };
     React.useEffect(() => {
         if (src !== undefined) {
-            disableBodyScroll(document.body);
+            //disableBodyScroll(document.body);
         } else {
-            clearAllBodyScrollLocks();
+            //clearAllBodyScrollLocks();
         }
     }, [src]);
     return (

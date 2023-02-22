@@ -34,7 +34,9 @@ const SetCard = ({
             <button
                 onClick={() => setShowInfo(true)}
                 className={`${
-                    isSelected ? "brightness-125 scale-105" : ""
+                    isSelected
+                        ? "brightness-125 scale-105 border-4"
+                        : "bg-opacity-70"
                 } relative flex w-52 h-52 ${color} text-white rounded-xl hover:scale-95 
                 transform-gpu duration-500 shadow-md`}
             >

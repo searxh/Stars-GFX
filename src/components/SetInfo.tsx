@@ -24,10 +24,10 @@ const SetInfo = ({
     const [z, setZ] = React.useState<number>(0);
     React.useEffect(() => {
         if (showInfo) {
-            disableBodyScroll(document.body);
+            //disableBodyScroll(document.body);
             setZ(10);
         } else {
-            clearAllBodyScrollLocks();
+            //clearAllBodyScrollLocks();
             setTimeout(() => setZ(-10), 450);
         }
     }, [showInfo]);
@@ -38,7 +38,7 @@ const SetInfo = ({
             className={`${
                 showInfo ? "opacity-100" : "opacity-0 -z-10"
             } fixed top-0 bottom-0 left-0 right-0 backdrop-blur-lg 
-                w-full h-full transition-opacity duration-500`}
+                w-screen h-screen transition-opacity duration-500`}
         >
             <div
                 className={`${

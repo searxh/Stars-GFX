@@ -28,10 +28,10 @@ export const Confirmation = ({
     };
     React.useEffect(() => {
         if (trigger) {
-            disableBodyScroll(document.body);
+            //disableBodyScroll(document.body);
             setTimeout(() => setTransition(true), 10);
         } else {
-            clearAllBodyScrollLocks();
+            //clearAllBodyScrollLocks();
             setTimeout(() => {
                 setTransition(false);
             }, 300);
@@ -41,8 +41,7 @@ export const Confirmation = ({
         <div
             className={`${
                 transitionLogic() ? "opacity-100 backdrop-blur-lg" : "opacity-0"
-            } fixed w-screen h-screen bg-black z-50
-            bg-opacity-50 transition duration-300`}
+            } fixed w-screen h-screen bg-black z-50 bg-opacity-50 transition duration-300`}
         >
             <div
                 className="fixed top-0 bottom-0 left-0 right-0 max-w-[25rem] w-[90%] h-fit py-5 text-black font-nunito
