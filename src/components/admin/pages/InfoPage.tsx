@@ -69,7 +69,7 @@ const InfoPage = () => {
         }
     }, []);
     return (
-        <div className="relative p-5 drop-shadow-sm">
+        <div className="relative p-5 drop-shadow-sm select-text">
             <button
                 onClick={() => navigate(-1)}
                 className="absolute flex top-5 left-5 p-2 px-5 rounded-full bg-neutral-400
