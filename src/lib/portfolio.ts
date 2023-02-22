@@ -193,7 +193,7 @@ export const art: Array<ListItemTypes> = [
     {
         name: "Confident Boost",
         desc: "",
-        src: "https://media.discordapp.net/attachments/298413826280521728/950353862739492904/Confident-Boost.png?width=728&height=1030",
+        src: "",
     },
     {
         name: "Political Tension",
@@ -233,8 +233,7 @@ export const projects: Array<ListItemTypes> = [
                 content: 1,
             },
             {
-                content:
-                    "https://stargfx.gumroad.com/l/llnina?layout=profile",
+                content: "https://stargfx.gumroad.com/l/llnina?layout=profile",
             },
             {
                 content: "Description",
@@ -277,8 +276,7 @@ export const projects: Array<ListItemTypes> = [
         name: "Wallpaper Packs",
         arr: [
             {
-                content:
-                    "https://stargfx.gumroad.com/l/efboy",
+                content: "https://stargfx.gumroad.com/l/efboy",
             },
             {
                 content: "Description",
@@ -357,7 +355,7 @@ export const projects: Array<ListItemTypes> = [
             },
             {
                 content:
-               "Internet Scary World is my personal project that I’ve been working on for the past month. The scary truth is that everyday kids playing on the platform are getting scammed, not even just kids we as a teenager also can get scams as well.",
+                    "Internet Scary World is my personal project that I’ve been working on for the past month. The scary truth is that everyday kids playing on the platform are getting scammed, not even just kids we as a teenager also can get scams as well.",
                 className: "min-w-[21rem] w-[80%] mx-auto",
             },
         ],
