@@ -103,13 +103,13 @@ const StepsPage = () => {
                         className="absolute left-[22px] w-[4px] mt-[64px] bg-sky-400"
                     ></div>
                 </div>
-                <div className="pt-10 font-semibold text-orange-400 text-lg">
+                <div className="p-10 font-semibold text-orange-400 text-lg">
                     If you have any questions or concerns, please do not
                     hesitate to contact me.
                     <br />
                     You can reach me via Discord at STAR#5732.
                 </div>
-                <div className="flex justify-evenly font-normal max-w-[50rem] min-w-[21rem] w-1/2 mx-auto py-10">
+                <div className="flex justify-evenly font-normal max-w-[50rem] min-w-[21rem] w-1/2 mx-auto pb-12">
                     <button
                         onClick={() => handleOnNavigate(false)}
                         className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40

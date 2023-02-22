@@ -169,7 +169,7 @@ const SelectSetPage = () => {
             >
                 Customize your order
             </button>
-            <div className="flex justify-evenly font-normal">
+            <div className="flex justify-evenly font-normal pb-12">
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40

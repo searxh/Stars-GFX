@@ -37,7 +37,7 @@ const TermsPage = () => {
                 <br />
                 6. Ordering during closed commission will result in a waitlist
             </div>
-            <div className="flex justify-evenly">
+            <div className="flex justify-evenly pb-12">
                 <button
                     onClick={() => handleOnNavigate(false)}
                     className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
