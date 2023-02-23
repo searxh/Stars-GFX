@@ -116,7 +116,7 @@ const InfoPage = () => {
                     >
                         Order Information
                     </div>
-                    <div className="h-full pt-10 flex-1 my-auto p-3 drop-shadow-sm overflow-y-scroll">
+                    <div className="h-full pt-10 flex-1 my-auto p-3 drop-shadow-sm overflow-y-scroll hide-scrollbar">
                         <div
                             className="text-sm lg:text-base grid grid-cols-5 gap-2 font-bold border-b 
                         border-black py-2 break-words"
@@ -162,7 +162,7 @@ const InfoPage = () => {
                     >
                         Form Information
                     </div>
-                    <div className="h-full pt-10 text-sm lg:text-base flex-1 p-3 overflow-y-scroll drop-shadow-sm">
+                    <div className="h-full pt-10 text-sm lg:text-base flex-1 p-3 overflow-y-scroll hide-scrollbar drop-shadow-sm">
                         <FormInfoAdmin formObj={order.formInfo} />
                     </div>
                 </div>
