@@ -165,3 +165,5 @@ export const statusArr = ["active", "pending", "declined"];
 export const adminRate = 10000;
 
 export const userRate = 30000;
+
+export const maxCommissionNumber = 5;

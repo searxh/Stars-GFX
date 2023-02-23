@@ -2,8 +2,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { projects, portfolio } from "../../lib/portfolio";
 import { ListItemTypes } from "../../types";
-import { ref, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase";
+//import { ref, getDownloadURL } from "firebase/storage";
+//import { storage } from "../../firebase";
 
 interface CategoryItemPropsType {
     listItem: any;

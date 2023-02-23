@@ -3,7 +3,7 @@ import React from "react";
 import { GlobalContext } from "../../../states";
 import { getOwnerStatus } from "../../../lib/api";
 import { OwnerStatusType } from "../../../types";
-import { userRate } from "../../../lib/default";
+import { maxCommissionNumber, userRate } from "../../../lib/default";
 import { pageChangeCheck } from "../../../lib/utilities";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -52,8 +52,8 @@ const CoverPage = () => {
                     } text-base lg:text-lg font-semibold px-5`}
                 >
                     {ownerStatus.status
-                        ? `Star is currently open for commissions (${ownerStatus.num}/3)`
-                        : `Star is currently not accepting commissions (${ownerStatus.num}/3)`}
+                        ? `Star is currently open for commissions (${ownerStatus.num}/${maxCommissionNumber})`
+                        : `Star is currently not accepting commissions (${ownerStatus.num}/${maxCommissionNumber})`}
                 </div>
             ) : (
                 <div

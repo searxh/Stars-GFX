@@ -2,7 +2,7 @@ import React from "react";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 import compareAsc from "date-fns/compareAsc";
 import { portfolio } from "../../lib/portfolio";
-import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
+//import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 
 interface StandardCardPropsType {
     listItem: ListItemTypes;

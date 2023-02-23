@@ -1,4 +1,4 @@
-import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
+//import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import React from "react";
 import XButton from "./XButton";
 

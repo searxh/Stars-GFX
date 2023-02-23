@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
+import { maxCommissionNumber } from "../../lib/default";
 
 interface InputPropsInterface {
     title: string;
@@ -42,7 +43,7 @@ const Input = ({
             ) : type === "textArea" ? (
                 <textarea
                     onChange={handleOnChange}
-                    rows={5}
+                    rows={maxCommissionNumber}
                     ref={inputRef}
                     className="hide-scrollbar rounded-3xl py-2 px-5 text-base lg:text-lg shadow-md border-2 resize-none"
                 />

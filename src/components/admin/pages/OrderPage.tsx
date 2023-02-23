@@ -1,7 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { OrderObj, StatusObjType, OwnerStatusType } from "../../../types";
-import { adminRate, initialStatusObj } from "../../../lib/default";
+import {
+    adminRate,
+    initialStatusObj,
+    maxCommissionNumber,
+} from "../../../lib/default";
 import { cloneDeep } from "lodash";
 import OrderItemAdmin from "../OrderItemAdmin";
 import {
@@ -80,19 +84,19 @@ const OrderPage = () => {
                         }`}
                     >
                         {ownerStatus?.status ? "Open" : "Close"} (
-                        {ownerStatus?.num}/3)
+                        {ownerStatus?.num}/{maxCommissionNumber})
                     </div>
                 </div>
                 <div className="m-auto mx-2 bg-neutral-200 py-2 px-2 rounded-xl shadow-md">
                     <input
                         ref={inputRef}
                         min={0}
-                        max={3}
+                        max={maxCommissionNumber}
                         defaultValue={ownerStatus?.num}
                         className="rounded-full w-10 text-center"
                         type="number"
                     />{" "}
-                    / 3
+                    / 5
                 </div>
                 <button
                     onClick={handleOnSelect}
