@@ -247,6 +247,26 @@ export const projects: Array<ListItemTypes> = [
         ],
     },
     {
+        name: "Calm Through Chaos",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: "https://medium.com/@teerapat310/calm-through-chaos-8299917a956d",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "I invite viewers to slow down and take a closer look at the world around them, to see the beauty and complexity that lies beneath the surface. Whether through minimalism or maximalism, my goal is to create art that inspires a sense of calm and contemplation in the midst of the frenetic pace of modern life.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Study The Lighting",
         arr: [
             {
