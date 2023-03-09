@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "Excellent service! Didn’t waste any time working with me to figure out my vision for the GFX, consistently talked me through the process and made sure I enjoyed the progress, and is very friendly! 10/10 would recommend to order from Star.            ",
+        date: "9/3/2023",
+    },
+    {
+        content:
             "super quick and great quality work from star",
         date: "9/3/2023",
     },
