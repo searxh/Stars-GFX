@@ -1,8 +1,13 @@
 export const reviews = [
     {
         content:
+            "Completed my order in less than a day, amazing service and very professional. 10/10, Would highly recommend",
+        date: "15/3/2023",
+    },
+    {
+        content:
             "Absolutely amazing service ! Fast and reliable and very easy to work with. He is very professional and good at communicating with you. Highly recommend!",
-        date: "14//2023",
+        date: "14/3/2023",
     },
     {
         content:
