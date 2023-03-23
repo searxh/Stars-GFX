@@ -1,12 +1,17 @@
 export const reviews = [
     {
         content:
+            "Worked so well. Super creative, was delivered within the timeframe he said they would be…. Results were incredible. I’ve been following his work for about 2 years and have always wanted to hire him- I just never had a reason to. Feels really good to finally have something personalized from him for my game.",
+        date: "22/3/2023",
+    },
+    {
+        content:
             "Completed my order in less than a day, amazing service and very professional. 10/10, Would highly recommend",
         date: "15/3/2023",
     },
     {
         content:
-            "Absolutely amazing service ! Fast and reliable and very easy to work with. He is very professional and good at communicating with you. Highly recommend!",
+            "Absolutely amazing service ! Fast and reliadble and very easy to work with. He is very professional and good at communicating with you. Highly recommend!",
         date: "14/3/2023",
     },
     {
