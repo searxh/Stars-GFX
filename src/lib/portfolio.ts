@@ -227,6 +227,26 @@ export const art: Array<ListItemTypes> = [
 
 export const projects: Array<ListItemTypes> = [
     {
+        name: "Glow Like A Star",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: "https://stargfx.gumroad.com/l/yafclu",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Take your 3D projects to the next level with our exclusive package of 4 Blender files, each featuring 4 professional-grade light presets. This toolset empowers you to achieve stunning lighting effects like a Star!",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Roblox GFX Starter Pack",
         arr: [
             {
