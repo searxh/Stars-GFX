@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "One of the best! Star is extremely talented, professional, and quick at every stage of the production process. I've ordered from him multiple times now and he's always delivered top tier work. 10/10",
+        date: "1/4/2023",
+    },
+    {
+        content:
             "Worked so well. Super creative, was delivered within the timeframe he said they would be…. Results were incredible. I’ve been following his work for about 2 years and have always wanted to hire him- I just never had a reason to. Feels really good to finally have something personalized from him for my game.",
         date: "22/3/2023",
     },
