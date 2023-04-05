@@ -56,7 +56,7 @@ const InfoPage = () => {
         setTrigger(true);
         const callback = (decision: boolean) => {
             if (decision) {
-                deleteOrder(order.id, order.userInfo);
+                deleteOrder(Number(order.id), order.userInfo);
                 setTimeout(() => navigate(-1), 1000);
             }
         };

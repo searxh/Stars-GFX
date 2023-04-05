@@ -27,7 +27,7 @@ const Dashboard = () => {
     return !lock ? (
         <div
             className="relative flex flex-col py-12 w-full min-h-screen h-full
-            font-nunito bg-neutral-100 text-center"
+            font-nunito bg-neutral-100 text-center select-text"
         >
             <Outlet />
         </div>

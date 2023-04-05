@@ -5,6 +5,7 @@ import Input from "../Input";
 import { initialFormInfo } from "../../../lib/default";
 import { createOrder } from "../../../lib/api";
 import dompurify from "dompurify";
+import Text from "../../Text";
 
 const formData = [
     {
@@ -40,6 +41,7 @@ const FormPage = () => {
     const { formInfo, projInfo, userInfo, currentPage, notifier, orders } =
         global_state;
     const [canSubmit, setCanSubmit] = React.useState<boolean>(false);
+    const [loading, setLoading] = React.useState<boolean>(false);
     const handleSetForm = (index: number, value: string) => {
         const newProjInfo = [...projInfo];
         newProjInfo[index] = dompurify.sanitize(value);
@@ -62,58 +64,72 @@ const FormPage = () => {
             payload: check !== undefined ? check : currentPage,
         });
     };
-    const handleOnSubmit = () => {
+    const handleOnSubmit = async () => {
         if (isSignedIn()) {
-            createOrder(formInfo, projInfo, userInfo);
-            dispatch({
-                type: "multi-set",
-                field: ["formInfo", "projInfo", "currentPage", "notifier"],
-                payload: [initialFormInfo, [], currentPage + 1, !notifier],
-            });
+            setLoading(true);
+            const result = await createOrder(formInfo, projInfo, userInfo);
+            setLoading(false);
+            if (result && result.success) {
+                dispatch({
+                    type: "multi-set",
+                    field: ["formInfo", "projInfo", "currentPage", "notifier"],
+                    payload: [initialFormInfo, [], currentPage + 1, !notifier],
+                });
+            } else if (result && !result.success) {
+                alert(`Error occured: ${result.message}`);
+            } else {
+                alert("Unknown error occured, please resubmit");
+            }
         }
     };
     return (
         <div className="text-4xl lg:text-5xl text-black m-auto min-w-[21rem] w-[60%]">
-            <div className="my-1 mt-10 drop-shadow-sm font-bold leading-tight">
-                Project Background
-            </div>
-            <form className="pt-5 pb-10">
-                {formData.map((formDataObj, index: number) => {
-                    return (
-                        <Input
-                            key={index}
-                            title={formDataObj.title}
-                            required={formDataObj.required}
-                            value={projInfo[index]}
-                            changeCallback={(value: string) =>
-                                handleSetForm(index, value)
-                            }
-                            type={formDataObj.type}
-                        />
-                    );
-                })}
-            </form>
-            <div className="flex justify-evenly pb-12">
-                <button
-                    onClick={() => handleOnNavigate(false)}
-                    className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
+            {!loading ? (
+                <>
+                    <div className="my-1 mt-10 drop-shadow-sm font-bold leading-tight">
+                        Project Background
+                    </div>
+                    <form className="pt-5 pb-10">
+                        {formData.map((formDataObj, index: number) => {
+                            return (
+                                <Input
+                                    key={index}
+                                    title={formDataObj.title}
+                                    required={formDataObj.required}
+                                    value={projInfo[index]}
+                                    changeCallback={(value: string) =>
+                                        handleSetForm(index, value)
+                                    }
+                                    type={formDataObj.type}
+                                />
+                            );
+                        })}
+                    </form>
+                    <div className="flex justify-evenly pb-12">
+                        <button
+                            onClick={() => handleOnNavigate(false)}
+                            className="text-orange-500 border-orange-500 md:hover:scale-110 md:hover:text-sky-500 w-40
                     duration-500 transform-gpu text-2xl lg:text-3xl drop-shadow-sm border-2 md:hover:border-sky-500 rounded-full"
-                >
-                    Back
-                </button>
-                <button
-                    disabled={!canSubmit}
-                    onClick={() => handleOnSubmit()}
-                    className={`${
-                        canSubmit
-                            ? "opacity-100 md:hover:text-sky-500 md:hover:border-sky-500 md:hover:scale-110"
-                            : "opacity-50"
-                    } text-orange-500 border-orange-500 w-40 duration-500 transform-gpu text-2xl lg:text-3xl 
+                        >
+                            Back
+                        </button>
+                        <button
+                            disabled={!canSubmit}
+                            onClick={() => handleOnSubmit()}
+                            className={`${
+                                canSubmit
+                                    ? "opacity-100 md:hover:text-sky-500 md:hover:border-sky-500 md:hover:scale-110"
+                                    : "opacity-50"
+                            } text-orange-500 border-orange-500 w-40 duration-500 transform-gpu text-2xl lg:text-3xl 
                     drop-shadow-sm border-2 rounded-full`}
-                >
-                    Submit
-                </button>
-            </div>
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </>
+            ) : (
+                <Text text="Submitting..." color="text-blue-500" />
+            )}
         </div>
     );
 };

@@ -4,7 +4,7 @@ import { Dispatch } from "react";
 import { generateUUID, decrypt } from "./utilities";
 import Cookies from "js-cookie";
 
-export const createOrder = (
+export const createOrder = async (
     formInfo: FormInfoType,
     projInfo: Array<string>,
     userInfo: any
@@ -17,37 +17,95 @@ export const createOrder = (
                 orderType: formInfoKey,
             };
         });
-        axios.post(
-            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/`,
-            {
-                id: orderid,
-                orderInfo: JSON.stringify(sendObj),
-                status: "pending",
-                comment: "",
-            }
-        );
-        setTimeout(() => {
-            axios.post(
-                `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderid}/forminfos`,
-                {
-                    deadline: projInfo[0],
-                    game: projInfo[1],
-                    title: projInfo[2],
-                    color: projInfo[3],
-                    assets: projInfo[4],
-                    ideas: projInfo[5],
-                }
-            );
-        }, 1000);
+        const getOrderPromise = new Promise<{
+            success: boolean;
+            message: string;
+        }>((resolve) => {
+            axios
+                .post(
+                    `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/`,
+                    {
+                        id: orderid,
+                        orderInfo: JSON.stringify(sendObj),
+                        status: "pending",
+                        comment: "",
+                    }
+                )
+                .catch((e) => {
+                    resolve({
+                        success: false,
+                        message: e.message,
+                    });
+                });
+            setTimeout(() => {
+                getOrderFromId(userInfo, orderid)
+                    .then((data) => {
+                        if (data) {
+                            console.log("order exists, creating form info");
+                            axios.post(
+                                `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderid}/forminfos`,
+                                {
+                                    deadline: projInfo[0],
+                                    game: projInfo[1],
+                                    title: projInfo[2],
+                                    color: projInfo[3],
+                                    assets: projInfo[4],
+                                    ideas: projInfo[5],
+                                }
+                            );
+                            resolve({
+                                success: true,
+                                message: "Order exists",
+                            });
+                        } else {
+                            setTimeout(
+                                () => deleteOrder(orderid, userInfo),
+                                5000
+                            );
+                            resolve({
+                                success: false,
+                                message: "Order does not exist",
+                            });
+                        }
+                    })
+                    .catch((e) => {
+                        setTimeout(() => deleteOrder(orderid, userInfo), 5000);
+                        resolve({
+                            success: false,
+                            message: e.message,
+                        });
+                    });
+            }, 3000);
+        });
+        return getOrderPromise;
     }
 };
 
-export const deleteOrder = (orderID: string, userInfo: any) => {
+export const deleteOrder = (orderID: number, userInfo: any) => {
     if (Object.keys(userInfo).length !== 0) {
-        axios.delete(
-            `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderID}`
-        );
+        axios
+            .delete(
+                `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderID}`
+            )
+            .catch((e) => {});
     }
+};
+
+export const getOrderFromId = async (userInfo: any, orderID: number) => {
+    console.log("get order from id ran");
+    const promise = new Promise((resolve, reject) => {
+        axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}/v2/users/${userInfo.id}/orders/${orderID}`,
+        })
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((e) => {
+                reject(e);
+            });
+    });
+    return promise;
 };
 
 export const getOrder = async (userInfo: any) => {
