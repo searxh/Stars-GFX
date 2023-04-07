@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "Amazing work, exceeded my expectations, always follows up with you 👍 Worth every penny.",
+        date: "7/4/2023",
+    },
+    {
+        content:
             "One of the best! Star is extremely talented, professional, and quick at every stage of the production process. I've ordered from him multiple times now and he's always delivered top tier work. 10/10",
         date: "1/4/2023",
     },
