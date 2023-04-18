@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "Fantastic work, very fast and communication was top notch.",
+        date: "18/4/2023",
+    },
+    {
+        content:
             "Excellent work, Incredibly fast and communicative. Delivered the product on time. Would Highly Recommend :)",
         date: "8/4/2023",
     },
