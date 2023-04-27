@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "Amazing outcome of the gfx, helped me brainstorm ideas and overall communication was very great. Would highly recommend working with star!",
+        date: "27/4/2023",
+    },
+    {
+        content:
             "Very good job, very fast at completing the job and the communication was wonderful. Very professional 👍",
         date: "23/4/2023",
     },
