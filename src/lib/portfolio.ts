@@ -227,6 +227,26 @@ export const art: Array<ListItemTypes> = [
 
 export const projects: Array<ListItemTypes> = [
     {
+        name: "Story of the Super Star",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: "https://www.youtube.com/watch?v=SVc3NdIwJBw&list=PL3xLx9EOM2UGE5XhJAKrVJi3_TVOqFPOc",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "We invite you to join us for an insightful podcast featuring SoftGB (Softy), a prominent figure in the Roblox GFX industry. In this podcast, we examine the creative process and the practical aspects of digital art, including motivation, inspiration, struggles, and tips for improving your skills. Softy draws upon their extensive experience in the industry to provide valuable insights into the world of GFX, offering practical advice to help you succeed in your own creative endeavors. Whether you are a novice or an experienced professional, this podcast provides a unique opportunity to learn from one of the top industry leaders in the field. So, tune in to gain new knowledge and sharpen your skills with SoftGB in this informative and practical podcast.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Glow Like A Star",
         arr: [
             {
