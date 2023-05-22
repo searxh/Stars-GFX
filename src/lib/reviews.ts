@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "Fantastic work! Highly reccomend",
+        date: "22/5/2023",
+    },
+    {
+        content:
             "Amazing outcome of the gfx, helped me brainstorm ideas and overall communication was very great. Would highly recommend working with star!",
         date: "27/4/2023",
     },
