@@ -162,8 +162,8 @@ export const authLink = process.env.REACT_APP_AUTH as string;
 
 export const statusArr = ["active", "pending", "declined"];
 
-export const adminRate = 10000;
+export const adminRate = 30000;
 
-export const userRate = 30000;
+export const userRate = 60000;
 
 export const maxCommissionNumber = 5;
