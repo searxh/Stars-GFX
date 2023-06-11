@@ -236,6 +236,26 @@ export const art: Array<ListItemTypes> = [
 
 export const projects: Array<ListItemTypes> = [
     {
+        name: "Light it up",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: "https://stargfx.gumroad.com/l/LightItUp",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Introducing Light it Up, the ultimate tutorial video for leveling up your Roblox GFX lighting. Unlock the secrets to captivating visuals and take your creations to new heights. Elevate your skills and shine with Light it Up today",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Story of the Super Star",
         arr: [
             {
