@@ -112,6 +112,7 @@ export const checkAdmin = () => {
             const decrypted = decrypt(a);
             //const decrypted = decrypt(JSON.parse(a));
             sha256(decrypted).then((res) => {
+                //console.log("[ADMIN]", res, process.env.REACT_APP_ADMIN_KEY);
                 if (res === process.env.REACT_APP_ADMIN_KEY) {
                     resolve(true);
                 } else {
