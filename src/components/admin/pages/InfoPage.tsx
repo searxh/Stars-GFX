@@ -2,7 +2,11 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { OrderObj, OrderType } from "../../../types";
-import { convertUSDtoRobux, getProductColor } from "../../../lib/utilities";
+import {
+    convertUSDtoRobux,
+    decrypt,
+    getProductColor,
+} from "../../../lib/utilities";
 import format from "date-fns/format";
 import FormInfoAdmin from "../FormInfoAdmin";
 import { deleteOrder, updateOrder } from "../../../lib/api";
@@ -19,19 +23,9 @@ const InfoPage = () => {
             process.env.REACT_APP_SECRET_CHAR as string,
             "g"
         );
-        const regex1 = new RegExp(
-            process.env.REACT_APP_SECRET_CHAR1 as string,
-            "g"
-        );
-        const regex2 = new RegExp(
-            process.env.REACT_APP_SECRET_CHAR2 as string,
-            "g"
-        );
-        const str = orderObj
-            ?.replace(regex, "/")
-            .replace(regex1, "?")
-            .replace(regex2, "\\") as string;
-        return JSON.parse(str);
+        const str = orderObj?.replace(regex, "/") as string;
+        const decrypted = decrypt(str);
+        return JSON.parse(decrypted);
     });
     const [selectedStatus, setSelectedStatus] = React.useState<number>(-1);
     const inputRef = React.useRef<HTMLTextAreaElement>(null);

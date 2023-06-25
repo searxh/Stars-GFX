@@ -5,7 +5,7 @@ import { OrderObj } from "../../types";
 import format from "date-fns/format";
 import { useNavigate } from "react-router-dom";
 import { statusArr } from "../../lib/default";
-import { convertUSDtoRobux } from "../../lib/utilities";
+import { convertUSDtoRobux, encrypt } from "../../lib/utilities";
 interface OrderItemPropsInterface {
     orderObj: OrderObj;
 }
@@ -15,10 +15,11 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
     const { id, created_at, userInfo, price } = orderObj;
     const handleNavigate = () => {
         const stringified = JSON.stringify(orderObj);
-        const postRegex = stringified
-            .replace(/\/+/g, process.env.REACT_APP_SECRET_CHAR as string)
-            .replace(/\?+/g, process.env.REACT_APP_SECRET_CHAR1 as string)
-            .replace(/\\+/g, process.env.REACT_APP_SECRET_CHAR2 as string);
+        const encrypted = encrypt(stringified);
+        const postRegex = encrypted.replace(
+            /\/+/g,
+            process.env.REACT_APP_SECRET_CHAR as string
+        );
         console.log(postRegex);
         navigate("/dashboard/" + postRegex);
     };
