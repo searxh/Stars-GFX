@@ -23,8 +23,8 @@ const InfoPage = () => {
             process.env.REACT_APP_SECRET_CHAR as string,
             "g"
         );
-        const str = orderObj?.replace(regex, "/") as string;
-        const decrypted = decrypt(str);
+        //const str = orderObj?.replace(regex, "/") as string;
+        const decrypted = decrypt(decodeURIComponent(orderObj as string));
         return JSON.parse(decrypted);
     });
     const [selectedStatus, setSelectedStatus] = React.useState<number>(-1);

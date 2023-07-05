@@ -16,12 +16,12 @@ const OrderItemAdmin = ({ orderObj }: OrderItemPropsInterface) => {
     const handleNavigate = () => {
         const stringified = JSON.stringify(orderObj);
         const encrypted = encrypt(stringified);
-        const postRegex = encrypted.replace(
-            /\/+/g,
-            process.env.REACT_APP_SECRET_CHAR as string
-        );
-        console.log(postRegex);
-        navigate("/dashboard/" + postRegex);
+        // const postRegex = encrypted.replace(
+        //     /\/+/g,
+        //     process.env.REACT_APP_SECRET_CHAR as string
+        // );
+        //console.log(postRegex);
+        navigate("/dashboard/" + encodeURIComponent(encrypted));
     };
     return (
         <button
