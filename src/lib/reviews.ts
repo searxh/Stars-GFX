@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "After much searching, I found the perfect candidate for GFX: Star. His exceptional portfolio, skills, and communication made him the best artist I've commissioned. The outcome surpassed my expectations. Highly recommended. 11/10.            ",
+        date: "22/7/2023",
+    },
+    {
+        content:
             "Fantastic work! Highly reccomend",
         date: "22/5/2023",
     },
