@@ -61,10 +61,10 @@ const Contacts = () => {
                         desc="I share my process and vlogs"
                     />
                     <ContactButton
-                        text="DevForum"
+                        text="Talent Hub"
                         imageUrl="/images/contacts_logo/devforum.png"
-                        linkTo="https://devforum.roblox.com/t/close-stars-gfx-gfx-designer/1090212"
-                        desc="Roblox Related Forum"
+                        linkTo="https://create.roblox.com/talent/creators/274029164"
+                        desc="RobloxDev Forum"
                     />
                     <ContactButton
                         text="Discord"
