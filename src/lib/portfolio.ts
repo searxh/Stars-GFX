@@ -316,13 +316,13 @@ export const projects: Array<ListItemTypes> = [
         ],
     },
     {
-        name: "Calm Through Chaos",
+        name: "Ugly Object",
         arr: [
             {
                 content: 1,
             },
             {
-                content: "https://medium.com/@teerapat310/calm-through-chaos-8299917a956d",
+                content: "https://www.behance.net/gallery/176728889/Ugly-Object",
             },
             {
                 content: "Description",
@@ -330,7 +330,7 @@ export const projects: Array<ListItemTypes> = [
             },
             {
                 content:
-                    "I invite viewers to slow down and take a closer look at the world around them, to see the beauty and complexity that lies beneath the surface. Whether through minimalism or maximalism, my goal is to create art that inspires a sense of calm and contemplation in the midst of the frenetic pace of modern life.",
+                    "When the challenge arises to make an ugly object look aesthetically pleasing, the creativity of playing with limitations then emerges. This was my first assignment in a photography class as a design student, and today I'm going to share with you the process that I've been through.",
                 className: "min-w-[21rem] w-[80%] mx-auto",
             },
         ],
