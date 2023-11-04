@@ -121,22 +121,22 @@ export const initialState: GlobalStateType = {
 
 export const priceInfo: PriceInfoType = {
     Thumbnail: {
-        resolution: [69, 75, 79],
+        resolution: [109, 115, 119],
         modelLimit: [10, 15],
         additional: [0, 30],
     },
     Icon: {
-        resolution: [49, 55, 59],
+        resolution: [79, 85, 89],
         modelLimit: [10, 15],
         additional: [0, 30],
     },
     "Ad Banner": {
-        resolution: [49, 55, 59],
+        resolution: [79, 85, 89],
         modelLimit: [10, 15],
         additional: [0, 30],
     },
     "Ad Skyscraper": {
-        resolution: [49, 55, 59],
+        resolution: [79, 85, 89],
         modelLimit: [10, 15],
         additional: [0, 30],
     },
