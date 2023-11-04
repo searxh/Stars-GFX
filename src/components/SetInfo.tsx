@@ -75,6 +75,10 @@ const SetInfo = ({
                         </>
                     ) : (
                         <>
+                            <div>Ad Price: ${details.ad}</div>
+                            <div className="text-base font-normal">
+                                Robux Price: ⏣ {convertUSDtoRobux(details.ad)}
+                            </div>
                             <div>Icon Price: ${details.icon}</div>
                             <div className="text-base font-normal">
                                 Robux Price: ⏣ {convertUSDtoRobux(details.icon)}

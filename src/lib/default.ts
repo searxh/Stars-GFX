@@ -51,25 +51,25 @@ export const productChoices = [
         title: "Thumbnail",
         color: "bg-purple-500",
         textColor: "text-purple-500",
-        priceRange: "$119 - $164",
+        priceRange: "$109 - $159",
     },
     {
         title: "Icon",
         color: "bg-blue-500",
         textColor: "text-blue-500",
-        priceRange: "$89 - $134",
+        priceRange: "$99 - $147",
     },
     {
         title: "Ad Banner",
         color: "bg-amber-500",
         textColor: "text-amber-500",
-        priceRange: "$89 - $134",
+        priceRange: "$79 - $129",
     },
     {
         title: "Ad Skyscraper",
         color: "bg-red-500",
         textColor: "text-red-500",
-        priceRange: "$89 - $134",
+        priceRange: "$79 - $129",
     },
 ];
 
@@ -122,22 +122,22 @@ export const initialState: GlobalStateType = {
 export const priceInfo: PriceInfoType = {
     Thumbnail: {
         resolution: [109, 115, 119],
-        modelLimit: [10, 15],
+        modelLimit: [0, 10],
         additional: [0, 30],
     },
     Icon: {
-        resolution: [79, 85, 89],
-        modelLimit: [10, 15],
+        resolution: [99, 103, 107],
+        modelLimit: [0, 10],
         additional: [0, 30],
     },
     "Ad Banner": {
         resolution: [79, 85, 89],
-        modelLimit: [10, 15],
+        modelLimit: [0, 10],
         additional: [0, 30],
     },
     "Ad Skyscraper": {
         resolution: [79, 85, 89],
-        modelLimit: [10, 15],
+        modelLimit: [0, 10],
         additional: [0, 30],
     },
     discount: {
