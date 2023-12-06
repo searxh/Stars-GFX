@@ -1,10 +1,10 @@
 import React from "react";
 import Footer from "../components/Footer";
-import Category from "../components/portfolio/Category";
-import ItemWindow from "../components/portfolio/ItemWindow";
-import { portfolio } from "../lib/portfolio";
+import Category from "../components/archives/Category";
+import ItemWindow from "../components/archives/ItemWindow";
+import { portfolio } from "../lib/archives";
 
-const Portfolio = () => {
+const Archives = () => {
     const [info, setInfo] = React.useState<any>({});
     return (
         <div
@@ -46,4 +46,4 @@ const Portfolio = () => {
     );
 };
 
-export default Portfolio;
+export default Archives;

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Dispatch, SetStateAction } from "react";
-import { projects, portfolio } from "../../lib/portfolio";
+import { projects, portfolio } from "../../lib/archives";
 import { ListItemTypes } from "../../types";
 //import { ref, getDownloadURL } from "firebase/storage";
 //import { storage } from "../../firebase";
@@ -45,7 +45,7 @@ const CategoryItem = ({
         getDownloadURL(imageRef).then((url: string) => {
             setSrc(url);
         });*/
-        setSrc("/images/portfolio/" + imageName);
+        setSrc("/images/archives/" + imageName);
     };
     const handleOnClick = () => {
         setInfo({

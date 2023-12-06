@@ -6,7 +6,7 @@ import Contacts from "./pages/Contacts";
 import Dashboard from "./pages/Dashboard";
 import LoginResult from "./pages/LoginResult";
 import Orders from "./pages/Orders";
-import Portfolio from "./pages/Portfolio";
+import Archives from "./pages/Archives";
 import { GlobalStateProvider } from "./states";
 import OrderPage from "./components/admin/pages/OrderPage";
 import InfoPage from "./components/admin/pages/InfoPage";
@@ -26,12 +26,12 @@ function App() {
             <ConfirmationProvider>
                 <NavBar />
                 <Routes>
-                    <Route path="/" element={<Contacts />} />
+                    <Route path="/" element={<About />} />
                     <Route path="/orders" element={<Orders />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/archives" element={<Archives />} />
                     <Route path="/commissions" element={<Commissions />} />
                     <Route path="/authorized" element={<LoginResult />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/contacts" element={<Contacts />} />
                     <Route path="/dashboard" element={<Dashboard />}>
                         <Route path="list" element={<OrderPage />} />
                         <Route path=":orderObj" element={<InfoPage />} />

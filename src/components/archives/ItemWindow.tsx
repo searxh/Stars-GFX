@@ -1,7 +1,7 @@
 import React from "react";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 import compareAsc from "date-fns/compareAsc";
-import { portfolio } from "../../lib/portfolio";
+import { portfolio } from "../../lib/archives";
 //import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 
 interface StandardCardPropsType {
@@ -12,7 +12,7 @@ interface StandardCardPropsType {
 const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
     const { arr, desc, name, src, timestamp } = listItem;
     const getSrc = (content: number) => {
-        const dir = "/images/portfolio/";
+        const dir = "/images/archives/";
         const type = ".webp";
         const id =
             portfolio[2].length -

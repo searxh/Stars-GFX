@@ -1,11 +1,11 @@
 import { GlobalStateType, PriceInfoType, StringToAnyType } from "../types";
 
 export const all_routes: StringToAnyType = {
-    "": "Contacts",
-    portfolio: "Portfolio",
+    "": "About",
+    archives: "Archives",
     commissions: "Commissions",
     orders: "Your Orders",
-    about: "About",
+    contacts: "Contacts",
 };
 
 export const selectChoices: any = {
