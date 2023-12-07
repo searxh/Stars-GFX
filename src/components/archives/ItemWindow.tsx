@@ -2,21 +2,29 @@ import React from "react";
 import { ListItemTypes, ProjectArrItemTypes } from "../../types";
 import compareAsc from "date-fns/compareAsc";
 import { portfolio } from "../../lib/archives";
+import { customerProjects } from "../../lib/customerProjects";
 //import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 
 interface StandardCardPropsType {
     listItem: ListItemTypes;
     callback: Function;
+    imageDirectory?: "archives" | "customerProjects";
 }
 
-const ItemWindow = ({ listItem, callback }: StandardCardPropsType) => {
+const ItemWindow = ({
+    listItem,
+    callback,
+    imageDirectory = "archives",
+}: StandardCardPropsType) => {
     const { arr, desc, name, src, timestamp } = listItem;
     const getSrc = (content: number) => {
-        const dir = "/images/archives/";
+        const dir = `/images/${imageDirectory}/`;
         const type = ".webp";
+        const directoryInfo =
+            imageDirectory === "archives" ? portfolio[2] : customerProjects;
         const id =
-            portfolio[2].length -
-            portfolio[2].findIndex((projItem: any) => projItem.name === name);
+            directoryInfo.length -
+            directoryInfo.findIndex((projItem: any) => projItem.name === name);
         return dir + "c" + id + "_" + content + type;
     };
     const IsInCooldown = () => {
