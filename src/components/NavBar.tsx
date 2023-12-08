@@ -92,7 +92,7 @@ const NavBar = (props: any) => {
             className={`fixed top-0 flex w-full h-12 bg-opacity-70
              font-nunito backdrop-blur-lg ${
                  isTop ? "bg-transparent" : "bg-white shadow-md"
-             } text-black z-10 justify-evenly transition duration-200`}
+             } text-black z-20 justify-evenly transition duration-200`}
         >
             {isSmallerThanMedium ? (
                 <button
@@ -170,14 +170,14 @@ const NavBar = (props: any) => {
                         </button>
                     ) : null}
 
-                    <div className="relative flex min-w-[30rem]">
+                    <div className="relative flex min-w-[40rem]">
                         {Object.keys(routes).map(
                             (route: string, index: number) => {
                                 return (
                                     <button
                                         key={index}
                                         onClick={() => handleChangeRoute(route)}
-                                        className="m-auto w-[25%] md:hover:bg-black md:hover:bg-opacity-5
+                                        className="m-auto w-[20%] md:hover:bg-black md:hover:bg-opacity-5
                                         h-full text-sm transition duration-500 font-normal rounded-md"
                                     >
                                         {routes[route]}
@@ -198,6 +198,8 @@ const NavBar = (props: any) => {
                         ? "translate-x-[300%]"
                         : locationIndex === 4
                         ? "translate-x-[400%]"
+                        : locationIndex === 5
+                        ? "translate-x-[500%]"
                         : null
                 }`}
                             style={{
