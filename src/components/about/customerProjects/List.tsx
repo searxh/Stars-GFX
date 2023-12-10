@@ -28,6 +28,7 @@ const CustomerProjectsList = ({ setInfo }: CustomerProjectListProps) => {
                 width={width}
                 showThumbs={false}
                 className="pt-5"
+                swipeable={false}
                 renderItem={(
                     item: React.ReactNode,
                     options?:

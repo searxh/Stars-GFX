@@ -144,6 +144,7 @@ const About = () => {
                     showIndicators={false}
                     width={width}
                     showThumbs={false}
+                    swipeable={false}
                 >
                     {reviews.map(
                         (reviewItem: ReviewItemType, index: number) => {
