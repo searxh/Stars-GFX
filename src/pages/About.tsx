@@ -8,12 +8,21 @@ import CustomerProjectsList from "../components/about/customerProjects/List";
 import { useNavigate } from "react-router-dom";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import useObserver from "../hooks/useObserver";
+import { Carousel } from "react-responsive-carousel";
+import useMediaQuery from "../hooks/useMediaQuery";
+import useElementSize from "../hooks/useElementSize";
 
 const About = () => {
     const navigate = useNavigate();
     const [info, setInfo] = React.useState<any>({});
+    const { width } = useElementSize();
+    const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     const meetTextVisible = useObserver({
         elementId: "meetText",
+    });
+    const customerProjectsVisible = useObserver({
+        elementId: "customerProjects",
+        threshold: 0.55,
     });
     return (
         <div
@@ -27,44 +36,72 @@ const About = () => {
                 }}
                 imageDirectory="customerProjects"
             />
-            <div className="relative w-full mx-auto h-full md:text-white text-black">
+            <div className="relative w-full mx-auto h-full text-white">
                 <div
                     id="meetText"
-                    className={`${
+                    className={`absolute flex flex-col leading-snug top-10 bottom-0 left-0 right-0 m-auto md:top-36 md:left-24 ${
                         meetTextVisible
                             ? "translate-y-0 opacity-100"
                             : "translate-y-12 opacity-0"
-                    } transition duration-1000 `}
+                    } transition duration-1000 z-10 text-center md:text-left drop-shadow-sm`}
                 >
-                    <div className="md:absolute top-5 px-5 left-5 text-lg text-left drop-shadow-sm">
-                        Meet Us
-                    </div>
-                    <div className="md:absolute top-9 px-5 left-5 text-left text-3xl md:text-5xl font-bold drop-shadow-sm">
+                    <div className="text-2xl font-light">Meet Us</div>
+                    <div className="text-3xl md:text-5xl font-bold">
                         STARS GFX
                     </div>
-                    <p
-                        className="md:absolute top-24 px-5 pb-5 left-5 text-sm md:text-base  md:max-w-[285px] 
-                    text-left drop-shadow-sm font-semibold"
-                    >
+                    <div className="text-sm md:text-lg md:max-w-[310px] md:px-0 px-5 font-semibold">
                         A seasoned creative design studio with 8+ years of
                         expertise in game development graphics.
-                    </p>
+                    </div>
+                    <div className="text-base md:max-w-[300px] md:px-0 px-5 font-light pt-5">
+                        We specialize in the metaverse for Roblox, Fortnite,
+                        Minecraft, and beyond
+                    </div>
+                    <button
+                        onClick={() => navigate("/contacts")}
+                        className="flex justify-center mt-6 md:mx-0 mx-auto gap-2 py-1 pl-2 pr-5 bg-white hover:text-white
+                        rounded-full text-black shadow-md w-fit transform-gpu duration-200 hover:bg-orange-600"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            className="h-8 w-8 my-auto drop-shadow-sm"
+                        >
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.3-4.3" />
+                        </svg>
+                        <div className="my-auto font-semibold">
+                            <div>Find us</div>
+                        </div>
+                    </button>
                 </div>
-                <img
-                    src="/images/about.webp"
-                    alt=""
-                    draggable={false}
-                    className="w-full m-auto"
-                />
+                <video autoPlay loop muted>
+                    <source src="/videos/about.mov" type="video/mp4"></source>
+                </video>
                 <div className="absolute bottom-0 h-52 w-full bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
+            <div className="w-full h-16 bg-slate-900" />
             <div
-                className="relative w-screen md:h-[35rem] p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
-                brightness-110 shadow-md md:overflow-hidden"
+                className={`relative w-screen md:h-[40rem] p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
+                brightness-110 shadow-md md:overflow-hidden`}
             >
-                <div className="absolute top-0 h-52 w-full bg-gradient-to-b from-slate-900 to-transparent" />
-                <div className="w-full h-fit mx-auto drop-shadow-sm">
-                    <div className="text-3xl font-bold">
+                <div className="absolute top-0 h-60 w-full bg-gradient-to-b from-slate-900 to-transparent" />
+                <div
+                    id="customerProjects"
+                    className={`w-full h-fit mx-auto drop-shadow-sm mt-20 transition duration-1000 ${
+                        customerProjectsVisible
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-12 opacity-0"
+                    }`}
+                >
+                    <div className="text-3xl font-bold px-5">
                         Commission Projects
                     </div>
                     <div className="text-lg font-semibold -mt-1">
@@ -79,46 +116,56 @@ const About = () => {
                     <CustomerProjectsList setInfo={setInfo} />
                 </div>
             </div>
+
             <div
-                className="w-screen md:h-[35rem] p-5 px-0 md:px-5 text-white bg-gradient-to-r from-blue-700 to-sky-700 
+                className="w-screen md:h-[35rem] h-full p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
                 brightness-110 shadow-md md:overflow-hidden"
             >
-                <div className="w-full h-fit mx-auto drop-shadow-sm">
-                    <div
-                        className="md:grid grid-flow-col py-3 w-full h-full
-                        md:overflow-y-hidden md:overflow-x-scroll gap-2 mb-12"
-                    >
-                        {reviews.map(
-                            (reviewItem: ReviewItemType, index: number) => {
-                                return (
-                                    <ReviewItem
-                                        key={index}
-                                        reviewItem={reviewItem}
-                                    />
-                                );
-                            }
-                        )}
-                    </div>
-                </div>
-                <button
-                    onClick={() => navigate("/commissions")}
-                    className="flex gap-5 p-5 bg-gradient-to-r from-neutral-100 to-white rounded-2xl text-black shadow-md mx-auto animate-bounce 
-                    md:mb-0 mb-10 transition duration-500"
+                <Carousel
+                    axis={isSmallerThanMedium ? "vertical" : "horizontal"}
+                    interval={3000}
+                    transitionTime={500}
+                    infiniteLoop
+                    autoPlay
+                    centerMode
+                    centerSlidePercentage={50}
+                    showStatus={false}
+                    showIndicators={false}
+                    width={width}
+                    showThumbs={false}
                 >
-                    <img
-                        className="m-auto h-10 w-10 drop-shadow-sm"
-                        src="images/logo.png"
-                        draggable={false}
-                        alt=""
-                    />
-                    <div className="my-auto font-semibold">
-                        <div className="text-left font-bold">ORDER NOW</div>
-                        <div>Become part of the star!</div>
-                    </div>
-                    <div className="bg-emerald-500 rounded-md py-1.5 px-6 my-auto shadow-md">
-                        <PlayArrowIcon className="text-white" />
-                    </div>
-                </button>
+                    {reviews.map(
+                        (reviewItem: ReviewItemType, index: number) => {
+                            return (
+                                <ReviewItem
+                                    key={index}
+                                    reviewItem={reviewItem}
+                                />
+                            );
+                        }
+                    )}
+                </Carousel>
+                <div className="flex w-full px-5">
+                    <button
+                        onClick={() => navigate("/commissions")}
+                        className="flex gap-5 p-5 bg-neutral-100 rounded-2xl text-black shadow-md animate-bounce 
+                    md:mb-0 mb-10 mt-14 mx-auto transition duration-500 hover:bg-orange-600 hover:text-white"
+                    >
+                        <img
+                            className="m-auto h-10 w-10 drop-shadow-sm"
+                            src="images/logo.png"
+                            draggable={false}
+                            alt=""
+                        />
+                        <div className="text-left my-auto font-semibold">
+                            <div className="font-bold">ORDER NOW</div>
+                            <div>Become part of the star!</div>
+                        </div>
+                        <div className="bg-emerald-500 rounded-md py-1.5 px-6 my-auto shadow-md">
+                            <PlayArrowIcon className="text-white" />
+                        </div>
+                    </button>
+                </div>
                 <Footer />
             </div>
         </div>
