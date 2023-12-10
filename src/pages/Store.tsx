@@ -7,7 +7,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 const Store = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     const isSmall = useMediaQuery("(max-width: 530px)");
-    useScript("https://gumroad.com/js/gumroad.js");
+    //useScript("https://gumroad.com/js/gumroad.js");
     return (
         <div
             className="relative flex flex-col py-12 w-full min-h-screen h-full
