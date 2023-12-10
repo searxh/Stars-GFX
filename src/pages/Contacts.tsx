@@ -100,7 +100,7 @@ const Contacts = () => {
             </div>
             <img
                 className="m-auto h-20 w-20 my-10 drop-shadow-md invert"
-                src="images/logo.png"
+                src="images/logo.webp"
                 draggable={false}
                 alt=""
             />
