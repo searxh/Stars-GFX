@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import ReviewItem from "../components/about/ReviewItem";
 import Footer from "../components/Footer";
 import { reviews } from "../lib/reviews";
@@ -13,6 +13,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import useElementSize from "../hooks/useElementSize";
 
 const About = () => {
+    const videoRef = useRef<HTMLVideoElement>(null);
     const navigate = useNavigate();
     const [info, setInfo] = React.useState<any>({});
     const { width } = useElementSize();
@@ -27,8 +28,9 @@ const About = () => {
     return (
         <div
             className="relative pt-12 w-full min-h-screen h-full
-            font-nunito text-center overflow-hidden"
+            font-nunito text-center overflow-hidden bg-black"
         >
+            <div className="absolute top-0 w-screen bg-white h-12" />
             <ItemWindow
                 listItem={info}
                 callback={() => {
@@ -82,14 +84,23 @@ const About = () => {
                         </div>
                     </button>
                 </div>
-                <video autoPlay loop muted>
+                <video
+                    ref={videoRef}
+                    preload="auto"
+                    loop
+                    muted
+                    onLoadedData={(e) => {
+                        if (videoRef.current) videoRef.current.play();
+                    }}
+                    className="w-full h-full"
+                >
                     <source src="/videos/about.mov" type="video/mp4"></source>
                 </video>
                 <div className="absolute bottom-0 h-52 w-full bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
             <div className="w-full h-16 bg-slate-900" />
             <div
-                className={`relative w-screen md:h-[40rem] p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
+                className={`relative max-w-screen md:h-[800px] p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
                 brightness-110 shadow-md md:overflow-hidden`}
             >
                 <div className="absolute top-0 h-60 w-full bg-gradient-to-b from-slate-900 to-transparent" />
