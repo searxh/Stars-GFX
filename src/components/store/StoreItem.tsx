@@ -15,8 +15,8 @@ const StoreItem = ({ name, link, price, index }: StoreItemProps) => {
         <a
             href={link}
             className={`relative flex flex-col ${
-                isSmall ? "w-full" : "w-[14rem]"
-            } h-[20rem] shadow-md overflow-hidden 
+                isSmall ? "w-full aspect-[3/4]" : "w-[14rem] h-[20rem]"
+            } shadow-md overflow-hidden 
             hover:scale-105 transform-gpu duration-500 rounded-xl bg-white`}
         >
             <img
