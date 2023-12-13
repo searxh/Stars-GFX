@@ -52,8 +52,8 @@ const CoverPage = () => {
                     } text-base lg:text-lg font-semibold px-5`}
                 >
                     {ownerStatus.status
-                        ? `Star is currently open for commissions (${ownerStatus.num}/${maxCommissionNumber})`
-                        : `Star is currently not accepting commissions (${ownerStatus.num}/${maxCommissionNumber})`}
+                        ? `Star is currently open for commissions`
+                        : `Star is currently not accepting commissions`}
                 </div>
             ) : (
                 <div
