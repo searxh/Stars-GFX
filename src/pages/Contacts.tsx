@@ -39,7 +39,7 @@ const Contacts = () => {
                 } transition duration-1000`}
             >
                 <div className="text-white text-3xl font-nunito font-bold drop-shadow-md text-center my-2">
-                    Find me on:
+                    Find Us on:
                 </div>
                 <div
                     style={{
@@ -52,13 +52,13 @@ const Contacts = () => {
                         text="Twitter"
                         imageUrl="/images/contacts_logo/twitter.png"
                         linkTo="https://twitter.com/ooStarwarsbccoo"
-                        desc="I post GFX here"
+                        desc="Keep up to date with news"
                     />
                     <ContactButton
                         text="YouTube"
                         imageUrl="/images/contacts_logo/youtube.png"
                         linkTo="https://www.youtube.com/channel/UC_KPXhWm0RyhlpM1E_SbTuA"
-                        desc="I share my process and vlogs"
+                        desc="Valuable Experiences"
                     />
                     <ContactButton
                         text="Talent Hub"
@@ -66,23 +66,18 @@ const Contacts = () => {
                         linkTo="https://create.roblox.com/talent/creators/274029164"
                         desc="RobloxDev Forum"
                     />
-                    <ContactButton
-                        text="Discord"
-                        imageUrl="/images/contacts_logo/discord.png"
-                        linkTo="https://discord.gg/WBFkGgf"
-                        desc="Join The Star's Community"
-                    />
+
                     <ContactButton
                         text="Blog"
                         imageUrl="/images/contacts_logo/blog.png"
                         linkTo="https://medium.com/@teerapat310"
-                        desc="Weekly Blogs"
+                        desc="Insights Blogs"
                     />
                     <ContactButton
                         text="Gumroad"
                         imageUrl="/images/contacts_logo/gumroad.png"
                         linkTo="https://stargfx.gumroad.com"
-                        desc="My online store"
+                        desc="Online store"
                     />
                     <ContactButton
                         text="Instagram"

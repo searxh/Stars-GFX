@@ -1,6 +1,11 @@
 export const reviews = [
     {
         content:
+            "you truly amazing, it is like a god dam mona lisa quality of work and you really knocked it out of the park. <333 NFSADKLAfkAJSFNSAKNJBS AMAZING BRO you are for sure the best artist on ROBLOX and well worth the money",
+        date: "10/12/2023",
+    },
+    {
+        content:
             "Great job on the thumbnail bro everyone thinks its AI because of how good it is, said hazem",
         date: "27/11/2023",
     },
