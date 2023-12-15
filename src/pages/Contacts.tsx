@@ -66,7 +66,12 @@ const Contacts = () => {
                         linkTo="https://create.roblox.com/talent/creators/274029164"
                         desc="RobloxDev Forum"
                     />
-
+                    <ContactButton
+                        text="Discord"
+                        imageUrl="/images/contacts_logo/discord.png"
+                        linkTo="https://discord.gg/WBFkGgf"
+                        desc="Join The Star's Community"
+                    />
                     <ContactButton
                         text="Blog"
                         imageUrl="/images/contacts_logo/blog.png"
