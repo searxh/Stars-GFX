@@ -2,7 +2,7 @@ export const store = [
     {
         name: "Star's Private Tutorial",
         link: "https://medium.com/@teerapat310/star-is-now-offering-private-tutorial-0321dca35d90",
-        price: 300,
+        price: 199,
     },
     {
         name: "Light It Up",
