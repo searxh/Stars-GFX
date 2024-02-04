@@ -34,6 +34,35 @@ export const customerProjects: Array<ListItemTypes> = [
         ],
     },
     {
+        name: "Eviction Notice",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: 3,
+            },
+            {
+                content: 4,
+            },
+            {
+                content: "https://www.roblox.com/games/2577040780/ASSASSIN-Eviction-Notice",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Play against other players in a battle of wit, endurance, and power! Compete in challenges, from alliances and make new friends, become the house leader and make big decisions! Be the lasto one standing and win the grand prize!",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Knife Party",
         arr: [
             {
