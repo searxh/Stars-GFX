@@ -60,17 +60,23 @@ const Contacts = () => {
                         linkTo="https://www.youtube.com/channel/UC_KPXhWm0RyhlpM1E_SbTuA"
                         desc="Valuable Experiences"
                     />
+                        <ContactButton
+                        text="Instagram"
+                        imageUrl="/images/contacts_logo/instagram.png"
+                        linkTo="https://www.instagram.com/teerapatpisitsup/"
+                        desc="Personal Life Style"
+                    />
+                        <ContactButton
+                        text="Discord"
+                        imageUrl="/images/contacts_logo/discord.png"
+                        linkTo="https://discord.gg/WBFkGgf"
+                        desc="Join The Star's Community"
+                    />
                     <ContactButton
                         text="Talent Hub"
                         imageUrl="/images/contacts_logo/devforum.png"
                         linkTo="https://create.roblox.com/talent/creators/274029164"
                         desc="RobloxDev Forum"
-                    />
-                    <ContactButton
-                        text="Discord"
-                        imageUrl="/images/contacts_logo/discord.png"
-                        linkTo="https://discord.gg/WBFkGgf"
-                        desc="Join The Star's Community"
                     />
                     <ContactButton
                         text="Blog"
@@ -83,12 +89,6 @@ const Contacts = () => {
                         imageUrl="/images/contacts_logo/gumroad.png"
                         linkTo="https://stargfx.gumroad.com"
                         desc="Online store"
-                    />
-                    <ContactButton
-                        text="Instagram"
-                        imageUrl="/images/contacts_logo/instagram.png"
-                        linkTo="https://www.instagram.com/potential__star/"
-                        desc="General Art and Graphic Works"
                     />
                     <ContactButton
                         text="Unsplash"
