@@ -76,10 +76,14 @@ const FormPage = () => {
                     payload: [initialFormInfo, [], currentPage + 1, !notifier],
                 });
             } else if (result && !result.success) {
-                alert(`Error occured: ${result.message}`);
+                alert(`Error occurred: ${result.message}`);
             } else {
                 alert("Unknown error occured, please resubmit");
             }
+        } else {
+            alert(
+                `Error occurred: Session is expired. Please relogin and try again.`
+            );
         }
     };
     return (
