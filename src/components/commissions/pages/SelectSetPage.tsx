@@ -15,9 +15,9 @@ const setInfo = [
         details: {
             resolution: "HD",
             models: 3,
-            ad: 99,
-            icon: 119,
-            thumbnail: 129,
+            ad: 149,
+            icon: 179,
+            thumbnail: 189,
             amount: [1],
             extras: null,
         },
@@ -28,9 +28,9 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            ad: 99,
-            icon: 139,
-            thumbnail: 149,
+            ad: 189,
+            icon: 210,
+            thumbnail: 219,
             amount: [1],
             extras: null,
         },
@@ -41,7 +41,7 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            price: 387,
+            price: 579,
             amount: [1, 2],
             extras: null,
         },
@@ -52,7 +52,7 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            price: 755,
+            price: 1129,
             amount: [2, 3],
             extras: "Photoshop & Blender files",
         },
