@@ -3,6 +3,7 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import { authUser } from "../lib/api";
+import { checkAdmin } from "../lib/utilities";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -18,8 +19,15 @@ const Dashboard = () => {
             });
         }
     };
-    React.useEffect(() => {
-        if (!lock) navigate("list");
+    React.useLayoutEffect(() => {
+        checkAdmin().then((res) => {
+            if (!lock && res) {
+                navigate("list");
+            } else if (lock && res) {
+            } else {
+                navigate(-1);
+            }
+        });
     }, [lock]);
     React.useEffect(() => {
         if (kick) navigate(-1);
