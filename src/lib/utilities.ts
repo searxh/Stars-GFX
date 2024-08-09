@@ -106,13 +106,12 @@ export const convertUSDtoRobux = (dollar: number | string) => {
 
 export const checkAdmin = () => {
     return new Promise((resolve) => {
-        const a = Cookies.get("a");
+        const c = Cookies.get("c");
         //const a = sessionStorage.getItem("a");
-        if (a) {
-            const decrypted = decrypt(a);
+        if (c) {
+            const decrypted = decrypt(c);
             //const decrypted = decrypt(JSON.parse(a));
             sha256(decrypted).then((res) => {
-                console.log("[ADMIN]", res, process.env.REACT_APP_ADMIN_KEY);
                 if (res === process.env.REACT_APP_ADMIN_KEY) {
                     resolve(true);
                 } else {

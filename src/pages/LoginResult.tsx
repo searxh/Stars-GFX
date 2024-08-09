@@ -23,7 +23,9 @@ const LoginResult = () => {
         const c = frag.get("state");
         if (a && b && checkState(c)) {
             const encrypted = encrypt(a);
-            Cookies.set("a", encrypted);
+            Cookies.set("a", encrypted, {
+                expires: Number(frag.get("expires_in")) / (60 * 60 * 24),
+            });
             Cookies.set("b", b);
             //sessionStorage.setItem("a", JSON.stringify(encrypted));
             //sessionStorage.setItem("b", JSON.stringify(b));
@@ -32,6 +34,7 @@ const LoginResult = () => {
         } else {
             Cookies.remove("a");
             Cookies.remove("b");
+            Cookies.remove("c");
             //sessionStorage.removeItem("a");
             //sessionStorage.removeItem("b");
             calculateHash(true);

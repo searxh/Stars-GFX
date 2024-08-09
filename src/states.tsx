@@ -36,6 +36,7 @@ const load = () => {
     } else {
         if (Cookies.get("a")) Cookies.remove("a");
         if (Cookies.get("b")) Cookies.remove("b");
+        if (Cookies.get("c")) Cookies.remove("c");
         //if (sessionStorage.getItem("a")) sessionStorage.removeItem("a");
         //if (sessionStorage.getItem("b")) sessionStorage.removeItem("b");
         save(initialState);

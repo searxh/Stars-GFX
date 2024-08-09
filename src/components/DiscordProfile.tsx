@@ -34,6 +34,7 @@ const DiscordProfile = () => {
     const handleOnLogout = () => {
         Cookies.remove("a");
         Cookies.remove("b");
+        Cookies.remove("c");
         //sessionStorage.removeItem("a");
         //sessionStorage.removeItem("b");
         calculateHash(true);

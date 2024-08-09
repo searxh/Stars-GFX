@@ -1,7 +1,7 @@
 import { ActionType, FormInfoType, GlobalStateType, UserObj } from "../types";
 import axios from "axios";
 import { Dispatch } from "react";
-import { generateUUID, decrypt } from "./utilities";
+import { generateUUID, decrypt, encrypt, calculateHash } from "./utilities";
 import Cookies from "js-cookie";
 
 export const createOrder = async (
@@ -237,6 +237,8 @@ export const updateUserInfoFromSession = (
                 },
             })
             .then((res) => {
+                Cookies.set("c", encrypt(res.data.id));
+                calculateHash(true);
                 createUser(res.data);
                 dispatch({
                     type: "set",

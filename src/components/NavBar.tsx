@@ -46,6 +46,7 @@ const NavBar = (props: any) => {
     };
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     const isSmallerThanLarge = useMediaQuery("(max-width: 1024px)");
+
     React.useEffect(() => {
         checkAdmin().then((res) => {
             if (res) {
@@ -57,12 +58,14 @@ const NavBar = (props: any) => {
             }
         });
     }, [location.pathname]);
+
     React.useEffect(() => {
         const newLocationIndex = getLocationIndex();
         setLocationIndex(newLocationIndex);
         updateUserInfoFromSession(global_state, dispatch, navigate, true);
         if (mobileMenuActive) setMobileMenuActive(false);
     }, [location.pathname, routes]);
+
     React.useLayoutEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY === 0) {
@@ -80,13 +83,16 @@ const NavBar = (props: any) => {
                 }
             });
     }, []);
+
     React.useLayoutEffect(() => {
         if (!isSmallerThanMedium) setMobileMenuActive(false);
     }, [isSmallerThanMedium]);
+
     React.useEffect(() => {
         if (mobileMenuActive) setTimeout(() => setTransition(true), 10);
         else if (!mobileMenuActive) setTimeout(() => setTransition(false), 200);
     }, [mobileMenuActive]);
+
     return (
         <div
             className={`fixed top-0 flex w-full h-12 bg-opacity-70
