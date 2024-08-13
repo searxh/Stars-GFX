@@ -21,12 +21,15 @@ const LoginResult = () => {
         const a = frag.get(process.env.REACT_APP_A_TYPE as string);
         const b = frag.get(process.env.REACT_APP_B_TYPE as string);
         const c = frag.get("state");
+        const expireTime = Number(frag.get("expires_in")) / (60 * 60 * 24);
         if (a && b && checkState(c)) {
             const encrypted = encrypt(a);
             Cookies.set("a", encrypted, {
-                expires: Number(frag.get("expires_in")) / (60 * 60 * 24),
+                expires: expireTime,
             });
-            Cookies.set("b", b);
+            Cookies.set("b", b, {
+                expires: expireTime,
+            });
             //sessionStorage.setItem("a", JSON.stringify(encrypted));
             //sessionStorage.setItem("b", JSON.stringify(b));
             calculateHash(true);

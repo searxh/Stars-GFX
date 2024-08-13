@@ -220,7 +220,8 @@ export const updateUserInfoFromSession = (
     global_state: GlobalStateType,
     dispatch: Dispatch<ActionType>,
     navigate: Function,
-    dontNavigate?: boolean
+    dontNavigate?: boolean,
+    expireTime?: number
 ) => {
     const auth = Cookies.get("a");
     //const auth = JSON.parse(sessionStorage.getItem("a") as string);
@@ -237,7 +238,7 @@ export const updateUserInfoFromSession = (
                 },
             })
             .then((res) => {
-                Cookies.set("c", encrypt(res.data.id));
+                Cookies.set("c", encrypt(res.data.id), { expires: 7 });
                 calculateHash(true);
                 createUser(res.data);
                 dispatch({
