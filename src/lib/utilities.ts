@@ -82,8 +82,10 @@ export const generateUUID = () => {
 
 export const isSignedIn = () => {
     const a = Cookies.get("a");
+    const b = Cookies.get("b");
+    const c = Cookies.get("c");
     //const a = sessionStorage.getItem("a");
-    return a && a.length === 64;
+    return a && a.length === 64 && b && c;
     //return a && JSON.parse(a).length === 64;
 };
 
