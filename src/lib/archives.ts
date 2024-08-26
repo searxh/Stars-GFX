@@ -2,6 +2,9 @@ import { ListItemTypes } from "../types";
 
 export const gfx: Array<ListItemTypes> = [
     {
+        name: "The Pirate's Hunt",
+    },
+    {
         name: "On The Road",
     },
     {
