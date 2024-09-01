@@ -5,6 +5,9 @@ export const gfx: Array<ListItemTypes> = [
         name: "The Pirate's Hunt",
     },
     {
+        name: "Ro-Head",
+    },
+    {
         name: "On The Road",
     },
     {
