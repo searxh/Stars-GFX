@@ -46,6 +46,7 @@ const NavBar = (props: any) => {
     };
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     const isSmallerThanLarge = useMediaQuery("(max-width: 1024px)");
+    const isWebservicePage = location.pathname.endsWith("web");
 
     React.useEffect(() => {
         checkAdmin().then((res) => {
@@ -97,8 +98,14 @@ const NavBar = (props: any) => {
         <div
             className={`fixed top-0 flex w-full h-12 bg-opacity-70
              font-nunito backdrop-blur-lg ${
-                 isTop ? "bg-transparent" : "bg-white shadow-md"
-             } text-black z-20 justify-evenly transition duration-200`}
+                 isTop
+                     ? "bg-transparent"
+                     : isWebservicePage
+                     ? "bg-black"
+                     : "bg-white shadow-md"
+             } ${
+                isWebservicePage ? "text-white" : "text-black"
+            } z-20 justify-evenly transition duration-200`}
         >
             {isSmallerThanMedium ? (
                 <button
@@ -192,25 +199,13 @@ const NavBar = (props: any) => {
                             }
                         )}
                         <div
-                            className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out
-                ${
-                    locationIndex === 0
-                        ? "translate-x-[0%]"
-                        : locationIndex === 1
-                        ? "translate-x-[100%]"
-                        : locationIndex === 2
-                        ? "translate-x-[200%]"
-                        : locationIndex === 3
-                        ? "translate-x-[300%]"
-                        : locationIndex === 4
-                        ? "translate-x-[400%]"
-                        : locationIndex === 5
-                        ? "translate-x-[500%]"
-                        : null
-                }`}
                             style={{
+                                transform: `translateX(${
+                                    locationIndex * 100
+                                }%)`,
                                 width: 100 / Object.keys(routes).length + "%",
                             }}
+                            className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out`}
                         />
                     </div>
                     <div className="my-auto">
