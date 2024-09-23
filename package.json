@@ -25,6 +25,7 @@
     "dompurify": "^2.4.1",
     "dotenv": "^16.0.3",
     "firebase": "^9.17.1",
+    "framer-motion": "^11.5.4",
     "js-cookie": "^3.0.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
