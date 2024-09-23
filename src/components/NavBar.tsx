@@ -110,7 +110,9 @@ const NavBar = (props: any) => {
             {isSmallerThanMedium ? (
                 <button
                     onClick={() => setMobileMenuActive((prev) => !prev)}
-                    className="absolute top-0.5 left-2 w-6 h-6 m-2 fill-black z-20"
+                    className={`absolute top-0.5 left-2 w-6 h-6 m-2 ${
+                        isWebservicePage ? "fill-white" : "fill-black"
+                    } z-20`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +132,7 @@ const NavBar = (props: any) => {
                     }}
                     className={`absolute ${
                         transitionLogic() ? "opacity-100" : "opacity-0"
-                    } left-0 w-screen h-screen bg-black bg-opacity-50 transition duration-200`}
+                    } left-0 w-screen h-screen text-black bg-black bg-opacity-50 transition duration-200`}
                 >
                     <div
                         className={`absolute ${
