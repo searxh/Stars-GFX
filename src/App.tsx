@@ -14,6 +14,7 @@ import { ConfirmationProvider } from "./confirmation";
 import About from "./pages/About";
 import ReactGA from "react-ga4";
 import Store from "./pages/Store";
+import WebService from "./pages/WebService";
 
 //ReactGA.initialize("G-71992L5E5Q");
 
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/authorized" element={<LoginResult />} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/store" element={<Store />} />
+                    <Route path="/web" element={<WebService />} />
                     <Route path="/dashboard" element={<Dashboard />}>
                         <Route path="list" element={<OrderPage />} />
                         <Route path=":orderObj" element={<InfoPage />} />

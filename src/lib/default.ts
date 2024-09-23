@@ -7,6 +7,7 @@ export const all_routes: StringToAnyType = {
     orders: "Your Orders",
     archives: "Archives",
     contacts: "Contacts",
+    web: "Web Design",
 };
 
 export const selectChoices: any = {
