@@ -48,8 +48,20 @@ const additionalServiceList = [
     },
     {
         id: generateUUID(),
-        title: "Maintenance Support",
-        text: "We offer several levels of ongoing support to ensure your website stays up-to-date",
+        title: "Post-production Feature Expansion",
+        text: "Add or modify features of your site to meet your needs after launch.",
+        icon: faGear,
+    },
+    {
+        id: generateUUID(),
+        title: "Additional Pages",
+        text: "Add extra pages if you need more pages on your site that exceeds the tier limit.",
+        icon: faGear,
+    },
+    {
+        id: generateUUID(),
+        title: "Extended Revision Period",
+        text: "In case you want more time finalizing your features.",
         icon: faGear,
     },
 ];
@@ -57,23 +69,29 @@ const additionalServiceList = [
 const AdditionalServiceList = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     return (
-        <div className="w-full md:h-fit">
+        <div className="w-full h-fit">
+            {isSmallerThanMedium ? (
+                <div className="text-[#c06c84] animate-pulse-slow text-xs p-3 text-center">
+                    SWIPE LEFT OR RIGHT TO VIEW
+                </div>
+            ) : null}
             <Carousel
-                axis={isSmallerThanMedium ? "vertical" : "horizontal"}
+                axis={"horizontal"}
                 interval={2000}
                 transitionTime={600}
                 infiniteLoop
-                autoPlay
+                autoPlay={!isSmallerThanMedium}
                 centerMode={!isSmallerThanMedium}
                 centerSlidePercentage={35}
                 showStatus={false}
                 showIndicators={false}
                 showThumbs={false}
                 className="relative"
-                swipeable={true}
+                swipeable={isSmallerThanMedium}
+                preventMovementUntilSwipeScrollTolerance={true}
                 onClickItem={(index, item) => {}}
                 renderArrowPrev={(clickHandler, hasNext, label) =>
-                    hasNext ? (
+                    hasNext && !isSmallerThanMedium ? (
                         <button
                             onClick={clickHandler}
                             className="absolute -left-5 top-0 bottom-0 z-10"
@@ -88,7 +106,7 @@ const AdditionalServiceList = () => {
                     )
                 }
                 renderArrowNext={(clickHandler, hasNext, label) =>
-                    hasNext ? (
+                    hasNext && !isSmallerThanMedium ? (
                         <button
                             onClick={clickHandler}
                             className="absolute -right-5 top-0 bottom-0 z-10"
@@ -112,12 +130,12 @@ const AdditionalServiceList = () => {
                         <div
                             style={{
                                 transform: options?.isSelected
-                                    ? "scale(1.1)"
+                                    ? "scale(1.0)"
                                     : options?.isPrevious
                                     ? "rotate3d(0.5, 1, 0.5, -10deg) scale(0.7)"
                                     : "rotate3d(0.5, -1, -0.5, -10deg) scale(0.7)",
                             }}
-                            className={`flex h-[30rem] transition duration-500`}
+                            className={`flex h-[25rem] md:h-[30rem] transition duration-500 p-5 md:p-0`}
                         >
                             <div className="m-auto">{item}</div>
                         </div>
@@ -126,40 +144,45 @@ const AdditionalServiceList = () => {
             >
                 {additionalServiceList.map((item, index) => {
                     return (
-                        <div key={item.id} className="relative">
-                            <div className="relative overflow-clip flex flex-col gap-2 h-[15rem] bg-neutral-900 bg-opacity-60 border-[1px] border-neutral-700 p-5 px-10 text-sm rounded-xl">
+                        <div key={item.id} className="relative mb-[100%]">
+                            <div className="relative overflow-clip flex flex-col gap-2 md:h-[15rem] bg-neutral-900 md:bg-opacity-60 border-[1px] border-neutral-700 p-5 px-10 text-sm rounded-xl w-fit z-[5]">
                                 <div className="flex flex-col gap-5 font-semibold text-xl m-auto">
                                     <FontAwesomeIcon
                                         className="m-auto w-[30px] h-[30px] p-4 bg-gradient-to-b from-[#355c7d] to-[#c06c84] shadow-lg shadow-[#c06c84] rounded-xl text-white"
                                         icon={item.icon}
                                     />
-                                    <h2 className="leading-6 text-2xl font-bold mx-auto text-center line-clamp-2 z-10">
+                                    <h2 className="leading-5 md:leading-6 text-lg md:text-2xl font-bold mx-auto text-center line-clamp-2 z-10">
                                         <span className="text-[#c06c84]">
                                             0{index + 1}
                                         </span>{" "}
                                         {item.title}
                                     </h2>
                                 </div>
-                                <p className="line-clamp-2 z-10">{item.text}</p>
+                                <p className="leading-4 md:leading-5 line-clamp-2 z-10 text-xs md:text-base">
+                                    {item.text}
+                                </p>
                             </div>
                             <div
                                 style={{
-                                    transform: `rotateX(180deg) translateY(38px) scaleY(0.5)`,
+                                    transform: `rotateX(180deg) translateY(58px) scaleY(0.5)`,
                                     filter: "blur(5px) brightness(0.3)",
                                     maskImage: "url(#gradientMask)",
+                                    WebkitMaskImage: "url(#gradientMask)",
                                 }}
-                                className="relative overflow-clip flex flex-col gap-2 h-[10rem] bg-neutral-900 bg-opacity-60 border-[1px] border-neutral-700 p-5 px-10 text-sm rounded-xl"
+                                className="md:relative absolute overflow-clip flex flex-col gap-2 md:h-[15rem] bg-neutral-900 bg-opacity-60 border-[1px] border-neutral-700 p-5 px-10 text-sm rounded-xl"
                             >
                                 <div className="flex flex-col gap-5 font-semibold text-xl m-auto">
                                     <FontAwesomeIcon
                                         className="m-auto w-[30px] h-[30px] p-4 bg-gradient-to-b from-[#355c7d] to-[#c06c84] shadow-lg shadow-[#c06c84] rounded-xl text-white"
                                         icon={item.icon}
                                     />
-                                    <h2 className="leading-6 text-2xl font-bold mx-auto text-center line-clamp-2 z-10">
+                                    <h2 className="leading-5 md:leading-6 text-lg md:text-2xl font-bold mx-auto text-center line-clamp-2 z-10">
                                         0{index + 1} {item.title}
                                     </h2>
                                 </div>
-                                <p className="line-clamp-2 z-10">{item.text}</p>
+                                <p className="leading-4 md:leading-5 line-clamp-2 z-10 text-xs md:text-base">
+                                    {item.text}
+                                </p>
                             </div>
 
                             <svg className="absolute left-0 right-0 w-full">
