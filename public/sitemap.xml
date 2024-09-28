@@ -4,20 +4,30 @@
     <loc>https://www.stargfx.me/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <title>Stargfx - Home</title>
+  </url>
+  <url>
+    <loc>https://www.stargfx.me/commissions</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <title>Stargfx - Commissions</title>
+  </url>
+  <url>
+    <loc>https://www.stargfx.me/web</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <title>Stargfx - Web Development Service</title>
+  </url>
+  <url>
+    <loc>https://www.stargfx.me/store</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <title>Stargfx - Store</title>
   </url>
   <url>
     <loc>https://www.stargfx.me/portfolio</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.stargfx.me/commissions</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.stargfx.me/orders</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <title>Stargfx - Portfolio</title>
   </url>
 </urlset>
