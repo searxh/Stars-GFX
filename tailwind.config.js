@@ -31,7 +31,7 @@ module.exports = {
             dropShadow: {
                 glow: [
                     "0 0px 5px rgba(255, 255, 255, 0.35)",
-                    "0 0px 100px rgba(255, 255, 255, 0.2)",
+                    "0 0px 50px rgba(255, 255, 255, 0.15)",
                 ],
             },
             animation: {
