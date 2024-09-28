@@ -4,7 +4,7 @@ const Background = () => {
     const { scrollYProgress } = useScroll();
     return (
         <motion.div
-            className="fixed top-0 w-full h-[100vh]"
+            className="fixed top-0 w-[100vw] h-[100vh] overflow-hidden -z-10"
             animate={{
                 opacity: scrollYProgress.get() !== 0 ? "50%" : "30%",
             }}

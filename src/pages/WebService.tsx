@@ -1,37 +1,70 @@
 import Footer from "../components/Footer";
 import SmoothScroll from "../components/SmoothScroll";
-import FirstSection from "../components/web/sections/FirstSection";
-import SecondSection from "../components/web/sections/SecondSection";
-import ThirdSection from "../components/web/sections/ThirdSection";
-import FourthSection from "../components/web/sections/FourthSection";
-import FifthSection from "../components/web/sections/FifthSection";
-import SixthSection from "../components/web/sections/SixthSection";
-import SeventhSection from "../components/web/sections/SeventhSection";
 import Background from "../components/web/Background";
+import useMediaQuery from "../hooks/useMediaQuery";
+import LogoSection from "../components/web/sections/LogoSection";
+import PropositionSection from "../components/web/sections/PropositionSection";
+import MainServiceSection from "../components/web/sections/MainServiceSection";
+import AdditionalServiceSection from "../components/web/sections/AdditionalServiceSection";
+import TimelineSection from "../components/web/sections/TimelineSection";
+import EndingSection from "../components/web/sections/EndingSection";
+import FAQSection from "../components/web/sections/FAQSection";
+import MaintenanceSection from "../components/web/sections/MaintenanceSection";
 
 const WebServicePage = () => {
+    const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
+    const isIOS = () => {
+        return (
+            (/iPad|iPhone|iPod/.test(navigator.userAgent) &&
+                !(window as any).MSStream) ||
+            !!navigator.userAgent.match(/Version\/[\d.]+.*Safari/)
+        );
+    };
     return (
-        <div className="bg-black">
-            <SmoothScroll className="z-[1]">
-                <div
-                    className={`flex flex-col justify-evenly py-12 pb-0 w-full min-h-screen 
+        <div className="relative h-full overflow-hidden">
+            {isSmallerThanMedium || isIOS() ? (
+                <>
+                    <div
+                        className={`flex flex-col justify-evenly py-12 pb-0 w-screen min-h-screen 
                         h-full text-white font-nunito brightness-100`}
-                >
-                    <FirstSection />
+                    >
+                        <LogoSection />
 
-                    <SecondSection />
-                    <div className="flex flex-col gap-5 w-full h-full p-10">
-                        <ThirdSection />
-                        <FourthSection />
+                        <PropositionSection />
+                        <MainServiceSection />
+                        <AdditionalServiceSection />
+                        <MaintenanceSection />
+
+                        <TimelineSection />
+                        <EndingSection />
+                        <FAQSection />
+                        <Footer />
                     </div>
+                    <Background />
+                </>
+            ) : (
+                <>
+                    <SmoothScroll>
+                        <div
+                            className={`flex flex-col justify-evenly py-12 pb-0 w-screen min-h-screen 
+                        h-full text-white font-nunito brightness-100`}
+                        >
+                            <LogoSection />
 
-                    <FifthSection />
-                    <SixthSection />
-                    <SeventhSection />
-                    <Footer />
-                </div>
-            </SmoothScroll>
-            <Background />
+                            <PropositionSection />
+                            <MainServiceSection />
+                            <AdditionalServiceSection />
+                            <MaintenanceSection />
+
+                            <TimelineSection />
+                            <EndingSection />
+                            <FAQSection />
+                            <Footer />
+                        </div>
+                    </SmoothScroll>
+                    <Background />
+                </>
+            )}
         </div>
     );
 };

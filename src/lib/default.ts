@@ -4,10 +4,10 @@ export const all_routes: StringToAnyType = {
     "": "About",
     store: "Store",
     commissions: "Commissions",
+    web: "Web Dev",
     orders: "Your Orders",
     archives: "Archives",
     contacts: "Contacts",
-    web: "Web Design",
 };
 
 export const selectChoices: any = {
