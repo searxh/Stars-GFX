@@ -1,72 +1,59 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useLayoutEffect, useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useLayoutEffect } from "react";
+import { useScroll, useTransform, useSpring, motion } from "framer-motion";
 
-export default function SmoothScroll({
+const SmoothScroll = ({
     children,
     className,
 }: {
     children: React.ReactNode;
     className?: string;
-}) {
-    // Scroll progress (0 to 1) of the window
-    const { scrollYProgress } = useScroll();
+}) => {
+    // scroll container
+    const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Use framer motion's useSpring() hook to smooth the scrollYProgress value
-    const smoothProgress = useSpring(scrollYProgress, {
-        mass: 0.25,
-        stiffness: 50,
-        damping: 15,
-    });
+    // page scrollable height based on content length
+    const [pageHeight, setPageHeight] = useState(0);
 
-    // The height of the content in pixels
-    const [contentHeight, setContentHeight] = useState(0);
+    // update scrollable height when browser is resizing
+    const resizePageHeight = useCallback((entries: any) => {
+        for (let entry of entries) {
+            setPageHeight(entry.contentRect.height);
+        }
+    }, []);
 
-    // The value to transform the content to
-    const y = useTransform(
-        smoothProgress,
-        (v) => v * -(contentHeight - window.innerHeight)
-    );
-
-    // A reference to hold the value of the content
-    const contentRef = useRef<HTMLDivElement>(null);
-
-    // Reset the `contentHeight` value when the children change, or when the window resizes
+    // observe when browser is resizing
     useLayoutEffect(() => {
-        const handleResize = () => {
-            if (contentRef.current) {
-                setContentHeight(contentRef.current.scrollHeight);
-            }
-        };
+        const resizeObserver = new ResizeObserver((entries) =>
+            resizePageHeight(entries)
+        );
+        scrollRef &&
+            scrollRef.current &&
+            resizeObserver.observe(scrollRef.current);
+        return () => resizeObserver.disconnect();
+    }, [scrollRef, resizePageHeight]);
 
-        // Call the resize handler once, initially
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [contentRef]);
+    const { scrollY } = useScroll(); // measures how many pixels user has scrolled vertically
+    // as scrollY changes between 0px and the scrollable height, create a negative scroll value...
+    // ... based on current scroll position to translateY the document in a natural way
+    const transform = useTransform(scrollY, [0, pageHeight], [0, -pageHeight]);
+    const physics = { damping: 15, mass: 0.25, stiffness: 50 }; // easing of smooth scroll
+    const spring = useSpring(transform, physics); // apply easing to the negative scroll value
 
     return (
         <>
-            {/**
-             * An invisible div with the actual height of the content.
-             * This will expand the height of the body and trigger the default browser scrollbar.
-             */}
-            <div style={{ height: contentHeight }} />
-
-            {/**
-             * The content.  If it exceeds the height of the viewport, translate its y-position to the top.
-             * Its position is fixed by default and moves when the user scrolls.
-             */}
             <motion.div
-                className={`fixed top-0 w-[100vw] ${className}`}
-                style={{ y }}
-                ref={contentRef}
+                ref={scrollRef}
+                style={{ y: spring }} // translateY of scroll container using negative scroll value
+                className={`fixed top-0 left-0 w-full overflow-hidden will-change-transform ${className}`}
             >
                 {children}
             </motion.div>
+            {/* blank div that has a dynamic height based on the content's inherent height */}
+            {/* this is neccessary to allow the scroll container to scroll... */}
+            {/* ... using the browser's native scroll bar */}
+            <div style={{ height: pageHeight }} className="overflow-hidden" />
         </>
     );
-}
+};
+
+export default SmoothScroll;
