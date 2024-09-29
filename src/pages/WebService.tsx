@@ -10,16 +10,10 @@ import TimelineSection from "../components/web/sections/TimelineSection";
 import EndingSection from "../components/web/sections/EndingSection";
 import FAQSection from "../components/web/sections/FAQSection";
 import MaintenanceSection from "../components/web/sections/MaintenanceSection";
+import isIOS from "../utils/isIOS";
 
 const WebServicePage = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
-    const isIOS = () => {
-        return (
-            (/iPad|iPhone|iPod/.test(navigator.userAgent) &&
-                !(window as any).MSStream) ||
-            !!navigator.userAgent.match(/Version\/[\d.]+.*Safari/)
-        );
-    };
     return (
         <div className="relative h-full overflow-hidden">
             {isSmallerThanMedium || isIOS() ? (
