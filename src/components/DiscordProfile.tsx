@@ -41,11 +41,11 @@ const DiscordProfile = () => {
         updateUserInfoFromSession(global_state, dispatch, navigate);
     };
     return (
-        <div className="text-lg">
+        <div className="text-lg my-auto">
             {Object.keys(userInfo).length !== 0 ? (
                 <button
                     onClick={handleOnLogout}
-                    className="group/discord flex p-0.5 mx-2 rounded-full md:hover:scale-105
+                    className="group/discord flex p-0.5 m-1 mx-2 rounded-full md:hover:scale-105
                     bg-white md:hover:bg-red-500 pr-5 shadow-md w-fit max-w-[12rem] duration-300 transform-gpu"
                 >
                     <img
@@ -54,13 +54,13 @@ const DiscordProfile = () => {
                         draggable={false}
                         alt=""
                     />
-                    <div className="relative m-auto mx-2 w-fit">
-                        <div className="group-hover/discord:opacity-0 duration-300">
-                            {nameDot(username)}#{discriminator}
+                    <div className="relative m-auto mx-2">
+                        <div className="group-hover/discord:opacity-0 duration-300 text-black hover:text-white">
+                            {nameDot(username)}
                         </div>
                         <div
-                            className="group-hover/discord:opacity-100 opacity-0 transition
-                            duration-300 text-white absolute top-0 bottom-0 left-0 right-0"
+                            className="group-hover/discord:opacity-100 opacity-0 transition whitespace-nowrap
+                            duration-300 text-black hover:text-white absolute top-0 bottom-0 left-0 right-0"
                         >
                             Sign out
                         </div>
@@ -74,7 +74,7 @@ const DiscordProfile = () => {
                 >
                     <img
                         className="h-8 w-8 rounded-full invert p-1"
-                        src="images/contacts_logo/discord.png"
+                        src="/images/contacts_logo/discord.png"
                         draggable={false}
                         alt=""
                     />

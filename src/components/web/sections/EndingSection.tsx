@@ -23,7 +23,7 @@ const EndingSection = () => {
             >
                 <img
                     className="absolute -top-8 bottom-0 w-full h-full scale-[130%]"
-                    src="images/landing.webp"
+                    src="/images/landing.webp"
                     draggable={false}
                     alt=""
                 />
@@ -52,7 +52,7 @@ const EndingSection = () => {
                         via Discord
                         <img
                             className="h-5 w-5 rounded-full invert"
-                            src="images/contacts_logo/discord.png"
+                            src="/images/contacts_logo/discord.png"
                             draggable={false}
                             alt=""
                         />

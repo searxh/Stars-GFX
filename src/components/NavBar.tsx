@@ -291,7 +291,7 @@ const NavBar = (props: any) => {
                             className="absolute top-0 left-5 w-fit flex justify-center md:hover:scale-110 
                             duration-500 transform-gpu"
                         >
-                            <StarLogo />
+                            <StarLogo invert={isWebservicePage} />
                         </button>
                     ) : null}
 

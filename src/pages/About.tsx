@@ -120,7 +120,7 @@ const About = () => {
                     </div>
                     <img
                         className="m-auto h-12 w-12 mb-5 mt-2 drop-shadow-sm invert"
-                        src="images/logo.webp"
+                        src="/images/logo.webp"
                         draggable={false}
                         alt=""
                     />
@@ -165,7 +165,7 @@ const About = () => {
                     >
                         <img
                             className="m-auto h-10 w-10 drop-shadow-sm"
-                            src="images/logo.webp"
+                            src="/images/logo.webp"
                             draggable={false}
                             alt=""
                         />

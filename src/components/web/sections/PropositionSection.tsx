@@ -20,7 +20,7 @@ const PropositionSection = () => {
             <div className="relative w-full md:w-[25rem] md:h-[25rem] overflow-visible ml-auto my-auto">
                 <img
                     className="md:absolute top-0 left-0 right-0 bottom-0 w-full md:h-[25rem] md:w-[25rem] drop-shadow-glow"
-                    src="images/David.webp"
+                    src="/images/David.webp"
                     alt=""
                     // animate={{
                     //     scale: [1.0, 1.1, 1.1, 1.0],

@@ -26,7 +26,7 @@ const Contacts = () => {
                         : "translate-y-12 opacity-0"
                 } m-auto h-72 lg:h-80 my-10 drop-shadow-md 
                 md:hover:scale-105 duration-1000 transition object-contain`}
-                src="images/star.webp"
+                src="/images/star.webp"
                 draggable={false}
                 alt=""
             />
@@ -60,13 +60,13 @@ const Contacts = () => {
                         linkTo="https://www.youtube.com/channel/UC_KPXhWm0RyhlpM1E_SbTuA"
                         desc="Valuable Experiences"
                     />
-                        <ContactButton
+                    <ContactButton
                         text="Instagram"
                         imageUrl="/images/contacts_logo/instagram.png"
                         linkTo="https://www.instagram.com/teerapatpisitsup/"
                         desc="Personal Life Style"
                     />
-                        <ContactButton
+                    <ContactButton
                         text="Discord"
                         imageUrl="/images/contacts_logo/discord.png"
                         linkTo="https://discord.gg/WBFkGgf"
@@ -100,7 +100,7 @@ const Contacts = () => {
             </div>
             <img
                 className="m-auto h-20 w-20 my-10 drop-shadow-md invert"
-                src="images/logo.webp"
+                src="/images/logo.webp"
                 draggable={false}
                 alt=""
             />
