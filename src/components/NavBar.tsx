@@ -8,25 +8,39 @@ import DiscordProfile from "./DiscordProfile";
 import { updateUserInfoFromSession } from "../lib/api";
 import StarLogo from "./StarLogo";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { motion } from "framer-motion";
+import Divider from "@mui/material/Divider";
+
+interface MultipleChildrenRoute {
+    value: string;
+    children: Array<{ [key: string]: string }>;
+}
 
 const NavBar = (props: any) => {
     const { global_state, dispatch } = React.useContext(GlobalContext);
-    const [routes, setRoutes] = React.useState<{ [key: string]: string }>(
-        all_routes
-    );
+    const [routes, setRoutes] = React.useState<{
+        [key: string]: string | MultipleChildrenRoute;
+    }>(all_routes);
     const [isTop, setIsTop] = React.useState<boolean>(true);
     const [mobileMenuActive, setMobileMenuActive] =
         React.useState<boolean>(false);
     const [transition, setTransition] = React.useState<boolean>(false);
+    const [subRoutes, setSubRoutes] = React.useState<MultipleChildrenRoute>({
+        value: "",
+        children: [],
+    });
+
     const location = useLocation();
     const navigate = useNavigate();
     const getLocationIndex = () => {
-        return Object.keys(routes).findIndex((route: string) => {
+        const index = Object.keys(routes).findIndex((route: string) => {
             return (
-                "/" + route === location.pathname ||
-                (route.length !== 0 && location.pathname.includes(route))
+                "/" + route === location.pathname.toLowerCase() ||
+                (route.length !== 0 &&
+                    location.pathname.toLowerCase().includes(route))
             );
         });
+        return index;
     };
     const [locationIndex, setLocationIndex] = React.useState(
         getLocationIndex()
@@ -95,23 +109,65 @@ const NavBar = (props: any) => {
     }, [mobileMenuActive]);
 
     return (
-        <div
-            className={`fixed top-0 flex w-full h-12 bg-opacity-70
+        <motion.div
+            animate={{
+                height: subRoutes.children.length > 0 ? "5rem" : "3rem",
+            }}
+            style={{
+                WebkitBackdropFilter: "blur(16px)",
+            }}
+            className={`fixed top-0 flex w-full bg-opacity-70
              font-nunito backdrop-blur-lg ${
-                 isTop
-                     ? "bg-transparent"
-                     : isWebservicePage
+                 isWebservicePage
                      ? "bg-black"
-                     : "bg-white shadow-md"
-             } ${
-                isWebservicePage ? "text-white" : "text-black"
+                     : isTop
+                     ? "bg-neutral-100"
+                     : "bg-neutral-100 shadow-md"
+             } ${isWebservicePage ? "text-white" : "text-black"} ${
+                subRoutes.children.length > 0 ? "shadow-md" : ""
             } z-20 justify-evenly transition duration-200`}
         >
+            <motion.div
+                onMouseLeave={() => {
+                    setSubRoutes({ value: "", children: [] });
+                }}
+                animate={{
+                    top: subRoutes.children.length > 0 ? "2.5rem" : 0,
+                    opacity: subRoutes.children.length > 0 ? 1 : 0,
+                    zIndex: subRoutes.children.length > 0 ? 10 : 0,
+                }}
+                className={`fixed flex m-auto h-12 w-full justify-center text-sm`}
+            >
+                <div className="my-auto font-semibold px-3 text-xs">
+                    {subRoutes.value.toUpperCase()}
+                </div>
+                <Divider orientation="vertical" flexItem variant="middle" />
+                {!isSmallerThanMedium && subRoutes.children.length > 0
+                    ? subRoutes.children.map((subRoute, index: number) => {
+                          const subRouteKey = Object.keys(subRoute)[0];
+                          const subRoutePath = `${subRoutes.value}/${subRouteKey}`;
+                          return (
+                              <button
+                                  key={index}
+                                  onClick={() =>
+                                      handleChangeRoute(subRoutePath)
+                                  }
+                                  className="w-24 my-auto md:hover:bg-black md:hover:bg-opacity-5 h-fit p-2
+                                                transition duration-500 font-normal rounded-md"
+                              >
+                                  {subRoute[subRouteKey]}
+                              </button>
+                          );
+                      })
+                    : null}
+            </motion.div>
             {isSmallerThanMedium ? (
                 <button
                     onClick={() => setMobileMenuActive((prev) => !prev)}
                     className={`absolute top-0.5 left-2 w-6 h-6 m-2 ${
-                        isWebservicePage ? "fill-white" : "fill-black"
+                        isWebservicePage && !mobileMenuActive
+                            ? "fill-white"
+                            : "fill-black"
                     } z-20`}
                 >
                     <svg
@@ -139,13 +195,67 @@ const NavBar = (props: any) => {
                             transitionLogic()
                                 ? "translate-x-0"
                                 : "-translate-x-[100px]"
-                        } -left-2 w-64 h-screen bg-white shadow-md rounded-xl transform-gpu duration-200`}
+                        } -left-2 w-64 h-screen bg-neutral-100 shadow-md rounded-xl transform-gpu duration-200`}
                     >
                         <div className="relative text-xl flex flex-col justify-evenly w-full h-full">
-                            <StarLogo />
+                            <StarLogo
+                                invert={isWebservicePage && !mobileMenuActive}
+                            />
                             <div>
                                 {Object.keys(routes).map(
                                     (route: string, index: number) => {
+                                        if (
+                                            typeof routes[route] !== "string" &&
+                                            routes[route]
+                                        ) {
+                                            const multipleChildrenRoutes =
+                                                routes[
+                                                    route
+                                                ] as MultipleChildrenRoute;
+                                            const parentRoute =
+                                                multipleChildrenRoutes.value;
+                                            const childrenRoutes =
+                                                multipleChildrenRoutes.children;
+                                            return (
+                                                <div className="h-fit text-center text-lg font-normal">
+                                                    <div className="px-5 h-fit font-bold text-xl">
+                                                        Commissions
+                                                    </div>
+                                                    {childrenRoutes.map(
+                                                        (subRoute) => {
+                                                            const subRouteKey =
+                                                                Object.keys(
+                                                                    subRoute
+                                                                )[0];
+                                                            const subRoutePath = `${parentRoute}/${subRouteKey}`;
+                                                            return (
+                                                                <button
+                                                                    key={index}
+                                                                    onClick={() =>
+                                                                        handleChangeRoute(
+                                                                            subRoutePath
+                                                                        )
+                                                                    }
+                                                                    className={`mx-auto w-full py-2 px-5 h-fit font-normal 
+                                                                        rounded-sm ${
+                                                                            locationIndex ===
+                                                                            index
+                                                                                ? "bg-gradient-to-r bg-gray-200"
+                                                                                : ""
+                                                                        }`}
+                                                                >
+                                                                    {
+                                                                        subRoute[
+                                                                            subRouteKey
+                                                                        ]
+                                                                    }
+                                                                </button>
+                                                            );
+                                                        }
+                                                    )}
+                                                </div>
+                                            );
+                                        }
                                         return (
                                             <button
                                                 key={index}
@@ -153,14 +263,14 @@ const NavBar = (props: any) => {
                                                     handleChangeRoute(route)
                                                 }
                                                 className={`m-auto w-full
-                                                py-2 px-5 h-fit font-normal rounded-sm
+                                                py-2 px-5 h-fit font-bold rounded-sm
                                         ${
                                             locationIndex === index
                                                 ? "bg-gradient-to-r bg-gray-200"
                                                 : ""
                                         }`}
                                             >
-                                                {routes[route]}
+                                                {routes[route] as string}
                                             </button>
                                         );
                                     }
@@ -174,28 +284,54 @@ const NavBar = (props: any) => {
                 </div>
             ) : null}
             {!isSmallerThanMedium ? (
-                <>
+                <div className="relative flex gap-2 w-full">
                     {!isSmallerThanLarge ? (
                         <button
                             onClick={handleOnClick}
-                            className="w-fit flex justify-center md:hover:scale-110 
+                            className="absolute top-0 left-5 w-fit flex justify-center md:hover:scale-110 
                             duration-500 transform-gpu"
                         >
                             <StarLogo />
                         </button>
                     ) : null}
 
-                    <div className="relative flex min-w-[40rem]">
+                    <div className="absolute top-0 left-0 mx-auto md:right-full lg:right-0 flex w-full md:w-[40rem] h-12">
                         {Object.keys(routes).map(
                             (route: string, index: number) => {
+                                if (typeof routes[route] !== "string") {
+                                    const multipleChildrenRoutes = routes[
+                                        route
+                                    ] as MultipleChildrenRoute;
+                                    const parentRoute =
+                                        multipleChildrenRoutes.value;
+                                    return (
+                                        <button
+                                            onMouseEnter={() => {
+                                                setSubRoutes(
+                                                    multipleChildrenRoutes
+                                                );
+                                            }}
+                                            className="relative m-auto w-[20%] md:hover:bg-black md:hover:bg-opacity-5
+                                        h-full text-sm transition duration-500 font-normal rounded-md"
+                                        >
+                                            {parentRoute}
+                                        </button>
+                                    );
+                                }
                                 return (
                                     <button
                                         key={index}
+                                        onMouseEnter={() => {
+                                            setSubRoutes({
+                                                value: "",
+                                                children: [],
+                                            });
+                                        }}
                                         onClick={() => handleChangeRoute(route)}
                                         className="m-auto w-[20%] md:hover:bg-black md:hover:bg-opacity-5
                                         h-full text-sm transition duration-500 font-normal rounded-md"
                                     >
-                                        {routes[route]}
+                                        {routes[route] as string}
                                     </button>
                                 );
                             }
@@ -210,13 +346,13 @@ const NavBar = (props: any) => {
                             className={`absolute bg-black h-0.5 bottom-0 rounded-full transform-gpu duration-300 ease-in-out`}
                         />
                     </div>
-                    <div className="my-auto">
+                    <div className="absolute top-0.5 right-5 my-auto">
                         <DiscordProfile />
                     </div>
-                </>
+                </div>
             ) : null}
             {props.children}
-        </div>
+        </motion.div>
     );
 };
 
