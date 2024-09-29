@@ -33,8 +33,8 @@ const FAQSection = () => {
                     </p>
                     <p>
                         Tier 3: Few months to several months <br />
-                        Tier 2: Around three weeks to a month <br />
-                        Tier 1: One to two weeks
+                        Tier 2: Three weeks to a month or more <br />
+                        Tier 1: Two to three weeks
                     </p>
                 </div>
                 <div />
@@ -42,8 +42,11 @@ const FAQSection = () => {
                     What if I need changes after the site is launched?
                 </li>
                 <p className="text-sm md:text-base text-neutral-300">
-                    Minor updates are fine, but major changes outside of agreed
-                    upon requirements will incur additional costs.
+                    Any changes requested after the revision period will be
+                    subject to additional fees. We offer a Feature Expansion
+                    Package as part of our additional services, with pricing
+                    based on the size and complexity of the requested feature or
+                    modification.
                 </p>
                 <div />
                 <li className="font-semibold text-base md:text-lg">
@@ -51,7 +54,8 @@ const FAQSection = () => {
                 </li>{" "}
                 <p className="text-sm md:text-base text-neutral-300">
                     Yes! We offer various subscription plans for ongoing
-                    updates, maintenance, and security patches.
+                    updates, maintenance, data backups and rollbacks, and
+                    security patches.
                 </p>
             </ul>
         </motion.div>

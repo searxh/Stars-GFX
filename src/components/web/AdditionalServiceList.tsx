@@ -37,7 +37,7 @@ const additionalServiceList = [
     {
         id: generateUUID(),
         title: "Custom Domain Support",
-        text: "We'll set up your custom domain for you.",
+        text: "We'll integrate your custom domain for you.",
         icon: faGlobe,
     },
     {

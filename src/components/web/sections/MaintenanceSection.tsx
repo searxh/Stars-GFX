@@ -37,7 +37,7 @@ const MaintenanceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
@@ -78,7 +78,7 @@ const MaintenanceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
@@ -127,7 +127,7 @@ const MaintenanceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
@@ -176,7 +176,7 @@ const MaintenanceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
@@ -211,7 +211,7 @@ const MaintenanceSection = () => {
                             </li>
                             <li className="flex gap-2">
                                 <CheckRounded />
-                                Any future benefits
+                                Any benefits we may add in the future
                             </li>
                         </ol>
                         <div className="text-gradient bg-gradient-to-r from-[#c06c84] to-[#355c7d] mt-auto">

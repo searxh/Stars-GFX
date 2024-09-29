@@ -36,7 +36,7 @@ const MainServiceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
@@ -138,7 +138,7 @@ const MainServiceSection = () => {
                     }}
                     transition={{
                         ease: "easeOut",
-                        duration: 1,
+                        duration: 0.5,
                     }}
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",

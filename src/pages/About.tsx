@@ -30,7 +30,7 @@ const About = () => {
             className="relative pt-12 w-full min-h-screen h-full
             font-nunito text-center overflow-hidden bg-black"
         >
-            <div className="absolute top-0 w-screen bg-white h-12" />
+            <div className="absolute top-0 w-screen bg-neutral-100 h-12" />
             <ItemWindow
                 listItem={info}
                 callback={() => {
@@ -61,7 +61,7 @@ const About = () => {
                     </div>
                     <button
                         onClick={() => navigate("/contacts")}
-                        className="flex justify-center mt-6 md:mx-0 mx-auto gap-2 py-1 pl-2 pr-5 bg-white hover:text-white
+                        className="flex justify-center mt-6 md:mx-0 mx-auto gap-2 py-1 pl-2 pr-5 bg-neutral-100 hover:text-white
                         rounded-full text-black shadow-md w-fit transform-gpu duration-200 hover:bg-orange-600"
                     >
                         <svg
