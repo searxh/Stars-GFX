@@ -145,7 +145,7 @@ const NavBar = (props: any) => {
                 {!isSmallerThanMedium && subRoutes.children.length > 0
                     ? subRoutes.children.map((subRoute, index: number) => {
                           const subRouteKey = Object.keys(subRoute)[0];
-                          const subRoutePath = `${subRoutes.value}/${subRouteKey}`;
+                          const subRoutePath = `${subRoutes.value.toLowerCase()}/${subRouteKey}`;
                           return (
                               <button
                                   key={index}
@@ -227,7 +227,7 @@ const NavBar = (props: any) => {
                                                                 Object.keys(
                                                                     subRoute
                                                                 )[0];
-                                                            const subRoutePath = `${parentRoute}/${subRouteKey}`;
+                                                            const subRoutePath = `${parentRoute.toLowerCase()}/${subRouteKey}`;
                                                             return (
                                                                 <button
                                                                     key={index}

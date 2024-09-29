@@ -159,7 +159,7 @@ const About = () => {
                 </Carousel>
                 <div className="flex w-full px-5">
                     <button
-                        onClick={() => navigate("/commissions")}
+                        onClick={() => navigate("/commissions/gfx")}
                         className="flex gap-5 p-5 bg-neutral-100 rounded-2xl text-black shadow-md animate-bounce 
                     md:mb-0 mb-10 mt-14 mx-auto transition duration-500 hover:bg-orange-600 hover:text-white"
                     >
