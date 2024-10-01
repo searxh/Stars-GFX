@@ -20,15 +20,15 @@ const stepsInfo = [
         icon: faContactBook,
     },
     {
-        stepTitle: "Sign the Contract",
+        stepTitle: "Requirements",
         details:
-            "After discussing the details and finalizing the requirements, we’ll sign a contract and post it on our Discord group for easy access.",
+            "After discussing the details and finalizing the requirements, we’ll sign an agreement and post it on our Discord group for easy access.",
         icon: faPencil,
     },
     {
         stepTitle: "Payment",
         details:
-            "After agreeing on the terms, we’ll schedule a payment to ensure everything is on track.",
+            "After agreeing on the terms, we’ll schedule a 50% upfront payment",
         icon: faMoneyBill,
     },
     {
@@ -46,7 +46,7 @@ const stepsInfo = [
     {
         stepTitle: "Launch & Support",
         details:
-            "After the final approval and payment, we’ll launch your site and offer free bug fixes for up to 3 months.",
+            "After the final approval and the other 50% payment, we’ll launch your site and offer free bug fixes for up to 3 months.",
         icon: faComments,
     },
 ];
