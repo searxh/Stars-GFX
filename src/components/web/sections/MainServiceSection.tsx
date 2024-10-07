@@ -41,8 +41,12 @@ const MainServiceSection = () => {
                     style={{
                         background: "radial-gradient(#222222, #111111 80%)",
                     }}
-                    className="basis-1/3 flex flex-col border-[1px] border-neutral-800 gap-3 rounded-xl p-5 md:p-10 py-12 flex-1 bg-neutral-900 shadow-[#c2788d] shadow-md"
+                    className="relative basis-1/3 flex flex-col border-[1px] border-neutral-800 gap-3 rounded-xl p-5 md:p-10 py-12 flex-1 bg-neutral-900 shadow-[#c2788d] shadow-md"
                 >
+                    <div className="absolute leading-5 text-sm -top-2 -left-2 bg-[#c2788d] text-black rounded-lg p-3">
+                        <div className="font-bold text-lg">20% OFF</div> Limited
+                        seats!
+                    </div>
                     <div className="flex flex-col text-sm md:text-base m-auto w-fit h-full text-center text-neutral-300">
                         <div className="font-bold mb-3 text-white">
                             TIER 1:
@@ -73,7 +77,10 @@ const MainServiceSection = () => {
                         <div className="text-[#c2788d] mt-auto">
                             Starts at
                             <div className="flex gap-2 font-bold text-xl md:text-3xl w-fit mx-auto">
-                                $699
+                                $559
+                                <div className="line-through text-lg my-auto font-normal">
+                                    $699
+                                </div>
                             </div>
                         </div>
                     </div>
