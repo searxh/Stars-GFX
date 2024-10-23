@@ -2,6 +2,29 @@ import { ListItemTypes } from "../types";
 
 export const customerProjects: Array<ListItemTypes> = [
     {
+        name: "Tower Defense Simulator",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: "https://www.roblox.com/games/3260590327/Tower-Defense-Simulator",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Join the ultimate multiplayer Tower Defense experience! Team up with friends or play solo to strategize and defend against relentless waves of zombies. Face off against unique bosses, unlock powerful Towers, and customize them with countless skins.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Pls Donate",
         arr: [
             {
