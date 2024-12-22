@@ -41,7 +41,7 @@ const Background = () => {
                     repeat: Infinity,
                     repeatType: "reverse",
                 }}
-                className="absolute top-0 left-0 right-0 bottom-0 h-[100vh] m-auto brightness-[200%] blur-[1px]"
+                className="absolute top-0 left-0 right-0 bottom-0 h-[100vh] m-auto brightness-[200%]"
                 draggable={false}
                 alt=""
             />

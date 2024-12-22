@@ -15,7 +15,7 @@ import isIOS from "../utils/isIOS";
 const WebServicePage = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     return (
-        <div className="relative h-full overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden">
             {isSmallerThanMedium || isIOS() ? (
                 <>
                     <div
