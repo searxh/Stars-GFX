@@ -2,6 +2,44 @@ import { ListItemTypes } from "../types";
 
 export const customerProjects: Array<ListItemTypes> = [
     {
+        name: "Rivals",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: 3,
+            },
+            {
+                content: 4,
+            },
+            {
+                content: 5,
+            },
+            {
+                content: 6,
+            },
+            {
+                content: 7,
+            },
+            {
+                content: "https://www.roblox.com/games/17625359962/RIVALS",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Welcome to RIVALS, the most intense first person shooter game on Roblox! Challenge other players in 1v1 to 5v5 FPS duels where the first to 5 wins.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Tower Defense Simulator",
         arr: [
             {
@@ -41,6 +79,9 @@ export const customerProjects: Array<ListItemTypes> = [
             },
             {
                 content: 5,
+            },
+            {
+                content: 6,
             },
             {
                 content: "https://www.roblox.com/games/8737602449/PLS-DONATE-UPDATE",
