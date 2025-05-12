@@ -6,7 +6,13 @@ import SetCard from "../../SetCard";
 import { FormInfoType } from "../../../types";
 import { isSignedIn } from "../../../lib/utilities";
 import { ConfirmationContext } from "../../../confirmation";
-import { signUpMessage, authLink } from "../../../lib/default";
+import {
+    signUpMessage,
+    authLink,
+    AD_BASE_PRICE,
+    ICON_BASE_PRICE,
+    THUMB_BASE_PRICE,
+} from "../../../lib/default";
 
 const setInfo = [
     {
@@ -15,9 +21,9 @@ const setInfo = [
         details: {
             resolution: "HD",
             models: 3,
-            ad: 149,
-            icon: 179,
-            thumbnail: 189,
+            ad: AD_BASE_PRICE,
+            icon: ICON_BASE_PRICE,
+            thumbnail: THUMB_BASE_PRICE,
             amount: [1],
             extras: null,
         },
@@ -28,9 +34,9 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            ad: 189,
-            icon: 210,
-            thumbnail: 219,
+            ad: AD_BASE_PRICE + 30,
+            icon: ICON_BASE_PRICE + 30,
+            thumbnail: THUMB_BASE_PRICE + 30,
             amount: [1],
             extras: null,
         },
@@ -41,7 +47,9 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            price: 579,
+            price: Math.round(
+                ((THUMB_BASE_PRICE + 30) * 2 + ICON_BASE_PRICE + 30) * 0.86
+            ),
             amount: [1, 2],
             extras: null,
         },
@@ -52,7 +60,10 @@ const setInfo = [
         details: {
             resolution: "5k",
             models: "Unlimited",
-            price: 1129,
+            price: Math.round(
+                ((THUMB_BASE_PRICE + 60) * 3 + (ICON_BASE_PRICE + 60) * 2) *
+                    0.78
+            ),
             amount: [2, 3],
             extras: "Photoshop & Blender files",
         },
