@@ -1,5 +1,9 @@
 import { GlobalStateType, PriceInfoType, StringToAnyType } from "../types";
 
+export const AD_BASE_PRICE = 199;
+export const ICON_BASE_PRICE = 219;
+export const THUMB_BASE_PRICE = 259;
+
 export const all_routes: StringToAnyType = {
     "": "About",
     store: "Store",
@@ -57,25 +61,25 @@ export const productChoices = [
         title: "Thumbnail",
         color: "bg-purple-500",
         textColor: "text-purple-500",
-        priceRange: "$189 - $249",
+        priceRange: `$${THUMB_BASE_PRICE} - $${THUMB_BASE_PRICE + 60}`,
     },
     {
         title: "Icon",
         color: "bg-blue-500",
         textColor: "text-blue-500",
-        priceRange: "$179 - $239",
+        priceRange: `$${ICON_BASE_PRICE} - $${ICON_BASE_PRICE + 60}`,
     },
     {
         title: "Ad Banner",
         color: "bg-amber-500",
         textColor: "text-amber-500",
-        priceRange: "$149 - $209",
+        priceRange: `$${AD_BASE_PRICE} - $${AD_BASE_PRICE + 60}`,
     },
     {
         title: "Ad Skyscraper",
         color: "bg-red-500",
         textColor: "text-red-500",
-        priceRange: "$149 - $209",
+        priceRange: `$${AD_BASE_PRICE} - $${AD_BASE_PRICE + 60}`,
     },
 ];
 
@@ -127,22 +131,30 @@ export const initialState: GlobalStateType = {
 
 export const priceInfo: PriceInfoType = {
     Thumbnail: {
-        resolution: [189, 199, 209],
+        resolution: [
+            THUMB_BASE_PRICE,
+            THUMB_BASE_PRICE + 10,
+            THUMB_BASE_PRICE + 20,
+        ],
         modelLimit: [0, 10],
         additional: [0, 30],
     },
     Icon: {
-        resolution: [179, 189, 199],
+        resolution: [
+            ICON_BASE_PRICE,
+            ICON_BASE_PRICE + 10,
+            ICON_BASE_PRICE + 20,
+        ],
         modelLimit: [0, 10],
         additional: [0, 30],
     },
     "Ad Banner": {
-        resolution: [149, 159, 169],
+        resolution: [AD_BASE_PRICE, AD_BASE_PRICE + 10, AD_BASE_PRICE + 20],
         modelLimit: [0, 10],
         additional: [0, 30],
     },
     "Ad Skyscraper": {
-        resolution: [149, 159, 169],
+        resolution: [AD_BASE_PRICE, AD_BASE_PRICE + 10, AD_BASE_PRICE + 20],
         modelLimit: [0, 10],
         additional: [0, 30],
     },
