@@ -242,6 +242,29 @@ export const art: Array<ListItemTypes> = [
 
 export const projects: Array<ListItemTypes> = [
     {
+        name: "Project Slam",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: "https://www.roblox.com/games/122660076326461/Project-SLAM",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "First Game Released! Dive into the chaos. Roll your fate. Harness elemental power, master movement, and rise as the last one standing.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Light it up",
         arr: [
             {

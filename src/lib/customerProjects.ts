@@ -2,6 +2,35 @@ import { ListItemTypes } from "../types";
 
 export const customerProjects: Array<ListItemTypes> = [
     {
+        name: "Weeknd Hub",
+        arr: [
+            {
+                content: 1,
+            },
+            {
+                content: 2,
+            },
+            {
+                content: 3,
+            },
+            {
+                content: 4,
+            },
+            {
+                content: "https://www.roblox.com/games/124948436023758/The-Weeknd-Hub",
+            },
+            {
+                content: "Description",
+                className: "min-w-[21rem] w-[80%] mx-auto font-bold",
+            },
+            {
+                content:
+                    "Collaboration with The Weeknd, THE FIRST-OF-ITS-KIND PLAYABLE WORLD-BUILDING EXPERIENCE. AVATAR BUNDLE AND HUB OUT NOW.",
+                className: "min-w-[21rem] w-[80%] mx-auto",
+            },
+        ],
+    },
+    {
         name: "Rivals",
         arr: [
             {
