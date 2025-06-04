@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import ReviewItem from "../components/about/ReviewItem";
 import Footer from "../components/Footer";
 import { reviews } from "../lib/reviews";
