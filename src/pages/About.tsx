@@ -94,7 +94,7 @@ const About = () => {
                     }}
                     className="w-full h-full"
                 >
-                    <source src="/videos/about.mov" type="video/mp4"></source>
+                    <source src="/videos/about.webm" type="video/webm"></source>
                 </video>
                 <div className="absolute bottom-0 h-52 w-full bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
