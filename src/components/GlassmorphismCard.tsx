@@ -5,5 +5,5 @@ export default function GlassmorphismCard({
 }: {
     children: ReactNode;
 }) {
-    return <div className="h-fit w-fit p-5 bg-[#222222] rounded-lg bg-clip-padding backdrop-filter backdrop-blur-[100px] bg-opacity-[30%]">{children}</div>;
+    return <div className="h-fit w-fit p-[24px] bg-[#222222] rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-[100px] bg-opacity-[30%]">{children}</div>;
 }
