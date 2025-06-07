@@ -18,6 +18,10 @@ const PropositionSection = () => {
             }}
             className="flex flex-col md:flex-row w-full max-w-[25rem] md:max-w-full h-[100rem] my-[10rem] mx-auto"
         >
+            <div className="absolute -z-10 translate-x-24 translate-y-96">
+                <img src="/images/wwo_bg.png" alt="wwo_bg" />
+            </div>
+
             <div className="grid w-full place-items-center p-[107px]">
                 <div className="font-bold text-lg md:text-[64px] text-center md:text-left mb-[36px]">
                     WHAT WE <span className="text-[#5CC9FF]">OFFER</span>
@@ -27,7 +31,7 @@ const PropositionSection = () => {
                         <div className="flex gap-[24px]">
                             <img
                                 src="/images/custom_UI.png"
-                                alt="Custom UI/UX image"
+                                alt="Custom UI/UX "
                                 height={352}
                                 width={562}
                             />
@@ -83,7 +87,7 @@ const PropositionSection = () => {
                         <div className="flex gap-[24px] flex-row-reverse">
                             <img
                                 src="/images/woman.png"
-                                alt="Custom UI/UX image"
+                                alt="Custom UI/UX "
                                 height={352}
                                 width={562}
                             />
