@@ -1,3 +1,5 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import GlassmorphismCard from "../../GlassmorphismCard";
 import AnimatedContainer from "../../AnimatedContainer";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
