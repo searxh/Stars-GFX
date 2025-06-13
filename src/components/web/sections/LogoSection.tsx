@@ -10,7 +10,7 @@ const LogoSection = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
 
     return (
-        <div className="flex w-full h-[70vh] md:h-[40rem] mx-auto mx-24">
+        <div className="relative flex w-full h-[95vh] mx-24">
             <motion.div
                 ref={ref}
                 animate={{
@@ -21,7 +21,7 @@ const LogoSection = () => {
                 transition={{
                     duration: 1,
                 }}
-                className="flex flex-col gap-9 m-auto md:max-w-3xl w-fit"
+                className="flex flex-col gap-9 my-auto md:max-w-3xl w-fit z-10"
             >
                 <div className="flex gap-4">
                     <img
@@ -31,12 +31,19 @@ const LogoSection = () => {
                         alt=""
                     />
                     <div className="font-bold text-base text-white my-auto">
-                        CUSTOM WEB DEVELOPMENT
-                        <br /> FOR GAME STUDIOS & CREATIVE BRANDS
+                        <span
+                            style={{
+                                color: Colors.primary,
+                            }}
+                        >
+                            CUSTOM WEB DEVELOPMENT
+                        </span>
+                        <br /> FOR GAME STUDIOS & <br />
+                        CREATIVE BRANDS
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 h-full w-full">
-                    <div className="relative h-[200px] flex flex-col">
+                    <div className="relative h-[200px] flex flex-col drop-shadow-md">
                         <div className="flex">
                             <motion.svg
                                 width="100%"
@@ -144,7 +151,7 @@ const LogoSection = () => {
                 transition={{
                     duration: 1,
                 }}
-                className="relative flex w-full h-full"
+                className="absolute flex top-0 bottom-0 left-48 m-auto w-full h-full"
             >
                 <img
                     src="/images/star_logo.png"
@@ -153,10 +160,10 @@ const LogoSection = () => {
                 />
                 <div
                     style={{
-                        background: `radial-gradient(circle, white 0%, ${Colors.primary} 5%, rgba(0, 0, 0, 0) 60%)`,
+                        background: `radial-gradient(circle, white 0%, ${Colors.primary} 5%, rgba(0, 0, 0, 0) 40%)`,
                     }}
                     className="absolute top-0 bottom-12 right-0 left-0 m-auto
-                h-[1200px] w-full z-10"
+                h-[1500px] w-full z-10"
                 />
                 <img
                     src="/images/decor.png"

@@ -18,7 +18,7 @@ const PropositionSection = () => {
             }}
             className="flex flex-col md:flex-row w-full max-w-[25rem] md:max-w-full h-[100rem] my-[10rem] mx-auto"
         >
-            <div className="absolute -z-10 translate-x-24 translate-y-96">
+            <div className="absolute -z-10 translate-x-24 translate-y-96 blur-lg">
                 <img src="/images/wwo_bg.png" alt="wwo_bg" />
             </div>
 

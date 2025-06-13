@@ -11,6 +11,7 @@ import EndingSection from "../components/web/sections/EndingSection";
 import FAQSection from "../components/web/sections/FAQSection";
 import MaintenanceSection from "../components/web/sections/MaintenanceSection";
 import isIOS from "../utils/isIOS";
+import ClientReviewSection from "../components/web/sections/ClientReviewSection";
 
 const WebServicePage = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
@@ -46,7 +47,7 @@ const WebServicePage = () => {
                             <LogoSection />
 
                             <PropositionSection />
-                            <MainServiceSection />
+                            <ClientReviewSection />
                             <AdditionalServiceSection />
                             <MaintenanceSection />
 
