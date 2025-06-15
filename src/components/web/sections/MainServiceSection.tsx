@@ -18,9 +18,9 @@ const MainServiceSection = () => {
             transition={{
                 duration: 0.5,
             }}
-            className="flex flex-col gap-2 m-auto my-[10rem] p-5"
+            className="flex flex-col gap-2 m-auto my-[10rem] "
         >
-            <div className="grid w-full place-items-center p-[107px]">
+            <div className="grid w-full place-items-center p-[96px]">
                 <div className="flex flex-col">
                     <div className="flex flex-col items-start">
                         <div className="font-bold text-lg md:text-[64px] text-center md:text-left ">
@@ -39,11 +39,111 @@ const MainServiceSection = () => {
                             update as you build.
                         </div>
                     </div>
-                    <MainServiceSelectCard
-                        price={"10"}
-                        serviceName={"Animations"}
-                        detail={"Smooth transitions and motion effects for a more engaging experience."}
-                    />
+                    <div className="flex gap-[42px] mt-[72px]">
+                        <img
+                            src="/images/mainService1.png"
+                            alt="a1"
+                            className="w-[642px] h-[592px]"
+                        />
+
+                        <div className="flex flex-col gap-4">
+                            <div className="flex gap-4 items-center">
+                                <img
+                                    src="/images/star_logo.png"
+                                    alt="logo"
+                                    width={"80"}
+                                    height={"80"}
+                                    className="h-[80px] w-[80px]"
+                                />
+                                <div className="flex flex-col gap-2">
+                                    <div className="text-[40px] font-bold p-0">
+                                        UI DESIGN
+                                    </div>
+                                    <div className="text-xl">
+                                        Choose the visual complexity of your
+                                        site
+                                    </div>
+                                    <div className="text-md text-[#FFA9EA]">
+                                        Select one or more items
+                                    </div>
+                                </div>
+                            </div>
+                            <MainServiceSelectCard
+                                price={"20"}
+                                serviceName={"Animations"}
+                                detail={
+                                    "Smooth transitions and motion effects for a more engaging experience."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"100"}
+                                serviceName={"Responsive Design"}
+                                detail={
+                                    "Tailored layouts for seamless experience across all screen sizes."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"100"}
+                                serviceName={"3D Design"}
+                                detail={
+                                    "Add depth and motion with subtle 3D elements and shadows."
+                                }
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex gap-[42px] mt-[72px] flex-row-reverse">
+                        <img
+                            src="/images/mainService2.png"
+                            alt="a1"
+                            className="w-[603px] h-[640px]"
+                        />
+
+                        <div className="flex flex-col gap-4">
+                            <div className="flex gap-4 items-center">
+                                <img
+                                    src="/images/star_logo.png"
+                                    alt="logo"
+                                    width={"80"}
+                                    height={"80"}
+                                    className="h-[80px] w-[80px]"
+                                />
+                                <div className="flex flex-col gap-2 ">
+                                    <div className="text-[40px] font-bold p-0">
+                                        CORE FEATURE
+                                    </div>
+                                    <div className="text-xl">
+                                        Add the functionality you need to power
+                                        your website.
+                                    </div>
+                                    <div className="text-md text-[#FFA9EA]">
+                                        Select one or more items
+                                    </div>
+                                </div>
+                            </div>
+                            <MainServiceSelectCard
+                                price={"100"}
+                                serviceName={"Form Submission"}
+                                detail={
+                                    "Basic contact or feedback form with up to three custom fields. Includes simple backend handling."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"250"}
+                                serviceName={"API Integration"}
+                                detail={
+                                    "Fetch game data, player stats, badges, or inventory from ROBLOX’s public endpoints or other APIs."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"500"}
+                                serviceName={"Payment System"}
+                                detail={
+                                    "Accept payments securely using Stripe, PayPal, or other platforms."
+                                }
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </motion.div>
