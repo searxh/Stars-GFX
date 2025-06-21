@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import GlassmorphismCard from "../../GlassmorphismCard";
 
 const stepsInfo = [
     {
@@ -64,60 +65,66 @@ const TimelineSection = () => {
         <div
             ref={ref}
             id="fifth-section"
-            className="flex flex-col gap-5 w-full h-full p-10 mt-0 my-[10rem] text-white"
+            className="flex flex-col gap-5 w-full h-full p-10 mt-0 my-[10rem] text-white items-center"
         >
             <div className="font-bold text-2xl md:text-5xl mx-auto">
-                HOW IT WORKS
+                HOW IT <span className="text-[#5cc9ff]">WORKS</span>
             </div>
             <div className="text-sm md:text-base m-auto max-w-2xl mb-10 text-center">
-                Our streamlined workflow is designed to bring your project to
-                life efficiently and on schedule, with opportunities for
-                feedback and revisions along the way.
+                Our streamlined workflow is designed to bring <br />
+                your project to life efficiently and on schedule,
+                <br /> with opportunities for feedback and <br />
+                revisions along the way.
             </div>
-            <div
-                id="timeline-container"
-                className="relative grid gap-8 w-full mx-auto"
-            >
-                {stepsInfo.map((stepsItem, index: number) => {
-                    return (
-                        <div
-                            id={
-                                index === 0
-                                    ? "timeline-first"
-                                    : index === stepsInfo.length - 1
-                                    ? "timeline-last"
-                                    : undefined
-                            }
-                        >
-                            <ListItem
-                                index={index + 1}
-                                title={stepsItem.stepTitle}
-                                details={stepsItem.details}
-                                icon={stepsItem.icon as IconDefinition}
-                            />
-                        </div>
-                    );
-                })}
-                {isSmallerThanMedium ? null : (
-                    <motion.div
-                        style={{
-                            height:
-                                height -
-                                firstItemSize.height / 2 -
-                                lastItemSize.height / 2,
-                            left: width / 2 - 2.5,
-                        }}
-                        animate={{
-                            scaleY: section ? 1 : 0,
-                            transformOrigin: "top",
-                        }}
-                        transition={{
-                            duration: 5,
-                        }}
-                        className="absolute w-[3px] mt-[64px] bg-neutral-300 rounded-full"
-                    />
-                )}
+            <div className="absolute -translate-y-10 -translate-x-6">
+                <img src="/images/how_it_work_bg_img.png" />
             </div>
+            <GlassmorphismCard>
+                <div
+                    id="timeline-container"
+                    className="relative grid gap-8 w-full mx-auto"
+                >
+                    {stepsInfo.map((stepsItem, index: number) => {
+                        return (
+                            <div
+                                id={
+                                    index === 0
+                                        ? "timeline-first"
+                                        : index === stepsInfo.length - 1
+                                          ? "timeline-last"
+                                          : undefined
+                                }
+                            >
+                                <ListItem
+                                    index={index + 1}
+                                    title={stepsItem.stepTitle}
+                                    details={stepsItem.details}
+                                    icon={stepsItem.icon as IconDefinition}
+                                />
+                            </div>
+                        );
+                    })}
+                    {isSmallerThanMedium ? null : (
+                        <motion.div
+                            style={{
+                                height:
+                                    height -
+                                    firstItemSize.height / 2 -
+                                    lastItemSize.height / 2,
+                                left: width / 2 - 2.5,
+                            }}
+                            animate={{
+                                scaleY: section ? 1 : 0,
+                                transformOrigin: "top",
+                            }}
+                            transition={{
+                                duration: 5,
+                            }}
+                            className="absolute w-[3px] mt-[64px] bg-neutral-300 rounded-full"
+                        />
+                    )}
+                </div>
+            </GlassmorphismCard>
         </div>
     );
 };
@@ -188,16 +195,16 @@ const ListItem = ({
                 <div
                     className={`text-lg md:text-2xl font-bold ${
                         isEven || isSmallerThanMedium
-                            ? "bg-gradient-to-l mr-auto"
-                            : "bg-gradient-to-r ml-auto"
-                    } from-[#355c7d] to-[#c06c84] text-gradient w-fit`}
+                            ? "text-[#FF4388] mr-auto"
+                            : "text-[#5CC9FF] ml-auto"
+                    } w-fit`}
                 >
                     0{index} {title}
                 </div>
                 <div
                     className={`${
                         isEven ? "mr-auto" : "ml-auto"
-                    } text-xs md:text-sm font-normal max-w-[15rem]`}
+                    } text-md font-normal max-w-[15rem]`}
                 >
                     {details}
                 </div>
