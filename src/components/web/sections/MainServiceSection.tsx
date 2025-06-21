@@ -92,7 +92,7 @@ const MainServiceSection = () => {
                         </div>
                     </div>
 
-                    <div className="flex gap-[42px] mt-[72px] flex-row-reverse">
+                    <div className="flex gap-[32px] mt-[72px] flex-row-reverse">
                         <img
                             src="/images/mainService2.png"
                             alt="a1"
@@ -140,6 +140,69 @@ const MainServiceSection = () => {
                                 serviceName={"Payment System"}
                                 detail={
                                     "Accept payments securely using Stripe, PayPal, or other platforms."
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col mt-[72px] gap-4">
+                        <div className="flex gap-4 items-center">
+                            <img
+                                src="/images/star_logo.png"
+                                alt="logo"
+                                width={"80"}
+                                height={"80"}
+                                className="h-[80px] w-[80px]"
+                            />
+                            <div className="flex flex-col gap-2 ">
+                                <div className="text-[40px] font-bold p-0">
+                                    PROJECT ADD-ONS
+                                </div>
+                                <div className="text-xl">
+                                    Fine-tune the functionality and ownership
+                                </div>
+                                <div className="text-md text-[#FFA9EA]">
+                                    Select one or more items
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-4">
+                            <MainServiceSelectCard
+                                price={"20"}
+                                serviceName={"Custom Domain Setup"}
+                                detail={
+                                    "Fetch game data, player stats, badges, or inventory from ROBLOX’s public endpoints or other APIs."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"50"}
+                                serviceName={"Basic SEO Optimiazation"}
+                                detail={
+                                    "Clean URLs, proper metadata, and index-friendly structure for search engines."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"500"}
+                                serviceName={"Admin Dashboard"}
+                                detail={
+                                    "Manage content, users, and data with an easy-to-use backend panel without having to contact us for changes."
+                                }
+                            />
+
+                            <MainServiceSelectCard
+                                price={"50% of total"}
+                                serviceName={
+                                    "Source Code + Basic Documentation"
+                                }
+                                detail={
+                                    "Full code ownership with a detailed step-by-step hosting tutorial."
+                                }
+                            />
+                            <MainServiceSelectCard
+                                price={"(Custom Pricing)"}
+                                serviceName={"Advanced Custom Features"}
+                                detail={
+                                    "Need advanced dashboards, AI tools, or custom integrations? We’ll assess and quote based on complexity."
                                 }
                             />
                         </div>
