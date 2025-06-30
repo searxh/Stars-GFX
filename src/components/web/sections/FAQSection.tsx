@@ -1,6 +1,5 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import FAQItem from "../../FAQItem";
+import AnimatedContainer from "../../AnimatedContainer";
 
 const faq: { question: string; answer: string }[] = [
     {
@@ -22,23 +21,15 @@ const faq: { question: string; answer: string }[] = [
 ];
 
 const FAQSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
     return (
-        <motion.div
-            ref={ref}
-            animate={{
-                translateX: section ? 0 : -50,
-                opacity: section ? 1 : 0,
-                filter: section ? "blur(0px)" : "blur(20px)",
-            }}
-            transition={{
-                duration: 1,
+        <AnimatedContainer
+            options={{
+                leftSlideIn: true,
             }}
             className="relative flex flex-col gap-12 m-24"
         >
             <div className="text-center leading-tight">
-                <div className="font-bold text-6xl text-secondary">FAQ</div>
+                <div className="font-bold text-6xl text-white">FAQ</div>
                 <div className="text-white">Frequently Asked Questions</div>
             </div>
             <div className="flex flex-col">
@@ -53,7 +44,7 @@ const FAQSection = () => {
                     );
                 })}
             </div>
-        </motion.div>
+        </AnimatedContainer>
     );
 };
 

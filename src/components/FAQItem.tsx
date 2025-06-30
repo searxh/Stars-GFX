@@ -11,13 +11,17 @@ interface FAQItemProps {
 const FAQItem = ({ question, answer }: FAQItemProps) => {
     const [isActive, setIsActive] = useState(false);
     return (
-        <GlassmorphismCard className="flex flex-col w-full text-white">
+        <GlassmorphismCard className="flex flex-col w-full rounded-lg">
             <button
                 onClick={() => {
                     setIsActive(!isActive);
                 }}
-                className="bg-gradient-to-l text-left from-primary to-secondary 
-                p-3 rounded-lg font-bold text-lg flex justify-between"
+                className={`${
+                    isActive
+                        ? "border-opacity-100 text-secondary rounded-t-lg"
+                        : "border-opacity-0 text-white rounded-lg"
+                } border-b-[1px] border-secondary bg-black bg-opacity-40 text-left
+                p-4 font-semibold text-lg flex justify-between transition duration-300`}
             >
                 <div>{question}</div>
 

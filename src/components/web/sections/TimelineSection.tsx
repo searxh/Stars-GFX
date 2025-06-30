@@ -17,19 +17,19 @@ const stepsInfo = [
     {
         stepTitle: "Contact Us",
         details:
-            "Let’s discuss your project requirements, timeline, and budget.",
+            "Let's discuss your project requirements, timeline, and budget.",
         icon: faContactBook,
     },
     {
         stepTitle: "Requirements",
         details:
-            "After discussing the details and finalizing the requirements, we’ll sign an agreement and post it on our Discord group for easy access.",
+            "After discussing the details and finalizing the requirements, we'll sign an agreement and post it on our Discord group for easy access.",
         icon: faPencil,
     },
     {
         stepTitle: "Payment",
         details:
-            "After agreeing on the terms, we’ll schedule a 50% upfront payment",
+            "After agreeing on the terms, we'll schedule a 50% upfront payment",
         icon: faMoneyBill,
     },
     {
@@ -47,7 +47,7 @@ const stepsInfo = [
     {
         stepTitle: "Launch & Support",
         details:
-            "After the final approval and the other 50% payment, we’ll launch your site and offer free bug fixes for up to 3 months.",
+            "After the final approval and the other 50% payment, we'll launch your site and offer free bug fixes for up to 3 months.",
         icon: faComments,
     },
 ];
@@ -65,24 +65,21 @@ const TimelineSection = () => {
         <div
             ref={ref}
             id="fifth-section"
-            className="flex flex-col gap-5 w-full h-full p-10 mt-0 my-[10rem] text-white items-center"
+            className="flex flex-col gap-5 w-full p-24 text-white items-center"
         >
             <div className="font-bold text-2xl md:text-5xl mx-auto">
                 HOW IT <span className="text-[#5cc9ff]">WORKS</span>
             </div>
-            <div className="text-sm md:text-base m-auto max-w-2xl mb-10 text-center">
+            <div className="text-sm md:text-base m-auto max-w-3xl mb-10 text-center">
                 Our streamlined workflow is designed to bring <br />
                 your project to life efficiently and on schedule,
                 <br /> with opportunities for feedback and <br />
                 revisions along the way.
             </div>
-            <div className="absolute -translate-y-10 -translate-x-6">
-                <img src="/images/how_it_work_bg_img.png" />
-            </div>
             <GlassmorphismCard>
                 <div
                     id="timeline-container"
-                    className="relative grid gap-8 w-full mx-auto"
+                    className="relative grid gap-8 w-fit mx-auto"
                 >
                     {stepsInfo.map((stepsItem, index: number) => {
                         return (
@@ -91,8 +88,8 @@ const TimelineSection = () => {
                                     index === 0
                                         ? "timeline-first"
                                         : index === stepsInfo.length - 1
-                                          ? "timeline-last"
-                                          : undefined
+                                        ? "timeline-last"
+                                        : undefined
                                 }
                             >
                                 <ListItem
@@ -120,7 +117,7 @@ const TimelineSection = () => {
                             transition={{
                                 duration: 5,
                             }}
-                            className="absolute w-[3px] mt-[64px] bg-neutral-300 rounded-full"
+                            className="absolute w-[5px] mt-[64px] bg-neutral-300 rounded-full"
                         />
                     )}
                 </div>

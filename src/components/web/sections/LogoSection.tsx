@@ -1,25 +1,23 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { Colors } from "../../../lib/colors";
+import AnimatedContainer from "../../AnimatedContainer";
 
 const LogoSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
-
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
 
     return (
-        <div className="relative flex w-full h-[95vh] mx-24">
-            <motion.div
-                ref={ref}
-                animate={{
-                    scale: section ? 1 : 0.9,
-                    opacity: section ? 1 : 0,
-                    filter: section ? "blur(0px)" : "blur(20px)",
-                }}
-                transition={{
-                    duration: 1,
+        <div
+            style={{
+                height: window.innerHeight - 48,
+            }}
+            className="relative flex w-full px-24 my-auto"
+        >
+            <AnimatedContainer
+                options={{
+                    fadeIn: true,
+                    blurIn: true,
+                    zoomIn: true,
                 }}
                 className="flex flex-col gap-9 my-auto md:max-w-3xl w-fit z-10"
             >
@@ -30,7 +28,7 @@ const LogoSection = () => {
                         draggable={false}
                         alt=""
                     />
-                    <div className="font-bold text-base text-white my-auto">
+                    <div className="font-bold text-base text-white my-auto drop-shadow-md">
                         <span
                             style={{
                                 color: Colors.primary,
@@ -126,7 +124,7 @@ const LogoSection = () => {
                         </div>
                     </div>
 
-                    <div className="text-xl max-w-md">
+                    <div className="text-lg max-w-md">
                         We build unique, handcrafted websites that capture your
                         identity and grow with you.
                     </div>
@@ -141,36 +139,7 @@ const LogoSection = () => {
                 >
                     <div className="font-semibold text-2xl">Get Started</div>
                 </button>
-            </motion.div>
-            <motion.div
-                animate={{
-                    scale: section ? 1 : 0.9,
-                    opacity: section ? 1 : 0,
-                    filter: section ? "blur(0px)" : "blur(20px)",
-                }}
-                transition={{
-                    duration: 1,
-                }}
-                className="absolute flex top-0 bottom-0 left-48 m-auto w-full h-full"
-            >
-                <img
-                    src="/images/star_logo.png"
-                    alt=""
-                    className="drop-shadow-md w-[300px] h-[300px] z-20 m-auto"
-                />
-                <div
-                    style={{
-                        background: `radial-gradient(circle, white 0%, ${Colors.primary} 5%, rgba(0, 0, 0, 0) 40%)`,
-                    }}
-                    className="absolute top-0 bottom-12 right-0 left-0 m-auto
-                h-[1500px] w-full z-10"
-                />
-                <img
-                    src="/images/decor.png"
-                    alt=""
-                    className="absolute top-0 bottom-24 left-0 right-0 m-auto w-[800px] h-[800px]"
-                />
-            </motion.div>
+            </AnimatedContainer>
         </div>
     );
 };

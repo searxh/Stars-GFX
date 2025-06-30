@@ -1,29 +1,20 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import GlassmorphismCard from "../../GlassmorphismCard";
+import AnimatedContainer from "../../AnimatedContainer";
 
 const SupportPlanSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
     return (
-        <motion.div
-            ref={ref}
-            animate={{
-                translateX: section ? 0 : -50,
-                opacity: section ? 1 : 0,
-                filter: section ? "blur(0px)" : "blur(20px)",
+        <AnimatedContainer
+            options={{
+                leftSlideIn: true,
             }}
-            transition={{
-                duration: 1,
-            }}
-            className="relative my-24 flex flex-col gap-[72px]"
+            className="relative w-full flex flex-col gap-[72px] py-24"
         >
-            <div className="flex flex-col gap-12 mx-24">
-                <div className="text-center leading-tight">
-                    <div className="font-bold text-6xl text-white">
+            <div className="flex flex-col gap-12 px-24">
+                <div className="flex flex-col gap-6 text-center leading-tight drop-shadow-md mx-auto">
+                    <div className="font-bold text-5xl text-white">
                         <span className="text-primary">SUPPORT</span> PLAN
                     </div>
-                    <div className="text-white">
+                    <div className="text-white text-lg max-w-lg">
                         Gain peace of mind with ongoing support designed to keep
                         your site fast, secure, and up-to-date.
                     </div>
@@ -83,7 +74,7 @@ const SupportPlanSection = () => {
                 </div>
                 <div>Available in 6 months or annually</div>
             </div>
-        </motion.div>
+        </AnimatedContainer>
     );
 };
 

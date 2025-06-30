@@ -14,8 +14,8 @@ export default function GlassmorphismCard({
             style={style}
             className={`${
                 className ?? "p-6 h-fit w-fit"
-            } bg-[#222222] rounded-3xl backdrop-blur-[100px] 
-            backdrop-filter bg-clip-padding bg-opacity-[40%] border-[1px] border-neutral-800`}
+            } rounded-3xl backdrop-blur-xl
+               border-[1px] border-neutral-800 bg-opacity-40 bg-[#222222]`}
         >
             {children}
         </div>

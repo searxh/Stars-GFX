@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import React from "react";
 import { Colors } from "../../../lib/colors";
 import GlassmorphismCard from "../../GlassmorphismCard";
 import StarRounded from "@mui/icons-material/StarRounded";
@@ -9,6 +8,7 @@ import {
     faChevronLeft,
     faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import AnimatedContainer from "../../AnimatedContainer";
 
 interface Review {
     quote: string;
@@ -50,23 +50,14 @@ const reviews: Review[] = [
 ];
 
 const ClientReviewSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
-
     return (
-        <motion.div
-            ref={ref}
-            animate={{
-                translateX: section ? 0 : 50,
-                opacity: section ? 1 : 0,
-                filter: section ? "blur(0px)" : "blur(20px)",
+        <AnimatedContainer
+            options={{
+                rightSlideIn: true,
             }}
-            transition={{
-                duration: 0.5,
-            }}
-            className="flex flex-col gap-6 mx-24"
+            className="flex flex-col gap-6 px-24"
         >
-            <div className="flex flex-col gap-6 text-center w-full h-fit my-auto">
+            <div className="flex flex-col gap-6 text-center w-full h-fit my-auto drop-shadow-md">
                 <div className="font-black text-5xl drop-shadow-md leading-tight">
                     WHAT OUR
                     <br />
@@ -80,7 +71,7 @@ const ClientReviewSection = () => {
                     </span>{" "}
                     SAY
                 </div>
-                <div className="text-2xl">
+                <div className="text-lg">
                     Here&apos;s what it&apos;s like to work with us straight
                     from the source.
                 </div>
@@ -248,7 +239,7 @@ const ClientReviewSection = () => {
                     })}
                 </Carousel>
             </GlassmorphismCard>
-        </motion.div>
+        </AnimatedContainer>
     );
 };
 
