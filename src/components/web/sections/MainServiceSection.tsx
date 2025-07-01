@@ -1,11 +1,29 @@
-import { CheckRounded } from "@mui/icons-material";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { isNaN } from "lodash";
+import { useRef, useState } from "react";
 import MainServiceSelectCard from "../../MainServiceSelectCard";
 
 const MainServiceSection = () => {
     const ref = useRef(null);
     const section = useInView(ref);
+    const [price, setPrice] = useState<number>(100);
+    const [isPercentagePrice, setIsPercentagePrice] = useState<boolean>(false);
+    const modifyPrice = (
+        priceModification: number,
+        isAdd: boolean,
+        isPercentage?: boolean,
+    ) => {
+        if (isPercentage) {
+            setIsPercentagePrice(false);
+        }
+        if (isPercentage != undefined && !isPercentage)
+            setIsPercentagePrice(true);
+        if (isNaN(priceModification)) return;
+        if (!isAdd) setPrice(price + priceModification);
+        else {
+            setPrice(price - priceModification);
+        }
+    };
 
     return (
         <motion.div
@@ -74,6 +92,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Smooth transitions and motion effects for a more engaging experience."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"100"}
@@ -81,6 +100,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Tailored layouts for seamless experience across all screen sizes."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"100"}
@@ -88,6 +108,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Add depth and motion with subtle 3D elements and shadows."
                                 }
+                                modifyService={modifyPrice}
                             />
                         </div>
                     </div>
@@ -127,6 +148,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Basic contact or feedback form with up to three custom fields. Includes simple backend handling."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"250"}
@@ -134,6 +156,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Fetch game data, player stats, badges, or inventory from ROBLOX’s public endpoints or other APIs."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"500"}
@@ -141,6 +164,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Accept payments securely using Stripe, PayPal, or other platforms."
                                 }
+                                modifyService={modifyPrice}
                             />
                         </div>
                     </div>
@@ -173,6 +197,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Fetch game data, player stats, badges, or inventory from ROBLOX’s public endpoints or other APIs."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"50"}
@@ -180,6 +205,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Clean URLs, proper metadata, and index-friendly structure for search engines."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"500"}
@@ -187,6 +213,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Manage content, users, and data with an easy-to-use backend panel without having to contact us for changes."
                                 }
+                                modifyService={modifyPrice}
                             />
 
                             <MainServiceSelectCard
@@ -197,6 +224,7 @@ const MainServiceSection = () => {
                                 detail={
                                     "Full code ownership with a detailed step-by-step hosting tutorial."
                                 }
+                                modifyService={modifyPrice}
                             />
                             <MainServiceSelectCard
                                 price={"(Custom Pricing)"}
@@ -204,9 +232,14 @@ const MainServiceSection = () => {
                                 detail={
                                     "Need advanced dashboards, AI tools, or custom integrations? We’ll assess and quote based on complexity."
                                 }
+                                modifyService={modifyPrice}
                             />
                         </div>
                     </div>
+                </div>
+                <div className="flex flex-col gap-[10px] items-center mt-[72px]">
+                    <div className="text-2xl">Starts at</div>
+                    <div className="text-5xl text-[#FF4388] font-bold">{`${price} USD ${isPercentagePrice ? "+ 50%" : ""}`}</div>
                 </div>
             </div>
         </motion.div>

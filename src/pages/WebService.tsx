@@ -64,6 +64,9 @@ const WebServicePage = () => {
 
                             <SupportPlanSection />
 
+                            <AdditionalServiceSection />
+                            <MaintenanceSection />
+                            <MainServiceSection />
                             <TimelineSection />
                             <EndingSection />
                             <FAQSection />

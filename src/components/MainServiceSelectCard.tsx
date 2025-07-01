@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { parseInt } from "lodash";
+import { useEffect, useState } from "react";
 
 interface MainServiceSelectCardPropType {
-    price: String;
-    detail: String;
-    serviceName: String;
+    price: string;
+    detail: string;
+    serviceName: string;
+    modifyService: (
+        priceModification: number,
+        isAdd: boolean,
+        isPercentage?: boolean,
+    ) => void;
 }
 
 export default function MainServiceSelectCard({
     price,
     detail,
     serviceName,
+    modifyService,
 }: MainServiceSelectCardPropType) {
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const onCheckHandler = () => {
         setIsChecked(!isChecked);
+        if (price === "50% of total") {
+            modifyService(0, isChecked, isChecked);
+        } else {
+            modifyService(parseInt(price, 10), isChecked);
+        }
     };
     return (
         <div
