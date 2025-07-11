@@ -12,6 +12,7 @@ import ClientReviewSection from "../components/web/sections/ClientReviewSection"
 import SupportPlanSection from "../components/web/sections/SupportPlanSection";
 import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import MainServiceSection from "../components/web/sections/MainServiceSection";
 
 const WebServicePage = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
@@ -64,6 +65,7 @@ const WebServicePage = () => {
 
                             <SupportPlanSection />
 
+                            <MainServiceSection />
                             <TimelineSection />
                             <EndingSection />
                             <FAQSection />

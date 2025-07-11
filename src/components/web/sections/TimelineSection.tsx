@@ -91,6 +91,7 @@ const TimelineSection = () => {
                                         ? "timeline-last"
                                         : undefined
                                 }
+                                key={index}
                             >
                                 <ListItem
                                     index={index + 1}
