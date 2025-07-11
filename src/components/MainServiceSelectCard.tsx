@@ -1,3 +1,5 @@
+import { CheckBoxSharp } from "@mui/icons-material";
+import { Checkbox } from "@mui/material";
 import { parseInt } from "lodash";
 import { useEffect, useState } from "react";
 
@@ -33,9 +35,17 @@ export default function MainServiceSelectCard({
         >
             <div className="flex justify-between items-center w-full">
                 <div className="flex gap-[36px] items-center">
-                    <input
+                    <Checkbox
                         onChange={onCheckHandler}
-                        type={"checkbox"}
+                        sx={{
+                            color: "white",
+                            "&.Mui-checked": {
+                                backgroundColor: "white",
+                            },
+                            "& svg": {
+                                scale: "1.4",
+                            },
+                        }}
                         className="border-[#808080]  accent-[#5CC9FF] rounded-full w-5 h-5"
                     />
                     <div className="flex flex-col gap-1  ">
