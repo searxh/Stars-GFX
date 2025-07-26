@@ -54,10 +54,13 @@ const Galaxy3D = ({ progress }: { progress: number }) => {
     return (
         <>
             {/* Lighting */}
-            <ambientLight intensity={10} color="blue" />
+            <ambientLight
+                intensity={5}
+                color={new THREE.Color().setHex(0x5cc9ff)}
+            />
             <pointLight
-                intensity={3}
-                distance={50}
+                intensity={5}
+                distance={8}
                 color="red"
                 position={[0, 0.1, 0]}
                 castShadow={false}
@@ -87,7 +90,7 @@ const Galaxy3D = ({ progress }: { progress: number }) => {
                 ]}
             />
             <EffectComposer multisampling={2}>
-                <Vignette eskil offset={0.1} darkness={1.1} />
+                <Vignette eskil offset={0.1} darkness={1.5} />
                 <Bloom
                     intensity={0.75}
                     luminanceThreshold={0}

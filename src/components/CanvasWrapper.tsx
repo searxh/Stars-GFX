@@ -17,8 +17,11 @@ const CanvasWrapper = ({
     return (
         <Suspense
             fallback={
-                <div style={{ width, height }} className="flex m-auto">
-                    <CircularProgress color="error" className="m-auto" />
+                <div
+                    style={{ width, height }}
+                    className="flex m-auto h-full w-full"
+                >
+                    <CircularProgress color="inherit" className="m-auto" />
                 </div>
             }
         >
