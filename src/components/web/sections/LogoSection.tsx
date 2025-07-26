@@ -11,7 +11,7 @@ const LogoSection = () => {
             style={{
                 height: window.innerHeight - 48,
             }}
-            className="relative flex w-full px-24 my-auto"
+            className="relative flex w-full md:px-24 px-8 my-auto"
         >
             <AnimatedContainer
                 options={{
@@ -28,7 +28,7 @@ const LogoSection = () => {
                         draggable={false}
                         alt=""
                     />
-                    <div className="font-bold text-base text-white my-auto drop-shadow-md">
+                    <div className="font-bold md:text-base text-sm text-white my-auto drop-shadow-md">
                         <span
                             style={{
                                 color: Colors.primary,
@@ -40,14 +40,18 @@ const LogoSection = () => {
                         CREATIVE BRANDS
                     </div>
                 </div>
-                <div className="flex flex-col gap-6 h-full w-full">
-                    <div className="relative h-[200px] flex flex-col drop-shadow-md">
-                        <div className="flex">
+                <div className="flex flex-col gap-6 h-full w-full md:text-left text-center">
+                    <div className="relative md:h-[200px] h-[280px] flex flex-col drop-shadow-md">
+                        <div className="flex md:flex-row flex-col">
                             <motion.svg
                                 width="100%"
                                 height="100%"
-                                viewBox={"0 0 200 100"}
-                                className="relative w-[300px]"
+                                viewBox={
+                                    isSmallerThanMedium
+                                        ? "0 0 135 45"
+                                        : "0 0 200 100"
+                                }
+                                className="relative md:w-[300px] w-[240px] mx-auto"
                             >
                                 <defs>
                                     <motion.linearGradient
@@ -79,8 +83,8 @@ const LogoSection = () => {
                                         <mask id="text-mask">
                                             <text
                                                 x="0%"
-                                                y="0%"
-                                                fontSize={100}
+                                                y="90%"
+                                                fontSize={50}
                                                 fontWeight={900}
                                                 fill="white"
                                             >
@@ -114,17 +118,17 @@ const LogoSection = () => {
                                     color: Colors.secondary,
                                     fontFamily: "Rubik Wet Paint",
                                 }}
-                                className="text-[110px]"
+                                className="md:text-[110px] text-[100px] leading-none md:leading-normal"
                             >
                                 GFX
                             </div>
                         </div>
-                        <div className="absolute top-32 text-white text-[51px] font-black">
+                        <div className="absolute md:top-32 top-[12rem] text-white leading-tight md:text-[51px] text-[31px] font-black">
                             WEB DEVELOPMENT
                         </div>
                     </div>
 
-                    <div className="text-lg max-w-md">
+                    <div className="text-lg max-w-md w-full">
                         We build unique, handcrafted websites that capture your
                         identity and grow with you.
                     </div>
@@ -133,7 +137,7 @@ const LogoSection = () => {
                     style={{
                         backgroundColor: Colors.secondary,
                     }}
-                    className="px-8 py-2 text-white w-fit
+                    className="px-8 py-2 text-white md:w-fit w-full
                             rounded-lg md:hover:scale-105 transition shadow-md"
                     onClick={() => {}}
                 >

@@ -9,12 +9,18 @@ import {
     faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import AnimatedContainer from "../../AnimatedContainer";
+import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-interface Review {
-    quote: string;
+interface Quote {
+    text: string;
     rating: number;
     year: number;
     name: string;
+}
+
+interface Review {
+    quote?: Quote;
     projectName: string;
     description: string;
     profileImage: string;
@@ -24,32 +30,151 @@ interface Review {
 
 const reviews: Review[] = [
     {
-        quote: "It was a great experience, definitely recommend. very super helpful.",
-        rating: 5,
-        year: 2025,
-        name: "Crackop",
+        quote: {
+            text: "Working with Stars GFX has been an incredible experience, they are super friendly, great at what they do, and definitely worth the price! \nI absolutely love my website they created, and they made it super easy to modify and update it whenever i need!",
+            rating: 5,
+            year: 2025,
+            name: "Crackop",
+        },
         projectName: "Crackop Portfolio Website",
         description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quas doloribus praesentium culpa debitis vero esse quis laboriosam ipsa tempora eaque corporis pariatur corrupti, fugiat incidunt excepturi quia nulla ex.",
+            "Crackop's portfolio website is a sleek, responsive showcase of his work as a Roblox game developer and graphics/UI designer. Built for clarity and performance, the site highlights his projects and creative skills in an engaging, professional format.",
         profileImage: "/images/woman.png",
-        websiteImage: "/images/custom_UI.png",
-        link: "",
+        websiteImage: "/images/web/crackop.webp",
+        link: "https://www.crackop.ca/",
     },
     {
-        quote: "It was a great experience, definitely recommend. very super helpful.",
-        rating: 4,
-        year: 2025,
-        name: "Crackop",
-        projectName: "Crackop Portfolio Website",
+        quote: {
+            text: "This service has been great and the communication for this is phenomenal. Any time I had questions regarding anything, they'd get answered very fast. \nThe team behind my company's website were very kind and patient with me through this process which I deeply appreciate! I 100% give this 5 stars, best website ever!",
+            rating: 5,
+            year: 2025,
+            name: "Daiki",
+        },
+        projectName: "Black Cat Studio Website",
         description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quas doloribus praesentium culpa debitis vero esse quis laboriosam ipsa tempora eaque corporis pariatur corrupti, fugiat incidunt excepturi quia nulla ex.",
+            "Black Cat Studios' website is an iconic and modern portfolio built to spotlight their Roblox game development work. With a clean layout and immersive visuals, it showcases the studio's creativity, technical talent, and commitment to high-quality gameplay experiences.",
         profileImage: "/images/woman.png",
-        websiteImage: "/images/custom_UI.png",
-        link: "",
+        websiteImage: "/images/web/blackcat.webp",
+        link: "https://www.blackcat.gg/",
+    },
+    {
+        projectName: "Bulk Games Website",
+        description:
+            "Bulk Games' website is a bold and energetic portfolio designed to highlight their innovative approach to Roblox game development. Featuring dynamic visuals, sharp UI, and engaging content, it reflects the studio's passion for crafting immersive, high-performance gaming experiences that push the boundaries of the platform.",
+        profileImage: "/images/woman.png",
+        websiteImage: "/images/web/bulkgames.webp",
+        link: "https://www.bulkgames.gg/",
     },
 ];
 
 const ClientReviewSection = () => {
+    const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
+    if (isSmallerThanMedium) {
+        return (
+            <AnimatedContainer
+                options={{
+                    rightSlideIn: true,
+                }}
+                className="flex flex-col gap-6 px-4"
+            >
+                <div className="flex flex-col gap-6 text-center w-full h-fit my-auto drop-shadow-md">
+                    <div className="font-black md:text-5xl text-4xl drop-shadow-md leading-tight">
+                        OUR{" "}
+                        <span
+                            style={{
+                                color: Colors.secondary,
+                            }}
+                            className=""
+                        >
+                            CLIENTS
+                        </span>{" "}
+                    </div>
+                    <div className="text-lg">
+                        Here&apos;s what it&apos;s like to work with us straight
+                        from the source.
+                    </div>
+                </div>
+                {reviews.map((review) => {
+                    const {
+                        quote,
+                        projectName,
+                        description,
+                        profileImage,
+                        websiteImage,
+                        link,
+                    } = review;
+                    const { text, year, name, rating } = quote || {};
+                    return (
+                        <GlassmorphismCard
+                            key={projectName}
+                            className="flex flex-col gap-6 text-start p-6 h-fit"
+                        >
+                            <div className={`flex flex-col gap-6 w-full`}>
+                                <div className="flex flex-col gap-2 text-white">
+                                    <div className="text-xl font-bold">
+                                        {projectName.toLocaleUpperCase()}
+                                    </div>
+                                    <div className="text-sm text-neutral-300">
+                                        {description}
+                                    </div>
+                                </div>
+                                <button
+                                    style={{
+                                        backgroundColor: Colors.secondary,
+                                    }}
+                                    className="px-6 py-2 text-white w-full
+                                                                rounded-lg md:hover:scale-105 transition shadow-md"
+                                    onClick={() => {
+                                        window.open(link, "_blank");
+                                    }}
+                                >
+                                    <div className="flex gap-2 font-semibold text-xl mx-auto w-fit">
+                                        Visit now!
+                                        <LaunchRoundedIcon className="m-auto" />
+                                    </div>
+                                </button>
+
+                                <img
+                                    src={websiteImage}
+                                    alt=""
+                                    className="object-contain h-fit rounded-2xl"
+                                />
+                            </div>
+                            {quote ? (
+                                <div className="flex flex-col gap-6 w-full h-full">
+                                    <GlassmorphismCard className="flex w-full h-full p-4">
+                                        <div className="flex gap-8 m-auto">
+                                            <div className="flex flex-col gap-8 w-full flex-1">
+                                                <div className="flex flex-col gap-2">
+                                                    <div className="font-bold text-base text-white">
+                                                        "{text}"
+                                                    </div>
+                                                    <div className="flex">
+                                                        {[...Array(rating)].map(
+                                                            (_, index) => (
+                                                                <StarRounded
+                                                                    key={index}
+                                                                    className="text-yellow-500"
+                                                                />
+                                                            )
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <div className="ml-auto">
+                                                    - {name}, {year}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </GlassmorphismCard>
+                                </div>
+                            ) : null}
+                        </GlassmorphismCard>
+                    );
+                })}
+            </AnimatedContainer>
+        );
+    }
+
     return (
         <AnimatedContainer
             options={{
@@ -58,9 +183,8 @@ const ClientReviewSection = () => {
             className="flex flex-col gap-6 px-24"
         >
             <div className="flex flex-col gap-6 text-center w-full h-fit my-auto drop-shadow-md">
-                <div className="font-black text-5xl drop-shadow-md leading-tight">
-                    WHAT OUR
-                    <br />
+                <div className="font-black md:text-5xl text-4xl drop-shadow-md leading-tight">
+                    OUR{" "}
                     <span
                         style={{
                             color: Colors.secondary,
@@ -69,14 +193,13 @@ const ClientReviewSection = () => {
                     >
                         CLIENTS
                     </span>{" "}
-                    SAY
                 </div>
                 <div className="text-lg">
                     Here&apos;s what it&apos;s like to work with us straight
                     from the source.
                 </div>
             </div>
-            <GlassmorphismCard className="w-full py-6">
+            <GlassmorphismCard className="w-full md:py-6 py-2">
                 <Carousel
                     axis={"horizontal"}
                     interval={2000}
@@ -156,69 +279,31 @@ const ClientReviewSection = () => {
                     {reviews.map((review) => {
                         const {
                             quote,
-                            name,
-                            year,
                             projectName,
                             description,
-                            rating,
                             profileImage,
                             websiteImage,
                             link,
                         } = review;
+                        const { text, year, name, rating } = quote || {};
                         return (
-                            <div className="flex gap-6 text-start p-6">
-                                <div className="flex flex-col gap-6">
+                            <div
+                                key={projectName}
+                                className="flex gap-6 text-start p-6 h-[40rem]"
+                            >
+                                <div
+                                    className={`flex flex-col gap-6 ${
+                                        quote ? "w-1/2" : "w-full"
+                                    }`}
+                                >
                                     <div className="flex flex-col gap-2 text-white">
-                                        <div
-                                            style={{
-                                                color: Colors.primary,
-                                            }}
-                                            className="text-2xl font-bold"
-                                        >
+                                        <div className="text-2xl font-bold">
                                             {projectName.toLocaleUpperCase()}
                                         </div>
-                                        <div className="text-base">
+                                        <div className="text-base text-neutral-300">
                                             {description}
                                         </div>
                                     </div>
-
-                                    <img
-                                        src={websiteImage}
-                                        alt=""
-                                        className="object-cover h-[350px] rounded-2xl"
-                                    />
-                                </div>
-                                <div className="flex flex-col gap-6 place-items-end my-auto">
-                                    <GlassmorphismCard className="flex gap-10 p-6 w-full">
-                                        <div className="w-[100px] h-[100px] rounded-full overflow-hidden">
-                                            <img
-                                                src={profileImage}
-                                                alt="profile"
-                                                height={100}
-                                                width={100}
-                                                draggable={false}
-                                                className="object-fill"
-                                            />
-                                        </div>
-                                        <div className="flex flex-col gap-8 w-full flex-1">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="font-bold text-3xl text-white">
-                                                    "{quote.toLocaleUpperCase()}
-                                                    "
-                                                </div>
-                                                <div className="flex">
-                                                    {[...Array(rating)].map(
-                                                        (_) => (
-                                                            <StarRounded className="text-yellow-500" />
-                                                        )
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <div className="ml-auto">
-                                                - {name}, {year}
-                                            </div>
-                                        </div>
-                                    </GlassmorphismCard>
                                     <button
                                         style={{
                                             backgroundColor: Colors.secondary,
@@ -229,11 +314,62 @@ const ClientReviewSection = () => {
                                             window.open(link, "_blank");
                                         }}
                                     >
-                                        <div className="font-semibold text-2xl">
-                                            Visit now
+                                        <div className="flex gap-2 font-semibold text-xl">
+                                            Visit now!
+                                            <LaunchRoundedIcon className="m-auto" />
                                         </div>
                                     </button>
+
+                                    <img
+                                        src={websiteImage}
+                                        alt=""
+                                        className="object-cover h-[350px] rounded-2xl"
+                                    />
                                 </div>
+                                {quote ? (
+                                    <div className="flex flex-col gap-6 w-1/2 h-full">
+                                        <GlassmorphismCard className="flex w-full h-full p-8">
+                                            <div className="flex gap-8 m-auto">
+                                                <div className="w-[80px] h-[80px] rounded-full overflow-hidden">
+                                                    <img
+                                                        src={profileImage}
+                                                        alt="profile"
+                                                        height={80}
+                                                        width={80}
+                                                        draggable={false}
+                                                        className="object-fill"
+                                                    />
+                                                </div>
+                                                <div className="flex flex-col gap-8 w-full flex-1">
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="font-bold text-xl text-white">
+                                                            "{text}"
+                                                        </div>
+                                                        <div className="flex">
+                                                            {[
+                                                                ...Array(
+                                                                    rating
+                                                                ),
+                                                            ].map(
+                                                                (_, index) => (
+                                                                    <StarRounded
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        className="text-yellow-500"
+                                                                    />
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <div className="ml-auto">
+                                                        - {name}, {year}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </GlassmorphismCard>
+                                    </div>
+                                ) : null}
                             </div>
                         );
                     })}

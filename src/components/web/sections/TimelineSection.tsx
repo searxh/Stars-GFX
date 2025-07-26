@@ -65,21 +65,20 @@ const TimelineSection = () => {
         <div
             ref={ref}
             id="fifth-section"
-            className="flex flex-col gap-5 w-full p-24 text-white items-center"
+            className="flex flex-col gap-5 w-full md:p-24 p-4 text-white items-center"
         >
-            <div className="font-bold text-2xl md:text-5xl mx-auto">
+            <div className="font-bold md:text-5xl text-4xl mx-auto">
                 HOW IT <span className="text-[#5cc9ff]">WORKS</span>
             </div>
-            <div className="text-sm md:text-base m-auto max-w-3xl mb-10 text-center">
-                Our streamlined workflow is designed to bring <br />
-                your project to life efficiently and on schedule,
-                <br /> with opportunities for feedback and <br />
-                revisions along the way.
+            <div className="text-base m-auto max-w-2xl md:mb-10 mb-4 text-center">
+                Our streamlined workflow is designed to bring your project to
+                life efficiently and on schedule, with opportunities for
+                feedback and revisions along the way.
             </div>
             <GlassmorphismCard>
                 <div
                     id="timeline-container"
-                    className="relative grid gap-8 w-fit mx-auto"
+                    className="relative grid md:gap-8 gap-4 w-fit mx-auto"
                 >
                     {stepsInfo.map((stepsItem, index: number) => {
                         return (
@@ -141,7 +140,7 @@ const ListItem = ({
     const { width } = useElementSize("timeline-container");
     const isEven = index % 2 === 0;
     const ref = useRef(null);
-    const listItemInView = useInView(ref, { amount: 0.5 });
+    const listItemInView = useInView(ref, { amount: 0.5, once: true });
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     return (
         <div
@@ -193,8 +192,8 @@ const ListItem = ({
                 <div
                     className={`text-lg md:text-2xl font-bold ${
                         isEven || isSmallerThanMedium
-                            ? "text-[#FF4388] mr-auto"
-                            : "text-[#5CC9FF] ml-auto"
+                            ? "text-primary mr-auto"
+                            : "text-secondary ml-auto"
                     } w-fit`}
                 >
                     0{index} {title}
@@ -202,7 +201,7 @@ const ListItem = ({
                 <div
                     className={`${
                         isEven ? "mr-auto" : "ml-auto"
-                    } text-md font-normal max-w-[15rem]`}
+                    } md:text-base text-sm font-normal max-w-[15rem]`}
                 >
                     {details}
                 </div>

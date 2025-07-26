@@ -26,11 +26,15 @@ const FAQSection = () => {
             options={{
                 leftSlideIn: true,
             }}
-            className="relative flex flex-col gap-12 m-24"
+            className="relative flex flex-col gap-12 md:m-24 m-4"
         >
-            <div className="text-center leading-tight">
-                <div className="font-bold text-6xl text-white">FAQ</div>
-                <div className="text-white">Frequently Asked Questions</div>
+            <div className="flex flex-col gap-4 text-center leading-tight">
+                <div className="font-bold md:text-6xl text-5xl text-primary">
+                    FAQ
+                </div>
+                <div className="text-white text-lg">
+                    Frequently Asked Questions
+                </div>
             </div>
             <div className="flex flex-col">
                 {faq.map((item) => {

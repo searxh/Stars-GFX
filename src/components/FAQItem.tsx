@@ -18,9 +18,9 @@ const FAQItem = ({ question, answer }: FAQItemProps) => {
                 }}
                 className={`${
                     isActive
-                        ? "border-opacity-100 text-secondary rounded-t-lg"
+                        ? "border-opacity-100 text-primary rounded-t-lg"
                         : "border-opacity-0 text-white rounded-lg"
-                } border-b-[1px] border-secondary bg-black bg-opacity-40 text-left
+                } border-b-[1px] border-primary bg-black bg-opacity-40 text-left
                 p-4 font-semibold text-lg flex justify-between transition duration-300`}
             >
                 <div>{question}</div>

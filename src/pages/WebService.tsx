@@ -30,22 +30,29 @@ const WebServicePage = () => {
         <>
             {isSmallerThanMedium || isIOS() ? (
                 <>
-                    {/* <div
-                        className={`flex flex-col justify-evenly py-12 pb-0 w-screen min-h-screen 
-                        h-full text-white font-nunito brightness-100`}
+                    <div
+                        className={`relative flex flex-col h-screen w-screen text-white font-nunito brightness-100`}
                     >
-                        <LogoSection />
+                        <Background progress={scrollProgress} />
+                        <div className="absolute top-0 bottom-0 left-0 right-0 h-full w-full bg-black bg-opacity-20"></div>
+                        <div
+                            ref={ref}
+                            className="relative mt-12 w-screen h-full overflow-y-scroll overflow-x-hidden"
+                        >
+                            <LogoSection />
 
-                        <PropositionSection />
-                        <ClientReviewSection />
-                        <SupportPlanSection />
+                            <PropositionSection />
+                            <ClientReviewSection />
 
-                        <TimelineSection />
-                        <EndingSection />
-                        <FAQSection />
-                        <Footer />
+                            <SupportPlanSection />
+
+                            <MainServiceSection />
+                            <TimelineSection />
+                            <EndingSection />
+                            <FAQSection />
+                            <Footer isAbsolute={false} />
+                        </div>
                     </div>
-                    <Background /> */}
                 </>
             ) : (
                 <>

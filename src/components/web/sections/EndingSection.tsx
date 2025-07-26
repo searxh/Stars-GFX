@@ -7,22 +7,22 @@ const EndingSection = () => {
             options={{
                 rightSlideIn: true,
             }}
-            className="flex w-screen p-24"
+            className="flex w-screen md:p-24 p-4"
         >
-            <GlassmorphismCard className="flex gap-12 m-auto p-12">
+            <GlassmorphismCard className="flex md:flex-row flex-col md:gap-12 gap-6 m-auto md:p-12 p-6">
                 <div
-                    className="relative my-auto h-[25rem] w-[22rem] object-center shadow-md 
+                    className="relative my-auto md:h-[25rem] h-fit md:w-[22rem] w-full object-center shadow-md 
                 rounded-lg overflow-hidden"
                 >
                     <img
-                        className="absolute -top-8 bottom-0 w-full h-full scale-[130%]"
+                        className="md:absolute -top-8 bottom-0 w-full h-full scale-[130%]"
                         src="/images/landing.webp"
                         draggable={false}
                         alt=""
                     />
                 </div>
                 <div className="flex flex-col text-center md:text-left text-sm md:text-base gap-5 max-w-[25rem] mr-auto my-auto">
-                    <div className="font-bold text-5xl leading-tight">
+                    <div className="font-bold md:text-5xl text-4xl leading-tight">
                         LET'S GET <span className="text-primary">STARTED!</span>
                     </div>
                     <p>
