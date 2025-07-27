@@ -33,7 +33,7 @@ const MainServiceSection = () => {
             options={{
                 leftSlideIn: true,
             }}
-            className="flex flex-col gap-2 md:p-24 p-4"
+            className="flex flex-col gap-2 md:p-24 p-4 py-12"
         >
             <div className="flex flex-col md:gap-12 gap-6">
                 <div className="flex flex-col items-start text-center mx-auto">

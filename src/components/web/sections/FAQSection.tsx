@@ -26,7 +26,7 @@ const FAQSection = () => {
             options={{
                 leftSlideIn: true,
             }}
-            className="relative flex flex-col gap-12 md:m-24 m-4"
+            className="relative flex flex-col gap-12 md:m-24 m-4 py-12"
         >
             <div className="flex flex-col gap-4 text-center leading-tight">
                 <div className="font-bold md:text-6xl text-5xl text-primary">

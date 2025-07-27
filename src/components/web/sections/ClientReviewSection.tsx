@@ -75,7 +75,7 @@ const ClientReviewSection = () => {
                 options={{
                     rightSlideIn: true,
                 }}
-                className="flex flex-col gap-6 px-4"
+                className="flex flex-col gap-6 px-4 py-12"
             >
                 <div className="flex flex-col gap-6 text-center w-full h-fit my-auto drop-shadow-md">
                     <div className="font-black md:text-5xl text-4xl drop-shadow-md leading-tight">
@@ -99,7 +99,6 @@ const ClientReviewSection = () => {
                         quote,
                         projectName,
                         description,
-                        profileImage,
                         websiteImage,
                         link,
                     } = review;
