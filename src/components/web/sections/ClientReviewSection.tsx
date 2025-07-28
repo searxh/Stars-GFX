@@ -23,7 +23,6 @@ interface Review {
     quote?: Quote;
     projectName: string;
     description: string;
-    profileImage: string;
     websiteImage: string;
     link: string;
 }
@@ -39,7 +38,6 @@ const reviews: Review[] = [
         projectName: "Crackop Portfolio Website",
         description:
             "Crackop's portfolio website is a sleek, responsive showcase of his work as a Roblox game developer and graphics/UI designer. Built for clarity and performance, the site highlights his projects and creative skills in an engaging, professional format.",
-        profileImage: "/images/woman.png",
         websiteImage: "/images/web/crackop.webp",
         link: "https://www.crackop.ca/",
     },
@@ -53,7 +51,6 @@ const reviews: Review[] = [
         projectName: "Black Cat Studio Website",
         description:
             "Black Cat Studios' website is an iconic and modern portfolio built to spotlight their Roblox game development work. With a clean layout and immersive visuals, it showcases the studio's creativity, technical talent, and commitment to high-quality gameplay experiences.",
-        profileImage: "/images/woman.png",
         websiteImage: "/images/web/blackcat.webp",
         link: "https://www.blackcat.gg/",
     },
@@ -61,7 +58,6 @@ const reviews: Review[] = [
         projectName: "Bulk Games Website",
         description:
             "Bulk Games' website is a bold and energetic portfolio designed to highlight their innovative approach to Roblox game development. Featuring dynamic visuals, sharp UI, and engaging content, it reflects the studio's passion for crafting immersive, high-performance gaming experiences that push the boundaries of the platform.",
-        profileImage: "/images/woman.png",
         websiteImage: "/images/web/bulkgames.webp",
         link: "https://www.bulkgames.gg/",
     },
@@ -280,7 +276,6 @@ const ClientReviewSection = () => {
                             quote,
                             projectName,
                             description,
-                            profileImage,
                             websiteImage,
                             link,
                         } = review;
@@ -329,16 +324,6 @@ const ClientReviewSection = () => {
                                     <div className="flex flex-col gap-6 w-1/2 h-full">
                                         <GlassmorphismCard className="flex w-full h-full p-8">
                                             <div className="flex gap-8 m-auto">
-                                                <div className="w-[80px] h-[80px] rounded-full overflow-hidden">
-                                                    <img
-                                                        src={profileImage}
-                                                        alt="profile"
-                                                        height={80}
-                                                        width={80}
-                                                        draggable={false}
-                                                        className="object-fill"
-                                                    />
-                                                </div>
                                                 <div className="flex flex-col gap-8 w-full flex-1">
                                                     <div className="flex flex-col gap-2">
                                                         <div className="font-bold text-xl text-white">

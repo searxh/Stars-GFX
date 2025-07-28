@@ -24,7 +24,7 @@ const LogoSection = () => {
                 <div className="flex gap-4">
                     <img
                         className="w-[76px] h-[76px]"
-                        src="/images/web_logo.png"
+                        src="/images/web_logo.webp"
                         draggable={false}
                         alt=""
                     />

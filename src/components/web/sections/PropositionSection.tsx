@@ -24,7 +24,7 @@ const PropositionSection = () => {
                 <div className="flex flex-col gap-10 h-fit md:max-w-[80rem] w-full">
                     <GlassmorphismCard className="flex md:flex-row flex-col h-full md:p-8 p-4 place-content-end">
                         <img
-                            src="/images/custom_UI.png"
+                            src="/images/custom_UI.webp"
                             alt="Custom UI/UX "
                             className="md:absolute md:left-8 md:w-[30%] w-full flex md:h-[90%] h-fit object-cover rounded-xl md:mb-0 mb-4"
                         />
