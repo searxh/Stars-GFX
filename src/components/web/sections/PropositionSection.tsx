@@ -1,50 +1,144 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import GlassmorphismCard from "../../GlassmorphismCard";
+import AnimatedContainer from "../../AnimatedContainer";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 
 const PropositionSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
     return (
-        <motion.div
-            ref={ref}
-            animate={{
-                translateX: section ? 0 : -50,
-                opacity: section ? 1 : 0,
-                filter: section ? "blur(0px)" : "blur(20px)",
+        <AnimatedContainer
+            options={{
+                leftSlideIn: true,
             }}
-            transition={{
-                duration: 1,
-            }}
-            className="flex flex-col md:flex-row w-full max-w-[25rem] md:max-w-full h-[30rem] my-[10rem] p-5 mx-auto"
+            className="flex flex-col md:p-24 p-4 w-full"
         >
-            <div className="relative w-full md:w-[25rem] md:h-[25rem] overflow-visible ml-auto my-auto">
-                <img
-                    className="md:absolute top-0 left-0 right-0 bottom-0 w-full md:h-[25rem] md:w-[25rem] drop-shadow-glow"
-                    src="/images/David.webp"
-                    alt=""
-                    // animate={{
-                    //     scale: [1.0, 1.1, 1.1, 1.0],
-                    //     rotate: [0, -5, 0, 5, 0],
-                    // }}
-                    // transition={{
-                    //     duration: 20,
-                    //     repeat: Infinity,
-                    //     repeatDelay: 0,
-                    // }}
-                />
-            </div>
-            <div className="flex flex-col gap-5 mr-auto max-w-2xl my-auto p-5">
-                <div className="font-bold text-lg md:text-2xl text-center md:text-left">
-                    Why Choose STAR GFX?
+            <div className="grid gap-12 w-full place-items-center">
+                <div className="flex flex-col gap-6 text-center leading-tight drop-shadow-md mx-auto">
+                    <div className="font-bold md:text-5xl text-4xl text-white">
+                        WHAT WE <span className="text-primary">OFFER</span>
+                    </div>
+                    <div className="text-white text-lg max-w-lg">
+                        From custom UI/UX to long-term support, we build
+                        scalable solutions tailored to your brand and goals.
+                    </div>
                 </div>
-                <div className="text-sm md:text-base max-w-sm">
-                    We offer more customization than popular website builders
-                    like Carrd, Wix, WordPress, and Webflow. Our sites aren't
-                    just templates; they are built from the ground up, ensuring
-                    they look better and are truly unique to you.
+                <div className="flex flex-col gap-10 h-fit md:max-w-[80rem] w-full">
+                    <GlassmorphismCard className="flex md:flex-row flex-col h-full md:p-8 p-4 place-content-end">
+                        <img
+                            src="/images/custom_UI.webp"
+                            alt="Custom UI/UX "
+                            className="md:absolute md:left-8 md:w-[30%] w-full flex md:h-[90%] h-fit object-cover rounded-xl md:mb-0 mb-4"
+                        />
+                        <div className="md:w-[70%] w-full flex flex-col justify-between md:gap-12 gap-6 h-full md:p-4 p-2 md:pl-12 pl-0">
+                            <div className="flex flex-col gap-6">
+                                <div className="flex gap-2 text-secondary">
+                                    <DesignServicesIcon fontSize="large" />
+                                    <div className="md:text-3xl text-2xl font-bold leading-tight">
+                                        CUSTOM UX/UI DESIGN
+                                    </div>
+                                </div>
+
+                                <div className="md:text-base text-sm text-neutral-300">
+                                    We don't use templates. Every interface is
+                                    designed from scratch to reflect your
+                                    brand's identity and audience. Whether
+                                    you're a game studio or a creative company,
+                                    we craft intuitive, immersive, and visually
+                                    striking experiences tailored to your
+                                    vision.
+                                </div>
+                            </div>
+                            <div className="flex md:flex-row flex-col md:gap-10 gap-5">
+                                <GlassmorphismCard className="flex flex-col gap-5 p-6">
+                                    <div className="font-bold md:text-2xl text-xl leading-tight">
+                                        Brand-Focused <br />
+                                        Web Development
+                                    </div>
+                                    <div className="md:text-base text-sm text-neutral-300">
+                                        Your website is more than just a
+                                        page—it's your digital flagship. We work
+                                        closely with you to translate your
+                                        brand's personality into web form,
+                                        ensuring the tone, aesthetics, and
+                                        layout match your unique identity and
+                                        goals.
+                                    </div>
+                                </GlassmorphismCard>
+                                <GlassmorphismCard className="flex flex-col gap-5 p-6">
+                                    <div className="font-bold md:text-2xl text-xl leading-tight">
+                                        Mobile-First <br />
+                                        Responsive Sites
+                                    </div>
+                                    <div className="md:text-base text-sm text-neutral-300">
+                                        Your users are everywhere, and your site
+                                        should be too. We build all websites
+                                        with a mobile-first mindset—ensuring
+                                        lightning-fast performance, intuitive
+                                        navigation, and pixel-perfect layouts on
+                                        all screen sizes, from phones to
+                                        desktops.
+                                    </div>
+                                </GlassmorphismCard>
+                            </div>
+                        </div>
+                    </GlassmorphismCard>
+                    <GlassmorphismCard className="flex md:flex-row flex-col h-full md:p-8 p-4">
+                        <img
+                            src="/images/archives/a27.webp"
+                            alt="Custom UI/UX"
+                            className="md:absolute md:right-8 md:w-[30%] w-full flex md:h-[90%] h-fit object-cover rounded-xl md:mb-0 mb-4"
+                        />
+                        <div className="md:w-[70%] w-full flex flex-col justify-between md:gap-12 gap-6 h-full md:p-4 p-2 md:pr-12 pr-0">
+                            <div className="flex flex-col gap-6">
+                                <div className="flex gap-2 text-primary">
+                                    <SupportAgentIcon fontSize="large" />
+                                    <div className="md:text-3xl text-2xl font-bold leading-tight">
+                                        TECHNOLOGY & LONG-TERM SUPPORT
+                                    </div>
+                                </div>
+                                <div className="md:text-base text-sm text-neutral-300">
+                                    The systems behind your site matter. We
+                                    build on modern, secure architecture and
+                                    offer continuous care to keep your digital
+                                    presence fast, reliable, and future-proof.
+                                </div>
+                            </div>
+                            <div className="flex md:flex-row flex-col md:gap-10 gap-5">
+                                <GlassmorphismCard className="flex flex-col gap-5 p-6">
+                                    <div className="font-bold md:text-2xl text-xl leading-tight">
+                                        Secure & Scalable <br />
+                                        Tech Stack
+                                    </div>
+                                    <div className="md:text-base text-sm text-neutral-300">
+                                        We use modern, battle-tested
+                                        technologies like Next.js, TailwindCSS,
+                                        Firebase, and Vercel to build fast,
+                                        scalable, and secure web applications.
+                                        Whether you're launching your first
+                                        landing page or preparing for major
+                                        traffic spikes, your site will be ready.
+                                    </div>
+                                </GlassmorphismCard>
+                                <GlassmorphismCard className="flex flex-col gap-5 p-6">
+                                    <div className="font-bold md:text-2xl text-xl leading-tight">
+                                        Ongoing Support & <br />
+                                        Maintenance
+                                    </div>
+                                    <div className="md:text-base text-sm text-neutral-300">
+                                        The web evolves—and so should your site.
+                                        We offer optional monthly maintenance
+                                        plans that cover security patches,
+                                        performance updates, content edits, and
+                                        feature enhancements, so you never have
+                                        to worry about staying current or
+                                        secure.
+                                    </div>
+                                </GlassmorphismCard>
+                            </div>
+                        </div>
+                    </GlassmorphismCard>
                 </div>
             </div>
-        </motion.div>
+        </AnimatedContainer>
     );
 };
 

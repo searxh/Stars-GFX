@@ -1,221 +1,276 @@
-import { CheckRounded } from "@mui/icons-material";
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { isNaN } from "lodash";
+import { useState } from "react";
+import MainServiceSelectCard from "../../MainServiceSelectCard";
+import AnimatedContainer from "../../AnimatedContainer";
+import GlassmorphismCard from "../../GlassmorphismCard";
+import SizeMatchingContainer from "../../SizeMatchingContainer";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const MainServiceSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
+    const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
+    const [price, setPrice] = useState<number>(699);
+    const [isPercentagePrice, setIsPercentagePrice] = useState<boolean>(false);
+
+    const modifyPrice = (
+        priceModification: number,
+        isAdd: boolean,
+        isPercentage?: boolean
+    ) => {
+        if (isPercentage) {
+            setIsPercentagePrice(false);
+        }
+        if (isPercentage !== undefined && !isPercentage)
+            setIsPercentagePrice(true);
+        if (isNaN(priceModification)) return;
+        if (!isAdd) setPrice(price + priceModification);
+        else {
+            setPrice(price - priceModification);
+        }
+    };
 
     return (
-        <motion.div
-            ref={ref}
-            animate={{
-                translateX: section ? 0 : 50,
-                opacity: section ? 1 : 0,
-                filter: section ? "blur(0px)" : "blur(20px)",
+        <AnimatedContainer
+            options={{
+                leftSlideIn: true,
             }}
-            transition={{
-                duration: 0.5,
-            }}
-            className="flex flex-col gap-2 m-auto my-[10rem] p-5"
+            className="flex flex-col gap-2 md:p-24 p-4 py-12"
         >
-            <div className="font-bold text-2xl md:text-5xl mx-auto drop-shadow-md">
-                OUR SERVICES{" "}
-            </div>
-            <div className="m-auto max-w-2xl mb-5 text-center text-sm md:text-base">
-                We offer different tiers of web development services based on
-                your needs and project complexity:
-            </div>
-            <div className="flex flex-col md:flex-row gap-3 drop-shadow-md text-base max-w-5xl">
-                <motion.div
-                    animate={{
-                        transform: section
-                            ? "translateX(0)"
-                            : "translateX(50%)",
-                        opacity: section ? 1 : 0,
-                    }}
-                    transition={{
-                        ease: "easeOut",
-                        duration: 0.5,
-                    }}
-                    style={{
-                        background: "radial-gradient(#222222, #111111 80%)",
-                    }}
-                    className="relative basis-1/3 flex flex-col border-[1px] border-neutral-800 gap-3 rounded-xl p-5 md:p-10 py-12 flex-1 bg-neutral-900 shadow-[#c2788d] shadow-md"
-                >
-                    {/* <div className="absolute leading-5 text-sm -top-2 -left-2 bg-[#c2788d] text-black rounded-lg p-3">
-                        <div className="font-bold text-lg">20% OFF</div> Limited
-                        seats!
-                    </div> */}
-                    <div className="flex flex-col text-sm md:text-base m-auto w-fit h-full text-center text-neutral-300">
-                        <div className="font-bold mb-3 text-white">
-                            TIER 1:
-                            <div className="text-xl md:text-3xl text-[#c2788d]">
-                                BASIC
-                            </div>
-                        </div>
-                        <p className="max-w-[90%] mx-auto">
-                            Great for personal portfolios and small businesses.
-                        </p>
-                        <ol className="text-start py-10 text-white">
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 4 static pages
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />1 dynamic page
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Admin page
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 1 week free revision period
-                            </li>
-                        </ol>
-                        <div className="text-[#c2788d] mt-auto">
-                            Starts at
-                            <div className="flex gap-2 font-bold text-xl md:text-3xl w-fit mx-auto">
-                                $699
-                                {/* <div className="line-through text-lg my-auto font-normal">
-                                    $699
-                                </div> */}
-                            </div>
-                        </div>
+            <div className="flex flex-col md:gap-12 gap-6">
+                <div className="flex flex-col items-start text-center mx-auto">
+                    <div className="font-bold md:text-5xl text-4xl text-center leading-tight">
+                        BUILD YOUR
+                        <span className="text-[#FF4388]"> WEBSITE</span>
                     </div>
-                </motion.div>
-                <div
-                    style={{
-                        background: "radial-gradient(#222222, #111111 80%)",
-                    }}
-                    className="basis-1/3 flex flex-col border-[1px] border-neutral-800 gap-3 rounded-xl p-10 py-12 flex-1 bg-neutral-900 shadow-[#b8506e] shadow-lg"
-                >
-                    <div className="flex flex-col text-sm md:text-base m-auto w-fit h-full text-center text-neutral-300 brightness-[110%]">
-                        <div className="font-bold mb-3 text-white">
-                            TIER 2:
-                            <div className="text-xl md:text-3xl text-[#b8506e]">
-                                INTERMEDIATE
-                            </div>
+                    <div className="text-lg">
+                        Select your preferred add-ons. Your price will update as
+                        you build.
+                    </div>
+                    <div className="flex flex-col w-full mt-4">
+                        <div className="md:text-3xl text-2xl font-bold">
+                            STARTING AT
+                            <span className="text-primary"> $699</span>
                         </div>
-                        <p className="max-w-[90%] mx-auto">
-                            Perfect for blogs, portfolios with regular content
-                            updates.
-                        </p>
-                        <ol className="text-start py-10 text-white">
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 10 static pages
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 3 dynamic pages
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Admin page
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                User authentication
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Free responsive design
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 2 weeks free revision period
-                            </li>
-                        </ol>
-                        <div className="text-[#b8506e] mt-auto">
-                            Starts at
-                            <div className="flex gap-2 font-bold text-xl md:text-3xl w-fit mx-auto">
-                                $1199
-                            </div>
-                        </div>
+                        <div>(Custom assets not included)</div>
                     </div>
                 </div>
-                <motion.div
-                    animate={{
-                        transform: section
-                            ? "translateX(0)"
-                            : "translateX(-50%)",
-                        opacity: section ? 1 : 0,
-                    }}
-                    transition={{
-                        ease: "easeOut",
-                        duration: 0.5,
-                    }}
-                    style={{
-                        background: "radial-gradient(#222222, #111111 80%)",
-                    }}
-                    className="basis-1/3 flex flex-col border-[1px] border-neutral-800 gap-3 rounded-xl p-10 py-12 flex-1 bg-neutral-900 shadow-[#c2375e] shadow-xl"
-                >
-                    <div className="flex flex-col text-sm md:text-base m-auto w-fit h-full text-center text-neutral-300 brightness-125">
-                        <div className="font-bold mb-3 text-white">
-                            TIER 3:
-                            <div className="text-xl md:text-3xl text-[#c2375e]">
-                                ADVANCED
+                <GlassmorphismCard className="relative flex h-fit w-full md:p-8 p-4">
+                    <SizeMatchingContainer
+                        className="flex md:flex-row flex-col md:gap-8 gap-4 w-full md:overflow-hidden"
+                        options={{
+                            isDisabled: isSmallerThanMedium,
+                            referenceChildClassName:
+                                "w-full flex flex-col gap-4 w-full h-fit",
+                        }}
+                        referenceChild={
+                            <>
+                                <div className="flex gap-4 items-center">
+                                    <img
+                                        src="/images/star_logo.webp"
+                                        alt="logo"
+                                        width={"80"}
+                                        height={"80"}
+                                        className="md:h-[80px] md:w-[80px] h-[40px] w-[40px]"
+                                    />
+                                    <div className="flex flex-col gap-4">
+                                        <div className="leading-tight">
+                                            <div className="md:text-3xl text-2xl font-bold p-0">
+                                                UI DESIGN
+                                            </div>
+                                            <div className="md:text-xl text-lg">
+                                                Choose the visual complexity of
+                                                your site
+                                            </div>
+                                        </div>
+                                        <div className="text-secondary">
+                                            Select one or more items
+                                        </div>
+                                    </div>
+                                </div>
+                                <MainServiceSelectCard
+                                    price={"20"}
+                                    serviceName={"Animations"}
+                                    detail={
+                                        "Smooth transitions and motion effects for a more engaging experience."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                                <MainServiceSelectCard
+                                    price={"100"}
+                                    serviceName={"Responsive Design"}
+                                    detail={
+                                        "Tailored layouts for seamless experience across all screen sizes."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                                <MainServiceSelectCard
+                                    price={"100"}
+                                    serviceName={"3D Design"}
+                                    detail={
+                                        "Add depth and motion with subtle 3D elements and shadows."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                            </>
+                        }
+                    >
+                        <img
+                            src="/images/archives/a38.webp"
+                            alt="a1"
+                            className="w-full h-full object-cover rounded-xl"
+                        />
+                    </SizeMatchingContainer>
+                </GlassmorphismCard>
+
+                <GlassmorphismCard className="relative flex h-fit w-full md:p-8 p-4">
+                    <SizeMatchingContainer
+                        className="flex md:flex-row-reverse flex-col gap-8 w-full md:overflow-hidden"
+                        options={{
+                            isDisabled: isSmallerThanMedium,
+                            referenceChildClassName:
+                                "w-full flex flex-col gap-4 w-full h-fit",
+                        }}
+                        referenceChild={
+                            <>
+                                <div className="flex gap-4 items-center">
+                                    <img
+                                        src="/images/star_logo.webp"
+                                        alt="logo"
+                                        width={"80"}
+                                        height={"80"}
+                                        className="md:h-[80px] md:w-[80px] h-[40px] w-[40px]"
+                                    />
+                                    <div className="flex flex-col gap-4">
+                                        <div className="leading-tight">
+                                            <div className="md:text-3xl text-2xl font-bold p-0">
+                                                CORE FEATURE
+                                            </div>
+                                            <div className="md:text-xl text-lg">
+                                                Add the functionality you need
+                                                to power your website.
+                                            </div>
+                                        </div>
+                                        <div className="text-secondary">
+                                            Select one or more items
+                                        </div>
+                                    </div>
+                                </div>
+                                <MainServiceSelectCard
+                                    price={"100"}
+                                    serviceName={"Form Submission"}
+                                    detail={
+                                        "Basic contact or feedback form with up to three custom fields. Includes simple backend handling."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                                <MainServiceSelectCard
+                                    price={"150"}
+                                    serviceName={"API Integration"}
+                                    detail={
+                                        "Fetch game data, player stats, badges, or inventory from ROBLOX's public endpoints or other APIs."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                                <MainServiceSelectCard
+                                    price={"500"}
+                                    serviceName={"Payment System"}
+                                    detail={
+                                        "Accept payments securely using Stripe, PayPal, or other platforms."
+                                    }
+                                    modifyService={modifyPrice}
+                                />
+                            </>
+                        }
+                    >
+                        <img
+                            src="/images/archives/a20.webp"
+                            alt="a1"
+                            className="w-full h-full object-cover rounded-xl"
+                        />
+                    </SizeMatchingContainer>
+                </GlassmorphismCard>
+                <GlassmorphismCard className="relative flex flex-col gap-8 h-fit w-full md:p-8 p-4">
+                    <div className="flex flex-col gap-4 w-full">
+                        <div className="flex gap-4 items-center">
+                            <img
+                                src="/images/star_logo.webp"
+                                alt="logo"
+                                width={"80"}
+                                height={"80"}
+                                className="md:h-[80px] md:w-[80px] h-[40px] w-[40px]"
+                            />
+                            <div className="flex flex-col gap-4">
+                                <div className="leading-tight">
+                                    <div className="md:text-3xl text-2xl font-bold p-0">
+                                        PROJECT ADD-ONS
+                                    </div>
+                                    <div className="md:text-xl text-lg">
+                                        Fine-tune the functionality and
+                                        ownership
+                                    </div>
+                                </div>
+                                <div className="text-secondary">
+                                    Select one or more items
+                                </div>
                             </div>
                         </div>
-                        <p className="max-w-[90%] mx-auto">
-                            Ideal for e-commerce platforms or highly dynamic
-                            sites.
-                        </p>
-                        <ol className="text-start py-10 text-white">
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                15+ static pages
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                6+ dynamic pages
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Admin page
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                User authentication
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Role-based access control
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Free responsive design
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Free custom domain integration
-                            </li>
 
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Up to 1 month free revision period
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Priority service
-                            </li>
-                            <li className="flex gap-2">
-                                <CheckRounded />
-                                Custom assets assistance
-                            </li>
-                        </ol>
-                        <div className="text-[#c2375e] mt-auto">
-                            Starts at
-                            <div className="flex gap-2 font-bold text-xl md:text-3xl w-fit mx-auto">
-                                $3999
-                            </div>
+                        <div className="flex flex-col gap-4">
+                            <MainServiceSelectCard
+                                price={"20"}
+                                serviceName={"Custom Domain Setup"}
+                                detail={
+                                    "Fetch game data, player stats, badges, or inventory from ROBLOX's public endpoints or other APIs."
+                                }
+                                modifyService={modifyPrice}
+                            />
+                            <MainServiceSelectCard
+                                price={"50"}
+                                serviceName={"Basic SEO Optimization"}
+                                detail={
+                                    "Clean URLs, proper metadata, and index-friendly structure for search engines."
+                                }
+                                modifyService={modifyPrice}
+                            />
+                            <MainServiceSelectCard
+                                price={"500"}
+                                serviceName={"Admin Dashboard"}
+                                detail={
+                                    "Manage content, users, and data with an easy-to-use backend panel without having to contact us for changes."
+                                }
+                                modifyService={modifyPrice}
+                            />
+
+                            <MainServiceSelectCard
+                                price={"50% of total"}
+                                serviceName={
+                                    "Source Code + Basic Documentation"
+                                }
+                                detail={
+                                    "Full code ownership with a detailed step-by-step hosting tutorial."
+                                }
+                                modifyService={modifyPrice}
+                            />
+                            <MainServiceSelectCard
+                                price={"(Custom Pricing)"}
+                                serviceName={"Advanced Custom Features"}
+                                detail={
+                                    "Need advanced dashboards, AI tools, or custom integrations? We'll assess and quote based on complexity."
+                                }
+                                modifyService={modifyPrice}
+                            />
                         </div>
                     </div>
-                </motion.div>
+                    <GlassmorphismCard className="flex flex-col w-full md:p-8 p-4 items-center">
+                        <div className="md:text-xl text-lg">
+                            Estimated price:
+                        </div>
+                        <div className="md:text-5xl text-4xl text-[#FF4388] font-bold">{`${price} USD ${
+                            isPercentagePrice ? "+ 50%" : ""
+                        }`}</div>
+                    </GlassmorphismCard>
+                </GlassmorphismCard>
             </div>
-        </motion.div>
+        </AnimatedContainer>
     );
 };
 

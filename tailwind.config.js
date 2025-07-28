@@ -19,6 +19,10 @@ module.exports = {
             fontFamily: {
                 nunito: "Nunito Sans",
             },
+            colors: {
+                primary: "#5CC9FF",
+                secondary: "#FF4388",
+            },
             keyframes: {
                 doubletap: {
                     "0%, 30%, 40%, 50%, 100%": {

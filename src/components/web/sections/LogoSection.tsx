@@ -1,123 +1,149 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import { Colors } from "../../../lib/colors";
+import AnimatedContainer from "../../AnimatedContainer";
 
 const LogoSection = () => {
-    const ref = useRef(null);
-    const section = useInView(ref);
-
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
 
     return (
-        <div className="flex w-full h-[70vh] md:h-[50rem] p-10 mx-auto">
-            <motion.div
-                ref={ref}
-                animate={{
-                    scale: section ? 1 : 0.9,
-                    opacity: section ? 1 : 0,
-                    filter: section ? "blur(0px)" : "blur(20px)",
+        <div
+            style={{
+                height: window.innerHeight - 48,
+            }}
+            className="relative flex w-full md:px-24 px-8 my-auto"
+        >
+            <AnimatedContainer
+                options={{
+                    fadeIn: true,
+                    blurIn: true,
+                    zoomIn: true,
                 }}
-                transition={{
-                    duration: 1,
-                }}
-                className="flex flex-col gap-2 md:gap-5 m-auto md:max-w-3xl text-center"
+                className="flex flex-col gap-9 my-auto md:max-w-3xl w-fit z-10"
             >
-                <div className="font-semibold text-base md:text-2xl text-white">
-                    Bring Your Vision to Life with Customized Web Solutions
-                </div>
-                <motion.svg
-                    width="100%"
-                    height="100%"
-                    viewBox={
-                        isSmallerThanMedium ? "0 0 1000 500" : "0 0 950 300"
-                    }
-                >
-                    <defs>
-                        <motion.linearGradient
-                            id="gradient"
-                            gradientTransform="rotate(180 0.5 0.5)"
-                            animate={{
-                                gradientTransform: [
-                                    "rotate(0 0.5 0.5)",
-                                    "rotate(180 0.5 0.5)",
-                                ],
-                            }}
-                            transition={{
-                                duration: 5,
-                                repeat: Infinity,
-                                repeatType: "reverse",
+                <div className="flex gap-4">
+                    <img
+                        className="w-[76px] h-[76px]"
+                        src="/images/web_logo.webp"
+                        draggable={false}
+                        alt=""
+                    />
+                    <div className="font-bold md:text-base text-sm text-white my-auto drop-shadow-md">
+                        <span
+                            style={{
+                                color: Colors.primary,
                             }}
                         >
-                            <stop offset="0%" stopColor="#355c7d" />
-                            <stop offset="100%" stopColor="#c06c84" />
-                        </motion.linearGradient>
-
-                        {isSmallerThanMedium ? (
-                            <mask id="text-mask">
-                                <text
-                                    x="50%"
-                                    y="29%"
-                                    dominantBaseline="middle"
-                                    textAnchor="middle"
-                                    fontSize="180"
-                                    fontWeight="bold"
-                                    fill="white"
-                                >
-                                    STAR GFX
-                                </text>
-                                <text
-                                    x="50%"
-                                    y="60%"
-                                    dominantBaseline="middle"
-                                    textAnchor="middle"
-                                    fontSize="180"
-                                    fontWeight="bold"
-                                    fill="white"
-                                >
-                                    WEB DEV
-                                </text>
-                            </mask>
-                        ) : (
-                            <mask id="text-mask">
-                                <text
-                                    x="50%"
-                                    y="35%"
-                                    dominantBaseline="middle"
-                                    textAnchor="middle"
-                                    fontSize="120"
-                                    fontWeight="bold"
-                                    fill="white"
-                                >
-                                    STAR GFX WEB
-                                </text>
-                                <text
-                                    x="50%"
-                                    y="70%"
-                                    dominantBaseline="middle"
-                                    textAnchor="middle"
-                                    fontSize="120"
-                                    fontWeight="bold"
-                                    fill="white"
-                                >
-                                    DEVELOPMENT
-                                </text>
-                            </mask>
-                        )}
-                    </defs>
-
-                    <rect
-                        width="100%"
-                        height="100%"
-                        fill="url(#gradient)"
-                        mask="url(#text-mask)"
-                    />
-                </motion.svg>
-
-                <div className="text-sm md:text-lg max-w-md mx-auto">
-                    We specialize in creating unique, custom-designed websites
-                    that go beyond the ordinary.
+                            CUSTOM WEB DEVELOPMENT
+                        </span>
+                        <br /> FOR GAME STUDIOS & <br />
+                        CREATIVE BRANDS
+                    </div>
                 </div>
-            </motion.div>
+                <div className="flex flex-col gap-6 h-full w-full md:text-left text-center">
+                    <div className="relative md:h-[200px] h-[280px] flex flex-col drop-shadow-md">
+                        <div className="flex md:flex-row flex-col">
+                            <motion.svg
+                                width="100%"
+                                height="100%"
+                                viewBox={
+                                    isSmallerThanMedium
+                                        ? "0 0 135 45"
+                                        : "0 0 200 100"
+                                }
+                                className="relative md:w-[300px] w-[240px] mx-auto"
+                            >
+                                <defs>
+                                    <motion.linearGradient
+                                        id="gradient"
+                                        gradientTransform="rotate(180 0.5 0.5)"
+                                        animate={{
+                                            gradientTransform: [
+                                                "rotate(0 0.5 0.5)",
+                                                "rotate(180 0.5 0.5)",
+                                            ],
+                                        }}
+                                        transition={{
+                                            duration: 5,
+                                            repeat: Infinity,
+                                            repeatType: "reverse",
+                                        }}
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stopColor={Colors.primary}
+                                        />
+                                        <stop
+                                            offset="100%"
+                                            stopColor={Colors.secondary}
+                                        />
+                                    </motion.linearGradient>
+
+                                    {isSmallerThanMedium ? (
+                                        <mask id="text-mask">
+                                            <text
+                                                x="0%"
+                                                y="90%"
+                                                fontSize={50}
+                                                fontWeight={900}
+                                                fill="white"
+                                            >
+                                                STAR
+                                            </text>
+                                        </mask>
+                                    ) : (
+                                        <mask id="text-mask">
+                                            <text
+                                                x="0%"
+                                                y="75%"
+                                                fontSize={75}
+                                                fontWeight={900}
+                                                fill="white"
+                                            >
+                                                STAR
+                                            </text>
+                                        </mask>
+                                    )}
+                                </defs>
+
+                                <rect
+                                    width="100%"
+                                    height="100%"
+                                    fill="url(#gradient)"
+                                    mask="url(#text-mask)"
+                                />
+                            </motion.svg>
+                            <div
+                                style={{
+                                    color: Colors.secondary,
+                                    fontFamily: "Rubik Wet Paint",
+                                }}
+                                className="md:text-[110px] text-[100px] leading-none md:leading-normal"
+                            >
+                                GFX
+                            </div>
+                        </div>
+                        <div className="absolute md:top-32 top-[12rem] text-white leading-tight md:text-[51px] text-[31px] font-black">
+                            WEB DEVELOPMENT
+                        </div>
+                    </div>
+
+                    <div className="text-lg max-w-md w-full">
+                        We build unique, handcrafted websites that capture your
+                        identity and grow with you.
+                    </div>
+                </div>
+                <button
+                    style={{
+                        backgroundColor: Colors.secondary,
+                    }}
+                    className="px-8 py-2 text-white md:w-fit w-full
+                            rounded-lg md:hover:scale-105 transition shadow-md"
+                    onClick={() => {}}
+                >
+                    <div className="font-semibold text-2xl">Get Started</div>
+                </button>
+            </AnimatedContainer>
         </div>
     );
 };

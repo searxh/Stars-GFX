@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import ReviewItem from "../components/about/ReviewItem";
 import Footer from "../components/Footer";
 import { reviews } from "../lib/reviews";
@@ -94,7 +94,7 @@ const About = () => {
                     }}
                     className="w-full h-full"
                 >
-                    <source src="/videos/about.mov" type="video/mp4"></source>
+                    <source src="/videos/about.mp4" type="video/mp4"></source>
                 </video>
                 <div className="absolute bottom-0 h-52 w-full bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
@@ -132,31 +132,46 @@ const About = () => {
                 className="w-screen md:h-[35rem] h-full p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
                 brightness-110 shadow-md md:overflow-hidden"
             >
-                <Carousel
-                    axis={isSmallerThanMedium ? "vertical" : "horizontal"}
-                    interval={3000}
-                    transitionTime={500}
-                    infiniteLoop
-                    autoPlay
-                    centerMode
-                    centerSlidePercentage={50}
-                    showStatus={false}
-                    showIndicators={false}
-                    width={width}
-                    showThumbs={false}
-                    swipeable={false}
-                >
-                    {reviews.map(
-                        (reviewItem: ReviewItemType, index: number) => {
-                            return (
-                                <ReviewItem
-                                    key={index}
-                                    reviewItem={reviewItem}
-                                />
-                            );
-                        }
-                    )}
-                </Carousel>
+                {isSmallerThanMedium ? (
+                    <div className="flex flex-col gap-4 p-4">
+                        {reviews.map(
+                            (reviewItem: ReviewItemType, index: number) => {
+                                return (
+                                    <ReviewItem
+                                        key={index}
+                                        reviewItem={reviewItem}
+                                    />
+                                );
+                            }
+                        )}
+                    </div>
+                ) : (
+                    <Carousel
+                        axis={"horizontal"}
+                        interval={3000}
+                        transitionTime={500}
+                        infiniteLoop
+                        autoPlay
+                        centerMode
+                        centerSlidePercentage={50}
+                        showStatus={false}
+                        showIndicators={false}
+                        width={width}
+                        showThumbs={false}
+                        swipeable={false}
+                    >
+                        {reviews.map(
+                            (reviewItem: ReviewItemType, index: number) => {
+                                return (
+                                    <ReviewItem
+                                        key={index}
+                                        reviewItem={reviewItem}
+                                    />
+                                );
+                            }
+                        )}
+                    </Carousel>
+                )}
                 <div className="flex w-full px-5">
                     <button
                         onClick={() => navigate("/commissions/gfx")}

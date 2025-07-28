@@ -11,24 +11,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import GlassmorphismCard from "../../GlassmorphismCard";
 
 const stepsInfo = [
     {
         stepTitle: "Contact Us",
         details:
-            "Let’s discuss your project requirements, timeline, and budget.",
+            "Let's discuss your project requirements, timeline, and budget.",
         icon: faContactBook,
     },
     {
         stepTitle: "Requirements",
         details:
-            "After discussing the details and finalizing the requirements, we’ll sign an agreement and post it on our Discord group for easy access.",
+            "After discussing the details and finalizing the requirements, we'll sign an agreement and post it on our Discord group for easy access.",
         icon: faPencil,
     },
     {
         stepTitle: "Payment",
         details:
-            "After agreeing on the terms, we’ll schedule a 50% upfront payment",
+            "After agreeing on the terms, we'll schedule a 50% upfront payment",
         icon: faMoneyBill,
     },
     {
@@ -46,7 +47,7 @@ const stepsInfo = [
     {
         stepTitle: "Launch & Support",
         details:
-            "After the final approval and the other 50% payment, we’ll launch your site and offer free bug fixes for up to 3 months.",
+            "After the final approval and the other 50% payment, we'll launch your site and offer free bug fixes for up to 3 months.",
         icon: faComments,
     },
 ];
@@ -64,60 +65,63 @@ const TimelineSection = () => {
         <div
             ref={ref}
             id="fifth-section"
-            className="flex flex-col gap-5 w-full h-full p-10 mt-0 my-[10rem] text-white"
+            className="flex flex-col gap-5 w-full md:p-24 p-4 text-white items-center"
         >
-            <div className="font-bold text-2xl md:text-5xl mx-auto">
-                HOW IT WORKS
+            <div className="font-bold md:text-5xl text-4xl mx-auto">
+                HOW IT <span className="text-[#5cc9ff]">WORKS</span>
             </div>
-            <div className="text-sm md:text-base m-auto max-w-2xl mb-10 text-center">
+            <div className="text-base m-auto max-w-2xl md:mb-10 mb-4 text-center">
                 Our streamlined workflow is designed to bring your project to
                 life efficiently and on schedule, with opportunities for
                 feedback and revisions along the way.
             </div>
-            <div
-                id="timeline-container"
-                className="relative grid gap-8 w-full mx-auto"
-            >
-                {stepsInfo.map((stepsItem, index: number) => {
-                    return (
-                        <div
-                            id={
-                                index === 0
-                                    ? "timeline-first"
-                                    : index === stepsInfo.length - 1
-                                    ? "timeline-last"
-                                    : undefined
-                            }
-                        >
-                            <ListItem
-                                index={index + 1}
-                                title={stepsItem.stepTitle}
-                                details={stepsItem.details}
-                                icon={stepsItem.icon as IconDefinition}
-                            />
-                        </div>
-                    );
-                })}
-                {isSmallerThanMedium ? null : (
-                    <motion.div
-                        style={{
-                            height:
-                                height -
-                                firstItemSize.height / 2 -
-                                lastItemSize.height / 2,
-                            left: width / 2 - 2.5,
-                        }}
-                        animate={{
-                            scaleY: section ? 1 : 0,
-                            transformOrigin: "top",
-                        }}
-                        transition={{
-                            duration: 5,
-                        }}
-                        className="absolute w-[3px] mt-[64px] bg-neutral-300 rounded-full"
-                    />
-                )}
-            </div>
+            <GlassmorphismCard>
+                <div
+                    id="timeline-container"
+                    className="relative grid md:gap-8 gap-4 w-fit mx-auto"
+                >
+                    {stepsInfo.map((stepsItem, index: number) => {
+                        return (
+                            <div
+                                id={
+                                    index === 0
+                                        ? "timeline-first"
+                                        : index === stepsInfo.length - 1
+                                        ? "timeline-last"
+                                        : undefined
+                                }
+                                key={index}
+                            >
+                                <ListItem
+                                    index={index + 1}
+                                    title={stepsItem.stepTitle}
+                                    details={stepsItem.details}
+                                    icon={stepsItem.icon as IconDefinition}
+                                />
+                            </div>
+                        );
+                    })}
+                    {isSmallerThanMedium ? null : (
+                        <motion.div
+                            style={{
+                                height:
+                                    height -
+                                    firstItemSize.height / 2 -
+                                    lastItemSize.height / 2,
+                                left: width / 2 - 2.5,
+                            }}
+                            animate={{
+                                scaleY: section ? 1 : 0,
+                                transformOrigin: "top",
+                            }}
+                            transition={{
+                                duration: 5,
+                            }}
+                            className="absolute w-[5px] mt-[64px] bg-neutral-300 rounded-full"
+                        />
+                    )}
+                </div>
+            </GlassmorphismCard>
         </div>
     );
 };
@@ -136,7 +140,7 @@ const ListItem = ({
     const { width } = useElementSize("timeline-container");
     const isEven = index % 2 === 0;
     const ref = useRef(null);
-    const listItemInView = useInView(ref, { amount: 0.5 });
+    const listItemInView = useInView(ref, { amount: 0.5, once: true });
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
     return (
         <div
@@ -188,16 +192,16 @@ const ListItem = ({
                 <div
                     className={`text-lg md:text-2xl font-bold ${
                         isEven || isSmallerThanMedium
-                            ? "bg-gradient-to-l mr-auto"
-                            : "bg-gradient-to-r ml-auto"
-                    } from-[#355c7d] to-[#c06c84] text-gradient w-fit`}
+                            ? "text-primary mr-auto"
+                            : "text-secondary ml-auto"
+                    } w-fit`}
                 >
                     0{index} {title}
                 </div>
                 <div
                     className={`${
                         isEven ? "mr-auto" : "ml-auto"
-                    } text-xs md:text-sm font-normal max-w-[15rem]`}
+                    } md:text-base text-sm font-normal max-w-[15rem]`}
                 >
                     {details}
                 </div>

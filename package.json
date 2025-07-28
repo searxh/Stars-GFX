@@ -1,80 +1,81 @@
 {
-  "name": "stars-commission",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-regular-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mui/icons-material": "^5.14.19",
-    "@mui/material": "^5.14.20",
-    "@react-three/drei": "^9.114.3",
-    "@react-three/fiber": "^8.17.10",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "@types/three": "^0.169.0",
-    "axios": "^1.2.1",
-    "body-scroll-lock": "^4.0.0-beta.0",
-    "crypto-js": "^4.2.0",
-    "date-fns": "^2.29.3",
-    "dompurify": "^2.5.4",
-    "dotenv": "^16.0.3",
-    "firebase": "^9.17.1",
-    "framer-motion": "^11.5.4",
-    "js-cookie": "^3.0.1",
-    "lodash": "^4.17.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-ga4": "^2.0.0",
-    "react-parallax-tilt": "^1.7.246",
-    "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.4.4",
-    "react-scripts": "5.0.1",
-    "three": "^0.169.0",
-    "uuid": "^9.0.0",
-    "uuid-int": "^3.1.0",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/body-scroll-lock": "^3.1.0",
-    "@types/crypto-js": "^4.1.1",
-    "@types/dompurify": "^2.4.0",
-    "@types/js-cookie": "^3.0.2",
-    "@types/lodash": "^4.14.191",
-    "@types/uuid": "^9.0.0",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.3"
-  }
+    "name": "stars-commission",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@fortawesome/fontawesome-svg-core": "^6.3.0",
+        "@fortawesome/free-regular-svg-icons": "^6.3.0",
+        "@fortawesome/free-solid-svg-icons": "^6.3.0",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@mui/icons-material": "^5.14.19",
+        "@mui/material": "^5.14.20",
+        "@react-three/drei": "^9.114.3",
+        "@react-three/fiber": "^8.17.10",
+        "@react-three/postprocessing": "^2.19.1",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^18.11.18",
+        "@types/react": "^18.0.26",
+        "@types/react-dom": "^18.0.9",
+        "@types/three": "^0.169.0",
+        "axios": "^1.2.1",
+        "body-scroll-lock": "^4.0.0-beta.0",
+        "crypto-js": "^4.2.0",
+        "date-fns": "^2.29.3",
+        "dompurify": "^2.5.4",
+        "dotenv": "^16.0.3",
+        "firebase": "^9.17.1",
+        "framer-motion": "^11.5.4",
+        "js-cookie": "^3.0.1",
+        "lodash": "^4.17.21",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-ga4": "^2.0.0",
+        "react-parallax-tilt": "^1.7.246",
+        "react-responsive-carousel": "^3.2.23",
+        "react-router-dom": "^6.4.4",
+        "react-scripts": "5.0.1",
+        "three": "^0.169.0",
+        "uuid": "^9.0.0",
+        "uuid-int": "^3.1.0",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/body-scroll-lock": "^3.1.0",
+        "@types/crypto-js": "^4.1.1",
+        "@types/dompurify": "^2.4.0",
+        "@types/js-cookie": "^3.0.2",
+        "@types/lodash": "^4.14.191",
+        "@types/uuid": "^9.0.0",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^4.9.3"
+    }
 }

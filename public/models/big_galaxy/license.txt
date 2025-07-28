@@ -1,0 +1,11 @@
+Model Information:
+* title:	big galaxy
+* source:	https://sketchfab.com/3d-models/big-galaxy-5df1d9343bb645d3ac15334c02da049e
+* author:	Clockman (1266shin) (https://sketchfab.com/1266shin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "big galaxy" (https://sketchfab.com/3d-models/big-galaxy-5df1d9343bb645d3ac15334c02da049e) by Clockman (1266shin) (https://sketchfab.com/1266shin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
