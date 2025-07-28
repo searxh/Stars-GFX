@@ -132,31 +132,46 @@ const About = () => {
                 className="w-screen md:h-[35rem] h-full p-5 px-0 text-white bg-gradient-to-r from-blue-700 to-sky-700 
                 brightness-110 shadow-md md:overflow-hidden"
             >
-                <Carousel
-                    axis={isSmallerThanMedium ? "vertical" : "horizontal"}
-                    interval={3000}
-                    transitionTime={500}
-                    infiniteLoop
-                    autoPlay
-                    centerMode
-                    centerSlidePercentage={50}
-                    showStatus={false}
-                    showIndicators={false}
-                    width={width}
-                    showThumbs={false}
-                    swipeable={false}
-                >
-                    {reviews.map(
-                        (reviewItem: ReviewItemType, index: number) => {
-                            return (
-                                <ReviewItem
-                                    key={index}
-                                    reviewItem={reviewItem}
-                                />
-                            );
-                        }
-                    )}
-                </Carousel>
+                {isSmallerThanMedium ? (
+                    <div className="flex flex-col gap-4 p-4">
+                        {reviews.map(
+                            (reviewItem: ReviewItemType, index: number) => {
+                                return (
+                                    <ReviewItem
+                                        key={index}
+                                        reviewItem={reviewItem}
+                                    />
+                                );
+                            }
+                        )}
+                    </div>
+                ) : (
+                    <Carousel
+                        axis={"horizontal"}
+                        interval={3000}
+                        transitionTime={500}
+                        infiniteLoop
+                        autoPlay
+                        centerMode
+                        centerSlidePercentage={50}
+                        showStatus={false}
+                        showIndicators={false}
+                        width={width}
+                        showThumbs={false}
+                        swipeable={false}
+                    >
+                        {reviews.map(
+                            (reviewItem: ReviewItemType, index: number) => {
+                                return (
+                                    <ReviewItem
+                                        key={index}
+                                        reviewItem={reviewItem}
+                                    />
+                                );
+                            }
+                        )}
+                    </Carousel>
+                )}
                 <div className="flex w-full px-5">
                     <button
                         onClick={() => navigate("/commissions/gfx")}
