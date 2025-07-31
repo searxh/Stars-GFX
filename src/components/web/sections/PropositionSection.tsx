@@ -2,8 +2,9 @@ import GlassmorphismCard from "../../GlassmorphismCard";
 import AnimatedContainer from "../../AnimatedContainer";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import { forwardRef } from "react";
 
-const PropositionSection = () => {
+const PropositionSection = forwardRef<HTMLDivElement>((_, ref) => {
     return (
         <AnimatedContainer
             options={{
@@ -11,7 +12,7 @@ const PropositionSection = () => {
             }}
             className="flex flex-col md:p-24 p-4 w-full"
         >
-            <div className="grid gap-12 w-full place-items-center">
+            <div ref={ref} className="grid gap-12 w-full place-items-center">
                 <div className="flex flex-col gap-6 text-center leading-tight drop-shadow-md mx-auto">
                     <div className="font-bold md:text-5xl text-4xl text-white">
                         WHAT WE <span className="text-primary">OFFER</span>
@@ -140,6 +141,6 @@ const PropositionSection = () => {
             </div>
         </AnimatedContainer>
     );
-};
+});
 
 export default PropositionSection;

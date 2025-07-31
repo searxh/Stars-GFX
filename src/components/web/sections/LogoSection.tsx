@@ -3,7 +3,11 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import { Colors } from "../../../lib/colors";
 import AnimatedContainer from "../../AnimatedContainer";
 
-const LogoSection = () => {
+interface LogoSection {
+    onClickStart: () => void;
+}
+
+const LogoSection = ({ onClickStart }: LogoSection) => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
 
     return (
@@ -139,7 +143,7 @@ const LogoSection = () => {
                     }}
                     className="px-8 py-2 text-white md:w-fit w-full
                             rounded-lg md:hover:scale-105 transition shadow-md"
-                    onClick={() => {}}
+                    onClick={onClickStart}
                 >
                     <div className="font-semibold text-2xl">Get Started</div>
                 </button>
