@@ -1,4 +1,4 @@
-import { Box, CircularProgress, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
