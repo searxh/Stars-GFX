@@ -20,9 +20,14 @@ const WebServicePage = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
 
     const ref = useRef(null);
+    const propositionRef = useRef<HTMLDivElement>(null);
 
     const [scrollProgress, setScrollProgress] = useState(0);
     const { scrollYProgress } = useScroll({ container: ref });
+
+    const scrollToProposition = () => {
+        propositionRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         setScrollProgress(latest);
@@ -46,9 +51,9 @@ const WebServicePage = () => {
                             ref={ref}
                             className="relative mt-12 w-screen h-full overflow-y-scroll overflow-x-hidden"
                         >
-                            <LogoSection />
+                            <LogoSection onClickStart={scrollToProposition} />
 
-                            <PropositionSection />
+                            <PropositionSection ref={propositionRef} />
                             <ClientReviewSection />
 
                             <SupportPlanSection />
@@ -77,9 +82,9 @@ const WebServicePage = () => {
                             ref={ref}
                             className="relative mt-12 w-screen h-full overflow-y-scroll overflow-x-hidden"
                         >
-                            <LogoSection />
+                            <LogoSection onClickStart={scrollToProposition} />
 
-                            <PropositionSection />
+                            <PropositionSection ref={propositionRef} />
                             <ClientReviewSection />
 
                             <SupportPlanSection />
