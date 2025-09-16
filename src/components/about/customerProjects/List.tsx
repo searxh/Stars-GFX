@@ -20,7 +20,7 @@ const CustomerProjectsList = ({ setInfo }: CustomerProjectListProps) => {
                     {customerProjects.map((item) => {
                         return (
                             <CustomerProjectsItem
-                                key={Math.random()}
+                                key={item.name}
                                 listItem={item}
                                 setInfo={setInfo}
                             />
