@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import ReviewItem from "../components/about/ReviewItem";
 import Footer from "../components/Footer";
 import { reviews } from "../lib/reviews";
@@ -13,7 +13,6 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import useElementSize from "../hooks/useElementSize";
 
 const About = () => {
-    const videoRef = useRef<HTMLVideoElement>(null);
     const navigate = useNavigate();
     const [info, setInfo] = React.useState<any>({});
     const { width } = useElementSize();
@@ -23,7 +22,8 @@ const About = () => {
     });
     const customerProjectsVisible = useObserver({
         elementId: "customerProjects",
-        threshold: 0.55,
+        threshold: isSmallerThanMedium ? 0 : 0.55,
+        delay: 200,
     });
     return (
         <div
@@ -84,18 +84,7 @@ const About = () => {
                         </div>
                     </button>
                 </div>
-                <video
-                    ref={videoRef}
-                    preload="auto"
-                    loop
-                    muted
-                    onLoadedData={(e) => {
-                        if (videoRef.current) videoRef.current.play();
-                    }}
-                    className="w-full h-full"
-                >
-                    <source src="/videos/about.mp4" type="video/mp4"></source>
-                </video>
+                <img src="/images/about.gif" className="w-full h-full" alt="" />
                 <div className="absolute bottom-0 h-52 w-full bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
             <div className="w-full h-16 bg-slate-900" />
