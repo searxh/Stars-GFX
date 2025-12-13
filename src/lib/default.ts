@@ -1,8 +1,8 @@
 import { GlobalStateType, PriceInfoType, StringToAnyType } from "../types";
 
-export const AD_BASE_PRICE = 199;
-export const ICON_BASE_PRICE = 219;
-export const THUMB_BASE_PRICE = 259;
+export const AD_BASE_PRICE = 259;
+export const ICON_BASE_PRICE = 359;
+export const THUMB_BASE_PRICE = 459;
 
 export const all_routes: StringToAnyType = {
     "": "About",
