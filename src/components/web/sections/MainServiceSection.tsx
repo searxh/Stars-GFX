@@ -8,7 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 const MainServiceSection = () => {
     const isSmallerThanMedium = useMediaQuery("(max-width: 786px)");
-    const [price, setPrice] = useState<number>(699);
+    const [price, setPrice] = useState<number>(999);
     const [isPercentagePrice, setIsPercentagePrice] = useState<boolean>(false);
 
     const modifyPrice = (
@@ -48,7 +48,7 @@ const MainServiceSection = () => {
                     <div className="flex flex-col w-full mt-4">
                         <div className="md:text-3xl text-2xl font-bold">
                             STARTING AT
-                            <span className="text-primary"> $699</span>
+                            <span className="text-primary"> $999</span>
                         </div>
                         <div>(Custom assets not included)</div>
                     </div>
@@ -219,7 +219,7 @@ const MainServiceSection = () => {
                                 price={"20"}
                                 serviceName={"Custom Domain Setup"}
                                 detail={
-                                    "Fetch game data, player stats, badges, or inventory from ROBLOX's public endpoints or other APIs."
+                                    "We help you set up and configure your own custom domain for your website. You must already own the domain from a domain provider."
                                 }
                                 modifyService={modifyPrice}
                             />
